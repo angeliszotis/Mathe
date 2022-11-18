@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "749564126932",
+    "project_id": "mathapp-373cc",
+    "storage_bucket": "mathapp-373cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749564126932:android:e5b7228cb39e39d67ffd41",
+        "android_client_info": {
+          "package_name": "com.example.mathapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "749564126932-8fdl0f8cp785954injudu7v52ft4aoic.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRjEsk11I1i4FQuK-zg-ZUG9odYY6YkxM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "749564126932-8fdl0f8cp785954injudu7v52ft4aoic.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
