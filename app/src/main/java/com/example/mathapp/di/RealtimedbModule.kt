@@ -1,6 +1,8 @@
 package com.example.mathapp.di
 
 import android.content.Context
+import com.example.mathapp.data.QuizRepositoryImpl
+import com.example.mathapp.domain.QuizRepository
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -25,5 +27,21 @@ object TakeRealTimeData {
         return   Firebase.database("https://mathapp-373cc-default-rtdb.europe-west1.firebasedatabase.app/")
 
     }
+
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+object AppModule {
+
+    @Provides
+    @Singleton
+    fun provideCarsRepository(database: FirebaseDatabase): QuizRepository =
+        QuizRepositoryImpl(database)
+
+    @Provides
+    @Singleton
+    fun provideRealtimeDatabase(): FirebaseDatabase =
+        Firebase.database("https://mathapp-373cc-default-rtdb.europe-west1.firebasedatabase.app/")
 
 }

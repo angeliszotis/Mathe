@@ -3,6 +3,7 @@ package com.example.mathapp.ui.exam.composable
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,15 +21,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
+import com.example.mathapp.data.model.QuestionsModel
+import com.example.mathapp.di.MathAppApplication
+import com.example.mathapp.ui.exam.ExamViewModel
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 @Composable
-fun ExamScreen() {
+fun ExamScreen(viewModel: ExamViewModel ) {
     val database =
         Firebase.database("https://mathapp-373cc-default-rtdb.europe-west1.firebasedatabase.app/")
+
+    val quic = viewModel.quiz.observeState
 
     Column(
         modifier = Modifier
@@ -36,6 +42,7 @@ fun ExamScreen() {
             .background(BabyBluePurple3)
             .verticalScroll(rememberScrollState())
     ) {
+
 
 
         Column(
@@ -91,7 +98,7 @@ fun ExamScreen() {
                 fontWeight = FontWeight.Bold,
                 fontSize = 3.5.em,
                 textAlign = TextAlign.Center,
-                text = "here is asware!aaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaa asaaaaaaaaaaaaaaaaaaaaaaaaaa dsadsadasdasdas",
+                text = "view",
                 maxLines = 5
             )
             Spacer(modifier = Modifier.size(10.dp))
@@ -196,8 +203,10 @@ fun ExamScreen() {
 }
 
 
+
+
 @Preview(showBackground = false)
 @Composable
 fun ExamComposablePrev() {
-    ExamScreen()
+
 }
