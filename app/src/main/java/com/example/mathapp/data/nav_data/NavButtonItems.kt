@@ -7,6 +7,7 @@ import com.example.mathapp.ui.home.HomeFragmentDirections
 sealed class NavButtonItems(val destination: NavDirections) {
     object theory : NavButtonItems(HomeFragmentDirections.actionHomeToTheory())
     object profile : NavButtonItems(HomeFragmentDirections.actionHomeToProfile())
+    object exam : NavButtonItems(HomeFragmentDirections.actionHomeToExam())
 }
 
 data class HomeButtonsDC(

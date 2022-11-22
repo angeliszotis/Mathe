@@ -54,9 +54,11 @@ fun TheoryScreen() {
 
         ) {
             Spacer(modifier = Modifier.size(30.dp))
-            Box(modifier = Modifier
-                .fillMaxWidth(1f)
-                .align(Alignment.CenterHorizontally)) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth(1f)
+                    .align(Alignment.CenterHorizontally)
+            ) {
                 Text(
                     maxLines = 1,
                     text = "  Επέλεξε Ενότητα",

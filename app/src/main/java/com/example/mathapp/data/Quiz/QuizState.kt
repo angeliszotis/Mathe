@@ -1,4 +1,4 @@
-package com.example.mathapp.data
+package com.example.mathapp.data.Quiz
 
 import com.example.mathapp.data.room.entity.QuestionAndAnswers
 

@@ -143,9 +143,11 @@ fun ProfileScreen() {
 @Composable
 fun test() {
 
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .background(color = BabyBluePurple2)) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = BabyBluePurple2)
+    ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()

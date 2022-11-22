@@ -60,7 +60,7 @@ fun HomeScreen(viewModel: HomeViewModel) {
         )
         ButtonItem(
             Modifier.fillMaxWidth(),
-            HomeButtonsDCVector("Εξέταση", 8, Icons.Filled.Create, 30, NavButtonItems.theory),
+            HomeButtonsDCVector("Εξέταση", 8, Icons.Filled.Create, 30, NavButtonItems.exam),
             viewModel
         )
         ButtonItem(

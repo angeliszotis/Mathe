@@ -3,7 +3,6 @@ package com.example.mathapp.ui.exam.composable
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,6 +11,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.contentDescription
@@ -22,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import com.example.mathapp.data.model.QuestionsModel
-import com.example.mathapp.di.MathAppApplication
+import com.example.mathapp.data.room.entity.AnswersEntity
 import com.example.mathapp.ui.exam.ExamViewModel
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
@@ -30,11 +31,11 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 @Composable
-fun ExamScreen(viewModel: ExamViewModel ) {
+fun ExamScreen(viewModel: ExamViewModel) {
     val database =
         Firebase.database("https://mathapp-373cc-default-rtdb.europe-west1.firebasedatabase.app/")
 
-    val quic = viewModel.quiz.observeState
+    val quiz by viewModel.quiz.observeAsState()
 
     Column(
         modifier = Modifier
@@ -42,7 +43,6 @@ fun ExamScreen(viewModel: ExamViewModel ) {
             .background(BabyBluePurple3)
             .verticalScroll(rememberScrollState())
     ) {
-
 
 
         Column(
@@ -61,9 +61,11 @@ fun ExamScreen(viewModel: ExamViewModel ) {
         )
 
         {
-            Row(modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp)) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp)
+            ) {
                 Text(
                     modifier = Modifier
                         .fillMaxWidth(0.3f),
@@ -84,6 +86,13 @@ fun ExamScreen(viewModel: ExamViewModel ) {
                     maxLines = 1,
                 )
             }
+                val quest : QuestionsModel
+            database.reference.child("quiz").child("unit1").get().addOnSuccessListener {
+                Log.i("firebase", "Got value ${it.value.toString()}")
+
+            }.addOnFailureListener {
+                Log.e("firebase", "Error getting data", it)
+            }
 
             Spacer(
                 modifier = Modifier
@@ -98,7 +107,7 @@ fun ExamScreen(viewModel: ExamViewModel ) {
                 fontWeight = FontWeight.Bold,
                 fontSize = 3.5.em,
                 textAlign = TextAlign.Center,
-                text = "view",
+                text = quiz.toString(),
                 maxLines = 5
             )
             Spacer(modifier = Modifier.size(10.dp))
@@ -124,12 +133,7 @@ fun ExamScreen(viewModel: ExamViewModel ) {
                 .align(Alignment.CenterHorizontally)
         ) {
 
-            val test : String
-            database.reference.child("quiz").child("unit1").get().addOnSuccessListener {
-                Log.i("firebase", "Got value ${it.value}")
-            }.addOnFailureListener {
-                Log.e("firebase", "Error getting data", it)
-            }
+
 
 
             RadioButton(
@@ -137,7 +141,7 @@ fun ExamScreen(viewModel: ExamViewModel ) {
                     .fillMaxWidth()
                     .align(Alignment.CenterHorizontally)
                     .semantics { contentDescription = "Localized Description" },
-                selected = false ,
+                selected = false,
                 onClick = { true },
             )
             RadioButton(
@@ -175,19 +179,19 @@ fun ExamScreen(viewModel: ExamViewModel ) {
 
             Button(
                 modifier = Modifier
-                    .fillMaxWidth(0.2f)
+                    .fillMaxWidth(0.5f)
                     .weight(0.5f),
                 onClick = { /*TODO*/ },
                 shape = CircleShape
             ) {
-                Text(text = "Πρωηγούμενο")
+                Text(text = "Προηγούμενο")
             }
-            Spacer(modifier = Modifier.size(30.dp))
+            Spacer(modifier = Modifier.size(20.dp))
 
 
             Button(
                 modifier = Modifier
-                    .fillMaxWidth(0.2f)
+                    .fillMaxWidth(0.5f)
                     .weight(0.5f),
                 onClick = { /*TODO*/ },
                 shape = CircleShape
@@ -201,8 +205,6 @@ fun ExamScreen(viewModel: ExamViewModel ) {
 
 
 }
-
-
 
 
 @Preview(showBackground = false)

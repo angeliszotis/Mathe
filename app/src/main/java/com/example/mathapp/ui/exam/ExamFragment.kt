@@ -6,7 +6,9 @@ import androidx.fragment.app.viewModels
 import com.example.mathapp.BaseFragment
 import com.example.mathapp.databinding.FragmentNavBinding
 import com.example.mathapp.ui.exam.composable.ExamScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ExamFragment : BaseFragment<FragmentNavBinding>() {
 
 
@@ -18,7 +20,7 @@ class ExamFragment : BaseFragment<FragmentNavBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
-            ExamScreen()
+            ExamScreen(viewModel)
         }
         //setupObservers()
     }

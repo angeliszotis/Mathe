@@ -1,8 +1,6 @@
 package com.example.mathapp.ui.exam
 
 import android.util.Log
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,7 +10,6 @@ import com.example.mathapp.data.model.QuestionsModel
 import com.example.mathapp.data.nav_data.NavButtonItems
 import com.example.mathapp.domain.QuizRepository
 import com.example.mathapp.util.SingleLiveEvent
-import com.google.firebase.database.FirebaseDatabase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
@@ -42,10 +39,6 @@ class ExamViewModel @Inject constructor(
                 }
             }
     }
-
-
-
-
 
 
     fun onItemClicked(item: NavButtonItems) {
