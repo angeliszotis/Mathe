@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectTreeColorHighlighter">
+    <files>
+      <node color="6" path="$PROJECT_DIR$/app/src/main/java/com/example/mathapp/data" />
+      <node color="2" path="$PROJECT_DIR$/app/src/main/java/com/example/mathapp/di" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/mathapp/domain" />
+      <node color="7" path="$PROJECT_DIR$/app/src/main/java/com/example/mathapp/framework" />
+      <node color="4" path="$PROJECT_DIR$/app/src/main/java/com/example/mathapp/ui" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/mathapp/usecase" />
+      <node color="7" path="$PROJECT_DIR$/app/src/main/java/com/example/mathapp/util" />
+    </files>
+    <colors>
+      <color id="1" value="#de2c2c28" name="Color 1" enabled="true" />
+      <color id="2" value="#ff6d0d27" name="Color 2" enabled="true" />
+      <color id="3" value="#fefc2227" name="Color 3" enabled="true" />
+      <color id="4" value="#09ba0027" name="Color 4" enabled="true" />
+      <color id="5" value="#00f2ff28" name="Color 5" enabled="true" />
+      <color id="6" value="#00b5ff27" name="Color 6" enabled="true" />
+      <color id="7" value="#b892db27" name="Color 7" enabled="true" />
+      <color id="8" value="#bebebe" name="Color 8" enabled="true" />
+    </colors>
+    <option name="marksForCollapsedHighlights" value="Dots" />
+  </component>
+</project>
