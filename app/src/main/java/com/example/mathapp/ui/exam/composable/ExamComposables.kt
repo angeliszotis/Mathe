@@ -1,6 +1,6 @@
 package com.example.mathapp.ui.exam.composable
 
-import android.content.ContentValues.TAG
+import android.content.ContentValues
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -42,22 +42,6 @@ val myRef = database.getReference("quiz").child("unit1").child("q1")
 
 
 
-    myRef.addValueEventListener(object : ValueEventListener {
-        override fun onDataChange(dataSnapshot: DataSnapshot) {
-            // This method is called once with the initial value and again
-            // whenever data at this location is updated.
-           // val value = dataSnapshot.getValue<String>()
-            val map = dataSnapshot.value as Map<String, Any>?
-            Log.d("yoda", "Value is: ${map?.getValue("answer")}")
-           //test= map?.getValue("answer").toString()
-        }
-
-        override fun onCancelled(error: DatabaseError) {
-            // Failed to read value
-            Log.w(TAG, "Failed to read value.", error.toException())
-        }
-    })
-
 
     quiz?.forEach{
         println("element $it")
@@ -92,6 +76,7 @@ val myRef = database.getReference("quiz").child("unit1").child("q1")
                     .fillMaxWidth()
                     .padding(10.dp)
             ) {
+
                 Text(
                     modifier = Modifier
                         .fillMaxWidth(0.3f),
@@ -133,7 +118,7 @@ val myRef = database.getReference("quiz").child("unit1").child("q1")
                 fontWeight = FontWeight.Bold,
                 fontSize = 3.5.em,
                 textAlign = TextAlign.Center,
-                text = quiz.toString(),
+                text =     viewModel.onDataChange(),
                 maxLines = 5
             )
             Spacer(modifier = Modifier.size(10.dp))

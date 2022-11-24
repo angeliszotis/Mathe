@@ -1,4 +1,4 @@
-package com.example.mathapp.ui.theory.enums
+package com.example.mathapp.ui.unit.enums
 
 sealed class TheoryButtonItems(var text: String, var onClickAction: String) {
 

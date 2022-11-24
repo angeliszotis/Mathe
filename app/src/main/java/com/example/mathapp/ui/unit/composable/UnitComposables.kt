@@ -1,4 +1,4 @@
-package com.example.mathapp.ui.theory.composable
+package com.example.mathapp.ui.unit.composable
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -39,7 +39,7 @@ fun Loader(link: String) {
 }
 
 @Composable
-fun TheoryScreen() {
+fun UnitScreen() {
 
     Column(
         modifier = Modifier

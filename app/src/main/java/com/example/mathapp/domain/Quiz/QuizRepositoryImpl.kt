@@ -1,5 +1,6 @@
 package com.example.mathapp.domain.Quiz
 
+import android.content.ContentValues
 import android.util.Log
 import com.example.mathapp.domain.Resource
 import com.example.mathapp.data.model.QuestionsModel
@@ -18,15 +19,20 @@ class QuizRepositoryImpl(
     private val database: FirebaseDatabase
 ) : QuizRepository {
 
+
     override fun getQuizOnce(): Flow<Resource<List<QuestionsModel>>> = callbackFlow {
-        database.getReference("cars")
+        Log.i("lala", "Got value OK")
+
+        database.getReference("quiz").child("unit1")
             .get()
             .addOnCompleteListener { task ->
                 val response = if (task.isSuccessful) {
                     val quiz = task.result.getValue<List<QuestionsModel>>()!!
                     Resource.Success<List<QuestionsModel>>(quiz)
                 } else {
+                    Log.w("lala","No")
                     Resource.Error<List<QuestionsModel>>(task.exception?.localizedMessage.toString())
+
                 }
                 trySend(response).isSuccess
             }
@@ -56,3 +62,4 @@ class QuizRepositoryImpl(
     }
 
 }
+

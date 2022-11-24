@@ -6,14 +6,14 @@ import androidx.fragment.app.viewModels
 import com.example.mathapp.ui.base.BaseFragment
 import com.example.mathapp.databinding.FragmentNavBinding
 import com.example.mathapp.ui.profile.composable.ProfileScreen
-import com.example.mathapp.ui.theory.TheoryViewModel
+import com.example.mathapp.ui.unit.UnitViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProfileFragment : BaseFragment<FragmentNavBinding>() {
 
 
-    val viewModel: TheoryViewModel by viewModels()
+    val viewModel: UnitViewModel by viewModels()
 
     override fun getViewBinding(): FragmentNavBinding =
         FragmentNavBinding.inflate(layoutInflater)

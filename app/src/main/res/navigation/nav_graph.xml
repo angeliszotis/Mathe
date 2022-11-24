@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/fragmentTheory"
-        android:name="com.example.mathapp.ui.theory.TheoryFragment" />
+        android:name="com.example.mathapp.ui.unit.UnitFragment" />
 
     <fragment
         android:id="@+id/fragmentProfile"
