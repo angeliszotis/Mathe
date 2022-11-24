@@ -1,4 +1,4 @@
-package com.example.mathapp.ui.home.composable.LottieHomeLoader
+package com.example.mathapp.ui.composable.LottieLoader
 
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.runtime.Composable

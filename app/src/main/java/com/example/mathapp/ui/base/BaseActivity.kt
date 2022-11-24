@@ -1,4 +1,4 @@
-package com.example.mathapp
+package com.example.mathapp.ui.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

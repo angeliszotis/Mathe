@@ -1,4 +1,4 @@
-package com.example.mathapp
+package com.example.mathapp.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

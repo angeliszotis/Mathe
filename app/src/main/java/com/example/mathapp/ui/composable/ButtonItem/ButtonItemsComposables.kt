@@ -1,4 +1,4 @@
-package com.example.mathapp.ui.home.composable.ButtonItem
+package com.example.mathapp.ui.composable.ButtonItem
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height

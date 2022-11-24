@@ -17,12 +17,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
+import com.example.mathapp.R
 import com.example.mathapp.data.nav_data.HomeButtonsDC
 import com.example.mathapp.data.nav_data.HomeButtonsDCVector
 import com.example.mathapp.data.nav_data.NavButtonItems
 import com.example.mathapp.ui.home.HomeViewModel
-import com.example.mathapp.ui.home.composable.ButtonItem.ButtonItem
-import com.example.mathapp.ui.home.composable.LottieHomeLoader.Loader
+import com.example.mathapp.ui.composable.ButtonItem.ButtonItem
+import com.example.mathapp.ui.composable.LottieLoader.Loader
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple5
 
@@ -53,7 +54,7 @@ fun HomeScreen(viewModel: HomeViewModel) {
             HomeButtonsDC(
                 "Θεωρία",
                 8,
-                com.example.mathapp.R.drawable.ic_baseline_menu_book_24,
+                R.drawable.ic_baseline_menu_book_24,
                 30,
                 NavButtonItems.theory
             ), viewModel

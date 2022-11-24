@@ -1,7 +1,7 @@
-package com.example.mathapp.data.Quiz
+package com.example.mathapp.domain.Quiz
 
 import android.util.Log
-import com.example.mathapp.data.Resource
+import com.example.mathapp.domain.Resource
 import com.example.mathapp.data.model.QuestionsModel
 import com.example.mathapp.domain.QuizRepository
 import com.google.firebase.database.DataSnapshot

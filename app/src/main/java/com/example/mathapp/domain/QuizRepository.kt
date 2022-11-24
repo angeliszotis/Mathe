@@ -1,6 +1,5 @@
 package com.example.mathapp.domain
 
-import com.example.mathapp.data.Resource
 import com.example.mathapp.data.model.QuestionsModel
 import kotlinx.coroutines.flow.Flow
 

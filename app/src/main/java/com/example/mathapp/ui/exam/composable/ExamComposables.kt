@@ -1,5 +1,6 @@
 package com.example.mathapp.ui.exam.composable
 
+import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -23,10 +24,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import com.example.mathapp.data.model.QuestionsModel
-import com.example.mathapp.data.room.entity.AnswersEntity
 import com.example.mathapp.ui.exam.ExamViewModel
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -34,8 +37,31 @@ import com.google.firebase.ktx.Firebase
 fun ExamScreen(viewModel: ExamViewModel) {
     val database =
         Firebase.database("https://mathapp-373cc-default-rtdb.europe-west1.firebasedatabase.app/")
-
+val myRef = database.getReference("quiz").child("unit1").child("q1")
     val quiz by viewModel.quiz.observeAsState()
+
+
+
+    myRef.addValueEventListener(object : ValueEventListener {
+        override fun onDataChange(dataSnapshot: DataSnapshot) {
+            // This method is called once with the initial value and again
+            // whenever data at this location is updated.
+           // val value = dataSnapshot.getValue<String>()
+            val map = dataSnapshot.value as Map<String, Any>?
+            Log.d("yoda", "Value is: ${map?.getValue("answer")}")
+           //test= map?.getValue("answer").toString()
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+            // Failed to read value
+            Log.w(TAG, "Failed to read value.", error.toException())
+        }
+    })
+
+
+    quiz?.forEach{
+        println("element $it")
+    }
 
     Column(
         modifier = Modifier

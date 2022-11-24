@@ -1,7 +1,7 @@
 package com.example.mathapp.di
 
 import android.content.Context
-import com.example.mathapp.data.Quiz.QuizRepositoryImpl
+import com.example.mathapp.domain.Quiz.QuizRepositoryImpl
 import com.example.mathapp.domain.QuizRepository
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database

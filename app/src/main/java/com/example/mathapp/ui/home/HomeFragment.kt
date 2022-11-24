@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import com.example.mathapp.BaseFragment
+import com.example.mathapp.ui.base.BaseFragment
 import com.example.mathapp.databinding.FragmentNavBinding
 import com.example.mathapp.ui.home.composable.HomeScreen
 import dagger.hilt.android.AndroidEntryPoint

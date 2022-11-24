@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDirections
-import com.example.mathapp.data.Resource
+import com.example.mathapp.domain.Resource
 import com.example.mathapp.data.model.QuestionsModel
 import com.example.mathapp.data.nav_data.NavButtonItems
 import com.example.mathapp.domain.QuizRepository
