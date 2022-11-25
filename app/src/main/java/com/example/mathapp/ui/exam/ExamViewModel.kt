@@ -33,21 +33,20 @@ class ExamViewModel @Inject constructor(
 
     val myRef = db.getReference("quiz").child("unit1").child("q1")
 
-    var test : String = ""
 
 
+    var test  = ""
 
-    fun getMydata():String{
-        var test : String = "13"
+
+    fun getMydata(): QuestionsModel {
+
         myRef.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                // val value = dataSnapshot.getValue<String>()
-                val map = dataSnapshot.value as Map<String, Any>?
-                Log.d("yoda", "Value is: ${map?.getValue("answer")}")
-                test = map?.getValue("answer").toString()
+
+                val map = dataSnapshot.value.toString()?:""
+                //Log.d("yoda", "Value is: ${map?.getVal"answer")}")
+                test = map
                 //test= map?.getValue("answer").toString()
 
             }
@@ -66,6 +65,7 @@ class ExamViewModel @Inject constructor(
                 when (resource) {
                     is Resource.Success -> {
                         _quiz.value = resource.data!!
+                        Log.d("yoda2","${resource.data}")
                     }
                     is Resource.Error -> {
                         Log.w("test", resource.error!!)

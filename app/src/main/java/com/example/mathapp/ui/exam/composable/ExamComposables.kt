@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -38,13 +39,10 @@ fun ExamScreen(viewModel: ExamViewModel) {
     val database =
         Firebase.database("https://mathapp-373cc-default-rtdb.europe-west1.firebasedatabase.app/")
 val myRef = database.getReference("quiz").child("unit1").child("q1")
+
     val quiz by viewModel.quiz.observeAsState()
-
-
-
-
     quiz?.forEach{
-        println("element $it")
+        Log.d("yoda2","${it}")
     }
 
     Column(
@@ -118,10 +116,11 @@ val myRef = database.getReference("quiz").child("unit1").child("q1")
                 fontWeight = FontWeight.Bold,
                 fontSize = 3.5.em,
                 textAlign = TextAlign.Center,
-                text =     viewModel.onDataChange(),
+                text =     viewModel.onDataTake().toString(),
                 maxLines = 5
             )
             Spacer(modifier = Modifier.size(10.dp))
+
 
 
         }
@@ -217,9 +216,3 @@ val myRef = database.getReference("quiz").child("unit1").child("q1")
 
 }
 
-
-@Preview(showBackground = false)
-@Composable
-fun ExamComposablePrev() {
-
-}

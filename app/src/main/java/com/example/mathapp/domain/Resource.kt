@@ -1,7 +1,9 @@
 package com.example.mathapp.domain
 
+import com.example.mathapp.data.model.QuestionsModel
 
-sealed class Resource<T>(val data: T? = null, val error: String? = null) {
-    class Success<T>(data: T) : Resource<T>(data = data)
-    class Error<T>(error: String, data: T? = null) : Resource<T>(data = data, error = error)
+
+sealed class Resource<QuestionsModel>(val data: QuestionsModel? = null, val error: String? = null) {
+    class Success<QuestionsModel>(data: QuestionsModel) : Resource<QuestionsModel>(data = data)
+    class Error<QuestionsModel>(error: String, data: QuestionsModel? = null) : Resource<QuestionsModel>(data = data, error = error)
 }
