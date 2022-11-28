@@ -38,12 +38,11 @@ import com.google.firebase.ktx.Firebase
 fun ExamScreen(viewModel: ExamViewModel) {
     val database =
         Firebase.database("https://mathapp-373cc-default-rtdb.europe-west1.firebasedatabase.app/")
-val myRef = database.getReference("quiz").child("unit1").child("q1")
+//val myRef = database.getReference("quiz").child("unit1").child("q1")
 
-    val quiz by viewModel.quiz.observeAsState()
-    quiz?.forEach{
-        Log.d("yoda2","${it}")
-    }
+    val quiz by viewModel.quiz.observeAsState(emptyList())
+
+
 
     Column(
         modifier = Modifier
@@ -95,13 +94,8 @@ val myRef = database.getReference("quiz").child("unit1").child("q1")
                     maxLines = 1,
                 )
             }
-                val quest : QuestionsModel
-            database.reference.child("quiz").child("unit1").get().addOnSuccessListener {
-                Log.i("firebase", "Got value ${it.value.toString()}")
 
-            }.addOnFailureListener {
-                Log.e("firebase", "Error getting data", it)
-            }
+
 
             Spacer(
                 modifier = Modifier

@@ -35,9 +35,8 @@ class ExamViewModel @Inject constructor(
 
 
 
-    var test  = ""
 
-
+/*
     fun getMydata(): QuestionsModel {
 
         myRef.addValueEventListener(object : ValueEventListener {
@@ -57,7 +56,7 @@ class ExamViewModel @Inject constructor(
         })
 
         return test
-    }
+    } */
 
     fun onDataTake() {
         quizRepository.getQuizOnce()
@@ -65,10 +64,12 @@ class ExamViewModel @Inject constructor(
                 when (resource) {
                     is Resource.Success -> {
                         _quiz.value = resource.data!!
-                        Log.d("yoda2","${resource.data}")
+                        Log.e("yoda2","ok")
                     }
                     is Resource.Error -> {
                         Log.w("test", resource.error!!)
+                        Log.e("yoda2","ok")
+
                     }
                 }
             }

@@ -22,6 +22,6 @@ class ExamFragment : BaseFragment<FragmentNavBinding>() {
         binding.composeView.setContent {
             ExamScreen(viewModel)
         }
-        //setupObservers()
+        viewModel.onDataTake()
     }
 }
