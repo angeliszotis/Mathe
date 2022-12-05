@@ -5,5 +5,6 @@ import com.example.mathapp.data.model.QuestionsModel
 
 sealed class Resource<QuestionsModel>(val data: QuestionsModel? = null, val error: String? = null) {
     class Success<QuestionsModel>(data: QuestionsModel) : Resource<QuestionsModel>(data = data)
-    class Error<QuestionsModel>(error: String, data: QuestionsModel? = null) : Resource<QuestionsModel>(data = data, error = error)
+    class Error<QuestionsModel>(error: String, data: QuestionsModel? = null) :
+        Resource<QuestionsModel>(data = data, error = error)
 }

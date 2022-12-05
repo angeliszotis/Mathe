@@ -21,9 +21,9 @@ import com.example.mathapp.R
 import com.example.mathapp.data.nav_data.HomeButtonsDC
 import com.example.mathapp.data.nav_data.HomeButtonsDCVector
 import com.example.mathapp.data.nav_data.NavButtonItems
-import com.example.mathapp.ui.home.HomeViewModel
 import com.example.mathapp.ui.composable.ButtonItem.ButtonItem
 import com.example.mathapp.ui.composable.LottieLoader.Loader
+import com.example.mathapp.ui.home.HomeViewModel
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple5
 

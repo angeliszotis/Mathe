@@ -3,6 +3,7 @@ package com.example.mathapp.ui.composable.ButtonItem
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -68,4 +69,16 @@ fun ButtonItem(modifier: Modifier, item: HomeButtonsDCVector, viewModel: HomeVie
     }
     Spacer(modifier = Modifier.height(16.dp))
 
+}
+
+@Composable
+fun ButtonItem(modifier: Modifier,text: String){
+
+    Button(
+        modifier = modifier,
+        onClick = { /*TODO*/ },
+        shape = CircleShape
+    ) {
+        Text(text)
+    }
 }
