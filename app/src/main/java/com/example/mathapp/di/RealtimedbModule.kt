@@ -15,7 +15,8 @@ object AppModule {
     @Provides
     @Singleton
     fun provideQueryProductsByName() = Firebase.firestore
-        .collection("unit1")
+        .collection("unit1").whereEqualTo("id", 1)
+
 
 }
 

@@ -2,6 +2,8 @@ package com.example.mathapp.ui.exam.composable
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -15,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
+import androidx.compose.ui.unit.sp
 import com.example.mathapp.data.model.DataOrException
 import com.example.mathapp.data.model.QuestionsModel
 import com.example.mathapp.ui.composable.ButtonItem.ButtonItem
@@ -32,12 +35,14 @@ fun ExamScreen(
     viewModel: ExamViewModel
 ) {
 
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(BabyBluePurple3)
     ) {
 
+        TitleRet(dataOrException)
 
         Column(
             modifier = Modifier
@@ -45,10 +50,10 @@ fun ExamScreen(
                 .background(
                     color = BabyBluePurple2,
                     RoundedCornerShape(
-                        bottomEnd = 70.dp,
+                        bottomEnd = 0.dp,
                         topStart = 0.dp,
                         topEnd = 0.dp,
-                        bottomStart = 70.dp,
+                        bottomStart = 0.dp,
 
                         )
                 )
@@ -63,9 +68,9 @@ fun ExamScreen(
 
                 Text(
                     modifier = Modifier
-                        .fillMaxWidth(0.3f),
+                        .fillMaxWidth(0.25f),
                     fontWeight = FontWeight.Bold,
-                    fontSize = 3.em,
+                    fontSize = 10.sp,
                     textAlign = TextAlign.Left,
                     text = "Ερώτηση 1/10",
                     maxLines = 1,
@@ -75,9 +80,9 @@ fun ExamScreen(
 
                 Text(
                     modifier = Modifier
-                        .fillMaxWidth(0.6f),
+                        .fillMaxWidth(0.67f),
                     fontWeight = FontWeight.Bold,
-                    fontSize = 3.em,
+                    fontSize = 10.sp,
                     textAlign = TextAlign.Right,
                     text = "Χρόνος 10:00",
                     maxLines = 1,
@@ -85,68 +90,29 @@ fun ExamScreen(
             }
 
 
-            Spacer(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .size(5.dp)
-                    .background(color = BabyBluePurple3)
-            )
-            Text(
-                modifier = Modifier
-                    .fillMaxWidth(0.8f)
-                    .align(Alignment.CenterHorizontally),
-                fontWeight = FontWeight.Bold,
-                fontSize = 3.5.em,
-                textAlign = TextAlign.Center,
-                text = " lala",
-                maxLines = 5
-            )
-
-            Spacer(modifier = Modifier.size(10.dp))
-
-
         }
 
-        Spacer(modifier = Modifier.size(30.dp))
+        Spacer(modifier = Modifier.size(10.dp))
 
-        Column(
+        ProductsActivity(dataOrException, viewModel)
+
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp)
-                .background(
-                    color = BabyBluePurple2,
-                    RoundedCornerShape(
-                        bottomEnd = 64.dp,
-                        topStart = 64.dp,
-                        topEnd = 34.dp,
-                        bottomStart = 34.dp,
-
-                        )
-                )
-                .align(Alignment.CenterHorizontally)
         ) {
 
-            ProductsActivity(dataOrException, viewModel)
+            ButtonItem(modifier = Modifier
+                .fillMaxWidth(0.5f)
+                .weight(0.5f), text ="Προηγούμενο" )
 
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(10.dp)
-            ) {
+            Spacer(modifier = Modifier.size(20.dp))
 
-                ButtonItem(modifier = Modifier
-                    .fillMaxWidth(0.5f)
-                    .weight(0.5f), text ="Προηγούμενο" )
-
-                Spacer(modifier = Modifier.size(20.dp))
-
-                ButtonItem(modifier = Modifier
-                    .fillMaxWidth(0.5f)
-                    .weight(0.5f), text ="Επόμενο" )
+            ButtonItem(modifier = Modifier
+                .fillMaxWidth(0.5f)
+                .weight(0.5f), text ="Επόμενο" )
 
 
-
-            }
 
         }
 
