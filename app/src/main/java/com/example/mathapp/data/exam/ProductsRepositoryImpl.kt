@@ -1,9 +1,8 @@
-package com.example.mathapp.data
+package com.example.mathapp.data.exam
 
 import com.example.mathapp.data.model.DataOrException
 import com.example.mathapp.data.model.QuestionsModel
 import com.example.mathapp.domain.ProductsRepository
-import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.tasks.await

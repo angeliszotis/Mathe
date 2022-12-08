@@ -12,6 +12,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -23,14 +24,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import com.airbnb.lottie.compose.*
+import com.example.mathapp.data.room.entity.UserEntity
+import com.example.mathapp.ui.exam.composable.ret
+import com.example.mathapp.ui.profile.ProfileViewModel
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
 import com.example.mathapp.ui.theme.BabyBluePurple5
 
 
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(viewModel : ProfileViewModel) {
 
+    var dt = viewModel.readAllData.observeAsState(listOf()).value
 
     Column(
         modifier = Modifier
@@ -79,9 +84,6 @@ fun ProfileScreen() {
         }
 
 
-
-
-
         Column(
             modifier = Modifier
                 .padding(vertical = 25.dp)
@@ -101,36 +103,36 @@ fun ProfileScreen() {
             Spacer(modifier = Modifier.size(30.dp))
 
             OutlinedTextField(
-                value = textState1,
+                value = dt[0].name.toString(),
                 label = { Text("Όνομα", fontWeight = FontWeight.Bold) },
                 onValueChange = {
-                    textState1 = it
+                    dt[0].name = it
 
                 })
             Spacer(modifier = Modifier.size(15.dp))
             OutlinedTextField(
-                value = textState2,
+                value = dt[0].surname.toString(),
                 label = { Text("Επίθετο", fontWeight = FontWeight.Bold) },
                 onValueChange = {
-                    textState2 = it
+                    dt[0].surname = it
 
                 })
             Spacer(modifier = Modifier.size(15.dp))
 
             OutlinedTextField(
-                value = textState1,
+                value = dt[0].school.toString(),
                 label = { Text("Σχολείο", fontWeight = FontWeight.Bold) },
                 onValueChange = {
-                    textState1 = it
+                    dt[0].school = it
 
                 })
             Spacer(modifier = Modifier.size(30.dp))
-            Button(modifier = Modifier.fillMaxWidth(0.5f), onClick = { /*TODO*/ }) {
+
+            Button(modifier = Modifier.fillMaxWidth(0.5f), onClick = {   }) {
                 Text(text = "Αποθήκευση!")
             }
-            // Loader("https://assets8.lottiefiles.com/private_files/lf30_wfox4afo.json",true)
-            Spacer(modifier = Modifier.size(30.dp))
 
+            Spacer(modifier = Modifier.size(30.dp))
 
         }
         Loader("https://assets10.lottiefiles.com/packages/lf20_xyadoh9h.json", true)
@@ -139,6 +141,17 @@ fun ProfileScreen() {
 
 }
 
+fun test2():UserEntity{
+
+    var l : List<UserEntity> = emptyList()
+    l[0].name = "test"
+    l[0].surname = "test"
+    l[0].school = "test"
+
+
+
+    return l[0]
+}
 
 @Composable
 fun test() {
@@ -209,22 +222,6 @@ fun Loader(link: String, clip: Boolean) {
 }
 
 
-@Preview(showBackground = false)
-@Composable
-fun DrawerItemPreview() {
-    ProfileScreen()
-}
 
-@Composable
-fun IconShow() {
-    Icon(
-        Icons.Filled.Person,
-        contentDescription = "Localized description",
-        modifier = Modifier
-            .size(60.dp)
-            .clip(RoundedCornerShape(16.dp))
-    )
-
-}
 
 

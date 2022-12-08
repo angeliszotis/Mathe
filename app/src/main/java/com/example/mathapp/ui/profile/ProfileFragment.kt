@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ProfileFragment : BaseFragment<FragmentNavBinding>() {
 
 
-    val viewModel: UnitViewModel by viewModels()
+    val viewModel: ProfileViewModel by viewModels()
 
     override fun getViewBinding(): FragmentNavBinding =
         FragmentNavBinding.inflate(layoutInflater)
@@ -21,7 +21,7 @@ class ProfileFragment : BaseFragment<FragmentNavBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
-            ProfileScreen()
+            ProfileScreen(viewModel)
         }
         //setupObservers()
     }

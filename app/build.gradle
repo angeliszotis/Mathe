@@ -95,6 +95,21 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
 
+    // Extensions = ViewModel + LiveData
+    //implementation "android.arch.lifecycle:extensions:$room_version"
+    //kapt "android.arch.lifecycle:compiler:$room_version"
+// Room
+   // implementation "android.arch.persistence.room:runtime:1.0.0"
+    //kapt "android.arch.persistence.room:compiler:1.0.0"
+
+    def room_version = "2.4.3"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // To use Kotlin annotation processing tool (kapt)
+    kapt "androidx.room:room-compiler:$room_version"
+
 }
 kapt {
     correctErrorTypes true
