@@ -1,11 +1,10 @@
 package com.example.mathapp.ui.profile
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mathapp.data.exam.ProductsRepositoryImpl
-import com.example.mathapp.data.model.UserDataModel
 import com.example.mathapp.data.room.UserRepoImpl
 import com.example.mathapp.data.room.entity.UserEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -36,10 +35,11 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
-    fun getUser():List<UserEntity>?{
-        viewModelScope.launch {
-            _readAllData.value= repository.getUsers()
+    fun getUser(){
+        viewModelScope.launch(Dispatchers.IO) {
+            _readAllData.postValue(repository.getUsers())
+
         }
-            return readAllData.value
+
     }
 }

@@ -2,30 +2,25 @@ package com.example.mathapp.ui.exam.composable
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.example.mathapp.data.model.DataOrException
 import com.example.mathapp.data.model.QuestionsModel
-import com.example.mathapp.ui.composable.ButtonItem.ButtonItem
 import com.example.mathapp.ui.exam.ExamViewModel
+import com.example.mathapp.ui.profile.composable.Timer
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+import com.example.mathapp.ui.theme.BabyBluePurple5
 
 // UI exam arxiki
 
@@ -60,6 +55,7 @@ fun ExamScreen(
         )
 
         {
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -68,7 +64,7 @@ fun ExamScreen(
 
                 Text(
                     modifier = Modifier
-                        .fillMaxWidth(0.25f),
+                        .fillMaxWidth(0.45f),
                     fontWeight = FontWeight.Bold,
                     fontSize = 10.sp,
                     textAlign = TextAlign.Left,
@@ -78,7 +74,7 @@ fun ExamScreen(
 
                 Spacer(modifier = Modifier.size(100.dp, 0.dp))
 
-                Text(
+               /* Text(
                     modifier = Modifier
                         .fillMaxWidth(0.67f),
                     fontWeight = FontWeight.Bold,
@@ -86,7 +82,7 @@ fun ExamScreen(
                     textAlign = TextAlign.Right,
                     text = "Χρόνος 10:00",
                     maxLines = 1,
-                )
+                )*/
             }
 
 
@@ -95,7 +91,7 @@ fun ExamScreen(
         Spacer(modifier = Modifier.size(10.dp))
 
         ProductsActivity(dataOrException, viewModel)
-
+/*
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -114,51 +110,26 @@ fun ExamScreen(
 
 
 
-        }
+        }*/
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(10.dp)
+        ) {
 
+            Timer(
+                totalTime = 100L * 1000L,
+                handleColor = BabyBluePurple5,
+                inactiveBarColor = Color.DarkGray,
+                activeBarColor = BabyBluePurple5,
+                modifier = Modifier
+                    .size(200.dp).align(CenterHorizontally)
+            )
+        }
 
     }
 }
 
-/*
-@Composable
-fun RadiosButtans(){
 
-    RadioButton(
-        modifier = Modifier
-            .fillMaxWidth()
-            .align(Alignment.CenterHorizontally)
-            .semantics { contentDescription = "Localized Description" },
-        selected = false,
-        onClick = { true },
-    )
-    RadioButton(
-        selected = !true,
-        onClick = { false },
-        modifier = Modifier
-            .fillMaxWidth()
-            .align(Alignment.CenterHorizontally)
-            .semantics { contentDescription = "Localized Description" })
-
-    RadioButton(
-        modifier = Modifier
-            .fillMaxWidth()
-
-            .align(Alignment.CenterHorizontally)
-            .semantics { contentDescription = "Localized Description" },
-        selected = false,
-        onClick = { true },
-    )
-    RadioButton(
-        selected = !true,
-        onClick = { false },
-        modifier = Modifier
-            .fillMaxWidth()
-
-            .align(Alignment.CenterHorizontally)
-            .semantics { contentDescription = "Localized Description" })
-
-}
-*/
 
 

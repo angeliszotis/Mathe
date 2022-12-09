@@ -7,7 +7,7 @@ import com.google.firebase.firestore.auth.User
 @Dao
 interface dbDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg users: UserEntity)
 
     @Delete

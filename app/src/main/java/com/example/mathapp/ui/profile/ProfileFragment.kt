@@ -3,10 +3,10 @@ package com.example.mathapp.ui.profile
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import com.example.mathapp.data.room.entity.UserEntity
 import com.example.mathapp.databinding.FragmentNavBinding
 import com.example.mathapp.ui.base.BaseFragment
 import com.example.mathapp.ui.profile.composable.ProfileScreen
-import com.example.mathapp.ui.unit.UnitViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,8 +23,20 @@ class ProfileFragment : BaseFragment<FragmentNavBinding>() {
         binding.composeView.setContent {
             ProfileScreen(viewModel)
         }
-        //setupObservers()
+
+        viewModel.addUser(setUDM(viewModel,"","",""))
+
+        viewModel.getUser()
     }
 
 }
 
+
+
+fun setUDM(viewModel: ProfileViewModel,name: String,surname: String,school: String): UserEntity {
+
+    var list = UserEntity(name,surname,school)
+    viewModel.addUser(list)
+
+    return list
+}
