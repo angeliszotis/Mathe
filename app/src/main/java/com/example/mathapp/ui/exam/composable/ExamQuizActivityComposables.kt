@@ -13,7 +13,6 @@ import com.example.mathapp.data.model.DataOrException
 import com.example.mathapp.data.model.QuestionsModel
 import com.example.mathapp.ui.exam.ExamViewModel
 
-var ans :String =""
 @Composable
 fun ProductsActivity(
     dataOrException: DataOrException<List<QuestionsModel>, Exception>,

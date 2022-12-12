@@ -10,6 +10,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+import kotlin.random.Random
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -18,7 +19,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideQueryProductsByName() = Firebase.firestore
-        .collection("unit1").whereEqualTo("id", 1)
+        .collection("unit1").whereEqualTo("id", Random.nextInt(1,20).toString())
 
 
 }

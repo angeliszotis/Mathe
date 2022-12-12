@@ -19,13 +19,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.example.mathapp.data.model.QuestionsModel
+import com.example.mathapp.ui.exam.ExamFragment
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.FbColor
 
 
 @Composable
 fun ProductCard(
-
     quiz: QuestionsModel
 ) {
 
@@ -95,8 +95,7 @@ fun cardas(
 ) {
 
     Button(
-        onClick = {
-        },
+        onClick = {  },
         shape = RoundedCornerShape(64.dp),
         modifier = Modifier
             .padding(

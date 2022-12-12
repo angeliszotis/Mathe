@@ -25,3 +25,4 @@ class ExamFragment : BaseFragment<FragmentNavBinding>() {
         //viewModel.getdata()
     }
 }
+

@@ -21,6 +21,8 @@ import com.example.mathapp.ui.profile.composable.Timer
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
 import com.example.mathapp.ui.theme.BabyBluePurple5
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 // UI exam arxiki
 
@@ -29,7 +31,7 @@ fun ExamScreen(
     dataOrException: DataOrException<List<QuestionsModel>, Exception>,
     viewModel: ExamViewModel
 ) {
-
+    dbtest()
 
     Column(
         modifier = Modifier
@@ -128,6 +130,28 @@ fun ExamScreen(
         }
 
     }
+}
+
+fun dbtest(){
+    val db = Firebase.firestore
+    val cities = db.collection("unit1")
+
+    for(i in 1..20){
+        val data1 = hashMapOf(
+            "id" to i.toString(),
+        "answare" to i.toString(),
+        "op1" to "1",
+        "op2" to "2",
+        "op3" to "3",
+        "op4" to "4",
+        "question" to "Pio dialegis 1-2-3-4"
+    )
+        cities.document(i.toString()).set(data1)
+    }
+
+
+
+
 }
 
 
