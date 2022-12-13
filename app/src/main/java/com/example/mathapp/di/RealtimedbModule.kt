@@ -19,7 +19,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideQueryProductsByName() = Firebase.firestore
-        .collection("unit1").whereEqualTo("id", Random.nextInt(1,20).toString())
+        .collection("unit1")
 
 
 }
