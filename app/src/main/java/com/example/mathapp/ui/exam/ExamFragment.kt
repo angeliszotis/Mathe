@@ -20,9 +20,10 @@ class ExamFragment : BaseFragment<FragmentNavBinding>() {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
             val dataOr = viewModel.data.value
-            ExamScreen(dataOr, viewModel)
+            ExamScreen(
+                dataOr,
+                viewModel)
         }
-        //viewModel.getdata()
     }
 }
 

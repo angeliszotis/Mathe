@@ -8,4 +8,6 @@ data class QuestionsModel(
     val op3: String? = "",
     val op4: String? = "",
     val question: String? = "",
+    val showDone: Boolean?=true
+
 )

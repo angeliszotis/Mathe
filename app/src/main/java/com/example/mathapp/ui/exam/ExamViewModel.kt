@@ -49,49 +49,6 @@ class ExamViewModel @Inject constructor(
     }
 
 
-/*
-    fun getMydata(): QuestionsModel {
-
-        myRef.addValueEventListener(object : ValueEventListener {
-
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                val map = dataSnapshot.value.toString()?:""
-                //Log.d("yoda", "Value is: ${map?.getVal"answer")}")
-                test = map
-                //test= map?.getValue("answer").toString()
-
-            }
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
-            }
-        })
-
-        return test
-    } */
-/*
-    fun onDataTake() {
-        quizRepository.getQuizOnce()
-            .onEach { resource ->
-                when (resource) {
-                    is Resource.Success -> {
-                        _quiz.value = resource.data!!
-                        Log.e("yoda2","ok")
-                    }
-                    is Resource.Error -> {
-                        Log.w("test", resource.error!!)
-                        Log.e("yoda2","ok")
-
-                    }
-                }
-            }
-
-    }*/
-
-    fun onItemClicked(item: NavButtonItems) {
-        _ldata.value = item.destination
-    }
 
 
 }
