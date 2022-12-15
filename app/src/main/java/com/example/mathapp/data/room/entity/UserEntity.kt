@@ -10,11 +10,11 @@ data class UserEntity(
 
     @PrimaryKey
     @ColumnInfo(name = "name")
-    var name: String="name",
+    var name: String = "name",
 
     @ColumnInfo(name = "surname")
-    var surname: String="surname",
+    var surname: String = "surname",
 
     @ColumnInfo(name = "school")
-    var school: String="school",
+    var school: String = "school",
 )

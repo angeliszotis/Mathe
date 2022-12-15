@@ -1,7 +1,9 @@
 package com.example.mathapp.ui.exam.composable
 
-import android.util.Log
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
@@ -15,11 +17,12 @@ import com.example.mathapp.ui.exam.ExamViewModel
 
 @Composable
 fun ProductsActivity(
-    dataOrException: DataOrException<List<QuestionsModel>, Exception>,
+    questiosndata: DataOrException<List<QuestionsModel>, Exception>,
     viewModel: ExamViewModel
 ) {
 
-    val products = dataOrException.data
+
+    val products = questiosndata.data
 
     products?.let {
         LazyColumn {
@@ -27,12 +30,11 @@ fun ProductsActivity(
 
                 ProductCard(quiz = quiz)
 
-                //setit(quiz.answare.toString())
             }
         }
     }
 
-    val e = dataOrException.e
+    val e = questiosndata.e
     e?.let {
         Text(
             text = e.message!!,

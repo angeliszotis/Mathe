@@ -72,7 +72,7 @@ fun ButtonItem(modifier: Modifier, item: HomeButtonsDCVector, viewModel: HomeVie
 }
 
 @Composable
-fun ButtonItem(modifier: Modifier,text: String){
+fun ButtonItem(modifier: Modifier, text: String) {
 
     Button(
         modifier = modifier,

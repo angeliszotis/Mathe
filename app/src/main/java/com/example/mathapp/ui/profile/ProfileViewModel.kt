@@ -1,6 +1,5 @@
 package com.example.mathapp.ui.profile
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,27 +14,27 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val repository: UserRepoImpl
-): ViewModel() {
+) : ViewModel() {
 
     private val _ldata = MutableLiveData<Int>()
     val ldata: LiveData<Int> = _ldata
 
     private val _readAllData = MutableLiveData<List<UserEntity>>()
-    val readAllData : LiveData<List<UserEntity>> = _readAllData
+    val readAllData: LiveData<List<UserEntity>> = _readAllData
 
-    fun addUser(adduser:UserEntity){
-        viewModelScope.launch(Dispatchers.IO){
+    fun addUser(adduser: UserEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.addUsers(adduser)
         }
     }
 
-    fun updateUser(updateUser:UserEntity){
-        viewModelScope.launch(Dispatchers.IO){
+    fun updateUser(updateUser: UserEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.updateUsers(updateUser)
         }
     }
 
-    fun getUser(){
+    fun getUser() {
         viewModelScope.launch(Dispatchers.IO) {
             _readAllData.postValue(repository.getUsers())
 

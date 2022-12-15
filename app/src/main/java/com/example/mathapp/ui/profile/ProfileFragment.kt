@@ -24,7 +24,7 @@ class ProfileFragment : BaseFragment<FragmentNavBinding>() {
             ProfileScreen(viewModel)
         }
 
-        viewModel.addUser(setUDM(viewModel,"","",""))
+        viewModel.addUser(setUDM(viewModel, "", "", ""))
 
         viewModel.getUser()
     }
@@ -32,10 +32,9 @@ class ProfileFragment : BaseFragment<FragmentNavBinding>() {
 }
 
 
+fun setUDM(viewModel: ProfileViewModel, name: String, surname: String, school: String): UserEntity {
 
-fun setUDM(viewModel: ProfileViewModel,name: String,surname: String,school: String): UserEntity {
-
-    var list = UserEntity(name,surname,school)
+    var list = UserEntity(name, surname, school)
     viewModel.addUser(list)
 
     return list

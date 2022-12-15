@@ -19,11 +19,9 @@ class ProductsRepositoryImpl @Inject constructor(
         try {
 
             dataOrException.data = queryProductsByName.get().await().map { document ->
-                //document.toObject(QuestionsModel::class.java)
+                document.toObject(QuestionsModel::class.java)
 
-                QuestionsModel(
-                    answare = document.data.getValue("answare").toString()
-                )
+
             }
 
         } catch (e: FirebaseFirestoreException) {

@@ -1,11 +1,12 @@
 package com.example.mathapp.ui.exam.composable
 
 
-
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -16,11 +17,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.example.mathapp.data.model.QuestionsModel
-import com.example.mathapp.ui.exam.ExamFragment
 import com.example.mathapp.ui.theme.BabyBluePurple2
+import com.example.mathapp.ui.theme.BabyBluePurple3
 import com.example.mathapp.ui.theme.FbColor
 
 
@@ -43,16 +43,18 @@ fun ProductCard(
 
                     )
             )
-    ){Text(
-        modifier = Modifier
-            .fillMaxWidth(0.8f),
-        //.align(Alignment.CenterHorizontally),
-        fontWeight = FontWeight.Bold,
-        fontSize = 20.sp,
-        textAlign = TextAlign.Center,
-        text = quiz.answare.toString(),
-        maxLines = 5
-    )}
+    ) {
+        Text(
+            modifier = Modifier
+                .fillMaxWidth(0.8f),
+            //.align(Alignment.CenterHorizontally),
+            fontWeight = FontWeight.Bold,
+            fontSize = 20.sp,
+            textAlign = TextAlign.Center,
+            text = quiz.answare.toString(),
+            maxLines = 5
+        )
+    }
 
 
     Column(
@@ -62,22 +64,24 @@ fun ProductCard(
             .background(
                 color = BabyBluePurple2,
                 RoundedCornerShape(
-                    bottomEnd = 64.dp,
-                    topStart = 64.dp,
+                    bottomEnd = 34.dp,
+                    topStart = 34.dp,
                     topEnd = 34.dp,
                     bottomStart = 34.dp,
 
                     )
             )
-            //.align(Alignment.CenterHorizontally)
+        //.align(Alignment.CenterHorizontally)
     ) {
         Spacer(modifier = Modifier.size(30.dp))
 
 
-        cardas(quiz = quiz, opt = "op1")
-        cardas(quiz = quiz, opt = "op2")
-        cardas(quiz = quiz, opt = "op3")
-        cardas(quiz = quiz, opt = "op4")
+        SingleChoiceQuestion(quiz)
+
+        //cardas(quiz = quiz, opt = "op1")
+        //cardas(quiz = quiz, opt = "op2")
+        //cardas(quiz = quiz, opt = "op3")
+        //cardas(quiz = quiz, opt = "op4")
 
         Spacer(modifier = Modifier.size(30.dp))
 
@@ -87,15 +91,92 @@ fun ProductCard(
 
 }
 
-@OptIn(ExperimentalMaterialApi::class)
+
+@Composable
+private fun SingleChoiceQuestion(
+    question: QuestionsModel,
+    selectedAnswer: String = "",
+   // onAnswerSelected: (AnswerDTO) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val radioOptions = listOf(question.op1,question.op2,question.op3,question.op4)
+
+    val (selectedOption, onOptionSelected) = remember(selectedAnswer) {
+        mutableStateOf(selectedAnswer)
+    }
+
+    Column(modifier = modifier) {
+
+        radioOptions.forEach { answer ->
+            val onClickHandle = {
+                onOptionSelected(answer.toString())
+                //onAnswerSelected(answer)
+            }
+
+            val optionSelected = answer == selectedOption
+
+            val answerBorderColor = if (optionSelected) {
+                MaterialTheme.colors.primary.copy(alpha = 0.5f)
+            } else {
+                //MaterialTheme.colors.onSurface.copy(alpha = 0.12f)
+                BabyBluePurple2
+            }
+            val answerBackgroundColor = if (optionSelected) {
+                MaterialTheme.colors.primary.copy(alpha = 0.12f)
+            } else {
+                MaterialTheme.colors.background
+            }
+            Surface(
+                shape = MaterialTheme.shapes.small,
+                border = BorderStroke(
+                    width = 8.dp,
+                    color = answerBorderColor
+                ),
+                modifier = Modifier.padding(vertical = 8.dp),
+
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(1f)
+                        .selectable(
+                            selected = optionSelected,
+                            onClick = onClickHandle
+                        )
+                        .background(answerBackgroundColor)
+                        .padding(vertical = 16.dp, horizontal = 16.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        modifier = Modifier.weight(4f),
+                        text = answer.toString()
+                    )
+
+                    RadioButton(
+                        modifier = Modifier.weight(1f),
+                        selected = optionSelected,
+                        onClick = onClickHandle,
+                        colors = RadioButtonDefaults.colors(
+                            selectedColor = MaterialTheme.colors.primary
+                        )
+                    )
+                }
+            }
+        }
+    }
+}
+
+
+
 @Composable
 fun cardas(
     quiz: QuestionsModel,
     opt: String
 ) {
 
+
     Button(
-        onClick = {  },
+        onClick = { },
         shape = RoundedCornerShape(64.dp),
         modifier = Modifier
             .padding(

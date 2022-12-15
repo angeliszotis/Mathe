@@ -5,9 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
-import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -28,10 +26,10 @@ import com.google.firebase.ktx.Firebase
 
 @Composable
 fun ExamScreen(
-    dataOrException: DataOrException<List<QuestionsModel>, Exception>,
+    questiosndata: DataOrException<List<QuestionsModel>, Exception>,
     viewModel: ExamViewModel
 ) {
-    dbtest()
+    //dbtest()
 
     Column(
         modifier = Modifier
@@ -39,7 +37,7 @@ fun ExamScreen(
             .background(BabyBluePurple3)
     ) {
 
-        TitleRet(dataOrException)
+        //TitleRet(questiosndata)
 
         Column(
             modifier = Modifier
@@ -76,15 +74,6 @@ fun ExamScreen(
 
                 Spacer(modifier = Modifier.size(100.dp, 0.dp))
 
-               /* Text(
-                    modifier = Modifier
-                        .fillMaxWidth(0.67f),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 10.sp,
-                    textAlign = TextAlign.Right,
-                    text = "Χρόνος 10:00",
-                    maxLines = 1,
-                )*/
             }
 
 
@@ -92,27 +81,8 @@ fun ExamScreen(
 
         Spacer(modifier = Modifier.size(10.dp))
 
-        ProductsActivity(dataOrException, viewModel)
-/*
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp)
-        ) {
+        ProductsActivity(questiosndata, viewModel)
 
-            ButtonItem(modifier = Modifier
-                .fillMaxWidth(0.5f)
-                .weight(0.5f), text ="Προηγούμενο" )
-
-            Spacer(modifier = Modifier.size(20.dp))
-
-            ButtonItem(modifier = Modifier
-                .fillMaxWidth(0.5f)
-                .weight(0.5f), text ="Επόμενο" )
-
-
-
-        }*/
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -125,31 +95,30 @@ fun ExamScreen(
                 inactiveBarColor = Color.DarkGray,
                 activeBarColor = BabyBluePurple5,
                 modifier = Modifier
-                    .size(200.dp).align(CenterHorizontally)
+                    .size(200.dp)
+                    .align(CenterHorizontally)
             )
         }
 
     }
 }
 
-fun dbtest(){
+fun dbtest() {
     val db = Firebase.firestore
     val cities = db.collection("unit1")
 
-    for(i in 1..20){
+    for (i in 1..20) {
         val data1 = hashMapOf(
             "id" to i.toString(),
-        "answare" to i.toString(),
-        "op1" to "1",
-        "op2" to "2",
-        "op3" to "3",
-        "op4" to "4",
-        "question" to "Pio dialegis 1-2-3-4"
-    )
+            "answare" to i.toString(),
+            "op1" to "1",
+            "op2" to "2",
+            "op3" to "3",
+            "op4" to "4",
+            "question" to "Pio dialegis 1-2-3-4"
+        )
         cities.document(i.toString()).set(data1)
     }
-
-
 
 
 }

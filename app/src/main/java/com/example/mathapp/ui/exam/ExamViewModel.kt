@@ -10,7 +10,6 @@ import androidx.navigation.NavDirections
 import com.example.mathapp.data.exam.ProductsRepositoryImpl
 import com.example.mathapp.data.model.DataOrException
 import com.example.mathapp.data.model.QuestionsModel
-import com.example.mathapp.data.nav_data.NavButtonItems
 import com.example.mathapp.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -47,8 +46,6 @@ class ExamViewModel @Inject constructor(
             loading.value = false
         }
     }
-
-
 
 
 }

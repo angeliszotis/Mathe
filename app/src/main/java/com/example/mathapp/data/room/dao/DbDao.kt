@@ -2,7 +2,6 @@ package com.example.mathapp.data.room.dao
 
 import androidx.room.*
 import com.example.mathapp.data.room.entity.UserEntity
-import com.google.firebase.firestore.auth.User
 
 @Dao
 interface dbDao {
@@ -18,8 +17,6 @@ interface dbDao {
 
     @Update
     fun updateUsers(vararg users: UserEntity)
-
-
 
 
 }

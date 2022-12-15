@@ -7,11 +7,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
-import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -36,9 +34,9 @@ import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
 import com.example.mathapp.ui.theme.BabyBluePurple5
 import kotlinx.coroutines.delay
+import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
-import kotlin.math.PI
 
 
 @Composable
@@ -106,7 +104,7 @@ fun Loader(link: String, clip: Boolean) {
             modifier = Modifier.aspectRatio(1f),
             speed = 0.7f
 
-            )
+        )
     } else {
 
         LottieAnimation(
@@ -231,8 +229,6 @@ fun TextFieldsForProfile(
 }
 
 
-
-
 // create a composable to
 // Draw arc and handle
 @Composable
@@ -273,7 +269,7 @@ fun Timer(
         mutableStateOf(false)
     }
     LaunchedEffect(key1 = currentTime, key2 = isTimerRunning) {
-        if(currentTime > 0 && isTimerRunning) {
+        if (currentTime > 0 && isTimerRunning) {
             delay(100L)
             currentTime -= 100L
             value = currentTime / totalTime.toFloat()
