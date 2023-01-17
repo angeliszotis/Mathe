@@ -1,4 +1,4 @@
-package com.example.mathapp.data.model
+package com.example.mathapp.data.users
 
 data class QuestionsModel(
 
@@ -9,8 +9,8 @@ data class QuestionsModel(
     val op4: String? = "",
     val question: String? = "",
 
-)
+    )
 
 data class Opt(
-    val text:String
+    val text: String
 )

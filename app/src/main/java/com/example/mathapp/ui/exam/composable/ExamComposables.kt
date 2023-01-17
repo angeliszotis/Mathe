@@ -12,8 +12,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.mathapp.data.model.DataOrException
-import com.example.mathapp.data.model.QuestionsModel
+import com.example.mathapp.data.users.DataOrException
+import com.example.mathapp.data.users.QuestionsModel
 import com.example.mathapp.ui.exam.ExamViewModel
 import com.example.mathapp.ui.profile.composable.Timer
 import com.example.mathapp.ui.theme.BabyBluePurple2

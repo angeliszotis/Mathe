@@ -6,11 +6,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.RadioButton
+import androidx.compose.material.RadioButtonDefaults
+import androidx.compose.material.Surface
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -18,9 +23,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.mathapp.data.model.QuestionsModel
+import com.example.mathapp.data.users.QuestionsModel
 import com.example.mathapp.ui.theme.BabyBluePurple2
-import com.example.mathapp.ui.theme.BabyBluePurple3
 import com.example.mathapp.ui.theme.FbColor
 
 
@@ -96,10 +100,10 @@ fun ProductCard(
 private fun SingleChoiceQuestion(
     question: QuestionsModel,
     selectedAnswer: String = "",
-   // onAnswerSelected: (AnswerDTO) -> Unit,
+    // onAnswerSelected: (AnswerDTO) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val radioOptions = listOf(question.op1,question.op2,question.op3,question.op4)
+    val radioOptions = listOf(question.op1, question.op2, question.op3, question.op4)
 
     val (selectedOption, onOptionSelected) = remember(selectedAnswer) {
         mutableStateOf(selectedAnswer)
@@ -134,7 +138,7 @@ private fun SingleChoiceQuestion(
                 ),
                 modifier = Modifier.padding(vertical = 8.dp),
 
-            ) {
+                ) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth(1f)
@@ -165,7 +169,6 @@ private fun SingleChoiceQuestion(
         }
     }
 }
-
 
 
 @Composable

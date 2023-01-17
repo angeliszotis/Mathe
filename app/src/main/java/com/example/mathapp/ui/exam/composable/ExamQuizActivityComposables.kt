@@ -11,8 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.mathapp.data.model.DataOrException
-import com.example.mathapp.data.model.QuestionsModel
+import com.example.mathapp.data.users.DataOrException
+import com.example.mathapp.data.users.QuestionsModel
 import com.example.mathapp.ui.exam.ExamViewModel
 
 @Composable

@@ -8,8 +8,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.mathapp.data.model.DataOrException
-import com.example.mathapp.data.model.QuestionsModel
+import com.example.mathapp.data.users.DataOrException
+import com.example.mathapp.data.users.QuestionsModel
 
 
 private var ans2: String = " "

@@ -1,7 +1,7 @@
 package com.example.mathapp.domain
 
-import com.example.mathapp.data.model.DataOrException
-import com.example.mathapp.data.model.QuestionsModel
+import com.example.mathapp.data.users.DataOrException
+import com.example.mathapp.data.users.QuestionsModel
 
 /*
 interface QuizRepository {

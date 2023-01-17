@@ -1,6 +1,6 @@
 package com.example.mathapp.domain
 
-import com.example.mathapp.data.model.QuestionsModel
+import com.example.mathapp.data.users.QuestionsModel
 
 
 sealed class Resource<QuestionsModel>(val data: QuestionsModel? = null, val error: String? = null) {

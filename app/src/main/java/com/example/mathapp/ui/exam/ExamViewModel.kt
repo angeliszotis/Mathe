@@ -7,9 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
-import com.example.mathapp.data.exam.ProductsRepositoryImpl
-import com.example.mathapp.data.model.DataOrException
-import com.example.mathapp.data.model.QuestionsModel
+import com.example.mathapp.data.users.DataOrException
+import com.example.mathapp.data.users.QuestionsModel
+import com.example.mathapp.framework.exam.ProductsRepositoryImpl
 import com.example.mathapp.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
