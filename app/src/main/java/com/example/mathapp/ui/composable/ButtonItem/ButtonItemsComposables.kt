@@ -46,7 +46,6 @@ fun ButtonItem(modifier: Modifier, item: HomeButtonsDC, viewModel: LobbyViewMode
 @Composable
 fun ButtonItem(modifier: Modifier, item: HomeButtonsDCVector, viewModel: LobbyViewModel) {
 
-
     Button(
         onClick = { viewModel.onItemClicked(item.action) },
         modifier = modifier,
