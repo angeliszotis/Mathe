@@ -6,7 +6,7 @@ import androidx.navigation.NavDirections
 import com.example.mathapp.data.nav_data.NavButtonItems
 import com.example.mathapp.util.SingleLiveEvent
 
-class HomeViewModel : ViewModel() {
+class LobbyViewModel : ViewModel() {
     private val _ldata = SingleLiveEvent<NavDirections>()
     val ldata: LiveData<NavDirections> = _ldata
 

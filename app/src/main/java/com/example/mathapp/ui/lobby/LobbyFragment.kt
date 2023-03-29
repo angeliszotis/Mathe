@@ -12,9 +12,9 @@ import com.example.mathapp.ui.lobby.composable.HomeScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentNavBinding>() {
+class LobbyFragment : BaseFragment<FragmentNavBinding>() {
 
-    val viewModel: HomeViewModel by viewModels()
+    val viewModel: LobbyViewModel by viewModels()
 
     override fun getViewBinding(): FragmentNavBinding =
         FragmentNavBinding.inflate(layoutInflater)

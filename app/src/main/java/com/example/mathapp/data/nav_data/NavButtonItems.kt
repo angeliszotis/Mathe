@@ -2,12 +2,12 @@ package com.example.mathapp.data.nav_data
 
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavDirections
-import com.example.mathapp.ui.lobby.HomeFragmentDirections
+import com.example.mathapp.ui.lobby.LobbyFragmentDirections
 
 sealed class NavButtonItems(val destination: NavDirections) {
-    object theory : NavButtonItems(HomeFragmentDirections.actionHomeToTheory())
-    object profile : NavButtonItems(HomeFragmentDirections.actionHomeToProfile())
-    object exam : NavButtonItems(HomeFragmentDirections.actionHomeToExam())
+    object theory : NavButtonItems(LobbyFragmentDirections.actionHomeToTheory())
+    object profile : NavButtonItems(LobbyFragmentDirections.actionHomeToProfile())
+    object exam : NavButtonItems(LobbyFragmentDirections.actionHomeToExam())
 }
 
 data class HomeButtonsDC(

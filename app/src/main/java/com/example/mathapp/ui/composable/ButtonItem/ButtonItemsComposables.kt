@@ -15,11 +15,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import com.example.mathapp.data.nav_data.HomeButtonsDC
 import com.example.mathapp.data.nav_data.HomeButtonsDCVector
-import com.example.mathapp.ui.lobby.HomeViewModel
+import com.example.mathapp.ui.lobby.LobbyViewModel
 import com.example.mathapp.ui.theme.FbColor
 
 @Composable
-fun ButtonItem(modifier: Modifier, item: HomeButtonsDC, viewModel: HomeViewModel) {
+fun ButtonItem(modifier: Modifier, item: HomeButtonsDC, viewModel: LobbyViewModel) {
 
 
     Button(
@@ -45,7 +45,7 @@ fun ButtonItem(modifier: Modifier, item: HomeButtonsDC, viewModel: HomeViewModel
 }
 
 @Composable
-fun ButtonItem(modifier: Modifier, item: HomeButtonsDCVector, viewModel: HomeViewModel) {
+fun ButtonItem(modifier: Modifier, item: HomeButtonsDCVector, viewModel: LobbyViewModel) {
 
 
     Button(
