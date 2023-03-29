@@ -50,7 +50,6 @@ fun ButtonItem(modifier: Modifier, item: HomeButtonsDCVector, viewModel: LobbyVi
 
     Button(
         onClick = { viewModel.onItemClicked(item.action) },
-
         modifier = modifier,
         contentPadding = ButtonDefaults.TextButtonContentPadding,
         colors = ButtonDefaults.buttonColors(FbColor)

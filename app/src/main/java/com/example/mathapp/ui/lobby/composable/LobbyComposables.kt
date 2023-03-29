@@ -69,9 +69,6 @@ fun HomeScreen(viewModel: LobbyViewModel) {
             HomeButtonsDCVector("Σκορ", 8, Icons.Filled.Star, 30, NavButtonItems.theory), viewModel
         )
 
-
-
-
         Row(modifier = Modifier.fillMaxWidth()) {
 
             ButtonItem(
@@ -95,7 +92,7 @@ fun HomeScreen(viewModel: LobbyViewModel) {
                     3,
                     Icons.Filled.Info,
                     20,
-                    NavButtonItems.theory
+                    NavButtonItems.info
                 ), viewModel
             )
         }

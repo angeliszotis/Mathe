@@ -8,6 +8,7 @@ sealed class NavButtonItems(val destination: NavDirections) {
     object theory : NavButtonItems(LobbyFragmentDirections.actionHomeToTheory())
     object profile : NavButtonItems(LobbyFragmentDirections.actionHomeToProfile())
     object exam : NavButtonItems(LobbyFragmentDirections.actionHomeToExam())
+    object info : NavButtonItems(LobbyFragmentDirections.actionHomeToInfo())
 }
 
 data class HomeButtonsDC(
