@@ -2,6 +2,23 @@ package com.example.mathapp.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+val primaryColor = Color(0xFF89B04E)
+val primaryDarkColor = Color(0xFF3F8D44)
+val secondaryColor = Color(0xFFF2941D)
+val secondaryDarkColor = Color(0xFFE56525)
+val backgroundColor = Color(0xFF999999)
+val surfaceColor = Color(0xFFFFFFFF)
+val errorColor = Color(0xFFE60000)
+val actualBackgroundColor = Color(0xFFF6F6F6)
+val actualBackgroundColor0 = Color(0x00F6F6F6)
+val actualBackgroundColor50 = Color(0x1AF6F6F6)
+
+val onPrimaryColor = Color(0xFFFFFFFF)
+val onSecondaryColor = Color(0xFF000000)
+val onBackgroundColor = Color(0xFF333333)
+val onSurfaceColor = Color(0xFF000000)
+val onErrorColor = Color(0xFFE60000)
+
 val Purple80 = Color(0xFFD0BCFF)
 val PurpleGrey80 = Color(0xFFCCC2DC)
 val Pink80 = Color(0xFFEFB8C8)
