@@ -21,7 +21,6 @@ import com.example.mathapp.ui.theme.FbColor
 @Composable
 fun ButtonItem(modifier: Modifier, item: HomeButtonsDC, viewModel: LobbyViewModel) {
 
-
     Button(
         onClick = { viewModel.onItemClicked(item.action) },
         modifier = modifier,
@@ -72,7 +71,6 @@ fun ButtonItem(modifier: Modifier, item: HomeButtonsDCVector, viewModel: LobbyVi
 
 @Composable
 fun ButtonItem(modifier: Modifier, text: String) {
-
     Button(
         modifier = modifier,
         onClick = { /*TODO*/ },
