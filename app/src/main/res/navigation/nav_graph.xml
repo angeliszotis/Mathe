@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_home_to_info"
             app:destination="@+id/fragmentInfo"/>
+        <action
+            android:id="@+id/action_home_to_score"
+            app:destination="@+id/fragmentScore"/>
     </fragment>
 
     <fragment
@@ -37,8 +40,10 @@
 
     <fragment
         android:id="@+id/fragmentInfo"
-        android:name="com.example.mathapp.ui.info.InfoFragment"
-       />
+        android:name="com.example.mathapp.ui.info.InfoFragment" />
+    <fragment
+        android:id="@+id/fragmentScore"
+        android:name="com.example.mathapp.ui.score.ScoreFragment" />
 
 
 </navigation>

@@ -31,7 +31,6 @@ class ProfileFragment : BaseFragment<FragmentNavBinding>() {
 
 }
 
-
 fun setUDM(viewModel: ProfileViewModel, name: String, surname: String, school: String): UserEntity {
 
     var list = UserEntity(name, surname, school)

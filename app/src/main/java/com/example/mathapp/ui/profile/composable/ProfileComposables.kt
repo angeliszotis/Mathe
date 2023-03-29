@@ -42,12 +42,8 @@ import kotlin.math.sin
 @Composable
 fun ProfileScreen(viewModel: ProfileViewModel) {
 
-
     var dt = viewModel.readAllData.observeAsState(listOf()).value
-
     //var list : UserDataModel
-
-
     var list: List<UserEntity> = listOf()
 
     Column(
@@ -66,7 +62,6 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
         } else {
             list = dt
 
-
             var num: Int = if (list[0].name.equals("")) {
                 list.size - 1
             } else {
@@ -83,13 +78,8 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
                 textSurname = textSurname.text,
                 textSchool = textSchool.text
             )
-
         }
-
-
     }
-
-
 }
 
 @Composable
@@ -103,10 +93,8 @@ fun Loader(link: String, clip: Boolean) {
             clipSpec = LottieClipSpec.Progress(0f, 1f),
             modifier = Modifier.aspectRatio(1f),
             speed = 0.7f
-
         )
     } else {
-
         LottieAnimation(
             composition = composition,
             clipSpec = LottieClipSpec.Progress(0f, 1f),
@@ -114,8 +102,7 @@ fun Loader(link: String, clip: Boolean) {
             modifier = Modifier
                 .size(100.dp)
                 .clip(RoundedCornerShape(16.dp)),
-
-            )
+        )
     }
 }
 
@@ -131,7 +118,6 @@ fun TextFieldsForProfile(
     var textSurname by remember { mutableStateOf(TextFieldValue(textSurname)) }
     var textSchool by remember { mutableStateOf(TextFieldValue(textSchool)) }
 
-
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -145,11 +131,8 @@ fun TextFieldsForProfile(
                 )
             )
     )
-
     {
-
         Loader("https://assets10.lottiefiles.com/packages/lf20_n1wgeaxb.json", false)
-
         Text(
             modifier = Modifier
                 .fillMaxWidth(0.9f)

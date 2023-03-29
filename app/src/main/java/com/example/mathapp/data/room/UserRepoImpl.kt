@@ -10,7 +10,6 @@ class UserRepoImpl @Inject constructor(
 ) : UsersRepo {
     override suspend fun addUsers(user: UserEntity) {
         db.quizDao().insertAll(user)
-
     }
 
     override suspend fun updateUsers(user: UserEntity) {

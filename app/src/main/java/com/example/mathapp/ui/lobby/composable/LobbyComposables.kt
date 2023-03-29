@@ -65,12 +65,12 @@ fun HomeScreen(viewModel: LobbyViewModel) {
         )
         ButtonItem(
             Modifier.fillMaxWidth(),
-            HomeButtonsDCVector(text = "Εξέταση", textSize = 8, Icons.Filled.Create, iconSize = 30, NavButtonItems.exam),
+            HomeButtonsDCVector(text = "Εξέταση", textSize = 8, Icons.Filled.Create, iconSize = 30,action= NavButtonItems.exam),
             viewModel
         )
         ButtonItem(
             Modifier.fillMaxWidth(),
-            HomeButtonsDCVector(text = "Σκορ", textSize = 8, Icons.Filled.Star, iconSize = 30, NavButtonItems.theory), viewModel
+            HomeButtonsDCVector(text = "Σκορ", textSize = 8, icon=Icons.Filled.Star, iconSize = 30, action = NavButtonItems.score), viewModel
         )
         Row(modifier = Modifier.fillMaxWidth()) {
             ButtonItem(
