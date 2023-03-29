@@ -2,7 +2,7 @@ package com.example.mathapp.data.nav_data
 
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavDirections
-import com.example.mathapp.ui.home.HomeFragmentDirections
+import com.example.mathapp.ui.lobby.HomeFragmentDirections
 
 sealed class NavButtonItems(val destination: NavDirections) {
     object theory : NavButtonItems(HomeFragmentDirections.actionHomeToTheory())

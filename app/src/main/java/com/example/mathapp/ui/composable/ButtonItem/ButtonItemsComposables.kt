@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import com.example.mathapp.data.nav_data.HomeButtonsDC
 import com.example.mathapp.data.nav_data.HomeButtonsDCVector
-import com.example.mathapp.ui.home.HomeViewModel
+import com.example.mathapp.ui.lobby.HomeViewModel
 import com.example.mathapp.ui.theme.FbColor
 
 @Composable

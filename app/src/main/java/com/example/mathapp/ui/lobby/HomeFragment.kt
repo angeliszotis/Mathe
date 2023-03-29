@@ -1,4 +1,4 @@
-package com.example.mathapp.ui.home
+package com.example.mathapp.ui.lobby
 
 import android.os.Bundle
 import android.view.View
@@ -8,7 +8,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.example.mathapp.databinding.FragmentNavBinding
 import com.example.mathapp.ui.base.BaseFragment
-import com.example.mathapp.ui.home.composable.HomeScreen
+import com.example.mathapp.ui.lobby.composable.HomeScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
