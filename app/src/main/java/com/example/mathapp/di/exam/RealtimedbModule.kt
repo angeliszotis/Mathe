@@ -14,22 +14,17 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
 
+object AppModule {
     @Provides
     @Singleton
     fun provideQueryProductsByName() = Firebase.firestore
         .collection("unit1")
-
-
 }
-
 
 @Module
 @InstallIn(SingletonComponent::class)
 object RoomDb {
-
-
     @Singleton
     @Provides
     fun provideRoomDatabase(
@@ -37,6 +32,5 @@ object RoomDb {
     ): UserRoomDatabase {
         return UserRoomDatabase.getDatabase(context)
     }
-
 }
 
