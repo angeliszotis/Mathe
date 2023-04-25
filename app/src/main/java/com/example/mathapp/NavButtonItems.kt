@@ -27,5 +27,4 @@ data class HomeButtonsDCVector(
     val icon: ImageVector,
     val iconSize: Int,
     val action: NavButtonItems
-
 )

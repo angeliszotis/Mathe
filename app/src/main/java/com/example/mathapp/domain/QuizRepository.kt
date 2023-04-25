@@ -1,6 +1,6 @@
 package com.example.mathapp.domain
 
-import com.example.mathapp.data.users.DataOrException
+import com.example.mathapp.ui.exam.model.ExamDataOrException
 import com.example.mathapp.data.users.QuestionsModel
 
 /*
@@ -10,5 +10,5 @@ interface QuizRepository {
 }
 */
 interface ProductsRepository {
-    suspend fun getProductsFromFirestore(): DataOrException<List<QuestionsModel>, Exception>
+    suspend fun getProductsFromFirestore(): ExamDataOrException<List<QuestionsModel>, Exception>
 }

@@ -1,128 +1,164 @@
 package com.example.mathapp.ui.exam.composable
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.mathapp.data.users.DataOrException
-import com.example.mathapp.data.users.QuestionsModel
-import com.example.mathapp.ui.exam.ExamViewModel
-import com.example.mathapp.ui.profile.composable.Timer
-import com.example.mathapp.ui.theme.BabyBluePurple2
-import com.example.mathapp.ui.theme.BabyBluePurple3
-import com.example.mathapp.ui.theme.BabyBluePurple5
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.delay
 
-// UI exam arxiki
 
 @Composable
-fun ExamScreen(
-    questiosndata: DataOrException<List<QuestionsModel>, Exception>,
-    viewModel: ExamViewModel
-) {
-    //dbtest()
+fun ExamScreen() {
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(BabyBluePurple3)
-    ) {
+    val questions = listOf(
+        Question("What is the capital of France?", listOf("Paris", "Berlin", "Rome"), 0),
+        Question("What is the highest mountain in the world?", listOf("Mount Everest", "K2", "Makalu"), 0),
+        Question("What is the largest country in the world by area?", listOf("Russia", "Canada", "China"), 0)
+    )
 
-        //TitleRet(questiosndata)
+    var currentQuestionIndex by remember { mutableStateOf(0) }
+    var showResult by remember { mutableStateOf(false) }
+    var score by remember { mutableStateOf(0) }
 
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(
-                    color = BabyBluePurple2,
-                    RoundedCornerShape(
-                        bottomEnd = 0.dp,
-                        topStart = 0.dp,
-                        topEnd = 0.dp,
-                        bottomStart = 0.dp,
-
-                        )
-                )
-        )
-
-        {
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(10.dp)
-            ) {
-
-                Text(
-                    modifier = Modifier
-                        .fillMaxWidth(0.45f),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 10.sp,
-                    textAlign = TextAlign.Left,
-                    text = "Ερώτηση 1/10",
-                    maxLines = 1,
-                )
-
-                Spacer(modifier = Modifier.size(100.dp, 0.dp))
-
+    if (showResult) {
+        ResultScreen(score, questions.size)
+    } else if (currentQuestionIndex < questions.size) {
+        val currentQuestion = questions[currentQuestionIndex]
+        QuizScreen(
+            question = currentQuestion,
+            onNext = {
+                currentQuestionIndex++
+            },
+            onShowResult = {
+                showResult = true
+            },
+            onAnswer = { isCorrect ->
+                if (isCorrect) {
+                    score++
+                }
             }
+        )
+    }
+}
 
+@Composable
+fun QuizScreen(question: Question, onNext: () -> Unit, onShowResult: () -> Unit, onAnswer: (Boolean) -> Unit) {
+    var selectedAnswerIndex by remember { mutableStateOf(-1) }
 
+    Column(modifier = Modifier.padding(16.dp)) {
+        Text(text = question.text, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(16.dp))
+        Column {
+            question.answers.forEachIndexed { index, answer ->
+                AnswerButton(
+                    text = answer,
+                    isSelected = index == selectedAnswerIndex,
+                    onClick = { selectedAnswerIndex = index }
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+            }
         }
-
-        Spacer(modifier = Modifier.size(10.dp))
-
-        ProductsActivity(questiosndata, viewModel)
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(10.dp)
-        ) {
-
+        Spacer(modifier = Modifier.height(16.dp))
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+            if (selectedAnswerIndex >= 0) {
+                Button(
+                    onClick = {
+                        if (selectedAnswerIndex == question.correctAnswerIndex) {
+                            onAnswer(true)
+                            onNext()
+                        } else {
+                            onAnswer(false)
+                            onShowResult()
+                        }
+                        selectedAnswerIndex = -1 // reset the selected option
+                    }
+                ) {
+                    Text(text = "Next")
+                }
+            } else {
+                Spacer(modifier = Modifier.width(100.dp))
+            }
             Timer(
-                totalTime = 100L * 1000L,
-                handleColor = BabyBluePurple5,
-                inactiveBarColor = Color.DarkGray,
-                activeBarColor = BabyBluePurple5,
-                modifier = Modifier
-                    .size(200.dp)
-                    .align(CenterHorizontally)
+                durationSeconds = 30,
+                onTimeUp = {
+                    onAnswer(false)
+                    onShowResult()
+                }
             )
         }
-
     }
 }
 
-fun dbtest() {
-    val db = Firebase.firestore
-    val cities = db.collection("unit1")
+@Composable
+fun Timer(durationSeconds: Int, onTimeUp: () -> Unit) {
+    var remainingTime by remember { mutableStateOf(durationSeconds) }
 
-    for (i in 1..20) {
-        val data1 = hashMapOf(
-            "id" to i.toString(),
-            "answare" to i.toString(),
-            "op1" to "1",
-            "op2" to "2",
-            "op3" to "3",
-            "op4" to "4",
-            "question" to "Pio dialegis 1-2-3-4"
-        )
-        cities.document(i.toString()).set(data1)
+    LaunchedEffect(remainingTime) {
+        while (remainingTime > 0) {
+            delay(1000L)
+            remainingTime--
+        }
+        onTimeUp()
     }
 
-
+    Text(
+        text = "Time Left: ${remainingTime}s",
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.fillMaxWidth(),
+        textAlign = TextAlign.Center
+    )
 }
 
+@Composable
+fun AnswerButton(text: String, isSelected: Boolean, onClick: () -> Unit) {
+    Button(
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = if (isSelected) MaterialTheme.colors.secondary else MaterialTheme.colors.surface
+        ),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Text(text = text)
+    }
+}
+@Composable
+fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int) {
+    val numIncorrectAnswers = totalQuestions - numCorrectAnswers
+    val resultText = if (numCorrectAnswers == totalQuestions) {
+        "Perfect Score!"
+    } else {
+        "You got $numCorrectAnswers out of $totalQuestions questions correct"
+    }
+    Column(modifier = Modifier.padding(16.dp)) {
+        Text(text = "Quiz Completed!", fontSize = 24.sp, fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(text = resultText, fontSize = 18.sp)
+        Spacer(modifier = Modifier.height(16.dp))
+        Row {
+            Text(text = "Correct Answers: $numCorrectAnswers", fontSize = 18.sp)
+            Spacer(modifier = Modifier.width(16.dp))
+            Text(text = "Incorrect Answers: $numIncorrectAnswers", fontSize = 18.sp)
+        }
+    }
+}
 
-
-
+    data class Question(val text: String, val answers: List<String>, val correctAnswerIndex: Int)

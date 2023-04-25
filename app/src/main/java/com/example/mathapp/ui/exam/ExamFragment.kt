@@ -24,8 +24,7 @@ class ExamFragment : BaseFragment<FragmentNavBinding>() {
 
             if (questiosndata != null) {
                 ExamScreen(
-                    questiosndata,
-                    viewModel
+
                 )
             } else {
                 Toast.makeText(requireContext(), "Check Internet Connection!", Toast.LENGTH_SHORT)

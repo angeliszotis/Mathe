@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
-import com.example.mathapp.data.users.DataOrException
+import com.example.mathapp.ui.exam.model.ExamDataOrException
 import com.example.mathapp.data.users.QuestionsModel
 import com.example.mathapp.framework.exam.ProductsRepositoryImpl
 import com.example.mathapp.util.SingleLiveEvent
@@ -28,8 +28,8 @@ class ExamViewModel @Inject constructor(
 
 
     var loading = mutableStateOf(false)
-    val data: MutableState<DataOrException<List<QuestionsModel>, Exception>> = mutableStateOf(
-        DataOrException(
+    val data: MutableState<ExamDataOrException<List<QuestionsModel>, Exception>> = mutableStateOf(
+        ExamDataOrException(
             listOf(),
             Exception("")
         )

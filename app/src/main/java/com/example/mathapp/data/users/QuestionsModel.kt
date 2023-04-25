@@ -8,9 +8,4 @@ data class QuestionsModel(
     val op3: String? = "",
     val op4: String? = "",
     val question: String? = "",
-
     )
-
-data class Opt(
-    val text: String
-)
