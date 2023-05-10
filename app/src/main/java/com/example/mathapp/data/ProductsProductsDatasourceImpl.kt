@@ -1,6 +1,6 @@
-package com.example.mathapp.framework
+package com.example.mathapp.data
 
-import com.example.mathapp.framework.exam.datasource.ProductsDatasource
+import com.example.mathapp.data.exam.datasource.ProductsDatasource
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ProductsProductsDatasourceImpl(

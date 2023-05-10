@@ -47,7 +47,6 @@ import com.example.mathapp.ui.theme.BabyBluePurple3
 fun ProfileScreen(viewModel: ProfileViewModel) {
 
     var dt = viewModel.readAllData.observeAsState(listOf()).value
-    //var list : UserDataModel
     var list: List<UserEntity> = listOf()
 
     Column(
@@ -60,7 +59,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        if (dt.equals(emptyList<UserEntity>())) {
+        if (dt == emptyList<UserEntity>()) {
             TextFieldsForProfile(viewModel, textName = "", textSurname = "", textSchool = "")
 
         } else {

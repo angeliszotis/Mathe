@@ -1,4 +1,4 @@
-package com.example.mathapp.framework.exam
+package com.example.mathapp.data.exam
 
 import com.example.mathapp.ui.exam.model.ExamDataOrException
 import com.example.mathapp.data.users.QuestionsModel

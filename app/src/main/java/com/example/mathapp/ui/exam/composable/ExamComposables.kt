@@ -1,5 +1,6 @@
 package com.example.mathapp.ui.exam.composable
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.LinearProgressIndicator
@@ -26,9 +28,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mathapp.R
-import com.example.mathapp.ui.exam.composable.ResultComposables.ResultScreen
+import com.example.mathapp.ui.exam.composable.Result.ResultScreen
+import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.google.gson.Gson
 import kotlinx.coroutines.delay
+private var _globalReturntime =0
 @Composable
 fun ExamScreen() {
     val context = LocalContext.current
@@ -42,7 +46,7 @@ fun ExamScreen() {
     Column {
         ProgressBar(currentQuestionIndex, questions.size)
         if (showResult) {
-            ResultScreen(score, questions.size)
+            ResultScreen(score, questions.size,_globalReturntime)
         } else if (currentQuestionIndex < questions.size) {
             val currentQuestion = questions[currentQuestionIndex]
             QuizScreen(
@@ -78,7 +82,14 @@ fun QuizScreen(
     var showButton by remember { mutableStateOf(true) }
 
     Column(modifier = Modifier.padding(16.dp)) {
-        Text(text = question.text, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+        Column(modifier = Modifier
+            .background(
+                color = BabyBluePurple2,
+                RoundedCornerShape( 12.dp)
+            ).fillMaxWidth().padding(5.dp)
+        ) {
+            Text(text = question.text, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+        }
         Spacer(modifier = Modifier.height(16.dp))
         Column {
             question.answers.forEachIndexed { index, answer ->
@@ -100,7 +111,7 @@ fun QuizScreen(
             if (selectedAnswerIndex >= 0) {
                 Button(
                     onClick = {
-                         if (selectedAnswerIndex == question.correctAnswerIndex) {
+                        if (selectedAnswerIndex == question.correctAnswerIndex) {
                             onAnswer(true)
 
                         } else {
@@ -117,7 +128,7 @@ fun QuizScreen(
                 Spacer(modifier = Modifier.width(100.dp))
             }
             Timer(
-                durationSeconds = 30,
+                durationSeconds = 0,
                 onTimeUp = {
                     onAnswer(false)
                     onShowResult()
@@ -150,22 +161,22 @@ fun Timer(durationSeconds: Int, onTimeUp: () -> Unit) {
     var remainingTime by remember { mutableStateOf(durationSeconds) }
 
     LaunchedEffect(remainingTime) {
-        while (remainingTime > 0) {
+        while (remainingTime < 1000) {
             delay(1000L)
-            remainingTime--
+            remainingTime++
+            _globalReturntime=remainingTime
         }
         onTimeUp()
     }
 
     Text(
-        text = "Time Left: ${remainingTime}s",
+        text = "Time : ${remainingTime}s",
         fontWeight = FontWeight.Bold,
         modifier = Modifier.fillMaxWidth(),
         textAlign = TextAlign.Center
     )
 
 }
-
 @Composable
 fun AnswerButton(text: String, isSelected: Boolean, onClick: () -> Unit) {
     Button(
@@ -175,7 +186,7 @@ fun AnswerButton(text: String, isSelected: Boolean, onClick: () -> Unit) {
         ),
         modifier = Modifier.fillMaxWidth()
     ) {
-        Text(text = text)
+        Text(text = text , fontSize = 10.sp)
     }
 }
 
