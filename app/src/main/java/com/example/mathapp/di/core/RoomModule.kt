@@ -1,7 +1,7 @@
 package com.example.mathapp.di
 
 import android.content.Context
-import com.example.mathapp.data.room.dao.UserRoomDatabase
+import com.example.mathapp.framework.db.RoomDb
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,10 +14,8 @@ import javax.inject.Singleton
 object RoomDb {
     @Singleton
     @Provides
-    fun provideRoomDatabase(
-        @ApplicationContext context: Context
-    ): UserRoomDatabase {
-        return UserRoomDatabase.getDatabase(context)
+    fun provideRoomDatabase(@ApplicationContext context: Context): RoomDb {
+        return RoomDb.getDatabase(context)
     }
 }
 

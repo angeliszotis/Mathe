@@ -1,14 +1,15 @@
-package com.example.mathapp.data.room
+package com.example.mathapp.data.users
 
-import com.example.mathapp.data.room.dao.UserRoomDatabase
-import com.example.mathapp.data.room.entity.UserEntity
+import com.example.mathapp.framework.db.RoomDb
+import com.example.mathapp.framework.users.model.UserEntity
 import com.example.mathapp.domain.user.UsersRepositoryInterface
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class UserRepositoryInterfaceImpl @Inject constructor(
-    private val db: UserRoomDatabase
+    private val db: RoomDb
 ) : UsersRepositoryInterface {
-    override suspend fun addUsers(user: UserEntity) {
+    override suspend fun insertUsers(user: UserEntity) {
         db.quizDao().insertAll(user)
     }
 
@@ -16,9 +17,8 @@ class UserRepositoryInterfaceImpl @Inject constructor(
         db.quizDao().updateUsers(user)
     }
 
-    override suspend fun getUsers(): List<UserEntity> {
+    override suspend fun getUsers(): Flow<List<UserEntity>> {
         return db.quizDao().getAll()
-
     }
 }
 

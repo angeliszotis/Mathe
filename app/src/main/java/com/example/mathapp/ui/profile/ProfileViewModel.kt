@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mathapp.data.room.UserRepositoryInterfaceImpl
-import com.example.mathapp.data.room.entity.UserEntity
+import com.example.mathapp.data.users.UserRepositoryInterfaceImpl
+import com.example.mathapp.framework.users.model.UserEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,7 +24,7 @@ class ProfileViewModel @Inject constructor(
 
     fun addUser(adduser: UserEntity) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addUsers(adduser)
+            repository.insertUsers(adduser)
         }
     }
 
@@ -34,11 +34,20 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
+    /*
     fun getUser() {
         viewModelScope.launch(Dispatchers.IO) {
             _readAllData.postValue(repository.getUsers())
-
         }
+    }
+}
 
+ */
+    fun getUser() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getUsers().collect { users ->
+                _readAllData.postValue(users)
+            }
+        }
     }
 }

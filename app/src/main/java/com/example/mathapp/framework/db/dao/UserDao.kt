@@ -1,7 +1,8 @@
-package com.example.mathapp.data.room.dao
+package com.example.mathapp.framework.db.dao
 
 import androidx.room.*
-import com.example.mathapp.data.room.entity.UserEntity
+import com.example.mathapp.framework.users.model.UserEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface dbDao {
@@ -13,7 +14,7 @@ interface dbDao {
     fun delete(user: UserEntity)
 
     @Query("SELECT * FROM users")
-    fun getAll(): List<UserEntity>
+    fun getAll(): Flow<List<UserEntity>>
 
     @Update
     fun updateUsers(vararg users: UserEntity)

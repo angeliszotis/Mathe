@@ -1,4 +1,4 @@
-package com.example.mathapp.data.room.entity
+package com.example.mathapp.framework.users.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
