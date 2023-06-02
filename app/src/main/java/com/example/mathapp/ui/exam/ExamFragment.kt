@@ -2,7 +2,6 @@ package com.example.mathapp.ui.exam
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.mathapp.databinding.FragmentNavBinding
 import com.example.mathapp.ui.base.BaseFragment
@@ -20,16 +19,20 @@ class ExamFragment : BaseFragment<FragmentNavBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
-            val questiosndata = viewModel.data.value
+            //val questiosndata = viewModel.data.value
 
+            ExamScreen(
+                viewModel
+            )
+            /*
             if (questiosndata != null) {
-                ExamScreen(
 
-                )
             } else {
                 Toast.makeText(requireContext(), "Check Internet Connection!", Toast.LENGTH_SHORT)
                 activity?.onBackPressedDispatcher?.onBackPressed()
             }
+
+             */
         }
     }
 }

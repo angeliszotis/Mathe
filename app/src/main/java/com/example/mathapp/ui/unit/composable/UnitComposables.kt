@@ -1,7 +1,17 @@
 package com.example.mathapp.ui.unit.composable
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -12,13 +22,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
-import com.airbnb.lottie.compose.*
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieClipSpec
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.mathapp.R
 import com.example.mathapp.ui.theme.BabyBluePurple1
 import com.example.mathapp.ui.theme.BabyBluePurple3
@@ -77,11 +92,12 @@ fun UnitScreen() {
 
         }
 
-
+        val context = LocalContext.current
         Row(modifier = Modifier.fillMaxWidth()) {
 
             Button(
-                onClick = { /* Do something! */ },
+                onClick = { val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-1_1.html"))
+                    context.startActivity(intent) },
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(6.dp)
@@ -107,7 +123,8 @@ fun UnitScreen() {
 
 
             Button(
-                onClick = { /* Do something! */ },
+                onClick = { val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-2_8.html"))
+                    context.startActivity(intent) },
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(6.dp)
@@ -133,7 +150,8 @@ fun UnitScreen() {
         Row(modifier = Modifier.fillMaxWidth()) {
 
             Button(
-                onClick = { /* Do something! */ },
+                onClick = { val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-3_13.html"))
+                    context.startActivity(intent) },
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(6.dp)
@@ -159,7 +177,8 @@ fun UnitScreen() {
 
 
             Button(
-                onClick = { /* Do something! */ },
+                onClick = { val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-4_22.html"))
+                    context.startActivity(intent) },
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(6.dp)
@@ -186,7 +205,8 @@ fun UnitScreen() {
         Row(modifier = Modifier.fillMaxWidth()) {
 
             Button(
-                onClick = { /* Do something! */ },
+                onClick = {  val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-5_25.html"))
+                    context.startActivity(intent)},
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(6.dp)
@@ -212,7 +232,8 @@ fun UnitScreen() {
 
 
             Button(
-                onClick = { /* Do something! */ },
+                onClick = {val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-6_33.html"))
+                    context.startActivity(intent) },
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(6.dp)
@@ -238,7 +259,8 @@ fun UnitScreen() {
         Row(modifier = Modifier.fillMaxWidth()) {
 
             Button(
-                onClick = { /* Do something! */ },
+                onClick = {val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-7_36.html"))
+                    context.startActivity(intent) },
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(6.dp)
@@ -264,7 +286,8 @@ fun UnitScreen() {
 
 
             Button(
-                onClick = { /* Do something! */ },
+                onClick = { val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-8_45.html"))
+                    context.startActivity(intent) },
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(6.dp)

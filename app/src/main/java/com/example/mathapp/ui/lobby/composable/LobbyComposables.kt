@@ -1,5 +1,10 @@
 package com.example.mathapp.ui.lobby.composable
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.Network
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -12,8 +17,11 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -27,9 +35,9 @@ import com.example.mathapp.ui.lobby.LobbyViewModel
 import com.example.mathapp.ui.theme.*
 
 
+@RequiresApi(Build.VERSION_CODES.N)
 @Composable
 fun HomeScreen(viewModel: LobbyViewModel) {
-
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -52,6 +60,7 @@ fun HomeScreen(viewModel: LobbyViewModel) {
                 fontFamily = FontFamily.Cursive,
                 modifier = Modifier.padding(vertical = SpacingCustom_28dp, horizontal = SpacingDefault_16dp)
             )
+            //NetworkState()
         }
         ButtonItem(
             Modifier.fillMaxWidth(),
@@ -102,6 +111,30 @@ fun HomeScreen(viewModel: LobbyViewModel) {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.N)
+@Composable
+fun NetworkState() {
+    val connectivityManager = LocalContext.current.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val networkCallback = remember {
+        object : ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) {
+                // Called when a network is available
+            }
+
+            override fun onLost(network: Network) {
+                // Called when a network is lost
+            }
+        }
+    }
+
+    LaunchedEffect(Unit) {
+        connectivityManager.registerDefaultNetworkCallback(networkCallback)
+    }
+
+    val activeNetwork = connectivityManager.activeNetwork
+    val isConnected = activeNetwork != null
+    Text(if (isConnected) "Connected" else "Disconnected")
+}
 
 
 

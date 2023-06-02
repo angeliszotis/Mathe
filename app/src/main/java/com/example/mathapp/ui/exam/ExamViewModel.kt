@@ -1,25 +1,17 @@
 package com.example.mathapp.ui.exam
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavDirections
 import com.example.mathapp.data.exam.ProductsRepositoryImpl
-import com.example.mathapp.data.users.QuestionsModel
-import com.example.mathapp.ui.exam.model.ExamDataOrException
-import com.example.mathapp.util.SingleLiveEvent
+import com.example.mathapp.ui.exam.composable.Question
+import com.example.mathapp.ui.exam.composable.QuestionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ExamViewModel @Inject constructor(
     private val repository: ProductsRepositoryImpl
 ) : ViewModel() {
-
+/*
     private val _ldata = SingleLiveEvent<NavDirections>()
     val ldata: LiveData<NavDirections> = _ldata
 
@@ -46,4 +38,27 @@ class ExamViewModel @Inject constructor(
             loading.value = false
         }
     }
+
+ */
+
+        private val questionRepository = QuestionRepository()
+        private val questions = questionRepository.getQuestions()
+        val randomQuestions = getRandomQuestions(questions, 12)
+
+    private fun getRandomQuestions(questions: List<Question>, count: Int): List<Question> {
+        val randomQuestions = mutableListOf<Question>()
+        val usedIds = mutableSetOf<Int>()
+        while (randomQuestions.size < count && usedIds.size < questions.size) {
+            val question = questions.random()
+            if (question.id !in usedIds && question !in randomQuestions) {
+                usedIds.add(question.id)
+                randomQuestions.add(question)
+            }
+        }
+        return randomQuestions
+    }
+
 }
+
+
+

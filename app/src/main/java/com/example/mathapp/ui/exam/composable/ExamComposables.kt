@@ -28,32 +28,37 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mathapp.R
+import com.example.mathapp.ui.exam.ExamViewModel
 import com.example.mathapp.ui.exam.composable.Result.ResultScreen
 import com.example.mathapp.ui.theme.BabyBluePurple2
+import com.example.mathapp.ui.theme.BabyBluePurple3
 import com.google.gson.Gson
 import kotlinx.coroutines.delay
+
 private var _globalReturntime =0
 @Composable
-fun ExamScreen() {
-    val context = LocalContext.current
-    val jsonString = context.resources.openRawResource(R.raw.questions).bufferedReader().use { it.readText() }
-    val questions = Gson().fromJson(jsonString, Array<Question>::class.java).toList()
+fun ExamScreen(viewModel: ExamViewModel) {
+    val randomQuestions = viewModel.randomQuestions
 
     var currentQuestionIndex by remember { mutableStateOf(0) }
     var showResult by remember { mutableStateOf(false) }
     var score by remember { mutableStateOf(0) }
 
-    Column {
-        ProgressBar(currentQuestionIndex, questions.size)
+    Column(modifier = Modifier
+        .background(
+            color = BabyBluePurple3,
+        ).fillMaxWidth().padding(5.dp)
+    ) {
+        ProgressBar(currentQuestionIndex, randomQuestions.size)
         if (showResult) {
-            ResultScreen(score, questions.size,_globalReturntime)
-        } else if (currentQuestionIndex < questions.size) {
-            val currentQuestion = questions[currentQuestionIndex]
+            ResultScreen(randomQuestions.size, score, _globalReturntime)
+        } else if (currentQuestionIndex < randomQuestions.size) {
+            val currentQuestion = randomQuestions[currentQuestionIndex]
             QuizScreen(
                 question = currentQuestion,
                 onNext = {
                     currentQuestionIndex++
-                    if (currentQuestionIndex == questions.size) {
+                    if (currentQuestionIndex == randomQuestions.size) {
                         showResult = true
                     }
                 },
@@ -70,6 +75,7 @@ fun ExamScreen() {
         Spacer(modifier = Modifier.height(16.dp))
     }
 }
+
 @Composable
 fun QuizScreen(
     question: Question,
@@ -212,4 +218,4 @@ fun ProgressBar(currentIndex: Int, totalQuestions: Int) {
     }
 }
 
-    data class Question(val text: String, val answers: List<String>, val correctAnswerIndex: Int)
+    data class Question(val id : Int,val text: String, val answers: List<String>, val correctAnswerIndex: Int)
