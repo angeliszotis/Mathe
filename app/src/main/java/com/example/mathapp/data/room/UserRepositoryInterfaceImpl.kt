@@ -2,12 +2,12 @@ package com.example.mathapp.data.room
 
 import com.example.mathapp.data.room.dao.UserRoomDatabase
 import com.example.mathapp.data.room.entity.UserEntity
-import com.example.mathapp.domain.UsersRepo
+import com.example.mathapp.domain.user.UsersRepositoryInterface
 import javax.inject.Inject
 
-class UserRepoImpl @Inject constructor(
+class UserRepositoryInterfaceImpl @Inject constructor(
     private val db: UserRoomDatabase
-) : UsersRepo {
+) : UsersRepositoryInterface {
     override suspend fun addUsers(user: UserEntity) {
         db.quizDao().insertAll(user)
     }

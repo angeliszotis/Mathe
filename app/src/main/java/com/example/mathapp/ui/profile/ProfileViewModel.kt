@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mathapp.data.room.UserRepoImpl
+import com.example.mathapp.data.room.UserRepositoryInterfaceImpl
 import com.example.mathapp.data.room.entity.UserEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    private val repository: UserRepoImpl
+    private val repository: UserRepositoryInterfaceImpl
 ) : ViewModel() {
 
     private val _ldata = MutableLiveData<Int>()

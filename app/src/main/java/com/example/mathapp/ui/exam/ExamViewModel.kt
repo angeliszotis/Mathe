@@ -1,7 +1,6 @@
 package com.example.mathapp.ui.exam
 
 import androidx.lifecycle.ViewModel
-import com.example.mathapp.data.exam.ProductsRepositoryImpl
 import com.example.mathapp.ui.exam.composable.Question
 import com.example.mathapp.ui.exam.composable.QuestionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -9,7 +8,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ExamViewModel @Inject constructor(
-    private val repository: ProductsRepositoryImpl
 ) : ViewModel() {
 /*
     private val _ldata = SingleLiveEvent<NavDirections>()
