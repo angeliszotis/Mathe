@@ -1,6 +1,6 @@
 package com.example.mathapp.framework.users
 
-import com.example.mathapp.domain.user.UsersRepositoryInterface
+import com.example.mathapp.data.users.UserDataSource
 import com.example.mathapp.framework.db.RoomDb
 import com.example.mathapp.framework.users.model.UserEntity
 import kotlinx.coroutines.flow.Flow
@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class UserDataSourceImpl @Inject constructor(
 private val db: RoomDb
-) : UsersRepositoryInterface {
+) : UserDataSource {
     override suspend fun insertUsers(user: UserEntity) {
         db.quizDao().insertAll(user)
     }

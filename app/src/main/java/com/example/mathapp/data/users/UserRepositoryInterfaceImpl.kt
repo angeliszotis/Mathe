@@ -1,24 +1,23 @@
 package com.example.mathapp.data.users
 
-import com.example.mathapp.framework.db.RoomDb
 import com.example.mathapp.framework.users.model.UserEntity
 import com.example.mathapp.domain.user.UsersRepositoryInterface
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class UserRepositoryInterfaceImpl @Inject constructor(
-    private val db: RoomDb
+    private val userDataSource: UserDataSource
 ) : UsersRepositoryInterface {
     override suspend fun insertUsers(user: UserEntity) {
-        db.quizDao().insertAll(user)
+        userDataSource.insertUsers(user)
     }
 
     override suspend fun updateUsers(user: UserEntity) {
-        db.quizDao().updateUsers(user)
+        userDataSource.updateUsers(user)
     }
 
     override suspend fun getUsers(): Flow<List<UserEntity>> {
-        return db.quizDao().getAll()
+        return userDataSource.getUsers()
     }
 }
 

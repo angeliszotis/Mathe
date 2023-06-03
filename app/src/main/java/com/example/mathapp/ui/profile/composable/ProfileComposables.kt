@@ -47,7 +47,7 @@ import com.example.mathapp.ui.theme.BabyBluePurple3
 fun ProfileScreen(viewModel: ProfileViewModel) {
 
     var dt = viewModel.readAllData.observeAsState(listOf()).value
-    var list: List<UserEntity> = listOf()
+    var list: List<UserEntity>
 
     Column(
         modifier = Modifier
