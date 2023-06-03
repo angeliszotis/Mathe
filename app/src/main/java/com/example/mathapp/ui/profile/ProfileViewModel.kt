@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mathapp.data.users.UserRepositoryInterfaceImpl
 import com.example.mathapp.framework.users.model.UserEntity
+import com.example.mathapp.usecase.user.GetUsersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,11 +14,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    private val repository: UserRepositoryInterfaceImpl
+    private val repository: UserRepositoryInterfaceImpl,
+    private val getUsersUseCase: GetUsersUseCase
 ) : ViewModel() {
 
-    private val _ldata = MutableLiveData<Int>()
-    val ldata: LiveData<Int> = _ldata
 
     private val _readAllData = MutableLiveData<List<UserEntity>>()
     val readAllData: LiveData<List<UserEntity>> = _readAllData
@@ -34,18 +34,9 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
-    /*
     fun getUser() {
         viewModelScope.launch(Dispatchers.IO) {
-            _readAllData.postValue(repository.getUsers())
-        }
-    }
-}
-
- */
-    fun getUser() {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.getUsers().collect { users ->
+            getUsersUseCase.invoke().collect { users ->
                 _readAllData.postValue(users)
             }
         }
