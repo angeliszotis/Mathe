@@ -1,4 +1,4 @@
-package com.example.mathapp.ui.lobby.composable
+package com.example.mathapp.ui.dashboard.composable
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -31,7 +31,7 @@ import com.example.mathapp.data.nav_data.HomeButtonsDCVector
 import com.example.mathapp.data.nav_data.NavButtonItems
 import com.example.mathapp.ui.composable.ButtonItem.ButtonItem
 import com.example.mathapp.ui.composable.LottieLoader.Loader
-import com.example.mathapp.ui.lobby.LobbyViewModel
+import com.example.mathapp.ui.dashboard.LobbyViewModel
 import com.example.mathapp.ui.theme.*
 
 

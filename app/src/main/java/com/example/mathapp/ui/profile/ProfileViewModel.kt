@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mathapp.data.users.UserRepositoryInterfaceImpl
+import com.example.mathapp.data.users.UserRepositoryImpl
 import com.example.mathapp.framework.users.model.UserEntity
 import com.example.mathapp.usecase.user.GetUsersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    private val repository: UserRepositoryInterfaceImpl,
+    private val repository: UserRepositoryImpl,
     private val getUsersUseCase: GetUsersUseCase
 ) : ViewModel() {
 

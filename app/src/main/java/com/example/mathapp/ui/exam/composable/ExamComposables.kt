@@ -22,17 +22,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.mathapp.R
+import com.example.mathapp.framework.exam.model.Question
 import com.example.mathapp.ui.exam.ExamViewModel
 import com.example.mathapp.ui.exam.composable.Result.ResultScreen
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
-import com.google.gson.Gson
 import kotlinx.coroutines.delay
 
 private var _globalReturntime =0
@@ -218,4 +216,4 @@ fun ProgressBar(currentIndex: Int, totalQuestions: Int) {
     }
 }
 
-    data class Question(val id : Int,val text: String, val answers: List<String>, val correctAnswerIndex: Int)
+  //  data class Question(val id : Int,val text: String, val answers: List<String>, val correctAnswerIndex: Int)

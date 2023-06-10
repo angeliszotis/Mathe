@@ -1,13 +1,13 @@
 package com.example.mathapp.data.users
 
 import com.example.mathapp.framework.users.model.UserEntity
-import com.example.mathapp.domain.user.UsersRepositoryInterface
+import com.example.mathapp.domain.user.UsersRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class UserRepositoryInterfaceImpl @Inject constructor(
+class UserRepositoryImpl @Inject constructor(
     private val userDataSource: UserDataSource
-) : UsersRepositoryInterface {
+) : UsersRepository {
     override suspend fun insertUsers(user: UserEntity) {
         userDataSource.insertUsers(user)
     }

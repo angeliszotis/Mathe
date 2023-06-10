@@ -1,4 +1,4 @@
-package com.example.mathapp.ui.lobby
+package com.example.mathapp.ui.dashboard
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

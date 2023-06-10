@@ -134,7 +134,7 @@ fun UnitScreen() {
 
             ) {
                 Icon(
-                    painter = painterResource(id = com.example.mathapp.R.drawable.ic_baseline_menu_book_24),
+                    painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
                     contentDescription = "Localized description",
                     modifier = Modifier.size(25.dp)
                 )
@@ -162,7 +162,7 @@ fun UnitScreen() {
 
             ) {
                 Icon(
-                    painter = painterResource(id = com.example.mathapp.R.drawable.ic_baseline_menu_book_24),
+                    painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
                     contentDescription = "Localized description",
                     modifier = Modifier.size(25.dp)
                 )
@@ -188,7 +188,7 @@ fun UnitScreen() {
 
             ) {
                 Icon(
-                    painter = painterResource(id = com.example.mathapp.R.drawable.ic_baseline_menu_book_24),
+                    painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
                     contentDescription = "Localized description",
                     modifier = Modifier.size(25.dp)
                 )
@@ -217,7 +217,7 @@ fun UnitScreen() {
 
             ) {
                 Icon(
-                    painter = painterResource(id = com.example.mathapp.R.drawable.ic_baseline_menu_book_24),
+                    painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
                     contentDescription = "Localized description",
                     modifier = Modifier.size(25.dp)
                 )
@@ -243,7 +243,7 @@ fun UnitScreen() {
 
             ) {
                 Icon(
-                    painter = painterResource(id = com.example.mathapp.R.drawable.ic_baseline_menu_book_24),
+                    painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
                     contentDescription = "Localized description",
                     modifier = Modifier.size(25.dp)
                 )
@@ -259,7 +259,8 @@ fun UnitScreen() {
         Row(modifier = Modifier.fillMaxWidth()) {
 
             Button(
-                onClick = {val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-7_36.html"))
+                onClick = {val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-7_36.html")
+                )
                     context.startActivity(intent) },
                 modifier = Modifier
                     .weight(0.5f)
@@ -271,7 +272,7 @@ fun UnitScreen() {
 
             ) {
                 Icon(
-                    painter = painterResource(id = com.example.mathapp.R.drawable.ic_baseline_menu_book_24),
+                    painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
                     contentDescription = "Localized description",
                     modifier = Modifier.size(25.dp)
                 )
@@ -297,7 +298,7 @@ fun UnitScreen() {
 
             ) {
                 Icon(
-                    painter = painterResource(id = com.example.mathapp.R.drawable.ic_baseline_menu_book_24),
+                    painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
                     contentDescription = "Localized description",
                     modifier = Modifier.size(25.dp)
 
@@ -310,8 +311,6 @@ fun UnitScreen() {
                     fontSize = 4.em
                 )
             }
-
-
         }
 
     }
