@@ -65,7 +65,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
         } else {
             list = dt
 
-            val num: Int = if (list[0].name.equals("")) {
+            val num: Int = if (list[0].name == "") {
                 list.size - 1
             } else {
                 list.size - 2
@@ -95,9 +95,9 @@ fun TextFieldsForProfile(
     textSchool: String
 ) {
 
-    var textName by remember { mutableStateOf(TextFieldValue(textName)) }
-    var textSurname by remember { mutableStateOf(TextFieldValue(textSurname)) }
-    var textSchool by remember { mutableStateOf(TextFieldValue(textSchool)) }
+    var name by remember { mutableStateOf(TextFieldValue(textName)) }
+    var surname by remember { mutableStateOf(TextFieldValue(textSurname)) }
+    var school by remember { mutableStateOf(TextFieldValue(textSchool)) }
 
     Row(
         modifier = Modifier
@@ -121,7 +121,7 @@ fun TextFieldsForProfile(
                 .padding(20.dp),
             fontWeight = FontWeight.Bold,
             fontSize = 5.em,
-            text = " ${textName.text} ${textSurname.text}",
+            text = " ${name.text} ${surname.text}",
             maxLines = 2,
         )
 
@@ -146,27 +146,27 @@ fun TextFieldsForProfile(
         Spacer(modifier = Modifier.size(30.dp))
 
         OutlinedTextField(
-            value = textName,
+            value = name,
             label = { Text("Όνομα", fontWeight = FontWeight.Bold) },
             onValueChange = {
-                textName = it
+                name = it
 
             })
         Spacer(modifier = Modifier.size(15.dp))
         OutlinedTextField(
-            value = textSurname,
+            value = surname,
             label = { Text("Επίθετο", fontWeight = FontWeight.Bold) },
             onValueChange = {
-                textSurname = it
+                surname = it
 
             })
         Spacer(modifier = Modifier.size(15.dp))
 
         OutlinedTextField(
-            value = textSchool,
+            value = school,
             label = { Text("Σχολείο", fontWeight = FontWeight.Bold) },
             onValueChange = {
-                textSchool = it
+                school = it
 
             })
         Spacer(modifier = Modifier.size(30.dp))
@@ -176,9 +176,9 @@ fun TextFieldsForProfile(
             onClick = {
                 setUDM(
                     viewModel = viewModel,
-                    textName.text,
-                    textSurname.text,
-                    textSchool.text
+                    name.text,
+                    surname.text,
+                    school.text
                 )
             }) {
             Text(text = "Αποθήκευση!")
@@ -191,7 +191,6 @@ fun TextFieldsForProfile(
     }
 
 }
-
 
 @Composable
 fun Loader(link: String, clip: Boolean) {
