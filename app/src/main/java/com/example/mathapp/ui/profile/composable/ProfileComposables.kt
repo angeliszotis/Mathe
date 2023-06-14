@@ -46,7 +46,7 @@ import com.example.mathapp.ui.theme.BabyBluePurple3
 @Composable
 fun ProfileScreen(viewModel: ProfileViewModel) {
 
-    var dt = viewModel.readAllData.observeAsState(listOf()).value
+    val dt = viewModel.readAllData.observeAsState(listOf()).value
     var list: List<UserEntity>
 
     Column(
@@ -65,15 +65,15 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
         } else {
             list = dt
 
-            var num: Int = if (list[0].name.equals("")) {
+            val num: Int = if (list[0].name.equals("")) {
                 list.size - 1
             } else {
                 list.size - 2
             }
             Log.d("yoda", list.toString())
-            var textName by remember { mutableStateOf(TextFieldValue(list[num].name.toString())) }
-            var textSurname by remember { mutableStateOf(TextFieldValue(list[num].surname.toString())) }
-            var textSchool by remember { mutableStateOf(TextFieldValue(list[num].school.toString())) }
+            val textName by remember { mutableStateOf(TextFieldValue(list[num].name)) }
+            val textSurname by remember { mutableStateOf(TextFieldValue(list[num].surname)) }
+            val textSchool by remember { mutableStateOf(TextFieldValue(list[num].school)) }
 
             TextFieldsForProfile(
                 viewModel,
@@ -85,29 +85,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
     }
 }
 
-@Composable
-fun Loader(link: String, clip: Boolean) {
-    val composition by rememberLottieComposition(LottieCompositionSpec.Url(link))
 
-    if (clip) {
-        LottieAnimation(
-            composition = composition,
-            iterations = LottieConstants.IterateForever,
-            clipSpec = LottieClipSpec.Progress(0f, 1f),
-            modifier = Modifier.aspectRatio(1f),
-            speed = 0.7f
-        )
-    } else {
-        LottieAnimation(
-            composition = composition,
-            clipSpec = LottieClipSpec.Progress(0f, 1f),
-
-            modifier = Modifier
-                .size(100.dp)
-                .clip(RoundedCornerShape(16.dp)),
-        )
-    }
-}
 
 @Composable
 fun TextFieldsForProfile(
@@ -215,6 +193,28 @@ fun TextFieldsForProfile(
 }
 
 
+@Composable
+fun Loader(link: String, clip: Boolean) {
+    val composition by rememberLottieComposition(LottieCompositionSpec.Url(link))
 
+    if (clip) {
+        LottieAnimation(
+            composition = composition,
+            iterations = LottieConstants.IterateForever,
+            clipSpec = LottieClipSpec.Progress(0f, 1f),
+            modifier = Modifier.aspectRatio(1f),
+            speed = 0.7f
+        )
+    } else {
+        LottieAnimation(
+            composition = composition,
+            clipSpec = LottieClipSpec.Progress(0f, 1f),
+
+            modifier = Modifier
+                .size(100.dp)
+                .clip(RoundedCornerShape(16.dp)),
+        )
+    }
+}
 
 

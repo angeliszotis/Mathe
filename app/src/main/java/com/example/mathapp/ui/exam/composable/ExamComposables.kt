@@ -26,9 +26,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.mathapp.framework.exam.model.Question
+import com.example.mathapp.framework.exam.model.QuestionModel
 import com.example.mathapp.ui.exam.ExamViewModel
-import com.example.mathapp.ui.exam.composable.Result.ResultScreen
+import com.example.mathapp.ui.result.ResultScreen
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
 import kotlinx.coroutines.delay
@@ -49,11 +49,11 @@ fun ExamScreen(viewModel: ExamViewModel) {
     ) {
         ProgressBar(currentQuestionIndex, randomQuestions.size)
         if (showResult) {
-            ResultScreen(randomQuestions.size, score, _globalReturntime)
+            ResultScreen(randomQuestions.size, score, _globalReturntime , viewModel)
         } else if (currentQuestionIndex < randomQuestions.size) {
             val currentQuestion = randomQuestions[currentQuestionIndex]
             QuizScreen(
-                question = currentQuestion,
+                questionModel = currentQuestion,
                 onNext = {
                     currentQuestionIndex++
                     if (currentQuestionIndex == randomQuestions.size) {
@@ -76,7 +76,7 @@ fun ExamScreen(viewModel: ExamViewModel) {
 
 @Composable
 fun QuizScreen(
-    question: Question,
+    questionModel: QuestionModel,
     onNext: () -> Unit,
     onShowResult: () -> Unit,
     onAnswer: (Boolean) -> Unit
@@ -92,17 +92,17 @@ fun QuizScreen(
                 RoundedCornerShape( 12.dp)
             ).fillMaxWidth().padding(5.dp)
         ) {
-            Text(text = question.text, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+            Text(text = questionModel.text, fontSize = 10.sp, fontWeight = FontWeight.Bold)
         }
         Spacer(modifier = Modifier.height(16.dp))
         Column {
-            question.answers.forEachIndexed { index, answer ->
+            questionModel.answers.forEachIndexed { index, answer ->
                 AnswerButton(
                     text = answer,
                     isSelected = index == selectedAnswerIndex,
                     onClick = {
                         selectedAnswerIndex = index
-                        if (index == question.correctAnswerIndex) {
+                        if (index == questionModel.correctAnswerIndex) {
                             showAnswer = false
                         }
                     }
@@ -115,7 +115,7 @@ fun QuizScreen(
             if (selectedAnswerIndex >= 0) {
                 Button(
                     onClick = {
-                        if (selectedAnswerIndex == question.correctAnswerIndex) {
+                        if (selectedAnswerIndex == questionModel.correctAnswerIndex) {
                             onAnswer(true)
 
                         } else {
@@ -150,7 +150,7 @@ fun QuizScreen(
         }
         if (showAnswer) {
             Text(
-                text = "The correct answer is: ${question.answers[question.correctAnswerIndex]}",
+                text = "The correct answer is: ${questionModel.answers[questionModel.correctAnswerIndex]}",
                 color = MaterialTheme.colors.secondary,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
