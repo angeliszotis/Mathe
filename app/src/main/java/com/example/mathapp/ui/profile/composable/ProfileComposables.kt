@@ -41,6 +41,7 @@ import com.example.mathapp.ui.profile.ProfileViewModel
 import com.example.mathapp.ui.profile.setUDM
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
+import com.example.mathapp.util.BASE_URL_LOTTIE_LF20
 
 
 @Composable
@@ -85,8 +86,6 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
     }
 }
 
-
-
 @Composable
 fun TextFieldsForProfile(
     viewModel: ProfileViewModel,
@@ -124,8 +123,6 @@ fun TextFieldsForProfile(
             text = " ${name.text} ${surname.text}",
             maxLines = 2,
         )
-
-
     }
     Column(
         modifier = Modifier
@@ -186,8 +183,7 @@ fun TextFieldsForProfile(
 
         Spacer(modifier = Modifier.size(30.dp))
 
-
-        Loader("https://assets10.lottiefiles.com/packages/lf20_xyadoh9h.json", true)
+        Loader(BASE_URL_LOTTIE_LF20, true)
     }
 
 }

@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
             binding.composeView.setContent {
-                ScoreScreen()
+                ScoreScreen(viewModel)
             }
         }
     }
