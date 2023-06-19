@@ -10,14 +10,18 @@ class UserDataSourceImpl @Inject constructor(
 private val db: RoomDb
 ) : UserDataSource {
     override suspend fun insertUsers(user: UserEntity) {
-        db.quizDao().insertAll(user)
+        db.quizDao().insertData(user)
     }
 
     override suspend fun updateUsers(user: UserEntity) {
-        db.quizDao().updateUsers(user)
+        db.quizDao().updateData(user)
     }
 
     override suspend fun getUsers(): Flow<List<UserEntity>> {
-        return db.quizDao().getAll()
+        return db.quizDao().getData()
+    }
+
+    override suspend fun getLastUser(): UserEntity? {
+        return db.quizDao().getLastUser()
     }
 }

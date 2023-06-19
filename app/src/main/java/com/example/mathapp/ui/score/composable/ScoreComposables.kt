@@ -44,11 +44,17 @@ fun ScoreScreen(viewModel: ScoreViewModel) {
         scoreList?.let { list ->
             items(list) { item ->
                 Row {
-                    Text(text = item.name)
+                   Text(text = item.name)
+                   Spacer(modifier = Modifier.width(8.dp))
+                   Text(text = item.surname)
+                   Spacer(modifier = Modifier.width(8.dp))
+                   Text(text = item.school)
+                   Spacer(modifier = Modifier.width(8.dp))
+                    Text(text = item.correct)
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text(text = item.surname)
+                    Text(text = item.incorrect)
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text(text = item.school)
+                    Text(text = item.time)
                 }
             }
         }

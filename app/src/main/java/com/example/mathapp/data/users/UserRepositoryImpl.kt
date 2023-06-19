@@ -1,7 +1,7 @@
 package com.example.mathapp.data.users
 
-import com.example.mathapp.framework.users.model.UserEntity
 import com.example.mathapp.domain.user.UsersRepository
+import com.example.mathapp.framework.users.model.UserEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -18,6 +18,10 @@ class UserRepositoryImpl @Inject constructor(
 
     override suspend fun getUsers(): Flow<List<UserEntity>> {
         return userDataSource.getUsers()
+    }
+
+    override suspend fun getLastUser(): UserEntity? {
+        return userDataSource.getLastUser()
     }
 }
 

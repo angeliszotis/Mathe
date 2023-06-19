@@ -15,6 +15,6 @@ class NetworkReceiver : BroadcastReceiver() {
         val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
         val isConnected: Boolean = activeNetwork?.isConnected == true
 
-        Toast.makeText(context,if (isConnected) "Έχεις Ιντερνετ" else "Δεν Υπαρχει συνδεση στο Διαδικτιο", Toast.LENGTH_LONG).show()
+        Toast.makeText(context,if (isConnected) "Έχεις Ιντερνετ" else "Δεν Υπαρχει συνδεση στο Διαδικτιο", Toast.LENGTH_SHORT).show()
     }
 }

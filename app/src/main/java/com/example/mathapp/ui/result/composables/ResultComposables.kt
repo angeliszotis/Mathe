@@ -20,13 +20,18 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.mathapp.framework.result.model.ResultModel
+import com.example.mathapp.framework.result.model.ResultAnswerModel
 import com.example.mathapp.ui.exam.ExamViewModel
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.SpacingCustom_6dp
 
 @Composable
-fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int,remainingTime: Int , viewModel: ExamViewModel) {
+fun ResultScreen(
+    totalQuestions: Int,
+    numCorrectAnswers: Int,
+    remainingTime: Int,
+    viewModel: ExamViewModel
+) {
 
     // val viewModel : ResultViewModel = viewModel()
     val numIncorrectAnswers = totalQuestions - numCorrectAnswers
@@ -35,21 +40,22 @@ fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int,remainingTime: Int 
     } else {
         "Πετυχες $numCorrectAnswers απο τις $totalQuestions σωστές ερωτησεις"
     }
-    Column(modifier = Modifier
-        .fillMaxWidth()
-        .background(
-            BabyBluePurple2,
-            RoundedCornerShape(
-                bottomEnd = 64.dp,
-                topStart = 64.dp,
-                topEnd = 20.dp,
-                bottomStart = 20.dp
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(
+                BabyBluePurple2,
+                RoundedCornerShape(
+                    bottomEnd = 64.dp,
+                    topStart = 64.dp,
+                    topEnd = 20.dp,
+                    bottomStart = 20.dp
+                )
             )
-        )
-        .clip(RectangleShape)
-        .padding(vertical = 25.dp), verticalArrangement = Arrangement.Top,
-    horizontalAlignment = Alignment.CenterHorizontally
-    ){
+            .clip(RectangleShape)
+            .padding(vertical = 25.dp), verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Text(text = "Quiz Ολοκληρώθηκε!", fontSize = 24.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(16.dp))
         Text(text = resultText, fontSize = 18.sp)
@@ -67,8 +73,15 @@ fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int,remainingTime: Int 
         Button(modifier = Modifier
             .weight(0.5f)
             .padding(SpacingCustom_6dp),
-            onClick = { viewModel.insertResult(ResultModel("takis","lakis","makis"))
-                 }) {
+            onClick = {
+                viewModel.insertResult(
+                    ResultAnswerModel(
+                        corect = numCorrectAnswers,
+                        incorect = numIncorrectAnswers,
+                        time = remainingTime
+                    )
+                )
+            }) {
             Text(text = "Αποθηκευση")
         }
         Button(modifier = Modifier

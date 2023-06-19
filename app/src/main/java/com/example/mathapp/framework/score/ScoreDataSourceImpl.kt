@@ -12,16 +12,19 @@ class ScoreDataSourceImpl @Inject constructor(
 ) : ScoreDataSource {
 
     override suspend fun getScore(): List<ResultModel> {
-        val resultModels = mutableListOf<ResultModel>()
+        val userModels = mutableListOf<ResultModel>()
         val querySnapshot = firestore.collection("score").get().await()
         for (document in querySnapshot.documents) {
             val name = document.getString("name") ?: ""
             val surname = document.getString("surname") ?: ""
             val school = document.getString("school") ?: ""
-            val resultModel = ResultModel(name, surname, school)
-            resultModels.add(resultModel)
+            val correct = document.getString("corect")?: ""
+            val incorrect = document.getString("incorect")?: ""
+            val time = document.getString("time")?: ""
+            val userModel =  ResultModel(name, surname, school, correct = correct , incorrect = incorrect , time = time)
+            userModels.add(userModel)
         }
-        return resultModels
+        return userModels
     }
 }
 

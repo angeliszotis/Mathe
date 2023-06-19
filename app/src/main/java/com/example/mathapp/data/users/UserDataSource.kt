@@ -7,4 +7,5 @@ interface UserDataSource {
     suspend fun insertUsers(user: UserEntity)
     suspend fun updateUsers(user: UserEntity)
     suspend fun getUsers(): Flow<List<UserEntity>>
+    suspend fun getLastUser(): UserEntity?
 }

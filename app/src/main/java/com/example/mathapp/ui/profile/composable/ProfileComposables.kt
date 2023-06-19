@@ -62,7 +62,6 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
 
         if (dt == emptyList<UserEntity>()) {
             TextFieldsForProfile(viewModel, textName = "", textSurname = "", textSchool = "")
-
         } else {
             list = dt
 

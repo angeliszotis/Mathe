@@ -13,8 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
-import com.example.mathapp.data.nav_data.HomeButtonsDC
-import com.example.mathapp.data.nav_data.HomeButtonsDCVector
+import com.example.mathapp.util.HomeButtonsDC
+import com.example.mathapp.util.HomeButtonsDCVector
 import com.example.mathapp.ui.dashboard.LobbyViewModel
 import com.example.mathapp.ui.theme.FbColor
 

@@ -26,9 +26,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.example.mathapp.R
-import com.example.mathapp.data.nav_data.HomeButtonsDC
-import com.example.mathapp.data.nav_data.HomeButtonsDCVector
-import com.example.mathapp.data.nav_data.NavButtonItems
+import com.example.mathapp.util.HomeButtonsDC
+import com.example.mathapp.util.HomeButtonsDCVector
+import com.example.mathapp.util.NavButtonItems
 import com.example.mathapp.ui.composable.ButtonItem.ButtonItem
 import com.example.mathapp.ui.composable.LottieLoader.Loader
 import com.example.mathapp.ui.dashboard.LobbyViewModel
@@ -69,17 +69,17 @@ fun HomeScreen(viewModel: LobbyViewModel) {
                 textSize = 8,
                 R.drawable.ic_baseline_menu_book_24,
                 iconSize = 30,
-                NavButtonItems.theory
+                NavButtonItems.Theory
             ), viewModel
         )
         ButtonItem(
             Modifier.fillMaxWidth(),
-            HomeButtonsDCVector(text = stringResource(id = R.string.exam), textSize = 8, Icons.Filled.Create, iconSize = 30,action= NavButtonItems.exam),
+            HomeButtonsDCVector(text = stringResource(id = R.string.exam), textSize = 8, Icons.Filled.Create, iconSize = 30,action= NavButtonItems.Exam),
             viewModel
         )
         ButtonItem(
             Modifier.fillMaxWidth(),
-            HomeButtonsDCVector(text = stringResource(id = R.string.score), textSize = 8, icon=Icons.Filled.Star, iconSize = 30, action = NavButtonItems.score), viewModel
+            HomeButtonsDCVector(text = stringResource(id = R.string.score), textSize = 8, icon=Icons.Filled.Star, iconSize = 30, action = NavButtonItems.Score), viewModel
         )
         Row(modifier = Modifier.fillMaxWidth()) {
             ButtonItem(
@@ -91,7 +91,7 @@ fun HomeScreen(viewModel: LobbyViewModel) {
                     textSize = 3,
                     Icons.Filled.Person,
                     iconSize = 20,
-                    NavButtonItems.profile
+                    NavButtonItems.Profile
                 ), viewModel
             )
             ButtonItem(
@@ -103,7 +103,7 @@ fun HomeScreen(viewModel: LobbyViewModel) {
                     textSize = 3,
                     Icons.Filled.Info,
                     iconSize = 20,
-                    NavButtonItems.info
+                    NavButtonItems.Info
                 ), viewModel
             )
         }

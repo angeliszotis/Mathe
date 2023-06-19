@@ -5,12 +5,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.mathapp.framework.users.model.UserEntity
-import com.example.mathapp.framework.db.dao.dbDao
+import com.example.mathapp.framework.db.dao.userDao
 
 @Database(entities = [(UserEntity::class)], version = 1)
 abstract class RoomDb : RoomDatabase() {
 
-    abstract fun quizDao(): dbDao
+    abstract fun quizDao(): userDao
 
     companion object {
         @Volatile

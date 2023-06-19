@@ -1,11 +1,14 @@
 package com.example.mathapp.framework.db.dao
 
-import androidx.room.*
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.example.mathapp.framework.users.model.UserEntity
 import kotlinx.coroutines.flow.Flow
 
-@Dao
-interface userDao {
+
+interface resultDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertData(vararg users: UserEntity)
@@ -15,11 +18,5 @@ interface userDao {
 
     @Query("SELECT * FROM users")
     fun getData(): Flow<List<UserEntity>>
-
-    @Update
-    fun updateData(vararg users: UserEntity)
-
-    @Query("SELECT * FROM users ORDER BY name DESC LIMIT 1")
-    suspend fun getLastUser(): UserEntity?
 
 }
