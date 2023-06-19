@@ -14,4 +14,5 @@ class MathAppApplication : Application(){
         super.onCreate()
         instance = this
     }
+
 }
