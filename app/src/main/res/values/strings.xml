@@ -1,3 +1,16 @@
 <resources>
+    <!--Dashboard-->
     <string name="app_name">Math ε\'</string>
+
+    <string name="info">Πληροφορίες\'</string>
+    <string name="profile">Προφίλ\'</string>
+    <string name="score">Σκορ\'</string>
+    <string name="exam">Εξέταση\'</string>
+    <string name="theory">Θεωρία\'</string>
+
+    <!---->
+
+
+    <!--Dashboard-->
+
 </resources>
