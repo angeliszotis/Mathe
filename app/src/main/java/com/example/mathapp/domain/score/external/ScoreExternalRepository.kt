@@ -1,7 +1,7 @@
-package com.example.mathapp.domain.score
+package com.example.mathapp.domain.score.external
 
 import com.example.mathapp.framework.result.model.ResultModel
 
-interface ScoreRepository {
+interface ScoreExternalRepository {
     suspend fun getScore() : List<ResultModel>
 }

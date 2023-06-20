@@ -1,15 +1,15 @@
-package com.example.mathapp.framework.score
+package com.example.mathapp.framework.score.external
 
-import com.example.mathapp.data.score.ScoreDataSource
+import com.example.mathapp.data.score.external.ScoreExternalDataSource
 import com.example.mathapp.framework.result.model.ResultModel
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 
-class ScoreDataSourceImpl @Inject constructor(
+class ScoreExternalDataSourceImpl @Inject constructor(
     private val firestore : FirebaseFirestore
-) : ScoreDataSource {
+) : ScoreExternalDataSource {
 
     override suspend fun getScore(): List<ResultModel> {
         val userModels = mutableListOf<ResultModel>()
@@ -18,10 +18,10 @@ class ScoreDataSourceImpl @Inject constructor(
             val name = document.getString("name") ?: ""
             val surname = document.getString("surname") ?: ""
             val school = document.getString("school") ?: ""
-            val correct = document.getString("corect")?: ""
-            val incorrect = document.getString("incorect")?: ""
+            val corect = document.getString("corect")?: ""
+            val incorect = document.getString("incorect")?: ""
             val time = document.getString("time")?: ""
-            val userModel =  ResultModel(name, surname, school, correct = correct , incorrect = incorrect , time = time)
+            val userModel =  ResultModel(name = name, surname = surname, school = school, corect = corect , incorect = incorect , time = time)
             userModels.add(userModel)
         }
         return userModels

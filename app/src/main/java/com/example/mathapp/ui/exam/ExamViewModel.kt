@@ -44,10 +44,14 @@ class ExamViewModel @Inject constructor(
     fun insertResult(result: ResultAnswerModel) {
         viewModelScope.launch {
             val user = userUseCase.invoke()
-            try {
-                user?.let { userMap(it,result) }?.let { resultUseCase.invoke(it) }
-            } catch (e: Exception) {
-                Log.e("YODA", e.toString())
+            if (user != null) {
+                if (!user.name.isEmpty()) {
+                    try {
+                        userMap(user, result).let { resultUseCase.invoke(it) }
+                    } catch (e: Exception) {
+                        Log.e("YODA", e.toString())
+                    }
+                }
             }
         }
     }
@@ -57,9 +61,10 @@ class ExamViewModel @Inject constructor(
             name = userEntity.name,
             surname = userEntity.surname,
             school = userEntity.school,
-             correct = result.corect.toString() ,
-             incorrect = result.incorect.toString(),
+             corect = result.corect.toString() ,
+             incorect = result.incorect.toString(),
              time = result.time.toString()
         )
     }
 }
+

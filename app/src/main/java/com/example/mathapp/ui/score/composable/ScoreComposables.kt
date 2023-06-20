@@ -50,9 +50,9 @@ fun ScoreScreen(viewModel: ScoreViewModel) {
                    Spacer(modifier = Modifier.width(8.dp))
                    Text(text = item.school)
                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(text = item.correct)
+                    Text(text = item.corect)
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text(text = item.incorrect)
+                    Text(text = item.incorect)
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(text = item.time)
                 }

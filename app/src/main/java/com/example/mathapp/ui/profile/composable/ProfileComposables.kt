@@ -1,6 +1,8 @@
 package com.example.mathapp.ui.profile.composable
 
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
@@ -41,11 +44,13 @@ import com.example.mathapp.ui.profile.ProfileViewModel
 import com.example.mathapp.ui.profile.setUDM
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
-import com.example.mathapp.util.BASE_URL_LOTTIE_LF20
+import com.example.mathapp.ui.theme.SpacingCustom_6dp
+import com.example.mathapp.util.BASE_URL_LOTTIE_LF20_DASHBOARD
+import com.example.mathapp.util.BASE_URL_LOTTIE_LF20_PROFILE
 
 
 @Composable
-fun ProfileScreen(viewModel: ProfileViewModel) {
+fun ProfileScreen(viewModel: ProfileViewModel, onGoBack: () -> Unit) {
 
     val dt = viewModel.readAllData.observeAsState(listOf()).value
     var list: List<UserEntity>
@@ -61,7 +66,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
     ) {
 
         if (dt == emptyList<UserEntity>()) {
-            TextFieldsForProfile(viewModel, textName = "", textSurname = "", textSchool = "")
+            TextFieldsForProfile(viewModel, textName = "", textSurname = "", textSchool = "",onGoBack = onGoBack)
         } else {
             list = dt
 
@@ -79,7 +84,8 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
                 viewModel,
                 textName = textName.text,
                 textSurname = textSurname.text,
-                textSchool = textSchool.text
+                textSchool = textSchool.text,
+                onGoBack = onGoBack
             )
         }
     }
@@ -90,8 +96,11 @@ fun TextFieldsForProfile(
     viewModel: ProfileViewModel,
     textName: String,
     textSurname: String,
-    textSchool: String
+    textSchool: String,
+    onGoBack: () -> Unit
 ) {
+
+    val context = LocalContext.current
 
     var name by remember { mutableStateOf(TextFieldValue(textName)) }
     var surname by remember { mutableStateOf(TextFieldValue(textSurname)) }
@@ -111,7 +120,7 @@ fun TextFieldsForProfile(
             )
     )
     {
-        Loader("https://assets10.lottiefiles.com/packages/lf20_n1wgeaxb.json", false)
+        Loader(BASE_URL_LOTTIE_LF20_PROFILE, false)
         Text(
             modifier = Modifier
                 .fillMaxWidth(0.9f)
@@ -144,47 +153,86 @@ fun TextFieldsForProfile(
         OutlinedTextField(
             value = name,
             label = { Text("Όνομα", fontWeight = FontWeight.Bold) },
-            onValueChange = {
-                name = it
-
-            })
+            onValueChange = { value ->
+                if (isValidInput(value.text)) {
+                    name = value
+                } else {
+                    showToast(context, "Please enter a valid name")
+                }
+            }
+        )
         Spacer(modifier = Modifier.size(15.dp))
+
         OutlinedTextField(
             value = surname,
             label = { Text("Επίθετο", fontWeight = FontWeight.Bold) },
-            onValueChange = {
-                surname = it
-
-            })
+            onValueChange = { value ->
+                if (isValidInput(value.text)) {
+                    surname = value
+                } else {
+                    showToast(context, "Please enter a valid surname")
+                }
+            }
+        )
         Spacer(modifier = Modifier.size(15.dp))
 
         OutlinedTextField(
             value = school,
             label = { Text("Σχολείο", fontWeight = FontWeight.Bold) },
-            onValueChange = {
-                school = it
+            onValueChange = { value ->
+                if (isValidInput(value.text)) {
+                    school = value
+                } else {
+                    showToast(context, "Please enter a valid school")
+                }
+            }
+        )
 
-            })
         Spacer(modifier = Modifier.size(30.dp))
+        Row(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+            Button(
+                modifier = Modifier
+                    .weight(0.5f)
+                    .padding(SpacingCustom_6dp),
+                onClick = {
+                    name = TextFieldValue("")
+                    surname = TextFieldValue("")
+                    school = TextFieldValue("")
+                }
+            ) {
+                Text("Clear All")
+            }
 
-        Button(
-            modifier = Modifier.fillMaxWidth(0.5f),
-            onClick = {
-                setUDM(
-                    viewModel = viewModel,
-                    name.text,
-                    surname.text,
-                    school.text
-                )
-            }) {
-            Text(text = "Αποθήκευση!")
+            Button(
+                modifier = Modifier
+                    .weight(0.5f)
+                    .padding(SpacingCustom_6dp),
+                onClick = {
+                    if( name.text.isNotEmpty() &&
+                        surname.text.isNotEmpty() &&
+                        school.text.isNotEmpty()
+                    ) {
+                        setUDM(
+                            viewModel = viewModel,
+                            name.text,
+                            surname.text,
+                            school.text
+                        )
+                        showToast(context,"Αποθηκευτικαν επιτυχος!")
+                        onGoBack.invoke()
+                    }
+                    else {
+                        showToast(context,"Γεμισε ολα τα παιδια")
+                    }
+                }) {
+                Text(text = "Αποθήκευση")
+            }
         }
 
         Spacer(modifier = Modifier.size(30.dp))
 
-        Loader(BASE_URL_LOTTIE_LF20, true)
+        Loader(BASE_URL_LOTTIE_LF20_DASHBOARD, true)
     }
-
 }
 
 @Composable
@@ -209,6 +257,17 @@ fun Loader(link: String, clip: Boolean) {
                 .clip(RoundedCornerShape(16.dp)),
         )
     }
+}
+
+fun showToast(context : Context,message: String ) {
+    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+}
+fun isValidInput(text: String): Boolean {
+    // Remove leading and trailing whitespaces
+    val trimmedText = text.trim()
+
+    // Check if the trimmed text is empty
+    return trimmedText.isNotEmpty()
 }
 
 

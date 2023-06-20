@@ -1,10 +1,12 @@
-package com.example.mathapp.framework.users.model
+package com.example.mathapp.framework.result.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-@Entity(tableName = "users")
-data class UserEntity(
+
+
+@Entity(tableName = "result")
+data class ResultEntity(
 
     @PrimaryKey
     @ColumnInfo(name = "name")
@@ -15,4 +17,13 @@ data class UserEntity(
 
     @ColumnInfo(name = "school")
     var school: String = "school",
+
+    @ColumnInfo(name = "corect")
+    var correct: String,
+
+    @ColumnInfo(name = "incorect")
+    var incorrect: String,
+
+    @ColumnInfo(name = "time")
+    var time: String
 )
