@@ -3,6 +3,7 @@ package com.example.mathapp.util
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavDirections
 import com.example.mathapp.ui.dashboard.LobbyFragmentDirections
+import com.example.mathapp.ui.score.ScoreFragmentDirections
 
 sealed class NavButtonItems(val destination: NavDirections) {
     object Theory : NavButtonItems(LobbyFragmentDirections.actionHomeToTheory())
@@ -10,6 +11,8 @@ sealed class NavButtonItems(val destination: NavDirections) {
     object Exam : NavButtonItems(LobbyFragmentDirections.actionHomeToExam())
     object Info : NavButtonItems(LobbyFragmentDirections.actionHomeToInfo())
     object Score : NavButtonItems(LobbyFragmentDirections.actionHomeToScore())
+    object  ScoreInternal : NavButtonItems(ScoreFragmentDirections.actionFragmentScoreToFragmentScoreInternal())
+    object  ScoreExternal : NavButtonItems(ScoreFragmentDirections.actionFragmentScoreToFragmentScoreExternal())
 
 }
 

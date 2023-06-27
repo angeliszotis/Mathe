@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.example.mathapp.R
 import com.example.mathapp.ui.composable.ButtonItem.ButtonItem
-import com.example.mathapp.ui.composable.LottieLoader.Loader
+import com.example.mathapp.ui.composable.LottieLoader.LottieLoader
 import com.example.mathapp.ui.dashboard.LobbyViewModel
 import com.example.mathapp.ui.theme.*
 import com.example.mathapp.util.HomeButtonsDC
@@ -101,6 +101,6 @@ fun HomeScreen(viewModel: LobbyViewModel) {
                 ), viewModel
             )
         }
-        Loader()
+        LottieLoader()
     }
 }

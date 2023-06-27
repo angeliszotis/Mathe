@@ -22,6 +22,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -29,8 +30,11 @@ import androidx.compose.ui.unit.sp
 import com.example.mathapp.framework.exam.model.QuestionModel
 import com.example.mathapp.ui.exam.ExamViewModel
 import com.example.mathapp.ui.result.ResultScreen
+import com.example.mathapp.ui.theme.BabyBluePurple1
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
+import com.example.mathapp.ui.theme.BabyBluePurple4
+import com.example.mathapp.ui.theme.FbColor
 import kotlinx.coroutines.delay
 
 private var _globalReturntime =0
@@ -92,7 +96,7 @@ fun QuizScreen(
                 RoundedCornerShape( 12.dp)
             ).fillMaxWidth().padding(5.dp)
         ) {
-            Text(text = questionModel.text, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+            Text(text = questionModel.text, fontSize = 12.sp, fontWeight = FontWeight.Bold)
         }
         Spacer(modifier = Modifier.height(16.dp))
         Column {
@@ -114,7 +118,9 @@ fun QuizScreen(
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             if (selectedAnswerIndex >= 0) {
                 Button(
-                    onClick = {
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = FbColor
+                    ),                    onClick = {
                         if (selectedAnswerIndex == questionModel.correctAnswerIndex) {
                             onAnswer(true)
 
@@ -126,7 +132,7 @@ fun QuizScreen(
                         showButton = false // hide the help button after answering
                     }
                 ) {
-                    Text(text = "Next")
+                    Text(color = Color.White,text = "Επόμενη")
                 }
             } else {
                 Spacer(modifier = Modifier.width(100.dp))
@@ -174,7 +180,7 @@ fun Timer(durationSeconds: Int, onTimeUp: () -> Unit) {
     }
 
     Text(
-        text = "Time : ${remainingTime}s",
+        text = "Χρόνος : ${remainingTime} ″ ",
         fontWeight = FontWeight.Bold,
         modifier = Modifier.fillMaxWidth(),
         textAlign = TextAlign.Center
@@ -186,7 +192,7 @@ fun AnswerButton(text: String, isSelected: Boolean, onClick: () -> Unit) {
     Button(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = if (isSelected) MaterialTheme.colors.secondary else MaterialTheme.colors.surface
+            backgroundColor = if (isSelected) BabyBluePurple4  else BabyBluePurple1
         ),
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -202,18 +208,17 @@ fun ProgressBar(currentIndex: Int, totalQuestions: Int) {
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
     ) {
         if(currentIndex == totalQuestions){
-            Text(text = "Question $currentIndex of $totalQuestions", fontSize = 18.sp)
+            Text(text = "Ερώτηση $currentIndex απο $totalQuestions", fontSize = 18.sp)
         }else{
-            Text(text = "Question ${currentIndex + 1} of $totalQuestions", fontSize = 18.sp)
+            Text(text = "Ερώτηση ${currentIndex + 1} απο $totalQuestions", fontSize = 18.sp)
         }
         Spacer(modifier = Modifier.height(8.dp))
         LinearProgressIndicator(
             progress = progress,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            color = FbColor
         )
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = "$percent% completed", fontSize = 14.sp, textAlign = TextAlign.End)
+        Text(text = "$percent% Ολοκληρωμένο", fontSize = 14.sp, textAlign = TextAlign.End)
     }
 }
-
-  //  data class Question(val id : Int,val text: String, val answers: List<String>, val correctAnswerIndex: Int)

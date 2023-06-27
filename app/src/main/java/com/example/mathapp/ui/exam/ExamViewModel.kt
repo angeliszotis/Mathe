@@ -5,20 +5,24 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mathapp.framework.exam.model.QuestionModel
 import com.example.mathapp.framework.result.model.ResultAnswerModel
+import com.example.mathapp.framework.result.model.ResultEntity
 import com.example.mathapp.framework.result.model.ResultModel
 import com.example.mathapp.framework.users.model.UserEntity
 import com.example.mathapp.usecase.exam.GetQuestionsUseCase
 import com.example.mathapp.usecase.result.InsertResultUseCase
+import com.example.mathapp.usecase.score.internal.InsertScoreInternalUseCase
 import com.example.mathapp.usecase.user.GetLastUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ExamViewModel @Inject constructor(
     getQuestionsUseCase: GetQuestionsUseCase,
-    private val resultUseCase: InsertResultUseCase,
-    private val userUseCase: GetLastUserUseCase
+    private val resultExternalUseCase: InsertResultUseCase,
+    private val userUseCase: GetLastUserUseCase,
+    private var resultInternalUseCase: InsertScoreInternalUseCase
 ) : ViewModel() {
 
     private val questions = getQuestionsUseCase.invoke()
@@ -37,17 +41,29 @@ class ExamViewModel @Inject constructor(
         return randomQuestionModels
     }
 
-
-    //  private val _insertResultStatus = MutableStateFlow<Result<Unit>>(Idle)
-    // val insertResultStatus: StateFlow<Result<Unit>> = _insertResultStatus.asStateFlow()
-
-    fun insertResult(result: ResultAnswerModel) {
+    fun insertExternalResult(result: ResultAnswerModel) {
         viewModelScope.launch {
             val user = userUseCase.invoke()
             if (user != null) {
-                if (!user.name.isEmpty()) {
+                if (user.name.isNotEmpty()) {
                     try {
-                        userMap(user, result).let { resultUseCase.invoke(it) }
+                        userMap(user, result).let { resultExternalUseCase.invoke(it) }
+                    } catch (e: Exception) {
+                        Log.e("YODA", e.toString())
+                    }
+                }
+            }
+        }
+    }
+
+    fun insertInternalResult(result: ResultAnswerModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val user = userUseCase.invoke()
+            if (user != null) {
+                if (user.name.isNotEmpty()) {
+                    try {
+                        userInternalMap(user, result).let {resultInternalUseCase.invoke(it)
+                        }
                     } catch (e: Exception) {
                         Log.e("YODA", e.toString())
                     }
@@ -64,6 +80,17 @@ class ExamViewModel @Inject constructor(
              corect = result.corect.toString() ,
              incorect = result.incorect.toString(),
              time = result.time.toString()
+        )
+    }
+
+    private fun userInternalMap(userEntity: UserEntity,result: ResultAnswerModel): ResultEntity {
+        return ResultEntity(
+            name = userEntity.name,
+            surname = userEntity.surname,
+            school = userEntity.school,
+            correct = result.corect.toString() ,
+            incorrect = result.incorect.toString(),
+            time = result.time.toString()
         )
     }
 }

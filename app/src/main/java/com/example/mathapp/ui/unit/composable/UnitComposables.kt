@@ -19,42 +19,39 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
-import com.airbnb.lottie.compose.LottieAnimation
-import com.airbnb.lottie.compose.LottieClipSpec
-import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.LottieConstants
-import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.mathapp.R
+import com.example.mathapp.framework.theory.model.UnitModel
+import com.example.mathapp.ui.composable.LottieLoader.LottieLoader
 import com.example.mathapp.ui.theme.BabyBluePurple1
 import com.example.mathapp.ui.theme.BabyBluePurple3
 import com.example.mathapp.ui.theme.FbColor
+import com.example.mathapp.util.BASE_URL_LOTTIE_THEORY_lf20_START
+import com.example.mathapp.util.units
+
 
 @Composable
-fun Loader(link: String) {
-    val composition by rememberLottieComposition(LottieCompositionSpec.Url(link))
-
-
-    LottieAnimation(
-        composition = composition,
-        iterations = LottieConstants.IterateForever,
-        clipSpec = LottieClipSpec.Progress(0.1f, 0.70f),
-        modifier = Modifier.aspectRatio(1f),
-
-        )
+fun UnitScreen(){
+    UnitContent(units = units, buttonTextSize = 4.em, buttonColor = FbColor)
 }
-
 @Composable
-fun UnitScreen() {
+fun UnitContent(
+    units: List<UnitModel>,
+    buttonTextSize: TextUnit = 4.em,
+    buttonColor: Color = FbColor
+) {
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier
@@ -63,11 +60,7 @@ fun UnitScreen() {
             .padding(horizontal = 16.dp)
             .verticalScroll(rememberScrollState())
     ) {
-
-        Column(
-            modifier = Modifier
-
-        ) {
+        Column(modifier = Modifier) {
             Spacer(modifier = Modifier.size(30.dp))
             Box(
                 modifier = Modifier
@@ -76,253 +69,43 @@ fun UnitScreen() {
             ) {
                 Text(
                     maxLines = 1,
-                    text = "  Επέλεξε Ενότητα",
+                    text = stringResource(id = R.string.chose_unit),
                     textAlign = TextAlign.Center,
                     color = BabyBluePurple1,
                     fontWeight = FontWeight.Bold,
                     fontSize = 7.em,
-                    fontFamily = FontFamily.Monospace,
-                    //modifier = Modifier.fillMaxSize(0.5f),
-
-
+                    fontFamily = FontFamily.Monospace
                 )
             }
-
-            Loader(link = "https://assets6.lottiefiles.com/packages/lf20_zunhpwue.json")
-
+            LottieLoader(link = BASE_URL_LOTTIE_THEORY_lf20_START)
         }
 
-        val context = LocalContext.current
-        Row(modifier = Modifier.fillMaxWidth()) {
-
-            Button(
-                onClick = { val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-1_1.html"))
-                    context.startActivity(intent) },
-                modifier = Modifier
-                    .weight(0.5f)
-                    .padding(6.dp)
-                    .aspectRatio(1f),
-                contentPadding = ButtonDefaults.TextButtonContentPadding,
-                colors = ButtonDefaults.buttonColors(FbColor)
-
-
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
-                    contentDescription = "Localized description",
-                    modifier = Modifier.size(25.dp)
-                )
-                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                Text(
-                    maxLines = 1,
-                    text = "Ενότητα 1",
-                    fontSize = 4.em
-                )
-            }
-
-
-
-            Button(
-                onClick = { val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-2_8.html"))
-                    context.startActivity(intent) },
-                modifier = Modifier
-                    .weight(0.5f)
-                    .padding(6.dp)
-                    .aspectRatio(1f),
-                contentPadding = ButtonDefaults.TextButtonContentPadding,
-                colors = ButtonDefaults.buttonColors(FbColor)
-
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
-                    contentDescription = "Localized description",
-                    modifier = Modifier.size(25.dp)
-                )
-                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                Text(
-
-                    maxLines = 1,
-                    text = "Ενότητα 2",
-                    fontSize = 4.em
-                )
+        for (unit in units.chunked(2)) {
+            Row(modifier = Modifier.fillMaxWidth()) {
+                for (data in unit) {
+                    Button(
+                        onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(data.url))) },
+                        modifier = Modifier
+                            .weight(0.5f)
+                            .padding(6.dp)
+                            .aspectRatio(1f),
+                        contentPadding = ButtonDefaults.TextButtonContentPadding,
+                        colors = ButtonDefaults.buttonColors(buttonColor)
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
+                            contentDescription = "Localized description",
+                            modifier = Modifier.size(25.dp)
+                        )
+                        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                        Text(
+                            maxLines = 1,
+                            text = stringResource(id = data.nameResourceId),
+                            fontSize = buttonTextSize
+                        )
+                    }
+                }
             }
         }
-        Row(modifier = Modifier.fillMaxWidth()) {
-
-            Button(
-                onClick = { val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-3_13.html"))
-                    context.startActivity(intent) },
-                modifier = Modifier
-                    .weight(0.5f)
-                    .padding(6.dp)
-                    .aspectRatio(1f),
-                contentPadding = ButtonDefaults.TextButtonContentPadding,
-                colors = ButtonDefaults.buttonColors(FbColor)
-
-
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
-                    contentDescription = "Localized description",
-                    modifier = Modifier.size(25.dp)
-                )
-                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                Text(
-                    maxLines = 1,
-                    text = "Ενότητα 3",
-                    fontSize = 4.em
-                )
-            }
-
-
-
-            Button(
-                onClick = { val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-4_22.html"))
-                    context.startActivity(intent) },
-                modifier = Modifier
-                    .weight(0.5f)
-                    .padding(6.dp)
-                    .aspectRatio(1f),
-                contentPadding = ButtonDefaults.TextButtonContentPadding,
-                colors = ButtonDefaults.buttonColors(FbColor)
-
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
-                    contentDescription = "Localized description",
-                    modifier = Modifier.size(25.dp)
-                )
-                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                Text(
-
-                    maxLines = 1,
-                    text = "Ενότητα 4",
-                    fontSize = 4.em
-                )
-            }
-        }
-
-        Row(modifier = Modifier.fillMaxWidth()) {
-
-            Button(
-                onClick = {  val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-5_25.html"))
-                    context.startActivity(intent)},
-                modifier = Modifier
-                    .weight(0.5f)
-                    .padding(6.dp)
-                    .aspectRatio(1f),
-                contentPadding = ButtonDefaults.TextButtonContentPadding,
-                colors = ButtonDefaults.buttonColors(FbColor)
-
-
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
-                    contentDescription = "Localized description",
-                    modifier = Modifier.size(25.dp)
-                )
-                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                Text(
-                    maxLines = 1,
-                    text = "Ενότητα 5",
-                    fontSize = 4.em
-                )
-            }
-
-
-
-            Button(
-                onClick = {val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-6_33.html"))
-                    context.startActivity(intent) },
-                modifier = Modifier
-                    .weight(0.5f)
-                    .padding(6.dp)
-                    .aspectRatio(1f),
-                contentPadding = ButtonDefaults.TextButtonContentPadding,
-                colors = ButtonDefaults.buttonColors(FbColor)
-
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
-                    contentDescription = "Localized description",
-                    modifier = Modifier.size(25.dp)
-                )
-                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                Text(
-
-                    maxLines = 1,
-                    text = "Ενότητα 6",
-                    fontSize = 4.em
-                )
-            }
-        }
-        Row(modifier = Modifier.fillMaxWidth()) {
-
-            Button(
-                onClick = {val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-7_36.html")
-                )
-                    context.startActivity(intent) },
-                modifier = Modifier
-                    .weight(0.5f)
-                    .padding(6.dp)
-                    .aspectRatio(1f),
-                contentPadding = ButtonDefaults.TextButtonContentPadding,
-                colors = ButtonDefaults.buttonColors(FbColor)
-
-
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
-                    contentDescription = "Localized description",
-                    modifier = Modifier.size(25.dp)
-                )
-                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                Text(
-                    maxLines = 1,
-                    text = "Ενότητα 7",
-                    fontSize = 4.em
-                )
-            }
-
-
-
-            Button(
-                onClick = { val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-8_45.html"))
-                    context.startActivity(intent) },
-                modifier = Modifier
-                    .weight(0.5f)
-                    .padding(6.dp)
-                    .aspectRatio(1f),
-                contentPadding = ButtonDefaults.TextButtonContentPadding,
-                colors = ButtonDefaults.buttonColors(FbColor)
-
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
-                    contentDescription = "Localized description",
-                    modifier = Modifier.size(25.dp)
-
-                )
-                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                Text(
-
-                    maxLines = 1,
-                    text = "Ενότητα 8",
-                    fontSize = 4.em
-                )
-            }
-        }
-
     }
 }
-
-@Composable
-fun Loader() {
-    val composition by rememberLottieComposition(LottieCompositionSpec.Url("https://assets8.lottiefiles.com/packages/lf20_pan8jtpf.json"))
-    LottieAnimation(
-        composition = composition,
-        iterations = LottieConstants.IterateForever
-    )
-}
-
-

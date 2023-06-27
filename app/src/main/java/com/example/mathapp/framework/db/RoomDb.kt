@@ -9,7 +9,7 @@ import com.example.mathapp.framework.users.model.UserEntity
 import com.example.mathapp.framework.db.dao.userDao
 import com.example.mathapp.framework.result.model.ResultEntity
 
-@Database(entities = [(UserEntity::class) , (ResultEntity::class)], version = 1)
+@Database(entities = [UserEntity::class, ResultEntity::class], version = 2)
 abstract class RoomDb : RoomDatabase() {
 
     abstract fun quizDao(): userDao
@@ -20,15 +20,11 @@ abstract class RoomDb : RoomDatabase() {
         private var INSTANCE: RoomDb? = null
 
         fun getDatabase(context: Context): RoomDb {
-            // if the INSTANCE is not null, then return it,
-            // if it is, then create the database
             if (INSTANCE == null) {
                 synchronized(this) {
-                    // Pass the database to the INSTANCE
                     INSTANCE = buildDatabase(context)
                 }
             }
-            // Return database.
             return INSTANCE!!
         }
 
@@ -38,8 +34,8 @@ abstract class RoomDb : RoomDatabase() {
                 RoomDb::class.java,
                 "UserRoomDatabase"
             )
+                .fallbackToDestructiveMigration() // Add this line to allow destructive migration
                 .build()
         }
     }
-
 }

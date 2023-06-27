@@ -1,7 +1,6 @@
 package com.example.mathapp.ui.profile.composable
 
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -30,8 +29,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import com.airbnb.lottie.compose.LottieAnimation
@@ -39,14 +40,15 @@ import com.airbnb.lottie.compose.LottieClipSpec
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.example.mathapp.R
 import com.example.mathapp.framework.users.model.UserEntity
 import com.example.mathapp.ui.profile.ProfileViewModel
 import com.example.mathapp.ui.profile.setUDM
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
 import com.example.mathapp.ui.theme.SpacingCustom_6dp
-import com.example.mathapp.util.BASE_URL_LOTTIE_LF20_DASHBOARD
-import com.example.mathapp.util.BASE_URL_LOTTIE_LF20_PROFILE
+import com.example.mathapp.util.BASE_URL_LOTTIE_PROFILE_lf20_END
+import com.example.mathapp.util.BASE_URL_LOTTIE_PROFILE_lf20_START
 
 
 @Composable
@@ -75,7 +77,6 @@ fun ProfileScreen(viewModel: ProfileViewModel, onGoBack: () -> Unit) {
             } else {
                 list.size - 2
             }
-            Log.d("yoda", list.toString())
             val textName by remember { mutableStateOf(TextFieldValue(list[num].name)) }
             val textSurname by remember { mutableStateOf(TextFieldValue(list[num].surname)) }
             val textSchool by remember { mutableStateOf(TextFieldValue(list[num].school)) }
@@ -120,7 +121,7 @@ fun TextFieldsForProfile(
             )
     )
     {
-        Loader(BASE_URL_LOTTIE_LF20_PROFILE, false)
+        Loader(BASE_URL_LOTTIE_PROFILE_lf20_START, false)
         Text(
             modifier = Modifier
                 .fillMaxWidth(0.9f)
@@ -152,12 +153,12 @@ fun TextFieldsForProfile(
 
         OutlinedTextField(
             value = name,
-            label = { Text("Όνομα", fontWeight = FontWeight.Bold) },
+            label = { Text(text = stringResource(id = R.string.name), fontWeight = FontWeight.Bold) },
             onValueChange = { value ->
                 if (isValidInput(value.text)) {
                     name = value
                 } else {
-                    showToast(context, "Please enter a valid name")
+                    showToast(context, message = R.string.toast_valid_name)
                 }
             }
         )
@@ -165,12 +166,12 @@ fun TextFieldsForProfile(
 
         OutlinedTextField(
             value = surname,
-            label = { Text("Επίθετο", fontWeight = FontWeight.Bold) },
+            label = { Text(text = stringResource(id = R.string.surname), fontWeight = FontWeight.Bold) },
             onValueChange = { value ->
                 if (isValidInput(value.text)) {
                     surname = value
                 } else {
-                    showToast(context, "Please enter a valid surname")
+                    showToast(context, message = R.string.toast_valid_surname)
                 }
             }
         )
@@ -178,12 +179,12 @@ fun TextFieldsForProfile(
 
         OutlinedTextField(
             value = school,
-            label = { Text("Σχολείο", fontWeight = FontWeight.Bold) },
+            label = { Text(text = stringResource(id = R.string.school), fontWeight = FontWeight.Bold) },
             onValueChange = { value ->
                 if (isValidInput(value.text)) {
                     school = value
                 } else {
-                    showToast(context, "Please enter a valid school")
+                    showToast(context, message = R.string.toast_valid_school)
                 }
             }
         )
@@ -200,7 +201,7 @@ fun TextFieldsForProfile(
                     school = TextFieldValue("")
                 }
             ) {
-                Text("Clear All")
+                Text(overflow = TextOverflow.Ellipsis ,maxLines = 1,text = stringResource(id = R.string.clear))
             }
 
             Button(
@@ -218,20 +219,20 @@ fun TextFieldsForProfile(
                             surname.text,
                             school.text
                         )
-                        showToast(context,"Αποθηκευτικαν επιτυχος!")
+                        showToast(context,message = R.string.toast_valid_save)
                         onGoBack.invoke()
                     }
                     else {
-                        showToast(context,"Γεμισε ολα τα παιδια")
+                        showToast(context,message = R.string.toast_non_valid_fill_textfield)
                     }
                 }) {
-                Text(text = "Αποθήκευση")
+                Text(text = stringResource(id = R.string.save))
             }
         }
 
         Spacer(modifier = Modifier.size(30.dp))
 
-        Loader(BASE_URL_LOTTIE_LF20_DASHBOARD, true)
+        Loader(BASE_URL_LOTTIE_PROFILE_lf20_END, true)
     }
 }
 
@@ -259,7 +260,7 @@ fun Loader(link: String, clip: Boolean) {
     }
 }
 
-fun showToast(context : Context,message: String ) {
+fun showToast(context: Context, message: Int) {
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }
 fun isValidInput(text: String): Boolean {
@@ -269,5 +270,3 @@ fun isValidInput(text: String): Boolean {
     // Check if the trimmed text is empty
     return trimmedText.isNotEmpty()
 }
-
-

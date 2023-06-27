@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -23,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import com.example.mathapp.framework.result.model.ResultAnswerModel
 import com.example.mathapp.ui.exam.ExamViewModel
 import com.example.mathapp.ui.theme.BabyBluePurple2
+import com.example.mathapp.ui.theme.FbColor
 import com.example.mathapp.ui.theme.SpacingCustom_6dp
 
 @Composable
@@ -68,13 +70,25 @@ fun ResultScreen(
             Text(text = "Χρόνος: $remainingTime", fontSize = 18.sp)
         }
     }
+    Row(
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(modifier = Modifier.fillMaxWidth(),
+            text = "Αποθήκευση")
+    }
 
-    Row(modifier = Modifier.padding(16.dp)) {
+    Row(modifier = Modifier.padding(vertical = 16.dp)) {
         Button(modifier = Modifier
             .weight(0.5f)
             .padding(SpacingCustom_6dp),
-            onClick = {
-                viewModel.insertResult(
+            colors = androidx.compose.material.ButtonDefaults.buttonColors(
+                backgroundColor = FbColor
+            ),
+                    onClick = {
+                viewModel.insertExternalResult(
                     ResultAnswerModel(
                         corect = numCorrectAnswers,
                         incorect = numIncorrectAnswers,
@@ -82,12 +96,23 @@ fun ResultScreen(
                     )
                 )
             }) {
-            Text(text = "Αποθηκευση")
+            Text(color = Color.White,text = "Δημόσιο Σκορ")
         }
         Button(modifier = Modifier
             .weight(0.5f)
-            .padding(SpacingCustom_6dp), onClick = { /*TODO*/ }) {
-            Text(text = "Κοινοποιηση")
+            .padding(SpacingCustom_6dp),
+            colors = androidx.compose.material.ButtonDefaults.buttonColors(
+                backgroundColor = FbColor
+            ), onClick = {
+            viewModel.insertInternalResult(
+                ResultAnswerModel(
+                    corect = numCorrectAnswers,
+                    incorect = numIncorrectAnswers,
+                    time = remainingTime
+                )
+            )
+        }) {
+            Text(color = Color.White,text = "Τοπίκο Σκορ")
         }
     }
 

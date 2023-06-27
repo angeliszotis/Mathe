@@ -1,6 +1,14 @@
 <resources>
-    <!--Dashboard-->
+
     <string name="app_name">Math ε\'</string>
+
+    <!--General-->
+    <string name="name">Όνομα</string>
+    <string name="surname">Επίθετο</string>
+    <string name="school">Σχολείο</string>
+
+
+    <!--Dashboard-->
 
     <string name="info">Πληροφορίες</string>
     <string name="profile">Προφίλ</string>
@@ -8,5 +16,27 @@
     <string name="exam">Εξέταση</string>
     <string name="theory">Θεωρία</string>
 
-    <!---->
+    <!--Theory-->
+
+    <string name="chose_unit">  Επέλεξε Ενότητα</string>
+    <string name="unit_one">Ενότητα 1</string>
+    <string name="unit_two">Ενότητα 2</string>
+    <string name="unit_three">Ενότητα 3</string>
+    <string name="unit_four">Ενότητα 4</string>
+    <string name="unit_five">Ενότητα 5</string>
+    <string name="unit_six">Ενότητα 6</string>
+    <string name="unit_seven">Ενότητα 7</string>
+    <string name="unit_eight">Ενότητα 8</string>
+
+    <!--Profile-->
+
+    <string name="save">Αποθήκευση</string>
+    <string name="clear">Καθαρισμός πεδίων</string>
+
+    <string name="toast_valid_school">Παρακαλώ εισάγετε ένα έγκυρο σχολείο</string>
+    <string name="toast_valid_surname">Παρακαλώ εισάγετε ένα έγκυρο επώνυμο</string>
+    <string name="toast_valid_name">Παρακαλώ εισάγετε ένα έγκυρο όνομα</string>
+
+    <string name="toast_valid_save">Αποθηκεύτηκε επιτυχώς!</string>
+    <string name="toast_non_valid_fill_textfield">Συμπλήρωσε όλα τα πεδία!</string>
 </resources>
