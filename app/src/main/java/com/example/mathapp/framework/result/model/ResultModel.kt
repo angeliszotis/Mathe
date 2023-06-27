@@ -10,7 +10,7 @@ data class ResultModel(
 )
 
 data class ResultAnswerModel(
-    var corect : Int ,
-    var incorect : Int,
-    var time : Int
+    var corect: Int,
+    var incorect: Int,
+    var time: Int
 )

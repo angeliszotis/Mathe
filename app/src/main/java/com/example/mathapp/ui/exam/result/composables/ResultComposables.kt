@@ -76,8 +76,10 @@ fun ResultScreen(
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(modifier = Modifier.fillMaxWidth(),
-            text = "Αποθήκευση")
+        Text(
+            modifier = Modifier.fillMaxWidth(),
+            text = "Αποθήκευση"
+        )
     }
 
     Row(modifier = Modifier.padding(vertical = 16.dp)) {
@@ -87,7 +89,7 @@ fun ResultScreen(
             colors = androidx.compose.material.ButtonDefaults.buttonColors(
                 backgroundColor = FbColor
             ),
-                    onClick = {
+            onClick = {
                 viewModel.insertExternalResult(
                     ResultAnswerModel(
                         corect = numCorrectAnswers,
@@ -96,7 +98,7 @@ fun ResultScreen(
                     )
                 )
             }) {
-            Text(color = Color.White,text = "Δημόσιο Σκορ")
+            Text(color = Color.White, text = "Δημόσιο Σκορ")
         }
         Button(modifier = Modifier
             .weight(0.5f)
@@ -104,15 +106,15 @@ fun ResultScreen(
             colors = androidx.compose.material.ButtonDefaults.buttonColors(
                 backgroundColor = FbColor
             ), onClick = {
-            viewModel.insertInternalResult(
-                ResultAnswerModel(
-                    corect = numCorrectAnswers,
-                    incorect = numIncorrectAnswers,
-                    time = remainingTime
+                viewModel.insertInternalResult(
+                    ResultAnswerModel(
+                        corect = numCorrectAnswers,
+                        incorect = numIncorrectAnswers,
+                        time = remainingTime
+                    )
                 )
-            )
-        }) {
-            Text(color = Color.White,text = "Τοπίκο Σκορ")
+            }) {
+            Text(color = Color.White, text = "Τοπίκο Σκορ")
         }
     }
 

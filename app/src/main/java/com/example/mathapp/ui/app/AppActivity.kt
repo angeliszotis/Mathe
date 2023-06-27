@@ -15,6 +15,7 @@ class AppActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
     private var broadcastReceiver = NetworkReceiver()
 
     override fun onStart() {

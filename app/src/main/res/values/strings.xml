@@ -12,7 +12,7 @@
 
     <string name="info">Πληροφορίες</string>
     <string name="profile">Προφίλ</string>
-    <string name="score">Σκορ</string>
+    <string name="score">Σκόρ</string>
     <string name="exam">Εξέταση</string>
     <string name="theory">Θεωρία</string>
 
@@ -39,4 +39,10 @@
 
     <string name="toast_valid_save">Αποθηκεύτηκε επιτυχώς!</string>
     <string name="toast_non_valid_fill_textfield">Συμπλήρωσε όλα τα πεδία!</string>
+
+    <!--Score-->
+
+    <string name="score_internal">Τοπικά</string>
+    <string name="score_external">Eθνικά</string>
+
 </resources>

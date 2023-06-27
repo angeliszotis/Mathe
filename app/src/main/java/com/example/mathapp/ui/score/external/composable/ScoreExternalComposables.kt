@@ -28,10 +28,12 @@ import com.example.mathapp.ui.theme.BabyBluePurple3
 @Composable
 fun ScoreExternalScreen(viewModel: ScoreViewModel) {
     val scoreList by viewModel.score.observeAsState()
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .background(BabyBluePurple3)
-        .padding(16.dp)) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(BabyBluePurple3)
+            .padding(16.dp)
+    ) {
         LazyColumn(
             modifier = Modifier
                 .padding(vertical = 25.dp)

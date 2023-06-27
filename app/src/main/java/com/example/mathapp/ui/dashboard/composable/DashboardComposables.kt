@@ -24,6 +24,7 @@ import com.example.mathapp.ui.composable.ButtonItem.ButtonItem
 import com.example.mathapp.ui.composable.LottieLoader.LottieLoader
 import com.example.mathapp.ui.dashboard.LobbyViewModel
 import com.example.mathapp.ui.theme.*
+import com.example.mathapp.util.BASE_URL_LOTTIE_DASHBOARD_lf20_END
 import com.example.mathapp.util.HomeButtonsDC
 import com.example.mathapp.util.HomeButtonsDCVector
 import com.example.mathapp.util.NavButtonItems
@@ -52,9 +53,11 @@ fun HomeScreen(viewModel: LobbyViewModel) {
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.displayLarge,
                 fontFamily = FontFamily.Cursive,
-                modifier = Modifier.padding(vertical = SpacingCustom_28dp, horizontal = SpacingDefault_16dp)
+                modifier = Modifier.padding(
+                    vertical = SpacingCustom_28dp,
+                    horizontal = SpacingDefault_16dp
+                )
             )
-            //NetworkState()
         }
         ButtonItem(
             Modifier.fillMaxWidth(),
@@ -68,12 +71,24 @@ fun HomeScreen(viewModel: LobbyViewModel) {
         )
         ButtonItem(
             Modifier.fillMaxWidth(),
-            HomeButtonsDCVector(text = stringResource(id = R.string.exam), textSize = 8, Icons.Filled.Create, iconSize = 30,action= NavButtonItems.Exam),
+            HomeButtonsDCVector(
+                text = stringResource(id = R.string.exam),
+                textSize = 8,
+                Icons.Filled.Create,
+                iconSize = 30,
+                action = NavButtonItems.Exam
+            ),
             viewModel
         )
         ButtonItem(
             Modifier.fillMaxWidth(),
-            HomeButtonsDCVector(text = stringResource(id = R.string.score), textSize = 8, icon=Icons.Filled.Star, iconSize = 30, action = NavButtonItems.Score), viewModel
+            HomeButtonsDCVector(
+                text = stringResource(id = R.string.score),
+                textSize = 8,
+                icon = Icons.Filled.Star,
+                iconSize = 30,
+                action = NavButtonItems.Score
+            ), viewModel
         )
         Row(modifier = Modifier.fillMaxWidth()) {
             ButtonItem(
@@ -81,7 +96,7 @@ fun HomeScreen(viewModel: LobbyViewModel) {
                     .weight(0.5f)
                     .padding(SpacingCustom_6dp),
                 HomeButtonsDCVector(
-                    text =  stringResource(id = R.string.profile),
+                    text = stringResource(id = R.string.profile),
                     textSize = 3,
                     Icons.Filled.Person,
                     iconSize = 20,
@@ -101,6 +116,6 @@ fun HomeScreen(viewModel: LobbyViewModel) {
                 ), viewModel
             )
         }
-        LottieLoader()
+        LottieLoader(link = BASE_URL_LOTTIE_DASHBOARD_lf20_END)
     }
 }

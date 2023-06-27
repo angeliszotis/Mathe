@@ -37,7 +37,8 @@ import com.example.mathapp.ui.theme.BabyBluePurple4
 import com.example.mathapp.ui.theme.FbColor
 import kotlinx.coroutines.delay
 
-private var _globalReturntime =0
+private var _globalReturntime = 0
+
 @Composable
 fun ExamScreen(viewModel: ExamViewModel) {
     val randomQuestions = viewModel.randomQuestions
@@ -46,14 +47,17 @@ fun ExamScreen(viewModel: ExamViewModel) {
     var showResult by remember { mutableStateOf(false) }
     var score by remember { mutableStateOf(0) }
 
-    Column(modifier = Modifier
-        .background(
-            color = BabyBluePurple3,
-        ).fillMaxWidth().padding(5.dp)
+    Column(
+        modifier = Modifier
+            .background(
+                color = BabyBluePurple3,
+            )
+            .fillMaxWidth()
+            .padding(5.dp)
     ) {
         ProgressBar(currentQuestionIndex, randomQuestions.size)
         if (showResult) {
-            ResultScreen(randomQuestions.size, score, _globalReturntime , viewModel)
+            ResultScreen(randomQuestions.size, score, _globalReturntime, viewModel)
         } else if (currentQuestionIndex < randomQuestions.size) {
             val currentQuestion = randomQuestions[currentQuestionIndex]
             QuizScreen(
@@ -90,11 +94,14 @@ fun QuizScreen(
     var showButton by remember { mutableStateOf(true) }
 
     Column(modifier = Modifier.padding(16.dp)) {
-        Column(modifier = Modifier
-            .background(
-                color = BabyBluePurple2,
-                RoundedCornerShape( 12.dp)
-            ).fillMaxWidth().padding(5.dp)
+        Column(
+            modifier = Modifier
+                .background(
+                    color = BabyBluePurple2,
+                    RoundedCornerShape(12.dp)
+                )
+                .fillMaxWidth()
+                .padding(5.dp)
         ) {
             Text(text = questionModel.text, fontSize = 12.sp, fontWeight = FontWeight.Bold)
         }
@@ -120,7 +127,7 @@ fun QuizScreen(
                 Button(
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = FbColor
-                    ),                    onClick = {
+                    ), onClick = {
                         if (selectedAnswerIndex == questionModel.correctAnswerIndex) {
                             onAnswer(true)
 
@@ -132,7 +139,7 @@ fun QuizScreen(
                         showButton = false // hide the help button after answering
                     }
                 ) {
-                    Text(color = Color.White,text = "Επόμενη")
+                    Text(color = Color.White, text = "Επόμενη")
                 }
             } else {
                 Spacer(modifier = Modifier.width(100.dp))
@@ -174,7 +181,7 @@ fun Timer(durationSeconds: Int, onTimeUp: () -> Unit) {
         while (remainingTime < 1000) {
             delay(1000L)
             remainingTime++
-            _globalReturntime=remainingTime
+            _globalReturntime = remainingTime
         }
         onTimeUp()
     }
@@ -187,16 +194,17 @@ fun Timer(durationSeconds: Int, onTimeUp: () -> Unit) {
     )
 
 }
+
 @Composable
 fun AnswerButton(text: String, isSelected: Boolean, onClick: () -> Unit) {
     Button(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = if (isSelected) BabyBluePurple4  else BabyBluePurple1
+            backgroundColor = if (isSelected) BabyBluePurple4 else BabyBluePurple1
         ),
         modifier = Modifier.fillMaxWidth()
     ) {
-        Text(text = text , fontSize = 10.sp)
+        Text(text = text, fontSize = 10.sp)
     }
 }
 
@@ -205,11 +213,13 @@ fun ProgressBar(currentIndex: Int, totalQuestions: Int) {
     val progress = (currentIndex) / totalQuestions.toFloat()
     val percent = (progress * 100).toInt()
     Column(
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
     ) {
-        if(currentIndex == totalQuestions){
+        if (currentIndex == totalQuestions) {
             Text(text = "Ερώτηση $currentIndex απο $totalQuestions", fontSize = 18.sp)
-        }else{
+        } else {
             Text(text = "Ερώτηση ${currentIndex + 1} απο $totalQuestions", fontSize = 18.sp)
         }
         Spacer(modifier = Modifier.height(8.dp))

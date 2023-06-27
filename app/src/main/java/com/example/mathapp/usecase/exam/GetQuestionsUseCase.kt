@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetQuestionsUseCase @Inject constructor(
     private val questionRepository: QuestionRepository
 ) {
-      fun invoke(): List<QuestionModel> {
+    fun invoke(): List<QuestionModel> {
         return questionRepository.getQuestion()
     }
 }

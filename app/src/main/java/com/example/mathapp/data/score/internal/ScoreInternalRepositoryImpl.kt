@@ -9,7 +9,7 @@ class ScoreInternalRepositoryImpl @Inject constructor(
     private val scoreInternalDataSource: ScoreInternalDataSource
 ) : ScoreInternalRepository {
     override suspend fun getScore(): Flow<List<ResultEntity>> {
-      return scoreInternalDataSource.getData()
+        return scoreInternalDataSource.getData()
     }
 
     override suspend fun insertUsers(result: ResultEntity) {

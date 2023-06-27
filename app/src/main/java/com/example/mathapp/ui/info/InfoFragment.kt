@@ -12,7 +12,7 @@ import com.example.mathapp.ui.info.composable.InfoScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class InfoFragment() : BaseFragment<FragmentNavBinding>() {
+class InfoFragment : BaseFragment<FragmentNavBinding>() {
 
     val viewModel: InfoViewModel by viewModels()
 

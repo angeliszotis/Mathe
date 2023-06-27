@@ -12,19 +12,19 @@ import com.example.mathapp.ui.score.internal.composables.ScoreInternalScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-    class ScoreInternalFragment : BaseFragment<FragmentNavBinding>() {
-        val viewModel: ScoreViewModel by viewModels()
-        private val navController: NavController by lazy { findNavController() }
+class ScoreInternalFragment : BaseFragment<FragmentNavBinding>() {
+    val viewModel: ScoreViewModel by viewModels()
+    private val navController: NavController by lazy { findNavController() }
 
 
-        override fun getViewBinding(): FragmentNavBinding =
-            FragmentNavBinding.inflate(layoutInflater)
+    override fun getViewBinding(): FragmentNavBinding =
+        FragmentNavBinding.inflate(layoutInflater)
 
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
-            binding.composeView.setContent {
-                //ScoreExternalScreen(viewModel)
-                ScoreInternalScreen(viewModel = viewModel)
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.composeView.setContent {
+            //ScoreExternalScreen(viewModel)
+            ScoreInternalScreen(viewModel = viewModel)
         }
     }
+}

@@ -11,8 +11,11 @@ sealed class NavButtonItems(val destination: NavDirections) {
     object Exam : NavButtonItems(LobbyFragmentDirections.actionHomeToExam())
     object Info : NavButtonItems(LobbyFragmentDirections.actionHomeToInfo())
     object Score : NavButtonItems(LobbyFragmentDirections.actionHomeToScore())
-    object  ScoreInternal : NavButtonItems(ScoreFragmentDirections.actionFragmentScoreToFragmentScoreInternal())
-    object  ScoreExternal : NavButtonItems(ScoreFragmentDirections.actionFragmentScoreToFragmentScoreExternal())
+    object ScoreInternal :
+        NavButtonItems(ScoreFragmentDirections.actionFragmentScoreToFragmentScoreInternal())
+
+    object ScoreExternal :
+        NavButtonItems(ScoreFragmentDirections.actionFragmentScoreToFragmentScoreExternal())
 
 }
 

@@ -42,9 +42,10 @@ import com.example.mathapp.util.units
 
 
 @Composable
-fun UnitScreen(){
+fun UnitScreen() {
     UnitContent(units = units, buttonTextSize = 4.em, buttonColor = FbColor)
 }
+
 @Composable
 fun UnitContent(
     units: List<UnitModel>,
@@ -84,7 +85,14 @@ fun UnitContent(
             Row(modifier = Modifier.fillMaxWidth()) {
                 for (data in unit) {
                     Button(
-                        onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(data.url))) },
+                        onClick = {
+                            context.startActivity(
+                                Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse(data.url)
+                                )
+                            )
+                        },
                         modifier = Modifier
                             .weight(0.5f)
                             .padding(6.dp)
@@ -94,7 +102,7 @@ fun UnitContent(
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_baseline_menu_book_24),
-                            contentDescription = "Localized description",
+                            contentDescription = "Book icon",
                             modifier = Modifier.size(25.dp)
                         )
                         Spacer(Modifier.size(ButtonDefaults.IconSpacing))

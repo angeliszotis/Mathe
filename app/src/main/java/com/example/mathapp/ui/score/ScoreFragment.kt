@@ -12,19 +12,19 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-    class ScoreFragment : BaseFragment<FragmentNavBinding>() {
-        val viewModel: ScoreViewModel by viewModels()
-        private val navController: NavController by lazy { findNavController() }
+class ScoreFragment : BaseFragment<FragmentNavBinding>() {
+    val viewModel: ScoreViewModel by viewModels()
+    private val navController: NavController by lazy { findNavController() }
 
 
     override fun getViewBinding(): FragmentNavBinding =
-            FragmentNavBinding.inflate(layoutInflater)
+        FragmentNavBinding.inflate(layoutInflater)
 
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
-            binding.composeView.setContent {
-                //ScoreExternalScreen(viewModel)
-                ScoreScreen(viewModel = viewModel, navController = navController )
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.composeView.setContent {
+            //ScoreExternalScreen(viewModel)
+            ScoreScreen(viewModel = viewModel, navController = navController)
         }
     }
+}

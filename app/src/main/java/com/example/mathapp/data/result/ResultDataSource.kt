@@ -4,5 +4,5 @@ import com.example.mathapp.framework.result.model.ResultModel
 
 
 interface ResultDataSource {
-     suspend fun insertResult(result: ResultModel )
+    suspend fun insertResult(result: ResultModel)
 }

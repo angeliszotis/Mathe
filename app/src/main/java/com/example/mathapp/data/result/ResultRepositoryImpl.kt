@@ -6,9 +6,8 @@ import javax.inject.Inject
 
 class ResultRepositoryImpl @Inject constructor(
     private val resultDataSource: ResultDataSource
-):ResultRepository
-{
-    suspend override fun insertResult(results : ResultModel)  {
+) : ResultRepository {
+    override suspend fun insertResult(results: ResultModel) {
         return resultDataSource.insertResult(results)
     }
 }

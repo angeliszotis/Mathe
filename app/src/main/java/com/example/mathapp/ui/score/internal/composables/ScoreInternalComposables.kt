@@ -36,48 +36,51 @@ import com.example.mathapp.ui.theme.BabyBluePurple3
 fun ScoreInternalScreen(viewModel: ScoreViewModel) {
     val scoreList by viewModel.readAllData.observeAsState()
     val expandedItemIndex = remember { mutableStateOf(-1) }
-Column(modifier = Modifier
-    .fillMaxSize()
-    .background(BabyBluePurple3)
-    .padding(16.dp)) {
-    LazyColumn(
-        modifier = Modifier.fillMaxWidth()
-
-            .background(
-                BabyBluePurple2,
-                RoundedCornerShape(
-                    bottomEnd = 80.dp,
-                    topStart = 80.dp,
-                    topEnd = 20.dp,
-                    bottomStart = 20.dp
-                )
-            )
-            .clip(RectangleShape)
-            .padding(vertical = 25.dp), verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(BabyBluePurple3)
+            .padding(16.dp)
     ) {
-        item {
-            Text(
-                text = "Τοπικά Σκορ",
-                style = MaterialTheme.typography.h5,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
-        }
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxWidth()
 
-        scoreList?.let { list ->
-            itemsIndexed(list) { index, item ->
-                if (index == expandedItemIndex.value) {
-                    ScoreListItemExpanded(item)
-                } else {
-                    ScoreListItemCollapsed(item) {
-                        expandedItemIndex.value = index
+                .background(
+                    BabyBluePurple2,
+                    RoundedCornerShape(
+                        bottomEnd = 80.dp,
+                        topStart = 80.dp,
+                        topEnd = 20.dp,
+                        bottomStart = 20.dp
+                    )
+                )
+                .clip(RectangleShape)
+                .padding(vertical = 25.dp), verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            item {
+                Text(
+                    text = "Τοπικά Σκορ",
+                    style = MaterialTheme.typography.h5,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+            }
+
+            scoreList?.let { list ->
+                itemsIndexed(list) { index, item ->
+                    if (index == expandedItemIndex.value) {
+                        ScoreListItemExpanded(item)
+                    } else {
+                        ScoreListItemCollapsed(item) {
+                            expandedItemIndex.value = index
+                        }
                     }
+                    Divider(modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
                 }
-                Divider(modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
             }
         }
     }
-}
 }
 
 @Composable

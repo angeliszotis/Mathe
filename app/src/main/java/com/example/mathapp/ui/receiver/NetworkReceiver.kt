@@ -11,10 +11,15 @@ class NetworkReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
 
-        val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
         val isConnected: Boolean = activeNetwork?.isConnected == true
 
-        Toast.makeText(context,if (isConnected) "Έχεις Ιντερνετ" else "Δεν Υπαρχει συνδεση στο Διαδικτιο", Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            context,
+            if (isConnected) "Έχεις Ιντερνετ" else "Δεν Υπαρχει συνδεση στο Διαδικτιο",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }

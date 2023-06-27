@@ -8,7 +8,7 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class ResultDataSourceImpl @Inject constructor(
-private val firestore : FirebaseFirestore
+    private val firestore: FirebaseFirestore
 ) : ResultDataSource {
 
     override suspend fun insertResult(result: ResultModel) {
@@ -21,8 +21,8 @@ private val firestore : FirebaseFirestore
          */
 
         firestore.collection("score").add(result).addOnSuccessListener { documentReference ->
-                Log.d("Yoda", "Document inserted with ID: ${documentReference.id}")
-            }
+            Log.d("Yoda", "Document inserted with ID: ${documentReference.id}")
+        }
             .addOnFailureListener { e ->
                 Log.w("Yoda", "Error inserting document", e)
             }

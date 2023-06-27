@@ -9,9 +9,10 @@ import javax.inject.Inject
 
 
 class QuestionRepositoryImpl @Inject constructor() : QuestionRepository {
-    override  fun getQuestion(): List<QuestionModel> {
+    override fun getQuestion(): List<QuestionModel> {
         val context = MathAppApplication.instance.applicationContext
-        val jsonString = context.resources.openRawResource(R.raw.questions).bufferedReader().use { it.readText() }
+        val jsonString = context.resources.openRawResource(R.raw.questions).bufferedReader()
+            .use { it.readText() }
         return Gson().fromJson(jsonString, Array<QuestionModel>::class.java).toList()
     }
 }

@@ -30,13 +30,15 @@ class ScoreViewModel @Inject constructor(
         fetchScore()
         getUser()
     }
+
     private fun fetchScore() {
         viewModelScope.launch {
             try {
                 val result = getScoreExternalUseCase?.invoke()
                 if (result != null) {
-                    _score.value =   result.sortedWith(compareByDescending<ResultModel> { it.corect.toInt() }
-                        .thenBy { it.time.toInt() })
+                    _score.value =
+                        result.sortedWith(compareByDescending<ResultModel> { it.corect.toInt() }
+                            .thenBy { it.time.toInt() })
                 }
                 //result ?: emptyList()
             } catch (e: Exception) {

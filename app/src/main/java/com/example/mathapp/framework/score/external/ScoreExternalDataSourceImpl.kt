@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 
 class ScoreExternalDataSourceImpl @Inject constructor(
-    private val firestore : FirebaseFirestore
+    private val firestore: FirebaseFirestore
 ) : ScoreExternalDataSource {
 
     override suspend fun getScore(): List<ResultModel> {
@@ -18,10 +18,17 @@ class ScoreExternalDataSourceImpl @Inject constructor(
             val name = document.getString("name") ?: ""
             val surname = document.getString("surname") ?: ""
             val school = document.getString("school") ?: ""
-            val corect = document.getString("corect")?: ""
-            val incorect = document.getString("incorect")?: ""
-            val time = document.getString("time")?: ""
-            val userModel =  ResultModel(name = name, surname = surname, school = school, corect = corect , incorect = incorect , time = time)
+            val corect = document.getString("corect") ?: ""
+            val incorect = document.getString("incorect") ?: ""
+            val time = document.getString("time") ?: ""
+            val userModel = ResultModel(
+                name = name,
+                surname = surname,
+                school = school,
+                corect = corect,
+                incorect = incorect,
+                time = time
+            )
             userModels.add(userModel)
         }
         return userModels

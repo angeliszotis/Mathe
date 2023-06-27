@@ -5,9 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.mathapp.framework.db.dao.resultDao
-import com.example.mathapp.framework.users.model.UserEntity
 import com.example.mathapp.framework.db.dao.userDao
 import com.example.mathapp.framework.result.model.ResultEntity
+import com.example.mathapp.framework.users.model.UserEntity
 
 @Database(entities = [UserEntity::class, ResultEntity::class], version = 2)
 abstract class RoomDb : RoomDatabase() {

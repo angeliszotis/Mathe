@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -35,13 +34,9 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
-import com.airbnb.lottie.compose.LottieAnimation
-import com.airbnb.lottie.compose.LottieClipSpec
-import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.LottieConstants
-import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.mathapp.R
 import com.example.mathapp.framework.users.model.UserEntity
+import com.example.mathapp.ui.composable.LottieLoader.LottieLoader
 import com.example.mathapp.ui.profile.ProfileViewModel
 import com.example.mathapp.ui.profile.setUDM
 import com.example.mathapp.ui.theme.BabyBluePurple2
@@ -68,7 +63,13 @@ fun ProfileScreen(viewModel: ProfileViewModel, onGoBack: () -> Unit) {
     ) {
 
         if (dt == emptyList<UserEntity>()) {
-            TextFieldsForProfile(viewModel, textName = "", textSurname = "", textSchool = "",onGoBack = onGoBack)
+            TextFieldsForProfile(
+                viewModel,
+                textName = "",
+                textSurname = "",
+                textSchool = "",
+                onGoBack = onGoBack
+            )
         } else {
             list = dt
 
@@ -121,7 +122,7 @@ fun TextFieldsForProfile(
             )
     )
     {
-        Loader(BASE_URL_LOTTIE_PROFILE_lf20_START, false)
+        LottieLoader(BASE_URL_LOTTIE_PROFILE_lf20_START, false)
         Text(
             modifier = Modifier
                 .fillMaxWidth(0.9f)
@@ -153,7 +154,12 @@ fun TextFieldsForProfile(
 
         OutlinedTextField(
             value = name,
-            label = { Text(text = stringResource(id = R.string.name), fontWeight = FontWeight.Bold) },
+            label = {
+                Text(
+                    text = stringResource(id = R.string.name),
+                    fontWeight = FontWeight.Bold
+                )
+            },
             onValueChange = { value ->
                 if (isValidInput(value.text)) {
                     name = value
@@ -166,7 +172,12 @@ fun TextFieldsForProfile(
 
         OutlinedTextField(
             value = surname,
-            label = { Text(text = stringResource(id = R.string.surname), fontWeight = FontWeight.Bold) },
+            label = {
+                Text(
+                    text = stringResource(id = R.string.surname),
+                    fontWeight = FontWeight.Bold
+                )
+            },
             onValueChange = { value ->
                 if (isValidInput(value.text)) {
                     surname = value
@@ -179,7 +190,12 @@ fun TextFieldsForProfile(
 
         OutlinedTextField(
             value = school,
-            label = { Text(text = stringResource(id = R.string.school), fontWeight = FontWeight.Bold) },
+            label = {
+                Text(
+                    text = stringResource(id = R.string.school),
+                    fontWeight = FontWeight.Bold
+                )
+            },
             onValueChange = { value ->
                 if (isValidInput(value.text)) {
                     school = value
@@ -190,7 +206,9 @@ fun TextFieldsForProfile(
         )
 
         Spacer(modifier = Modifier.size(30.dp))
-        Row(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)) {
             Button(
                 modifier = Modifier
                     .weight(0.5f)
@@ -201,7 +219,11 @@ fun TextFieldsForProfile(
                     school = TextFieldValue("")
                 }
             ) {
-                Text(overflow = TextOverflow.Ellipsis ,maxLines = 1,text = stringResource(id = R.string.clear))
+                Text(
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1,
+                    text = stringResource(id = R.string.clear)
+                )
             }
 
             Button(
@@ -209,7 +231,7 @@ fun TextFieldsForProfile(
                     .weight(0.5f)
                     .padding(SpacingCustom_6dp),
                 onClick = {
-                    if( name.text.isNotEmpty() &&
+                    if (name.text.isNotEmpty() &&
                         surname.text.isNotEmpty() &&
                         school.text.isNotEmpty()
                     ) {
@@ -219,11 +241,10 @@ fun TextFieldsForProfile(
                             surname.text,
                             school.text
                         )
-                        showToast(context,message = R.string.toast_valid_save)
+                        showToast(context, message = R.string.toast_valid_save)
                         onGoBack.invoke()
-                    }
-                    else {
-                        showToast(context,message = R.string.toast_non_valid_fill_textfield)
+                    } else {
+                        showToast(context, message = R.string.toast_non_valid_fill_textfield)
                     }
                 }) {
                 Text(text = stringResource(id = R.string.save))
@@ -232,37 +253,14 @@ fun TextFieldsForProfile(
 
         Spacer(modifier = Modifier.size(30.dp))
 
-        Loader(BASE_URL_LOTTIE_PROFILE_lf20_END, true)
-    }
-}
-
-@Composable
-fun Loader(link: String, clip: Boolean) {
-    val composition by rememberLottieComposition(LottieCompositionSpec.Url(link))
-
-    if (clip) {
-        LottieAnimation(
-            composition = composition,
-            iterations = LottieConstants.IterateForever,
-            clipSpec = LottieClipSpec.Progress(0f, 1f),
-            modifier = Modifier.aspectRatio(1f),
-            speed = 0.7f
-        )
-    } else {
-        LottieAnimation(
-            composition = composition,
-            clipSpec = LottieClipSpec.Progress(0f, 1f),
-
-            modifier = Modifier
-                .size(100.dp)
-                .clip(RoundedCornerShape(16.dp)),
-        )
+        LottieLoader(BASE_URL_LOTTIE_PROFILE_lf20_END, true)
     }
 }
 
 fun showToast(context: Context, message: Int) {
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }
+
 fun isValidInput(text: String): Boolean {
     // Remove leading and trailing whitespaces
     val trimmedText = text.trim()

@@ -15,11 +15,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.airbnb.lottie.compose.LottieAnimation
@@ -27,24 +31,48 @@ import com.airbnb.lottie.compose.LottieClipSpec
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.example.mathapp.R
 import com.example.mathapp.ui.score.ScoreViewModel
 import com.example.mathapp.ui.theme.BabyBluePurple3
+import com.example.mathapp.ui.theme.BabyBluePurple5
 import com.example.mathapp.ui.theme.FbColor
+import com.example.mathapp.ui.theme.SpacingCustom_28dp
+import com.example.mathapp.ui.theme.SpacingDefault_16dp
+import com.example.mathapp.util.BASE_URL_LOTTIE_SCORE_lf20_END
+import com.example.mathapp.util.BASE_URL_LOTTIE_SCORE_lf20_START
 import com.example.mathapp.util.NavButtonItems
 
 @Composable
 fun ScoreScreen(viewModel: ScoreViewModel, navController: NavController) {
-    val composition by rememberLottieComposition(LottieCompositionSpec.Url("https://assets4.lottiefiles.com/packages/lf20_bq0iyadj.json"))
-    val composition2 by rememberLottieComposition(LottieCompositionSpec.Url("https://assets3.lottiefiles.com/packages/lf20_si7bhkv8.json"))
+    val lottieStart by rememberLottieComposition(LottieCompositionSpec.Url(url = BASE_URL_LOTTIE_SCORE_lf20_START))
+    val lottieEnd by rememberLottieComposition(LottieCompositionSpec.Url(url = BASE_URL_LOTTIE_SCORE_lf20_END))
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(BabyBluePurple3)
             .padding(16.dp),
-    verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        //verticalArrangement = Arrangement.Center,
+        //horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                maxLines = 1,
+                text = stringResource(id = R.string.score),
+                color = BabyBluePurple5,
+                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.displayLarge,
+                fontFamily = FontFamily.Cursive,
+                modifier = Modifier.padding(
+                    vertical = SpacingCustom_28dp,
+                    horizontal = SpacingDefault_16dp
+                )
+            )
+        }
         Spacer(modifier = Modifier.width(16.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -61,27 +89,33 @@ fun ScoreScreen(viewModel: ScoreViewModel, navController: NavController) {
                 ),
                 contentPadding = PaddingValues(8.dp)
             ) {
-                Text(color = Color.White, text = "Τοπίκα Σκορ")
+                Text(color = Color.White, text = stringResource(id = R.string.score_internal))
             }
             LottieAnimation(
-                    composition = composition,
-            iterations = LottieConstants.IterateForever,
-            clipSpec = LottieClipSpec.Progress(0.1f, 0.70f),
-            modifier = Modifier.aspectRatio(1f).weight(0.5f),
+                composition = lottieStart,
+                iterations = LottieConstants.IterateForever,
+                clipSpec = LottieClipSpec.Progress(0.1f, 0.70f),
+                modifier = Modifier
+                    .aspectRatio(1f)
+                    .weight(0.5f),
             )
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
         Row(
-            modifier = Modifier.fillMaxWidth().padding(16.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
             horizontalArrangement = Arrangement.Start
         ) {
             LottieAnimation(
-                composition = composition2,
+                composition = lottieEnd,
                 iterations = LottieConstants.IterateForever,
                 clipSpec = LottieClipSpec.Progress(0.1f, 0.70f),
-                modifier = Modifier.aspectRatio(1f).weight(0.5f),
+                modifier = Modifier
+                    .aspectRatio(1f)
+                    .weight(0.5f),
             )
             Button(
                 onClick = { navController.navigate(NavButtonItems.ScoreExternal.destination) },
@@ -94,14 +128,8 @@ fun ScoreScreen(viewModel: ScoreViewModel, navController: NavController) {
                 ),
                 contentPadding = PaddingValues(8.dp)
             ) {
-                Text(color = Color.White,text = "Δημόσια Σκορ")
+                Text(color = Color.White, text = stringResource(id = R.string.score_external))
             }
         }
     }
-}
-
-@Composable
-fun Loader2(link: String) {
-
-
 }

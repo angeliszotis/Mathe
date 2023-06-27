@@ -62,7 +62,8 @@ class ExamViewModel @Inject constructor(
             if (user != null) {
                 if (user.name.isNotEmpty()) {
                     try {
-                        userInternalMap(user, result).let {resultInternalUseCase.invoke(it)
+                        userInternalMap(user, result).let {
+                            resultInternalUseCase.invoke(it)
                         }
                     } catch (e: Exception) {
                         Log.e("YODA", e.toString())
@@ -72,23 +73,23 @@ class ExamViewModel @Inject constructor(
         }
     }
 
-    private fun userMap(userEntity: UserEntity,result: ResultAnswerModel): ResultModel {
+    private fun userMap(userEntity: UserEntity, result: ResultAnswerModel): ResultModel {
         return ResultModel(
             name = userEntity.name,
             surname = userEntity.surname,
             school = userEntity.school,
-             corect = result.corect.toString() ,
-             incorect = result.incorect.toString(),
-             time = result.time.toString()
+            corect = result.corect.toString(),
+            incorect = result.incorect.toString(),
+            time = result.time.toString()
         )
     }
 
-    private fun userInternalMap(userEntity: UserEntity,result: ResultAnswerModel): ResultEntity {
+    private fun userInternalMap(userEntity: UserEntity, result: ResultAnswerModel): ResultEntity {
         return ResultEntity(
             name = userEntity.name,
             surname = userEntity.surname,
             school = userEntity.school,
-            correct = result.corect.toString() ,
+            correct = result.corect.toString(),
             incorrect = result.incorect.toString(),
             time = result.time.toString()
         )

@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class UserDataSourceImpl @Inject constructor(
-private val db: RoomDb
+    private val db: RoomDb
 ) : UserDataSource {
     override suspend fun insertUsers(user: UserEntity) {
         db.quizDao().insertData(user)
