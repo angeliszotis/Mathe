@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mathapp.framework.exam.model.QuestionModel
 import com.example.mathapp.ui.exam.ExamViewModel
-import com.example.mathapp.ui.result.ResultScreen
+import com.example.mathapp.ui.exam.result.composables.ResultScreen
 import com.example.mathapp.ui.theme.BabyBluePurple1
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3

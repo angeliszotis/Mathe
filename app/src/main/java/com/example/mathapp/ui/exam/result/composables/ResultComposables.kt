@@ -1,4 +1,4 @@
-package com.example.mathapp.ui.result
+package com.example.mathapp.ui.exam.result.composables
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,14 +18,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.mathapp.R
 import com.example.mathapp.framework.result.model.ResultAnswerModel
+import com.example.mathapp.ui.composable.LottieLoader.LottieLoaderResult
 import com.example.mathapp.ui.exam.ExamViewModel
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.FbColor
 import com.example.mathapp.ui.theme.SpacingCustom_6dp
+import com.example.mathapp.util.BASE_URL_LOTTIE_RESULTS_lf20_END
 
 @Composable
 fun ResultScreen(
@@ -35,16 +39,16 @@ fun ResultScreen(
     viewModel: ExamViewModel
 ) {
 
-    // val viewModel : ResultViewModel = viewModel()
     val numIncorrectAnswers = totalQuestions - numCorrectAnswers
     val resultText = if (numCorrectAnswers == totalQuestions) {
-        "Perfect Score!"
+        stringResource(id = R.string.perfect_score)
     } else {
-        "Πετυχες $numCorrectAnswers απο τις $totalQuestions σωστές ερωτησεις"
+        stringResource(id = R.string.perfect_score, numCorrectAnswers, totalQuestions)
     }
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .padding(16.dp)
             .background(
                 BabyBluePurple2,
                 RoundedCornerShape(
@@ -55,30 +59,26 @@ fun ResultScreen(
                 )
             )
             .clip(RectangleShape)
-            .padding(vertical = 25.dp), verticalArrangement = Arrangement.Top,
+            .padding(vertical = 25.dp, horizontal = 16.dp), verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Quiz Ολοκληρώθηκε!", fontSize = 24.sp, fontWeight = FontWeight.Bold)
+        Text(text = stringResource(id = R.string.complete), fontSize = 24.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(16.dp))
         Text(text = resultText, fontSize = 18.sp)
         Spacer(modifier = Modifier.height(16.dp))
         Column {
-            Text(text = "Σωστές: $numCorrectAnswers", fontSize = 18.sp)
+            Text(text = stringResource(id = R.string.correct, numCorrectAnswers) , fontSize = 18.sp)
             Spacer(modifier = Modifier.width(16.dp))
-            Text(text = "Λάθος: $numIncorrectAnswers", fontSize = 18.sp)
+            Text(text = stringResource(id = R.string.incorrect, numIncorrectAnswers), fontSize = 18.sp)
             Spacer(modifier = Modifier.width(16.dp))
-            Text(text = "Χρόνος: $remainingTime", fontSize = 18.sp)
+            Text(text = stringResource(id = R.string.time, remainingTime), fontSize = 18.sp)
         }
     }
     Row(
-        modifier = Modifier
-            .padding(16.dp)
-            .fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
+        modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center
     ) {
         Text(
-            modifier = Modifier.fillMaxWidth(),
-            text = "Αποθήκευση"
+            text = stringResource(id = R.string.save),fontWeight = FontWeight.Bold
         )
     }
 
@@ -98,7 +98,7 @@ fun ResultScreen(
                     )
                 )
             }) {
-            Text(color = Color.White, text = "Δημόσιο Σκορ")
+            Text(color = Color.White, text = stringResource(id = R.string.score_external))
         }
         Button(modifier = Modifier
             .weight(0.5f)
@@ -114,9 +114,14 @@ fun ResultScreen(
                     )
                 )
             }) {
-            Text(color = Color.White, text = "Τοπίκο Σκορ")
+            Text(color = Color.White, text = stringResource(id = R.string.score_internal))
         }
     }
-
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        LottieLoaderResult(link = BASE_URL_LOTTIE_RESULTS_lf20_END)
+    }
 
 }

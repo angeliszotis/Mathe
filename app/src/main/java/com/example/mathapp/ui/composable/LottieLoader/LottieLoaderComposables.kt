@@ -51,10 +51,20 @@ fun LottieLoader(link: String, clip: Boolean) {
         LottieAnimation(
             composition = composition,
             clipSpec = LottieClipSpec.Progress(0f, 1f),
-
             modifier = Modifier
                 .size(100.dp)
                 .clip(RoundedCornerShape(16.dp)),
         )
     }
+}
+
+@Composable
+fun LottieLoaderResult(link: String) {
+    val composition by rememberLottieComposition(LottieCompositionSpec.Url(link))
+
+    LottieAnimation(
+        composition = composition,
+        clipSpec = LottieClipSpec.Progress(0.1f, 1f),
+        modifier = Modifier.aspectRatio(1f),
+    )
 }

@@ -3,21 +3,17 @@ package com.example.mathapp.util
 import com.example.mathapp.R
 import com.example.mathapp.framework.theory.model.UnitModel
 
-const val BASE_URL_LOTTIE_PROFILE_lf20_START =
-    "https://assets10.lottiefiles.com/packages/lf20_n1wgeaxb.json"
-const val BASE_URL_LOTTIE_PROFILE_lf20_END =
-    "https://assets10.lottiefiles.com/packages/lf20_xyadoh9h.json"
+const val BASE_URL_LOTTIE_PROFILE_lf20_START = "https://assets10.lottiefiles.com/packages/lf20_n1wgeaxb.json"
+const val BASE_URL_LOTTIE_PROFILE_lf20_END = "https://assets10.lottiefiles.com/packages/lf20_xyadoh9h.json"
 
-const val BASE_URL_LOTTIE_THEORY_lf20_START =
-    "https://assets6.lottiefiles.com/packages/lf20_zunhpwue.json"
+const val BASE_URL_LOTTIE_THEORY_lf20_START = "https://assets6.lottiefiles.com/packages/lf20_zunhpwue.json"
 
-const val BASE_URL_LOTTIE_DASHBOARD_lf20_END =
-    "https://assets5.lottiefiles.com/packages/lf20_YrdJ2K8cQY.json"
+const val BASE_URL_LOTTIE_DASHBOARD_lf20_END = "https://assets5.lottiefiles.com/packages/lf20_YrdJ2K8cQY.json"
 
-const val BASE_URL_LOTTIE_SCORE_lf20_START =
-    "https://assets4.lottiefiles.com/packages/lf20_bq0iyadj.json"
-const val BASE_URL_LOTTIE_SCORE_lf20_END =
-    "https://assets3.lottiefiles.com/packages/lf20_si7bhkv8.json"
+const val BASE_URL_LOTTIE_SCORE_lf20_START = "https://assets4.lottiefiles.com/packages/lf20_bq0iyadj.json"
+const val BASE_URL_LOTTIE_SCORE_lf20_END = "https://assets3.lottiefiles.com/packages/lf20_si7bhkv8.json"
+
+const val BASE_URL_LOTTIE_RESULTS_lf20_END = "https://assets4.lottiefiles.com/packages/lf20_kfl4ksd9.json"
 
 val units = listOf(
     UnitModel(

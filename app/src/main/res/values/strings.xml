@@ -45,4 +45,13 @@
     <string name="score_internal">Τοπικά</string>
     <string name="score_external">Eθνικά</string>
 
+    <!--Score-->
+
+    <string name="perfect_score">%1\$d απο %2\$d σωστές απαντήσεις</string>
+    <string name="correct">Σωστές: %1\$d</string>
+    <string name="incorrect">Λάθος: %1\$d</string>
+    <string name="time">Χρόνος: %1\$d</string>
+    <string name="complete">Ολοκληρώθηκε!</string>
+
+
 </resources>
