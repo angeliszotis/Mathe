@@ -25,8 +25,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.mathapp.R
 import com.example.mathapp.framework.result.model.ResultEntity
 import com.example.mathapp.ui.score.ScoreViewModel
 import com.example.mathapp.ui.theme.BabyBluePurple2
@@ -61,9 +63,10 @@ fun ScoreInternalScreen(viewModel: ScoreViewModel) {
         ) {
             item {
                 Text(
-                    text = "Τοπικά Σκορ",
+                    modifier = Modifier.padding(bottom = 24.dp) ,
+                    text = stringResource(id = R.string.score_internal) +" "+ stringResource(id = R.string.score),
                     style = MaterialTheme.typography.h5,
-                    modifier = Modifier.padding(bottom = 8.dp)
+                    fontWeight = FontWeight.Bold
                 )
             }
 
@@ -87,12 +90,12 @@ fun ScoreInternalScreen(viewModel: ScoreViewModel) {
 fun ScoreListItemCollapsed(item: ResultEntity, onClick: () -> Unit) {
     Row(Modifier.clickable { onClick() }) {
         Text(
-            text = "Όνομα: ${item.name}",
+            text =  stringResource(id = R.string.score_name, item.name),
             style = MaterialTheme.typography.body1,
             fontWeight = FontWeight.Bold
         )
         Spacer(modifier = Modifier.width(8.dp))
-        Text(text = "Επίθετο: ${item.surname}", style = MaterialTheme.typography.body1)
+        Text(text = stringResource(id = R.string.score_surname, item.surname), style = MaterialTheme.typography.body1)
     }
 }
 
@@ -100,9 +103,9 @@ fun ScoreListItemCollapsed(item: ResultEntity, onClick: () -> Unit) {
 fun ScoreListItemExpanded(item: ResultEntity) {
     Column {
         ScoreListItemCollapsed(item) {}
-        Text(text = "School: ${item.school}", style = MaterialTheme.typography.body1)
-        Text(text = "Correct: ${item.correct}", style = MaterialTheme.typography.body1)
-        Text(text = "Incorrect: ${item.incorrect}", style = MaterialTheme.typography.body1)
-        Text(text = "Time: ${item.time}", style = MaterialTheme.typography.body1)
+        Text(text = stringResource(id = R.string.score_school, item.school), style = MaterialTheme.typography.body1)
+        Text(text = stringResource(id = R.string.score_correct, item.correct), style = MaterialTheme.typography.body1)
+        Text(text = stringResource(id = R.string.score_incorrect, item.incorrect), style = MaterialTheme.typography.body1)
+        Text(text = stringResource(id = R.string.score_time, item.time), style = MaterialTheme.typography.body1)
     }
 }

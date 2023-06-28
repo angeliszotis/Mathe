@@ -53,5 +53,14 @@
     <string name="time">Χρόνος: %1\$d</string>
     <string name="complete">Ολοκληρώθηκε!</string>
 
+    <!--Score_Internal-->
+    <!--Score_External-->
+    <string name="score_name">Όνομα: %s</string>
+    <string name="score_surname">Επίθετο: %s</string>
+    <string name="score_school">Σχολείο: %s</string>
+    <string name="score_correct">Σωστές: %s</string>
+    <string name="score_incorrect">Λάθος: %s</string>
+    <string name="score_time">Χρόνος: %s</string>
+
 
 </resources>
