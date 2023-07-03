@@ -1,7 +1,5 @@
 package com.example.mathapp.ui.profile.composable
 
-import android.content.Context
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,9 +12,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.OutlinedTextField
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -26,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -33,7 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.em
+import androidx.compose.ui.unit.sp
 import com.example.mathapp.R
 import com.example.mathapp.framework.users.model.UserEntity
 import com.example.mathapp.ui.composable.LottieLoader.LottieLoader
@@ -41,10 +41,12 @@ import com.example.mathapp.ui.profile.ProfileViewModel
 import com.example.mathapp.ui.profile.setUDM
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
+import com.example.mathapp.ui.theme.FbColor
 import com.example.mathapp.ui.theme.SpacingCustom_6dp
 import com.example.mathapp.util.BASE_URL_LOTTIE_PROFILE_lf20_END
 import com.example.mathapp.util.BASE_URL_LOTTIE_PROFILE_lf20_START
-
+import com.example.mathapp.util.isValidInput
+import com.example.mathapp.util.showToast
 
 @Composable
 fun ProfileScreen(viewModel: ProfileViewModel, onGoBack: () -> Unit) {
@@ -56,8 +58,8 @@ fun ProfileScreen(viewModel: ProfileViewModel, onGoBack: () -> Unit) {
         modifier = Modifier
             .fillMaxSize()
             .background(BabyBluePurple3)
-            .padding(horizontal = 5.dp, vertical = 10.dp)
-            .verticalScroll(rememberScrollState()),
+            .verticalScroll(rememberScrollState())
+            .padding(horizontal = 16.dp, vertical = 10.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -119,24 +121,25 @@ fun TextFieldsForProfile(
                     topEnd = 20.dp,
                     bottomStart = 20.dp
                 )
-            )
+            ),
+        verticalAlignment = Alignment.CenterVertically
     )
     {
         LottieLoader(BASE_URL_LOTTIE_PROFILE_lf20_START, false)
         Text(
             modifier = Modifier
                 .fillMaxWidth(0.9f)
-                .weight(0.5f)
+                .weight(0.7f)
                 .padding(20.dp),
             fontWeight = FontWeight.Bold,
-            fontSize = 5.em,
+            fontSize = 20.sp,
             text = " ${name.text} ${surname.text}",
             maxLines = 2,
         )
     }
     Column(
         modifier = Modifier
-            .padding(vertical = 25.dp)
+            .padding(vertical = 16.dp)
             .fillMaxWidth()
             .background(
                 BabyBluePurple2,
@@ -208,11 +211,14 @@ fun TextFieldsForProfile(
         Spacer(modifier = Modifier.size(30.dp))
         Row(modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)) {
+            .padding(horizontal = 16.dp)) {
             Button(
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(SpacingCustom_6dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = FbColor
+                ),
                 onClick = {
                     name = TextFieldValue("")
                     surname = TextFieldValue("")
@@ -222,7 +228,9 @@ fun TextFieldsForProfile(
                 Text(
                     overflow = TextOverflow.Ellipsis,
                     maxLines = 1,
-                    text = stringResource(id = R.string.clear)
+                    text = stringResource(id = R.string.clear),
+                    fontSize = 10.sp,
+                    color = Color.White
                 )
             }
 
@@ -230,6 +238,9 @@ fun TextFieldsForProfile(
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(SpacingCustom_6dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = FbColor
+                ),
                 onClick = {
                     if (name.text.isNotEmpty() &&
                         surname.text.isNotEmpty() &&
@@ -247,24 +258,13 @@ fun TextFieldsForProfile(
                         showToast(context, message = R.string.toast_non_valid_fill_textfield)
                     }
                 }) {
-                Text(text = stringResource(id = R.string.save))
+                Text(text = stringResource(id = R.string.save),  fontSize = 10.sp,maxLines = 1, color = Color.White)
             }
         }
+        Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)) {
+            LottieLoader(BASE_URL_LOTTIE_PROFILE_lf20_END, true)
 
-        Spacer(modifier = Modifier.size(30.dp))
-
-        LottieLoader(BASE_URL_LOTTIE_PROFILE_lf20_END, true)
+        }
     }
 }
 
-fun showToast(context: Context, message: Int) {
-    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-}
-
-fun isValidInput(text: String): Boolean {
-    // Remove leading and trailing whitespaces
-    val trimmedText = text.trim()
-
-    // Check if the trimmed text is empty
-    return trimmedText.isNotEmpty()
-}

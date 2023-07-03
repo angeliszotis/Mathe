@@ -10,25 +10,22 @@
         android:name="com.example.mathapp.ui.dashboard.LobbyFragment"
         tools:layout="@layout/fragment_nav">
         <action
-            android:id="@+id/action_home_to_theory"
-            app:destination="@id/fragmentTheory" />
-        <action
             android:id="@+id/action_home_to_profile"
             app:destination="@id/fragmentProfile" />
-        <action
-            android:id="@+id/action_home_to_exam"
-            app:destination="@id/fragmentExam" />
         <action
             android:id="@+id/action_home_to_info"
             app:destination="@+id/fragmentInfo"/>
         <action
             android:id="@+id/action_home_to_score"
             app:destination="@+id/fragmentScore"/>
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentExam"
+            app:destination="@id/fragmentExam" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentTheory"
+            app:destination="@id/fragmentTheory" />
     </fragment>
 
-    <fragment
-        android:id="@+id/fragmentTheory"
-        android:name="com.example.mathapp.ui.unit.UnitFragment" />
 
     <fragment
         android:id="@+id/fragmentProfile"
@@ -36,11 +33,16 @@
 
     <fragment
         android:id="@+id/fragmentExam"
-        android:name="com.example.mathapp.ui.exam.ExamFragment" />
+        android:name="com.example.mathapp.ui.exam.ExamFragment" >
+        <action
+            android:id="@+id/action_fragmentExam_to_fragmentQuiz"
+            app:destination="@id/fragmentQuiz" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragmentInfo"
         android:name="com.example.mathapp.ui.info.InfoFragment" />
+
     <fragment
         android:id="@+id/fragmentScore"
         android:name="com.example.mathapp.ui.score.ScoreFragment" >
@@ -50,6 +52,9 @@
         <action
             android:id="@+id/action_fragmentScore_to_fragmentScoreExternal"
             app:destination="@id/fragmentScoreExternal" />
+        <action
+            android:id="@+id/action_fragmentScore_to_fragmentTheory"
+            app:destination="@id/fragmentUnit" />
     </fragment>
 
     <fragment
@@ -58,6 +63,25 @@
     <fragment
         android:id="@+id/fragmentScoreExternal"
         android:name="com.example.mathapp.ui.score.external.ScoreExternalFragment"/>
+
+    <fragment
+        android:id="@+id/fragmentTheory"
+        android:name="com.example.mathapp.ui.theory.TheoryFragment">
+        <action
+            android:id="@+id/action_fragmentTheory_to_fragmentUnit"
+            app:destination="@id/fragmentUnit" />
+    </fragment>
+    <fragment
+    android:id="@+id/fragmentQuiz"
+    android:name="com.example.mathapp.ui.exam.quiz.QuizFragment"/>
+
+    <fragment
+        android:id="@+id/fragmentUnit"
+        android:name="com.example.mathapp.ui.unit.UnitFragment" >
+        <action
+            android:id="@+id/action_fragmentUnit_to_fragmentQuiz"
+            app:destination="@id/fragmentQuiz" />
+    </fragment>
 
 
 </navigation>

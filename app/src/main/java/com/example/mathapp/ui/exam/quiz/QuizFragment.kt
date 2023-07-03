@@ -1,23 +1,21 @@
-package com.example.mathapp.ui.unit
+package com.example.mathapp.ui.exam.quiz
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
-import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.example.mathapp.databinding.FragmentNavBinding
 import com.example.mathapp.ui.base.BaseFragment
-import com.example.mathapp.ui.unit.composable.UnitScreen
+import com.example.mathapp.ui.exam.ExamViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class UnitFragment : BaseFragment<FragmentNavBinding>() {
+class QuizFragment : BaseFragment<FragmentNavBinding>() {
 
-
-    val viewModel: UnitViewModel by viewModels()
+    val viewModel: ExamViewModel by viewModels()
     private val navController: NavController by lazy { findNavController() }
+
 
     override fun getViewBinding(): FragmentNavBinding =
         FragmentNavBinding.inflate(layoutInflater)
@@ -25,19 +23,7 @@ class UnitFragment : BaseFragment<FragmentNavBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
-            UnitScreen(navController = navController, exam = false)
-        }
-        setupObservers()
-    }
-
-    private fun setupObservers() {
-        with(viewModel) {
-            ldata.observe(viewLifecycleOwner, Observer(::navigate))
+            QuizScreen(viewModel)
         }
     }
-
-    private fun navigate(destination: NavDirections) {
-        findNavController().navigate(destination)
-    }
-
 }

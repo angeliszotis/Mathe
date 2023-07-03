@@ -11,13 +11,18 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -30,6 +35,7 @@ import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.FbColor
 import com.example.mathapp.ui.theme.SpacingCustom_6dp
 import com.example.mathapp.util.BASE_URL_LOTTIE_RESULTS_lf20_END
+import com.example.mathapp.util.showToast
 
 @Composable
 fun ResultScreen(
@@ -38,6 +44,15 @@ fun ResultScreen(
     remainingTime: Int,
     viewModel: ExamViewModel
 ) {
+
+    val context = LocalContext.current
+
+    val externalButtonClicked = remember { mutableStateOf(false) }
+    val internalButtonClicked = remember { mutableStateOf(false) }
+    val externalButtonEnabled = remember { derivedStateOf { !externalButtonClicked.value } }
+    val internalButtonEnabled = remember { derivedStateOf { !internalButtonClicked.value } }
+
+    val toastMessage : String? = viewModel.toastMessage.value
 
     val numIncorrectAnswers = totalQuestions - numCorrectAnswers
     val resultText = if (numCorrectAnswers == totalQuestions) {
@@ -82,46 +97,76 @@ fun ResultScreen(
         )
     }
 
+
+
     Row(modifier = Modifier.padding(vertical = 16.dp)) {
-        Button(modifier = Modifier
-            .weight(0.5f)
-            .padding(SpacingCustom_6dp),
-            colors = androidx.compose.material.ButtonDefaults.buttonColors(
-                backgroundColor = FbColor
+        Button(
+            modifier = Modifier
+                .weight(0.5f)
+                .padding(SpacingCustom_6dp),
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = if (externalButtonEnabled.value) FbColor else Color.Gray
             ),
             onClick = {
-                viewModel.insertExternalResult(
-                    ResultAnswerModel(
-                        corect = numCorrectAnswers,
-                        incorect = numIncorrectAnswers,
-                        time = remainingTime
+                if (externalButtonEnabled.value) {
+                    // Perform the button action
+                    viewModel.insertExternalResult(
+                        ResultAnswerModel(
+                            corect = numCorrectAnswers,
+                            incorect = numIncorrectAnswers,
+                            time = remainingTime
+                        )
                     )
-                )
-            }) {
-            Text(color = Color.White, text = stringResource(id = R.string.score_external))
+                    // Update the state to indicate the button has been clicked
+                    externalButtonClicked.value = true
+                }
+            },
+            enabled = externalButtonEnabled.value
+        ) {
+            Text(
+                color = Color.White,
+                text = stringResource(id = R.string.score_external)
+            )
         }
-        Button(modifier = Modifier
-            .weight(0.5f)
-            .padding(SpacingCustom_6dp),
-            colors = androidx.compose.material.ButtonDefaults.buttonColors(
-                backgroundColor = FbColor
-            ), onClick = {
-                viewModel.insertInternalResult(
-                    ResultAnswerModel(
-                        corect = numCorrectAnswers,
-                        incorect = numIncorrectAnswers,
-                        time = remainingTime
+
+        Button(
+            modifier = Modifier
+                .weight(0.5f)
+                .padding(SpacingCustom_6dp),
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = if (internalButtonEnabled.value) FbColor else Color.Gray
+            ),
+            onClick = {
+                if (internalButtonEnabled.value) {
+                    // Perform the button action
+                    viewModel.insertInternalResult(
+                        ResultAnswerModel(
+                            corect = numCorrectAnswers,
+                            incorect = numIncorrectAnswers,
+                            time = remainingTime
+                        )
                     )
-                )
-            }) {
-            Text(color = Color.White, text = stringResource(id = R.string.score_internal))
+                    internalButtonClicked.value = true
+                    toastMessage?.let { showToast(context = context, message = it) }
+
+                }
+            },
+            enabled = internalButtonEnabled.value
+        ) {
+            Text(
+                color = Color.White,
+                text = stringResource(id = R.string.score_internal)
+            )
         }
     }
+
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         LottieLoaderResult(link = BASE_URL_LOTTIE_RESULTS_lf20_END)
     }
-
 }
+
+
+

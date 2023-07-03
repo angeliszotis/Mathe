@@ -12,7 +12,6 @@
 
     <application
         android:name=".MathAppApplication"
-
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -20,6 +19,7 @@
         android:theme="@style/Theme.MathApp">
         <activity
             android:name=".ui.app.AppActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

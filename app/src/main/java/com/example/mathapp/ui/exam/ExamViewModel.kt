@@ -1,6 +1,8 @@
 package com.example.mathapp.ui.exam
 
 import android.util.Log
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mathapp.framework.exam.model.QuestionModel
@@ -27,6 +29,10 @@ class ExamViewModel @Inject constructor(
 
     private val questions = getQuestionsUseCase.invoke()
     val randomQuestions = getRandomQuestions(questions)
+
+    private val _toastMessage = mutableStateOf<String?>(null)
+    val toastMessage: State<String?> = _toastMessage
+
 
     private fun getRandomQuestions(questionModels: List<QuestionModel>): List<QuestionModel> {
         val randomQuestionModels = mutableListOf<QuestionModel>()
@@ -64,9 +70,10 @@ class ExamViewModel @Inject constructor(
                     try {
                         userInternalMap(user, result).let {
                             resultInternalUseCase.invoke(it)
+                            _toastMessage.value = "ολα γοοντ"
                         }
                     } catch (e: Exception) {
-                        Log.e("YODA", e.toString())
+                        _toastMessage.value = "οχι γοοντ"
                     }
                 }
             }

@@ -1,4 +1,4 @@
-package com.example.mathapp.ui.exam.composable
+package com.example.mathapp.ui.exam.quiz
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -40,7 +40,7 @@ import kotlinx.coroutines.delay
 private var _globalReturntime = 0
 
 @Composable
-fun ExamScreen(viewModel: ExamViewModel) {
+fun QuizScreen(viewModel: ExamViewModel) {
     val randomQuestions = viewModel.randomQuestions
 
     var currentQuestionIndex by remember { mutableStateOf(0) }
@@ -60,7 +60,7 @@ fun ExamScreen(viewModel: ExamViewModel) {
             ResultScreen(randomQuestions.size, score, _globalReturntime, viewModel)
         } else if (currentQuestionIndex < randomQuestions.size) {
             val currentQuestion = randomQuestions[currentQuestionIndex]
-            QuizScreen(
+            QuizContent(
                 questionModel = currentQuestion,
                 onNext = {
                     currentQuestionIndex++
@@ -83,7 +83,7 @@ fun ExamScreen(viewModel: ExamViewModel) {
 }
 
 @Composable
-fun QuizScreen(
+fun QuizContent(
     questionModel: QuestionModel,
     onNext: () -> Unit,
     onShowResult: () -> Unit,

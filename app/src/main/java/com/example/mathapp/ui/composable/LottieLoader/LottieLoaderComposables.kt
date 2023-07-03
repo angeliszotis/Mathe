@@ -15,11 +15,12 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 
 @Composable
-fun LottieLoader() {
-    val composition by rememberLottieComposition(LottieCompositionSpec.Url("https://assets5.lottiefiles.com/packages/lf20_YrdJ2K8cQY.json"))
+fun LottieLoader(modifier: Modifier,link: String) {
+    val composition by rememberLottieComposition(LottieCompositionSpec.Url(link))
     LottieAnimation(
+        modifier= modifier.aspectRatio(1f),
         composition = composition,
-        iterations = LottieConstants.IterateForever, modifier = Modifier.aspectRatio(1f)
+        iterations = LottieConstants.IterateForever
     )
 }
 
