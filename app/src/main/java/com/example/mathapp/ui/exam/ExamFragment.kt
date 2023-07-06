@@ -7,7 +7,6 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.mathapp.databinding.FragmentNavBinding
 import com.example.mathapp.ui.base.BaseFragment
-import com.example.mathapp.ui.unit.UnitViewModel
 import com.example.mathapp.ui.unit.composable.UnitScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,7 +23,7 @@ class ExamFragment : BaseFragment<FragmentNavBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
-            UnitScreen(navController = navController, exam = true)
+            UnitScreen(navController = navController, score = false , exam = true)
         }
     }
 }

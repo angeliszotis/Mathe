@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.mathapp.databinding.FragmentNavBinding
 import com.example.mathapp.ui.base.BaseFragment
 import com.example.mathapp.ui.unit.composable.UnitScreen
@@ -18,6 +19,7 @@ class UnitFragment : BaseFragment<FragmentNavBinding>() {
 
     val viewModel: UnitViewModel by viewModels()
     private val navController: NavController by lazy { findNavController() }
+    private val args: UnitFragmentArgs by navArgs()
 
     override fun getViewBinding(): FragmentNavBinding =
         FragmentNavBinding.inflate(layoutInflater)
@@ -25,7 +27,7 @@ class UnitFragment : BaseFragment<FragmentNavBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
-            UnitScreen(navController = navController, exam = false)
+            UnitScreen(navController = navController, exam = false, score = args.score)
         }
         setupObservers()
     }

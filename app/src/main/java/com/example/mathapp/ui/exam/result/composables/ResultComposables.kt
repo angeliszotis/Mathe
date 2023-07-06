@@ -44,7 +44,6 @@ fun ResultScreen(
     remainingTime: Int,
     viewModel: ExamViewModel
 ) {
-
     val context = LocalContext.current
 
     val externalButtonClicked = remember { mutableStateOf(false) }
@@ -167,6 +166,3 @@ fun ResultScreen(
         LottieLoaderResult(link = BASE_URL_LOTTIE_RESULTS_lf20_END)
     }
 }
-
-
-

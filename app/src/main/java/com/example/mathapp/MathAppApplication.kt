@@ -1,6 +1,7 @@
 package com.example.mathapp
 
 import android.app.Application
+import com.example.mathapp.util.SettingsManager
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
@@ -12,6 +13,7 @@ class MathAppApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        SettingsManager.initialize(applicationContext)
         instance = this
     }
 

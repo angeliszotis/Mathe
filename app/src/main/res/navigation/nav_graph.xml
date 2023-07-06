@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_fragmentExam_to_fragmentQuiz"
             app:destination="@id/fragmentQuiz" />
+        <action
+            android:id="@+id/action_fragmentExam_to_fragmentUnit"
+            app:destination="@id/fragmentUnit" />
     </fragment>
 
     <fragment
@@ -47,14 +50,15 @@
         android:id="@+id/fragmentScore"
         android:name="com.example.mathapp.ui.score.ScoreFragment" >
         <action
-            android:id="@+id/action_fragmentScore_to_fragmentScoreInternal"
-            app:destination="@id/fragmentScoreInternal" />
-        <action
             android:id="@+id/action_fragmentScore_to_fragmentScoreExternal"
             app:destination="@id/fragmentScoreExternal" />
         <action
-            android:id="@+id/action_fragmentScore_to_fragmentTheory"
-            app:destination="@id/fragmentUnit" />
+            android:id="@+id/action_fragmentScore_to_fragmentScoreInternal"
+            app:destination="@id/fragmentScoreInternal" />
+        <action
+            android:id="@+id/action_fragmentScore_to_fragmentUnit"
+            app:destination="@id/fragmentUnit"
+            />
     </fragment>
 
     <fragment
@@ -71,17 +75,24 @@
             android:id="@+id/action_fragmentTheory_to_fragmentUnit"
             app:destination="@id/fragmentUnit" />
     </fragment>
+
     <fragment
     android:id="@+id/fragmentQuiz"
-    android:name="com.example.mathapp.ui.exam.quiz.QuizFragment"/>
+    android:name="com.example.mathapp.ui.exam.quiz.QuizFragment">
+    </fragment>
 
     <fragment
         android:id="@+id/fragmentUnit"
-        android:name="com.example.mathapp.ui.unit.UnitFragment" >
+        android:name="com.example.mathapp.ui.unit.UnitFragment">
+        <argument
+            android:name="score"
+            app:argType="boolean" />
         <action
-            android:id="@+id/action_fragmentUnit_to_fragmentQuiz"
-            app:destination="@id/fragmentQuiz" />
+            android:id="@+id/action_fragmentUnit_to_fragmentScoreInternal2"
+            app:destination="@id/fragmentScoreInternal" />
+        <action
+            android:id="@+id/action_fragmentUnit_to_fragmentScoreExternal2"
+            app:destination="@id/fragmentScoreExternal" />
     </fragment>
-
 
 </navigation>

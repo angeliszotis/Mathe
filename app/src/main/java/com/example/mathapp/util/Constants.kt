@@ -2,6 +2,7 @@ package com.example.mathapp.util
 
 import com.example.mathapp.R
 import com.example.mathapp.framework.theory.model.UnitExamModel
+import com.example.mathapp.framework.theory.model.UnitScoreModel
 import com.example.mathapp.framework.theory.model.UnitTheoryModel
 
 const val BASE_URL_LOTTIE_PROFILE_lf20_START = "https://assets10.lottiefiles.com/packages/lf20_n1wgeaxb.json"
@@ -83,4 +84,33 @@ val unitsExam = listOf(
         action = NavExamItems.UnitOne,
         nameResourceId = R.string.unit_eight
     )
+)
+val unitsScore = listOf(
+    UnitScoreModel(
+        action = NavScoreItems.ScoreInternal,
+        nameResourceId = R.string.unit_one
+    ),
+    UnitScoreModel(
+        action = NavScoreItems.ScoreInternal,
+        nameResourceId = R.string.unit_one
+    ), UnitScoreModel(
+        action = NavScoreItems.ScoreInternal,
+        nameResourceId = R.string.unit_one
+    ), UnitScoreModel(
+        action = NavScoreItems.ScoreInternal,
+        nameResourceId = R.string.unit_one
+    ), UnitScoreModel(
+        action = NavScoreItems.ScoreInternal,
+        nameResourceId = R.string.unit_one
+    ), UnitScoreModel(
+        action = NavScoreItems.ScoreInternal,
+        nameResourceId = R.string.unit_one
+    ), UnitScoreModel(
+        action = NavScoreItems.ScoreInternal,
+        nameResourceId = R.string.unit_one
+    ), UnitScoreModel(
+        action = NavScoreItems.ScoreInternal,
+        nameResourceId = R.string.unit_one
+    )
+
 )

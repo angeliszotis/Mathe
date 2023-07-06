@@ -1,5 +1,6 @@
 package com.example.mathapp.ui.exam.quiz
 
+import android.media.MediaPlayer
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,10 +24,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.example.mathapp.R
 import com.example.mathapp.framework.exam.model.QuestionModel
 import com.example.mathapp.ui.exam.ExamViewModel
 import com.example.mathapp.ui.exam.result.composables.ResultScreen
@@ -40,8 +44,9 @@ import kotlinx.coroutines.delay
 private var _globalReturntime = 0
 
 @Composable
-fun QuizScreen(viewModel: ExamViewModel) {
+fun QuizScreen(viewModel: ExamViewModel, navController: NavController, isPlaying: Boolean, mediaPlayer: MediaPlayer, changeMusic: (Int) -> Unit) {
     val randomQuestions = viewModel.randomQuestions
+    val context = LocalContext.current
 
     var currentQuestionIndex by remember { mutableStateOf(0) }
     var showResult by remember { mutableStateOf(false) }
@@ -57,8 +62,10 @@ fun QuizScreen(viewModel: ExamViewModel) {
     ) {
         ProgressBar(currentQuestionIndex, randomQuestions.size)
         if (showResult) {
-            ResultScreen(randomQuestions.size, score, _globalReturntime, viewModel)
-        } else if (currentQuestionIndex < randomQuestions.size) {
+            ResultScreen(randomQuestions.size, score, _globalReturntime, viewModel = viewModel)
+            changeMusic(R.raw.complete)
+        }
+        else if (currentQuestionIndex < randomQuestions.size) {
             val currentQuestion = randomQuestions[currentQuestionIndex]
             QuizContent(
                 questionModel = currentQuestion,

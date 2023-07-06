@@ -5,6 +5,7 @@ import androidx.navigation.NavDirections
 import com.example.mathapp.ui.dashboard.LobbyFragmentDirections
 import com.example.mathapp.ui.exam.ExamFragmentDirections
 import com.example.mathapp.ui.score.ScoreFragmentDirections
+import com.example.mathapp.ui.unit.UnitFragmentDirections
 
 
 sealed class NavButtonItems(val destination: NavDirections) {
@@ -21,6 +22,13 @@ sealed class NavButtonItems(val destination: NavDirections) {
 
 sealed class NavExamItems(val destination: NavDirections){
     object UnitOne : NavExamItems(ExamFragmentDirections.actionFragmentExamToFragmentQuiz())
+
+    //data class ResultScreen() : NavExamItems(QuizFragmentDirections.actionFragmentQuizToFragmentResult( totalQuestions, numCorrectAnswers,remainingTime))
+}
+sealed class NavScoreItems(val destination: NavDirections){
+    object ScoreInternal : NavScoreItems(UnitFragmentDirections.actionFragmentUnitToFragmentScoreInternal2())
+    object ScoreExternal : NavScoreItems(UnitFragmentDirections.actionFragmentUnitToFragmentScoreExternal2())
+    object ScoreUnit : NavScoreItems(ScoreFragmentDirections.actionFragmentScoreToFragmentUnit(true))
 }
 
 data class HomeButtonsDC(

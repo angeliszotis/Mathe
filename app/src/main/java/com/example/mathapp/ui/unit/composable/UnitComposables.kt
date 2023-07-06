@@ -16,6 +16,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -37,18 +38,19 @@ import androidx.navigation.NavController
 import com.example.mathapp.R
 import com.example.mathapp.framework.theory.model.UnitTheoryModel
 import com.example.mathapp.ui.composable.LottieLoader.LottieLoader
-import com.example.mathapp.ui.theme.BabyBluePurple1
 import com.example.mathapp.ui.theme.BabyBluePurple3
+import com.example.mathapp.ui.theme.BabyBluePurple5
 import com.example.mathapp.ui.theme.FbColor
 import com.example.mathapp.ui.unit.UnitViewModel
 import com.example.mathapp.util.BASE_URL_LOTTIE_THEORY_lf20_START
 import com.example.mathapp.util.NavExamItems
+import com.example.mathapp.util.NavScoreItems
 import com.example.mathapp.util.units
 import com.example.mathapp.util.unitsExam
 
 
 @Composable
-fun UnitScreen(navController: NavController, exam : Boolean) {
+fun UnitScreen(navController: NavController, exam : Boolean, score:Boolean) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -68,18 +70,21 @@ fun UnitScreen(navController: NavController, exam : Boolean) {
                     maxLines = 2,
                     text = stringResource(id = R.string.chose_unit),
                     textAlign = TextAlign.Start,
-                    color = BabyBluePurple1,
+                    color = BabyBluePurple5,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 12.sp,
-                    fontFamily = FontFamily.Monospace,
-                )
+                    fontSize = 16.sp,
+                    fontFamily = FontFamily.Cursive,
+                    )
                 LottieLoader(modifier = Modifier.weight(0.5f), link = BASE_URL_LOTTIE_THEORY_lf20_START)
             }
         Column( modifier = Modifier.fillMaxWidth().fillMaxHeight(0.6f), horizontalAlignment = Alignment.CenterHorizontally) {
             if (exam) {
                 ExamUnits(navController = navController)
-            } else {
+            } else if(score) {
+                ScoreUnits(navController = navController)
+            } else{
                 UnitContent(units = units, buttonColor = FbColor, navController = navController)
+
             }
         }
     }
@@ -149,6 +154,40 @@ fun ExamUnits(viewModel: UnitViewModel = UnitViewModel(), navController: NavCont
                     Icon(
                         imageVector = Icons.Filled.Create,
                         contentDescription = "pencil icon",
+                        modifier = Modifier.size(25.dp)
+                    )
+                    Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                    Text(
+                        maxLines = 1,
+                        text = stringResource(id = item.nameResourceId),
+                        fontSize = 4.em
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun ScoreUnits(viewModel: UnitViewModel = UnitViewModel(), navController: NavController) {
+
+    for (unitRow in unitsExam.chunked(2)) {
+        Row(modifier = Modifier.fillMaxWidth()) {
+            for (item in unitRow) {
+                Button(
+                    onClick = {
+                        navController.navigate(NavScoreItems.ScoreInternal.destination)
+                    },
+                    modifier = Modifier
+                        .padding(6.dp)
+                        .weight(1f)
+                        .aspectRatio(1f),
+                    contentPadding = ButtonDefaults.TextButtonContentPadding,
+                    colors = ButtonDefaults.buttonColors(FbColor)
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.Star,
+                        contentDescription = "star icon",
                         modifier = Modifier.size(25.dp)
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))

@@ -40,7 +40,7 @@ import com.example.mathapp.ui.theme.SpacingCustom_28dp
 import com.example.mathapp.ui.theme.SpacingDefault_16dp
 import com.example.mathapp.util.BASE_URL_LOTTIE_SCORE_lf20_END
 import com.example.mathapp.util.BASE_URL_LOTTIE_SCORE_lf20_START
-import com.example.mathapp.util.NavButtonItems
+import com.example.mathapp.util.NavScoreItems
 
 @Composable
 fun ScoreScreen(viewModel: ScoreViewModel, navController: NavController) {
@@ -79,7 +79,7 @@ fun ScoreScreen(viewModel: ScoreViewModel, navController: NavController) {
             horizontalArrangement = Arrangement.End
         ) {
             Button(
-                onClick = { navController.navigate(NavButtonItems.ScoreInternal.destination) },
+                onClick = { navController.navigate(NavScoreItems.ScoreUnit.destination) },
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(6.dp)
@@ -118,7 +118,7 @@ fun ScoreScreen(viewModel: ScoreViewModel, navController: NavController) {
                     .weight(0.5f),
             )
             Button(
-                onClick = { navController.navigate(NavButtonItems.ScoreExternal.destination) },
+                onClick = { navController.navigate(NavScoreItems.ScoreUnit.destination) },
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(6.dp)

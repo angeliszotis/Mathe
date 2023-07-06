@@ -1,4 +1,4 @@
-package com.example.mathapp.ui.exam
+package com.example.mathapp.ui.exam.result
 
 import android.util.Log
 import androidx.compose.runtime.State
@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ExamViewModel @Inject constructor(
+class ResultViewModel @Inject constructor(
     getQuestionsUseCase: GetQuestionsUseCase,
     private val resultExternalUseCase: InsertResultUseCase,
     private val userUseCase: GetLastUserUseCase,
@@ -102,3 +102,4 @@ class ExamViewModel @Inject constructor(
         )
     }
 }
+
