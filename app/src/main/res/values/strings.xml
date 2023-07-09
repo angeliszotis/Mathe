@@ -62,5 +62,13 @@
     <string name="score_incorrect">Λάθος: %s</string>
     <string name="score_time">Χρόνος: %s</string>
 
+    <!--Info-->
+    <string name="info_welcome">Καλωσορίσατε στην Οθόνη Πληροφοριών!</string>
+    <string name="info_welcome_start">Εδώ μπορείτε να βρείτε σημαντικές πληροφορίες σχετικά με την εφαρμογή.</string>
+    <string name="info_version">Έκδοση εφαρμογής: 1.0.0</string>
+    <string name="info_developer">Προγραμματιστής: Ζώτης Άγγελης</string>
+    <string name="info_contact">Επικοινωνία: aggeliszotis@protonmail.com</string>
+
+
 
 </resources>

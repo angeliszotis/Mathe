@@ -4,8 +4,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Switch
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Info
@@ -14,11 +13,14 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import com.example.mathapp.R
 import com.example.mathapp.ui.composable.ButtonItem.ButtonItem
 import com.example.mathapp.ui.composable.LottieLoader.LottieLoader
@@ -28,17 +30,20 @@ import com.example.mathapp.util.BASE_URL_LOTTIE_DASHBOARD_lf20_END
 import com.example.mathapp.util.HomeButtonsDC
 import com.example.mathapp.util.HomeButtonsDCVector
 import com.example.mathapp.util.NavButtonItems
+import com.example.mathapp.util.SettingsManager
 
 
 @RequiresApi(Build.VERSION_CODES.N)
 @Composable
 fun HomeScreen(viewModel: LobbyViewModel) {
+    val musicEnabled = remember { mutableStateOf(SettingsManager.isMusicEnabled()) }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(BabyBluePurple2)
-            .padding(horizontal = SpacingDefault_16dp)
-            .verticalScroll(rememberScrollState()),
+            .padding(horizontal = SpacingCustom_20dp)
+            ,
         verticalArrangement = Arrangement.Center
     ) {
         Row(
@@ -53,10 +58,7 @@ fun HomeScreen(viewModel: LobbyViewModel) {
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.displayLarge,
                 fontFamily = FontFamily.Cursive,
-                modifier = Modifier.padding(
-                    vertical = SpacingCustom_28dp,
-                    horizontal = SpacingDefault_16dp
-                )
+                modifier = Modifier.padding(SpacingDefault_16dp)
             )
         }
         ButtonItem(
@@ -116,6 +118,25 @@ fun HomeScreen(viewModel: LobbyViewModel) {
                 ), viewModel
             )
         }
-        LottieLoader(link = BASE_URL_LOTTIE_DASHBOARD_lf20_END)
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+        ) {
+            Text(
+                text = "Enable Music",
+                color = BabyBluePurple5,
+                fontWeight = FontWeight.Bold,
+                style = androidx.compose.material.MaterialTheme.typography.body1,
+                modifier = Modifier.weight(1f)
+            )
+            Switch(
+                checked = musicEnabled.value,
+                onCheckedChange = { isChecked ->
+                    musicEnabled.value = isChecked
+                    SettingsManager.setMusicEnabled(isChecked)
+                },
+            )
+        }
+        LottieLoader(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp), link = BASE_URL_LOTTIE_DASHBOARD_lf20_END)
     }
 }
