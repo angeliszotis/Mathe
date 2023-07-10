@@ -74,6 +74,21 @@
     <string name="info_developer">Προγραμματιστής: Ζώτης Άγγελης</string>
     <string name="info_contact">Επικοινωνία: aggeliszotis@protonmail.com</string>
 
+    <string name="info_theory_start_dialog">Είναι η θεωρία του βιβλίου.</string>
+    <string name="info_theory_end_dialog">Με την επιλογή της ενότητας που θα κάνεις σε μεταφέρει στο βιβλίο.</string>
 
+    <string name="info_exam_start_dialog">Επιλέγεις την ενότητα που θέλεις να εξεταστείς και ξεκινάει το κουίζ.</string>
+    <string name="info_exam_mid_dialog">Σου εμφανίζονται 12 ερώτησης σε κάθε ενότητα οπού επιλέγεις και πατάς επόμενο.</string>
+    <string name="info_exam_end_dialog">Στο τέλος εμφανίζετε το αποτέλεσμα.</string>
+
+    <string name="info_score_start_dialog">Υπάρχουν δυο σκορ Προσωπικά, Δημοσιά.</string>
+    <string name="info_score_mid_dialog">Τα Προσωπικά τα βλέπεις μονό εσύ ενώ τα Δημοσιά μπορούν να τα δούνε όλοι. </string>
+    <string name="info_score_end_dialog">Η κατάταξη γίνετε βάση τις σωστές ερωτήσεις και τον χρόνο.</string>
+
+    <string name="info_profile_start_dialog">Πρέπει να συμπληρώσεις όλα τα πεδία και να πατήσεις το κουμπί αποθήκευση τότε δημιουργείς ένα προφίλ.</string>
+    <string name="info_profile_mid_dialog">Το κουμπί καθαρισμός πεδίων διαγραφεί ότι υπάρχει στα πεδία.</string>
+    <string name="info_profile_end_dialog">Σημαντικό δεν αποθηκεύει κενά πεδία οπότε αν υπάρχει προφίλ καθαρίσεις τα πεδία πρέπει να γράψεις νέα στοιχειά αλλιώς κρατάει τα παλιά.</string>
+
+    <string name="info_ok_dialog">Εντάξει</string>
 
 </resources>

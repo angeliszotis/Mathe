@@ -2,7 +2,6 @@ package com.example.mathapp.ui.composable.ButtonItem
 
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -63,7 +62,7 @@ fun ButtonItem(modifier: Modifier, item: HomeButtonsDCVector, viewModel: LobbyVi
 fun RoundedButton(
     text: String,
     onClick: () -> Unit,
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     icon: Int? = null,
     vector: ImageVector? = null,
     iconSize: Int = 20
@@ -72,8 +71,7 @@ fun RoundedButton(
         onClick = onClick,
         modifier = modifier
             .padding(horizontal = SpacingDefault_16dp)
-            .height(IntrinsicSize.Min)
-            .fillMaxWidth(),
+            .height(IntrinsicSize.Min),
         shape = RoundedCornerShape(16.dp),
         colors = androidx.compose.material.ButtonDefaults.buttonColors(backgroundColor = FbColor)
     ) {

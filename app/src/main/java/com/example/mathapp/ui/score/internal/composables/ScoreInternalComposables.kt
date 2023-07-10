@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -30,9 +31,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.mathapp.R
 import com.example.mathapp.framework.result.model.ResultEntity
+import com.example.mathapp.ui.composable.LottieLoader.LottieLoader
 import com.example.mathapp.ui.score.ScoreViewModel
 import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
+import com.example.mathapp.ui.theme.SpacingDefault_16dp
 
 @Composable
 fun ScoreInternalScreen(viewModel: ScoreViewModel) {
@@ -47,7 +50,6 @@ fun ScoreInternalScreen(viewModel: ScoreViewModel) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
-
                 .background(
                     BabyBluePurple2,
                     RoundedCornerShape(
@@ -56,7 +58,7 @@ fun ScoreInternalScreen(viewModel: ScoreViewModel) {
                         topEnd = 20.dp,
                         bottomStart = 20.dp
                     )
-                )
+                ).fillMaxHeight(0.8f)
                 .clip(RectangleShape)
                 .padding(vertical = 25.dp), verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -82,6 +84,11 @@ fun ScoreInternalScreen(viewModel: ScoreViewModel) {
                     Divider(modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
                 }
             }
+        }
+        Row( modifier = Modifier.fillMaxWidth().fillMaxHeight(0.1f).padding(top = SpacingDefault_16dp), horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Bottom
+        ) {
+            LottieLoader(modifier = Modifier.fillMaxWidth(), link = "https://assets5.lottiefiles.com/packages/lf20_6d3ap8vn.json")
+
         }
     }
 }

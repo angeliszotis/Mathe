@@ -7,18 +7,17 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -32,11 +31,11 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.mathapp.R
+import com.example.mathapp.ui.composable.LottieLoader.LottieLoader
 import com.example.mathapp.ui.score.ScoreViewModel
 import com.example.mathapp.ui.theme.BabyBluePurple3
 import com.example.mathapp.ui.theme.BabyBluePurple5
 import com.example.mathapp.ui.theme.FbColor
-import com.example.mathapp.ui.theme.SpacingCustom_28dp
 import com.example.mathapp.ui.theme.SpacingDefault_16dp
 import com.example.mathapp.util.BASE_URL_LOTTIE_SCORE_lf20_END
 import com.example.mathapp.util.BASE_URL_LOTTIE_SCORE_lf20_START
@@ -51,14 +50,13 @@ fun ScoreScreen(viewModel: ScoreViewModel, navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .background(BabyBluePurple3)
-            .padding(16.dp),
-        //verticalArrangement = Arrangement.Center,
-        //horizontalAlignment = Alignment.CenterHorizontally
+            .padding(16.dp)
+
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
+
         ) {
             Text(
                 maxLines = 1,
@@ -67,13 +65,10 @@ fun ScoreScreen(viewModel: ScoreViewModel, navController: NavController) {
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.displayLarge,
                 fontFamily = FontFamily.Cursive,
-                modifier = Modifier.padding(
-                    vertical = SpacingCustom_28dp,
-                    horizontal = SpacingDefault_16dp
-                )
+                modifier = Modifier.padding(start = SpacingDefault_16dp)
             )
         }
-        Spacer(modifier = Modifier.width(16.dp))
+        LottieLoader(modifier = Modifier.fillMaxWidth().padding(SpacingDefault_16dp).fillMaxHeight(0.01f), link ="https://assets2.lottiefiles.com/packages/lf20_vthcplog.json")
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.End
