@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
+import androidx.compose.ui.unit.sp
 import com.example.mathapp.R
 import com.example.mathapp.ui.composable.ButtonItem.ButtonItem
 import com.example.mathapp.ui.composable.LottieLoader.LottieLoader
@@ -47,7 +48,7 @@ fun HomeScreen(viewModel: LobbyViewModel) {
     val musicEnabled = remember { mutableStateOf(SettingsManager.isMusicEnabled()) }
     val examBoolean by viewModel.dashboardGetExamBool().collectAsState(initial = false)
     val context = LocalContext.current
-
+    val switchText = if (musicEnabled.value) { R.string.dashboard_music_enable_text} else { R.string.dashboard_music_disable_text }
 
     Column(
         modifier = Modifier
@@ -146,11 +147,12 @@ fun HomeScreen(viewModel: LobbyViewModel) {
                 .padding(horizontal = 16.dp)
         ) {
             Text(
-                text = "Enable Music",
+                text = stringResource(id = switchText),
                 color = BabyBluePurple5,
                 fontWeight = FontWeight.Bold,
                 style = androidx.compose.material.MaterialTheme.typography.body1,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
+                fontSize = 10.sp
             )
             Switch(
                 checked = musicEnabled.value,

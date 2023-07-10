@@ -17,6 +17,8 @@
     <string name="theory">Θεωρία</string>
 
     <string name="dashboard_exam_toast">Παρακαλώ δημιουργήστε ένα προφίλ.</string>
+    <string name="dashboard_music_enable_text">Η μουσική είναι ενεργοποιημένη.</string>
+    <string name="dashboard_music_disable_text">Η μουσική είναι απενεργοποιημένη.</string>
 
 
     <!--Theory-->
