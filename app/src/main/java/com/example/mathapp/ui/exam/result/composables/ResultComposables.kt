@@ -96,8 +96,6 @@ fun ResultScreen(
         )
     }
 
-
-
     Row(modifier = Modifier.padding(vertical = 16.dp)) {
         Button(
             modifier = Modifier

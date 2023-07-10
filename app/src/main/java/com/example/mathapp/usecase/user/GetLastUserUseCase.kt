@@ -12,14 +12,3 @@ class GetLastUserUseCase @Inject constructor(
         return repository.getLastUser()
     }
 }
-
-/*
-private fun mapToDomainModel(entity: UserEntity): User {
-    return User(
-        name = entity.name,
-        surname = entity.surname,
-        school = entity.school
-    )
-            return lastUser?.let { mapToDomainModel(it) }
-
- */

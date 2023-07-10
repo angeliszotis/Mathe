@@ -42,8 +42,8 @@ fun InfoScreen() {
         modifier = Modifier
             .fillMaxSize()
             .background(BabyBluePurple3)
-            .padding(horizontal = SpacingDefault_16dp, vertical = SpacingCustom_10dp)
-            .verticalScroll(rememberScrollState()),
+            .verticalScroll(rememberScrollState())
+        .padding(horizontal = SpacingDefault_16dp, vertical = SpacingCustom_10dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     )
