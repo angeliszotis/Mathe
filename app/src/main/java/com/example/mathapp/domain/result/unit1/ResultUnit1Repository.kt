@@ -1,7 +1,7 @@
-package com.example.mathapp.domain.result
+package com.example.mathapp.domain.result.unit1
 
 import com.example.mathapp.framework.result.model.ResultModel
 
-interface ResultRepository {
+interface ResultUnit1Repository {
     suspend fun insertResult(results: ResultModel)
 }

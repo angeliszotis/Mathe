@@ -1,24 +1,17 @@
-package com.example.mathapp.framework.result
+package com.example.mathapp.framework.result.unit1
 
 import android.util.Log
-import com.example.mathapp.data.result.ResultDataSource
+import com.example.mathapp.data.result.unit1.ResultUnit1DataSource
 import com.example.mathapp.framework.result.model.ResultModel
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
-class ResultDataSourceImpl @Inject constructor(
+class ResultUnit1DataSourceImpl @Inject constructor(
     private val firestore: FirebaseFirestore
-) : ResultDataSource {
+) : ResultUnit1DataSource {
 
     override suspend fun insertResult(result: ResultModel) {
-        /*
-        val resultDocument = firestore
-                .collection("score")
-                .document()
-            resultDocument.set(result)
-
-         */
 
         firestore.collection("score").add(result).addOnSuccessListener { documentReference ->
             Log.d("Yoda", "Document inserted with ID: ${documentReference.id}")

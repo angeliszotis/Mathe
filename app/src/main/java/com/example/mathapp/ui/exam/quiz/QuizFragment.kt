@@ -35,7 +35,7 @@ class QuizFragment : BaseFragment<FragmentNavBinding>() {
 
     override fun onPause() {
         super.onPause()
-        if (mediaPlayer.isPlaying) {
+        if (SettingsManager.isMusicEnabled() && !mediaPlayer.isPlaying) {
             mediaPlayer.pause()
         }
     }

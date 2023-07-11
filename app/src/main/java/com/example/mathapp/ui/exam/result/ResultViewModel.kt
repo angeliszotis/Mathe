@@ -10,8 +10,8 @@ import com.example.mathapp.framework.result.model.ResultAnswerModel
 import com.example.mathapp.framework.result.model.ResultEntity
 import com.example.mathapp.framework.result.model.ResultModel
 import com.example.mathapp.framework.users.model.UserEntity
-import com.example.mathapp.usecase.exam.GetQuestionsUseCase
-import com.example.mathapp.usecase.result.InsertResultUseCase
+import com.example.mathapp.usecase.exam.unit1.GetQuestionsUnit1UseCase
+import com.example.mathapp.usecase.result.unit1.InsertResultUnit1UseCase
 import com.example.mathapp.usecase.score.internal.InsertScoreInternalUseCase
 import com.example.mathapp.usecase.user.GetLastUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,13 +21,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ResultViewModel @Inject constructor(
-    getQuestionsUseCase: GetQuestionsUseCase,
-    private val resultExternalUseCase: InsertResultUseCase,
+    getQuestionsUnit1UseCase: GetQuestionsUnit1UseCase,
+    private val resultExternalUseCase: InsertResultUnit1UseCase,
     private val userUseCase: GetLastUserUseCase,
     private var resultInternalUseCase: InsertScoreInternalUseCase
 ) : ViewModel() {
 
-    private val questions = getQuestionsUseCase.invoke()
+    private val questions = getQuestionsUnit1UseCase.invoke()
     val randomQuestions = getRandomQuestions(questions)
 
     private val _toastMessage = mutableStateOf<String?>(null)

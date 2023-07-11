@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.widget.Toast
+import com.example.mathapp.R
 
 class NetworkReceiver : BroadcastReceiver() {
 
@@ -18,7 +19,7 @@ class NetworkReceiver : BroadcastReceiver() {
 
         Toast.makeText(
             context,
-            if (isConnected) "Έχεις Ιντερνετ" else "Δεν Υπαρχει συνδεση στο Διαδικτιο",
+            if (isConnected) R.string.internet_ok else R.string.internet_not_ok,
             Toast.LENGTH_SHORT
         ).show()
     }
