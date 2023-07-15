@@ -74,7 +74,7 @@ fun ScoreScreen(viewModel: ScoreViewModel, navController: NavController) {
             horizontalArrangement = Arrangement.End
         ) {
             Button(
-                onClick = { navController.navigate(NavScoreItems.ScoreUnit.destination) },
+                onClick = { navController.navigate(NavScoreItems.ScoreInternalUnit.destination) },
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(6.dp)
@@ -113,7 +113,7 @@ fun ScoreScreen(viewModel: ScoreViewModel, navController: NavController) {
                     .weight(0.5f),
             )
             Button(
-                onClick = { navController.navigate(NavScoreItems.ScoreUnit.destination) },
+                onClick = { navController.navigate(NavScoreItems.ScoreExternalUnit.destination) },
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(6.dp)

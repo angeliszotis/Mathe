@@ -43,14 +43,13 @@ import com.example.mathapp.ui.theme.BabyBluePurple5
 import com.example.mathapp.ui.theme.FbColor
 import com.example.mathapp.ui.unit.UnitViewModel
 import com.example.mathapp.util.BASE_URL_LOTTIE_THEORY_lf20_START
-import com.example.mathapp.util.NavExamItems
-import com.example.mathapp.util.NavScoreItems
 import com.example.mathapp.util.units
 import com.example.mathapp.util.unitsExam
+import com.example.mathapp.util.unitsInternalScore
 
 
 @Composable
-fun UnitScreen(navController: NavController, exam : Boolean, score:Boolean) {
+fun UnitScreen(navController: NavController, exam : Boolean, score:Boolean, scoreInternal:Boolean) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -81,7 +80,8 @@ fun UnitScreen(navController: NavController, exam : Boolean, score:Boolean) {
             if (exam) {
                 ExamUnits(navController = navController)
             } else if(score) {
-                ScoreUnits(navController = navController)
+                    ScoreUnits(navController = navController, scoreInternal = scoreInternal)
+
             } else{
                 UnitContent(units = units, buttonColor = FbColor, navController = navController)
 
@@ -142,7 +142,7 @@ fun ExamUnits(viewModel: UnitViewModel = UnitViewModel(), navController: NavCont
             for (item in unitRow) {
                 Button(
                     onClick = {
-                        navController.navigate(NavExamItems.UnitOne.destination)
+                        navController.navigate(item.action.destination)
                     },
                     modifier = Modifier
                         .padding(6.dp)
@@ -169,14 +169,20 @@ fun ExamUnits(viewModel: UnitViewModel = UnitViewModel(), navController: NavCont
 }
 
 @Composable
-fun ScoreUnits(viewModel: UnitViewModel = UnitViewModel(), navController: NavController) {
+fun ScoreUnits(viewModel: UnitViewModel = UnitViewModel(), navController: NavController,scoreInternal:Boolean) {
 
-    for (unitRow in unitsExam.chunked(2)) {
+    for (unitRow in unitsInternalScore.chunked(2)) {
         Row(modifier = Modifier.fillMaxWidth()) {
             for (item in unitRow) {
                 Button(
                     onClick = {
-                        navController.navigate(NavScoreItems.ScoreInternal.destination)
+                        if (scoreInternal){
+                            navController.navigate( item.action)
+                        }
+                        else{
+                            navController.navigate(item.action)
+                        }
+
                     },
                     modifier = Modifier
                         .padding(6.dp)

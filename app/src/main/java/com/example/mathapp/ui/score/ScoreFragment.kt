@@ -24,6 +24,7 @@ class ScoreFragment : BaseFragment<FragmentNavBinding>() {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
             //ScoreExternalScreen(viewModel)
+            //viewModel.setUnit()
             ScoreScreen(viewModel = viewModel, navController = navController)
         }
     }

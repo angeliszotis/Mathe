@@ -11,24 +11,18 @@ class ScoreExternalDataSourceImpl @Inject constructor(
     private val firestore: FirebaseFirestore
 ) : ScoreExternalDataSource {
 
-    override suspend fun getScore(): List<ResultModel> {
+    override suspend fun getScore(unit:Int): List<ResultModel> {
         val userModels = mutableListOf<ResultModel>()
-        val querySnapshot = firestore.collection("score").get().await()
+        val collectionName = "score$unit"
+        val querySnapshot = firestore.collection(collectionName).get().await()
         for (document in querySnapshot.documents) {
             val name = document.getString("name") ?: ""
             val surname = document.getString("surname") ?: ""
             val school = document.getString("school") ?: ""
-            val corect = document.getString("corect") ?: ""
-            val incorect = document.getString("incorect") ?: ""
+            val correct = document.getString("correct") ?: ""
+            val incorrect = document.getString("incorrect") ?: ""
             val time = document.getString("time") ?: ""
-            val userModel = ResultModel(
-                name = name,
-                surname = surname,
-                school = school,
-                corect = corect,
-                incorect = incorect,
-                time = time
-            )
+            val userModel = ResultModel(name = name,surname = surname,school = school,correct = correct,incorrect = incorrect,time = time)
             userModels.add(userModel)
         }
         return userModels

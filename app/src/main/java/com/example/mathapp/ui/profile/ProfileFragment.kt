@@ -6,7 +6,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.mathapp.databinding.FragmentNavBinding
-import com.example.mathapp.framework.users.model.UserEntity
 import com.example.mathapp.ui.base.BaseFragment
 import com.example.mathapp.ui.profile.composable.ProfileScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -56,20 +55,8 @@ class ProfileFragment : BaseFragment<FragmentNavBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.composeView.setContent {
-            ProfileScreen(
-                viewModel = viewModel,
-                onGoBack = { navController.navigateUp() } // Pass onGoBack callback
-            )
+            ProfileScreen(viewModel = viewModel, onGoBack = { navController.navigateUp() } )
         }
-
-        viewModel.addUser(setUDM(viewModel, "", "", ""))
-
-        viewModel.getUser()
     }
 }
 
-fun setUDM(viewModel: ProfileViewModel, name: String, surname: String, school: String): UserEntity {
-    val userEntity = UserEntity(name, surname, school)
-    viewModel.addUser(userEntity)
-    return userEntity
-}

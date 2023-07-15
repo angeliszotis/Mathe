@@ -4,8 +4,8 @@ data class ResultModel(
     var name: String,
     var surname: String,
     var school: String,
-    var corect: String,
-    var incorect: String,
+    var correct: String,
+    var incorrect: String,
     var time: String
 )
 

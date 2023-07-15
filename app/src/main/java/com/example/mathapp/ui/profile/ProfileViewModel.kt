@@ -19,15 +19,26 @@ class ProfileViewModel @Inject constructor(
 ) : ViewModel() {
 
 
-    private val _readAllData = MutableLiveData<List<UserEntity>>()
-    val readAllData: LiveData<List<UserEntity>> = _readAllData
+    private val _getUserData = MutableLiveData<List<UserEntity>>()
+    val getUserData: LiveData<List<UserEntity>> = _getUserData
 
-    fun addUser(adduser: UserEntity) {
+    init {
+        getUser()
+    }
+    fun addUser(name: String, surname: String, school: String) {
+        val userEntity = UserEntity(name =name, surname = surname, school =  school)
         viewModelScope.launch(Dispatchers.IO) {
-            repository.insertUsers(adduser)
+            repository.insertUsers(userEntity)
         }
     }
+/*
+    fun setUDM(viewModel: ProfileViewModel, name: String, surname: String, school: String): UserEntity {
+        val userEntity = UserEntity(name =name, surname = surname, school =  school)
+        viewModel.addUser(userEntity)
+        return userEntity
+    }
 
+ */
     fun updateUser(updateUser: UserEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateUsers(updateUser)
@@ -37,7 +48,7 @@ class ProfileViewModel @Inject constructor(
     fun getUser() {
         viewModelScope.launch(Dispatchers.IO) {
             getUsersUseCase.invoke().collect { users ->
-                _readAllData.postValue(users)
+                _getUserData.postValue(users)
             }
         }
     }

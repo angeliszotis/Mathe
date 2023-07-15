@@ -24,7 +24,7 @@ class TheoryFragment : BaseFragment<FragmentNavBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
-            UnitScreen(navController = navController, exam = false,score = false)
+            UnitScreen(navController = navController, exam = false,score = false, scoreInternal = false)
         }
     }
 

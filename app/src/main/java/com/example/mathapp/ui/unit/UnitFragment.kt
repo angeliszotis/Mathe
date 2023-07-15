@@ -21,13 +21,14 @@ class UnitFragment : BaseFragment<FragmentNavBinding>() {
     private val navController: NavController by lazy { findNavController() }
     private val args: UnitFragmentArgs by navArgs()
 
+
     override fun getViewBinding(): FragmentNavBinding =
         FragmentNavBinding.inflate(layoutInflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
-            UnitScreen(navController = navController, exam = false, score = args.score)
+            UnitScreen(navController = navController, exam = false, score = args.score, scoreInternal = args.scoreInternal)
         }
         setupObservers()
     }

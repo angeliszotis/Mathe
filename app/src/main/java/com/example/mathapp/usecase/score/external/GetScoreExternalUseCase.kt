@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetScoreExternalUseCase @Inject constructor(
     private val repository: ScoreExternalRepository
 ) {
-    suspend fun invoke(): List<ResultModel> {
-        return repository.getScore()
+    suspend fun invoke(unit:Int): List<ResultModel> {
+        return repository.getScore(unit = unit)
     }
 }

@@ -23,7 +23,7 @@ class ExamFragment : BaseFragment<FragmentNavBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
-            UnitScreen(navController = navController, score = false , exam = true)
+            UnitScreen(navController = navController, score = false , exam = true, scoreInternal = false)
         }
     }
 }

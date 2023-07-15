@@ -16,6 +16,6 @@ interface ScoreInternalModule {
     fun bindScoreInternalDataSource(dataSource: ScoreInternalDataSourceImpl): ScoreInternalDataSource
 
     @Binds
-    fun bindScoretInternalRepository(repository: ScoreInternalRepositoryImpl): ScoreInternalRepository
+    fun bindScoreInternalRepository(repository: ScoreInternalRepositoryImpl): ScoreInternalRepository
 
 }

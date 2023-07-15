@@ -8,7 +8,7 @@ import javax.inject.Inject
 class ScoreExternalRepositoryImpl @Inject constructor(
     private val scoreExternalDataSource: ScoreExternalDataSource
 ) : ScoreExternalRepository {
-    override suspend fun getScore(): List<ResultModel> {
-        return scoreExternalDataSource.getScore()
+    override suspend fun getScore(unit:Int): List<ResultModel> {
+        return scoreExternalDataSource.getScore(unit)
     }
 }

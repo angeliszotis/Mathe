@@ -5,7 +5,7 @@ import com.example.mathapp.framework.users.model.UserEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface userDao {
+interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertData(vararg users: UserEntity)

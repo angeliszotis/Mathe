@@ -1,6 +1,5 @@
 package com.example.mathapp.ui.exam.quiz
 
-import android.media.MediaPlayer
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,12 +23,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.mathapp.R
 import com.example.mathapp.framework.exam.model.QuestionModel
 import com.example.mathapp.ui.exam.ExamViewModel
@@ -44,25 +41,18 @@ import kotlinx.coroutines.delay
 private var _globalReturntime = 0
 
 @Composable
-fun QuizScreen(viewModel: ExamViewModel, navController: NavController, isPlaying: Boolean, mediaPlayer: MediaPlayer, changeMusic: (Int) -> Unit) {
-    val randomQuestions = viewModel.randomQuestions
-    val context = LocalContext.current
+fun QuizScreen(viewModel: ExamViewModel,  unit: Int, changeMusic: (Int) -> Unit) {
 
+    val randomQuestions = if (unit == 1){viewModel.randomQuestions} else { viewModel.randomQuestions2}
     var currentQuestionIndex by remember { mutableStateOf(0) }
     var showResult by remember { mutableStateOf(false) }
     var score by remember { mutableStateOf(0) }
 
-    Column(
-        modifier = Modifier
-            .background(
-                color = BabyBluePurple3,
-            )
-            .fillMaxWidth()
-            .padding(5.dp)
-    ) {
+    Column(modifier = Modifier.background(color = BabyBluePurple3,).fillMaxWidth().padding(5.dp)) {
+
         ProgressBar(currentQuestionIndex, randomQuestions.size)
         if (showResult) {
-            ResultScreen(randomQuestions.size, score, _globalReturntime, viewModel = viewModel)
+            ResultScreen(randomQuestions.size, score, _globalReturntime, viewModel = viewModel, unit = unit)
             changeMusic(R.raw.complete)
         }
         else if (currentQuestionIndex < randomQuestions.size) {
@@ -75,14 +65,8 @@ fun QuizScreen(viewModel: ExamViewModel, navController: NavController, isPlaying
                         showResult = true
                     }
                 },
-                onShowResult = {
-                    showResult = true
-                },
-                onAnswer = { isCorrect ->
-                    if (isCorrect) {
-                        score++
-                    }
-                }
+                onShowResult = { showResult = true },
+                onAnswer = { isCorrect -> if (isCorrect) { score++ } }
             )
         }
         Spacer(modifier = Modifier.height(16.dp))
@@ -101,14 +85,7 @@ fun QuizContent(
     var showButton by remember { mutableStateOf(true) }
 
     Column(modifier = Modifier.padding(16.dp)) {
-        Column(
-            modifier = Modifier
-                .background(
-                    color = BabyBluePurple2,
-                    RoundedCornerShape(12.dp)
-                )
-                .fillMaxWidth()
-                .padding(5.dp)
+        Column(modifier = Modifier.background(color = BabyBluePurple2, RoundedCornerShape(12.dp)).fillMaxWidth().padding(5.dp)
         ) {
             Text(text = questionModel.text, fontSize = 12.sp, fontWeight = FontWeight.Bold)
         }
@@ -120,10 +97,7 @@ fun QuizContent(
                     isSelected = index == selectedAnswerIndex,
                     onClick = {
                         selectedAnswerIndex = index
-                        if (index == questionModel.correctAnswerIndex) {
-                            showAnswer = false
-                        }
-                    }
+                        if (index == questionModel.correctAnswerIndex) { showAnswer = false } }
                 )
                 Spacer(modifier = Modifier.height(8.dp))
             }
@@ -132,9 +106,8 @@ fun QuizContent(
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             if (selectedAnswerIndex >= 0) {
                 Button(
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = FbColor
-                    ), onClick = {
+                    colors = ButtonDefaults.buttonColors(backgroundColor = FbColor),
+                    onClick = {
                         if (selectedAnswerIndex == questionModel.correctAnswerIndex) {
                             onAnswer(true)
 
@@ -155,27 +128,12 @@ fun QuizContent(
                 durationSeconds = 0,
                 onTimeUp = {
                     onAnswer(false)
-                    onShowResult()
-                }
+                    onShowResult() }
             )
-            if (showButton) {
-                Button(
-                    onClick = {
-                        showAnswer = true
-                    }
-                ) {
-                    Text(text = "Help")
-                }
-            }
+            if (showButton) { Button(onClick = { showAnswer = true }) { Text(text = "Help") } }
         }
         if (showAnswer) {
-            Text(
-                text = "The correct answer is: ${questionModel.answers[questionModel.correctAnswerIndex]}",
-                color = MaterialTheme.colors.secondary,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(top = 8.dp)
-            )
+            Text(text = "The correct answer is: ${questionModel.answers[questionModel.correctAnswerIndex]}", color = MaterialTheme.colors.secondary, fontSize = 16.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(top = 8.dp))
         }
     }
 }
@@ -193,12 +151,7 @@ fun Timer(durationSeconds: Int, onTimeUp: () -> Unit) {
         onTimeUp()
     }
 
-    Text(
-        text = "Χρόνος : ${remainingTime} ″ ",
-        fontWeight = FontWeight.Bold,
-        modifier = Modifier.fillMaxWidth(),
-        textAlign = TextAlign.Center
-    )
+    Text(text = "Χρόνος : ${remainingTime} ″ ", fontWeight = FontWeight.Bold, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
 
 }
 
@@ -206,9 +159,7 @@ fun Timer(durationSeconds: Int, onTimeUp: () -> Unit) {
 fun AnswerButton(text: String, isSelected: Boolean, onClick: () -> Unit) {
     Button(
         onClick = onClick,
-        colors = ButtonDefaults.buttonColors(
-            backgroundColor = if (isSelected) BabyBluePurple4 else BabyBluePurple1
-        ),
+        colors = ButtonDefaults.buttonColors(backgroundColor = if (isSelected) BabyBluePurple4 else BabyBluePurple1),
         modifier = Modifier.fillMaxWidth()
     ) {
         Text(text = text, fontSize = 10.sp)
@@ -217,12 +168,11 @@ fun AnswerButton(text: String, isSelected: Boolean, onClick: () -> Unit) {
 
 @Composable
 fun ProgressBar(currentIndex: Int, totalQuestions: Int) {
+
     val progress = (currentIndex) / totalQuestions.toFloat()
     val percent = (progress * 100).toInt()
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
+
+    Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
     ) {
         if (currentIndex == totalQuestions) {
             Text(text = "Ερώτηση $currentIndex απο $totalQuestions", fontSize = 18.sp)
@@ -230,11 +180,7 @@ fun ProgressBar(currentIndex: Int, totalQuestions: Int) {
             Text(text = "Ερώτηση ${currentIndex + 1} απο $totalQuestions", fontSize = 18.sp)
         }
         Spacer(modifier = Modifier.height(8.dp))
-        LinearProgressIndicator(
-            progress = progress,
-            modifier = Modifier.fillMaxWidth(),
-            color = FbColor
-        )
+        LinearProgressIndicator(progress = progress, modifier = Modifier.fillMaxWidth(), color = FbColor)
         Spacer(modifier = Modifier.height(8.dp))
         Text(text = "$percent% Ολοκληρωμένο", fontSize = 14.sp, textAlign = TextAlign.End)
     }

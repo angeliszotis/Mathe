@@ -2,7 +2,7 @@ package com.example.mathapp.util
 
 import com.example.mathapp.R
 import com.example.mathapp.framework.theory.model.UnitExamModel
-import com.example.mathapp.framework.theory.model.UnitScoreModel
+import com.example.mathapp.framework.theory.model.UnitScoreInternalModel
 import com.example.mathapp.framework.theory.model.UnitTheoryModel
 
 const val BASE_URL_LOTTIE_PROFILE_lf20_START = "https://assets10.lottiefiles.com/packages/lf20_n1wgeaxb.json"
@@ -18,99 +18,32 @@ const val BASE_URL_LOTTIE_SCORE_lf20_END = "https://assets3.lottiefiles.com/pack
 const val BASE_URL_LOTTIE_RESULTS_lf20_END = "https://assets4.lottiefiles.com/packages/lf20_kfl4ksd9.json"
 
 val units = listOf(
-    UnitTheoryModel(
-        url = "http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-1_1.html",
-        nameResourceId = R.string.unit_one
-    ),
-    UnitTheoryModel(
-        url = "http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-2_8.html",
-        nameResourceId = R.string.unit_two
-    ),
-    UnitTheoryModel(
-        url = "http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-3_13.html",
-        nameResourceId = R.string.unit_three
-    ),
-    UnitTheoryModel(
-        url = "http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-4_22.html",
-        nameResourceId = R.string.unit_four
-    ),
-    UnitTheoryModel(
-        url = "http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-5_25.html",
-        nameResourceId = R.string.unit_five
-    ),
-    UnitTheoryModel(
-        url = "http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-6_33.html",
-        nameResourceId = R.string.unit_six
-    ),
-    UnitTheoryModel(
-        url = "http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-7_36.html",
-        nameResourceId = R.string.unit_seven
-    ),
-    UnitTheoryModel(
-        url = "http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-8_45.html",
-        nameResourceId = R.string.unit_eight
-    )
+    UnitTheoryModel(url="http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-1_1.html", nameResourceId=R.string.unit_one),
+    UnitTheoryModel(url="http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-2_8.html", nameResourceId=R.string.unit_two),
+    UnitTheoryModel(url="http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-3_13.html", nameResourceId=R.string.unit_three),
+    UnitTheoryModel(url="http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-4_22.html", nameResourceId=R.string.unit_four),
+    UnitTheoryModel(url="http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-5_25.html", nameResourceId=R.string.unit_five),
+    UnitTheoryModel(url="http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-6_33.html", nameResourceId=R.string.unit_six),
+    UnitTheoryModel(url="http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-7_36.html", nameResourceId=R.string.unit_seven),
+    UnitTheoryModel(url="http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-8_45.html", nameResourceId=R.string.unit_eight)
 )
 val unitsExam = listOf(
-    UnitExamModel(
-        action = NavExamItems.UnitOne,
-        nameResourceId = R.string.unit_one
-    ),
-    UnitExamModel(
-        action = NavExamItems.UnitOne,
-        nameResourceId = R.string.unit_two
-    ),
-    UnitExamModel(
-        action = NavExamItems.UnitOne,
-        nameResourceId = R.string.unit_three
-    ),
-    UnitExamModel(
-        action = NavExamItems.UnitOne,
-        nameResourceId = R.string.unit_four
-    ),
-    UnitExamModel(
-        action = NavExamItems.UnitOne,
-        nameResourceId = R.string.unit_five
-    ),
-    UnitExamModel(
-        action = NavExamItems.UnitOne,
-        nameResourceId = R.string.unit_six
-    ),
-    UnitExamModel(
-        action = NavExamItems.UnitOne,
-        nameResourceId = R.string.unit_seven
-    ),
-    UnitExamModel(
-        action = NavExamItems.UnitOne,
-        nameResourceId = R.string.unit_eight
-    )
+    UnitExamModel(action = NavExamItems.UnitOne, nameResourceId = R.string.unit_one),
+    UnitExamModel(action = NavExamItems.UnitTwo, nameResourceId = R.string.unit_two),
+    UnitExamModel(action = NavExamItems.UnitOne, nameResourceId = R.string.unit_three),
+    UnitExamModel(action = NavExamItems.UnitOne, nameResourceId = R.string.unit_four),
+    UnitExamModel(action = NavExamItems.UnitOne, nameResourceId = R.string.unit_five),
+    UnitExamModel(action = NavExamItems.UnitOne, nameResourceId = R.string.unit_six),
+    UnitExamModel(action = NavExamItems.UnitOne, nameResourceId = R.string.unit_seven),
+    UnitExamModel(action = NavExamItems.UnitOne, nameResourceId = R.string.unit_eight)
 )
-val unitsScore = listOf(
-    UnitScoreModel(
-        action = NavScoreItems.ScoreInternal,
-        nameResourceId = R.string.unit_one
-    ),
-    UnitScoreModel(
-        action = NavScoreItems.ScoreInternal,
-        nameResourceId = R.string.unit_one
-    ), UnitScoreModel(
-        action = NavScoreItems.ScoreInternal,
-        nameResourceId = R.string.unit_one
-    ), UnitScoreModel(
-        action = NavScoreItems.ScoreInternal,
-        nameResourceId = R.string.unit_one
-    ), UnitScoreModel(
-        action = NavScoreItems.ScoreInternal,
-        nameResourceId = R.string.unit_one
-    ), UnitScoreModel(
-        action = NavScoreItems.ScoreInternal,
-        nameResourceId = R.string.unit_one
-    ), UnitScoreModel(
-        action = NavScoreItems.ScoreInternal,
-        nameResourceId = R.string.unit_one
-    ), UnitScoreModel(
-        action = NavScoreItems.ScoreInternal,
-        nameResourceId = R.string.unit_one
-    )
-
+val unitsInternalScore = listOf(
+    UnitScoreInternalModel(action = NavScoreInternal.UnitOne.destination, nameResourceId = R.string.unit_one),
+    UnitScoreInternalModel(action = NavScoreInternal.UnitTwo.destination, nameResourceId = R.string.unit_two),
+    UnitScoreInternalModel(action = NavScoreInternal.UnitThree.destination, nameResourceId = R.string.unit_three),
+    UnitScoreInternalModel(action = NavScoreInternal.UnitFour.destination, nameResourceId = R.string.unit_four),
+    UnitScoreInternalModel(action = NavScoreInternal.UnitFive.destination, nameResourceId = R.string.unit_five),
+    UnitScoreInternalModel(action = NavScoreInternal.UnitSix.destination, nameResourceId = R.string.unit_six),
+    UnitScoreInternalModel(action = NavScoreInternal.UnitSeven.destination, nameResourceId = R.string.unit_seven),
+    UnitScoreInternalModel(action = NavScoreInternal.UnitEight.destination, nameResourceId = R.string.unit_eight)
 )

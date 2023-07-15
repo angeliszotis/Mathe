@@ -36,8 +36,10 @@ import com.example.mathapp.ui.theme.BabyBluePurple3
 
 @Composable
 fun ScoreExternalScreen(viewModel: ScoreViewModel) {
-    val scoreList by viewModel.score.observeAsState()
+
+    val scoreList by viewModel.externalScore.observeAsState()
     val expandedItemIndex = remember { mutableStateOf(-1) }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -47,15 +49,7 @@ fun ScoreExternalScreen(viewModel: ScoreViewModel) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(
-                    BabyBluePurple2,
-                    RoundedCornerShape(
-                        bottomEnd = 80.dp,
-                        topStart = 80.dp,
-                        topEnd = 20.dp,
-                        bottomStart = 20.dp
-                    )
-                )
+                .background(BabyBluePurple2, RoundedCornerShape(bottomEnd = 80.dp, topStart = 80.dp, topEnd = 20.dp, bottomStart = 20.dp))
                 .clip(RectangleShape)
                 .padding(vertical = 25.dp), verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -68,7 +62,6 @@ fun ScoreExternalScreen(viewModel: ScoreViewModel) {
                     fontWeight = FontWeight.Bold
                 )
             }
-
             scoreList?.let { list ->
                 itemsIndexed(list) { index, item ->
                     if (index == expandedItemIndex.value) {
@@ -88,11 +81,7 @@ fun ScoreExternalScreen(viewModel: ScoreViewModel) {
 @Composable
 fun ScoreListItemCollapsed(item: ResultModel, onClick: () -> Unit) {
     Row(Modifier.clickable { onClick() }) {
-        Text(
-            text =  stringResource(id = R.string.score_name, item.name),
-            style = MaterialTheme.typography.body1,
-            fontWeight = FontWeight.Bold
-        )
+        Text(text =  stringResource(id = R.string.score_name, item.name), style = MaterialTheme.typography.body1, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.width(8.dp))
         Text(text = stringResource(id = R.string.score_surname, item.surname), style = MaterialTheme.typography.body1)
     }
@@ -103,8 +92,8 @@ fun ScoreListItemExpanded(item: ResultModel) {
     Column {
         ScoreListItemCollapsed(item) {}
         Text(text = stringResource(id = R.string.score_school, item.school), style = MaterialTheme.typography.body1)
-        Text(text = stringResource(id = R.string.score_correct, item.corect), style = MaterialTheme.typography.body1)
-        Text(text = stringResource(id = R.string.score_incorrect, item.incorect), style = MaterialTheme.typography.body1)
+        Text(text = stringResource(id = R.string.score_correct, item.correct), style = MaterialTheme.typography.body1)
+        Text(text = stringResource(id = R.string.score_incorrect, item.incorrect), style = MaterialTheme.typography.body1)
         Text(text = stringResource(id = R.string.score_time, item.time), style = MaterialTheme.typography.body1)
     }
 }

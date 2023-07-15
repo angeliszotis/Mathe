@@ -18,6 +18,7 @@ import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
@@ -30,7 +31,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.mathapp.R
-import com.example.mathapp.framework.result.model.ResultEntity
+import com.example.mathapp.framework.result.model.ResultModel
 import com.example.mathapp.ui.composable.LottieLoader.LottieLoader
 import com.example.mathapp.ui.score.ScoreViewModel
 import com.example.mathapp.ui.theme.BabyBluePurple2
@@ -38,9 +39,13 @@ import com.example.mathapp.ui.theme.BabyBluePurple3
 import com.example.mathapp.ui.theme.SpacingDefault_16dp
 
 @Composable
-fun ScoreInternalScreen(viewModel: ScoreViewModel) {
-    val scoreList by viewModel.readAllData.observeAsState()
+fun ScoreInternalScreen(viewModel: ScoreViewModel, unit: Int) {
     val expandedItemIndex = remember { mutableStateOf(-1) }
+    val scoreList by viewModel.internalScore.observeAsState()
+
+    LaunchedEffect(key1 = unit){
+        viewModel.getScoreInternal(unit)
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -52,21 +57,18 @@ fun ScoreInternalScreen(viewModel: ScoreViewModel) {
                 .fillMaxWidth()
                 .background(
                     BabyBluePurple2,
-                    RoundedCornerShape(
-                        bottomEnd = 80.dp,
-                        topStart = 80.dp,
-                        topEnd = 20.dp,
-                        bottomStart = 20.dp
-                    )
-                ).fillMaxHeight(0.8f)
+                    RoundedCornerShape(bottomEnd = 80.dp, topStart = 80.dp, topEnd = 20.dp, bottomStart = 20.dp)
+                )
+                .fillMaxHeight(0.8f)
                 .clip(RectangleShape)
-                .padding(vertical = 25.dp), verticalArrangement = Arrangement.Top,
+                .padding(vertical = 25.dp),
+            verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             item {
                 Text(
-                    modifier = Modifier.padding(bottom = 24.dp) ,
-                    text = stringResource(id = R.string.score_internal) +" "+ stringResource(id = R.string.score),
+                    modifier = Modifier.padding(bottom = 24.dp),
+                    text = stringResource(id = R.string.score_internal) + " " + stringResource(id = R.string.score),
                     style = MaterialTheme.typography.h5,
                     fontWeight = FontWeight.Bold
                 )
@@ -77,27 +79,30 @@ fun ScoreInternalScreen(viewModel: ScoreViewModel) {
                     if (index == expandedItemIndex.value) {
                         ScoreListItemExpanded(item)
                     } else {
-                        ScoreListItemCollapsed(item) {
-                            expandedItemIndex.value = index
-                        }
+                        ScoreListItemCollapsed(item) { expandedItemIndex.value = index }
                     }
                     Divider(modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
                 }
             }
         }
-        Row( modifier = Modifier.fillMaxWidth().fillMaxHeight(0.1f).padding(top = SpacingDefault_16dp), horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Bottom
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(0.1f)
+                .padding(top = SpacingDefault_16dp),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.Bottom
         ) {
             LottieLoader(modifier = Modifier.fillMaxWidth(), link = "https://assets5.lottiefiles.com/packages/lf20_6d3ap8vn.json")
-
         }
     }
 }
 
 @Composable
-fun ScoreListItemCollapsed(item: ResultEntity, onClick: () -> Unit) {
+fun ScoreListItemCollapsed(item: ResultModel, onClick: () -> Unit) {
     Row(Modifier.clickable { onClick() }) {
         Text(
-            text =  stringResource(id = R.string.score_name, item.name),
+            text = stringResource(id = R.string.score_name, item.name),
             style = MaterialTheme.typography.body1,
             fontWeight = FontWeight.Bold
         )
@@ -107,12 +112,15 @@ fun ScoreListItemCollapsed(item: ResultEntity, onClick: () -> Unit) {
 }
 
 @Composable
-fun ScoreListItemExpanded(item: ResultEntity) {
+fun ScoreListItemExpanded(item: ResultModel) {
     Column {
-        ScoreListItemCollapsed(item) {}
-        Text(text = stringResource(id = R.string.score_school, item.school), style = MaterialTheme.typography.body1)
-        Text(text = stringResource(id = R.string.score_correct, item.correct), style = MaterialTheme.typography.body1)
-        Text(text = stringResource(id = R.string.score_incorrect, item.incorrect), style = MaterialTheme.typography.body1)
-        Text(text = stringResource(id = R.string.score_time, item.time), style = MaterialTheme.typography.body1)
+        item.let {
+            ScoreListItemCollapsed(item) {}
+            Text(text = stringResource(id = R.string.score_school, item.school), style = MaterialTheme.typography.body1)
+            Text(text = stringResource(id = R.string.score_correct, item.correct), style = MaterialTheme.typography.body1)
+            Text(text = stringResource(id = R.string.score_incorrect, item.incorrect), style = MaterialTheme.typography.body1)
+            Text(text = stringResource(id = R.string.score_time, item.time), style = MaterialTheme.typography.body1)
+        }
+
     }
 }

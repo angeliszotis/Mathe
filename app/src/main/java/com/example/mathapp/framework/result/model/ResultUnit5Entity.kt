@@ -5,8 +5,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-@Entity(tableName = "result")
-data class ResultEntity(
+@Entity(tableName = "unit5")
+data class ResultUnit5Entity(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -21,10 +21,10 @@ data class ResultEntity(
     @ColumnInfo(name = "school")
     var school: String = "school",
 
-    @ColumnInfo(name = "corect")
+    @ColumnInfo(name = "correct")
     var correct: String,
 
-    @ColumnInfo(name = "incorect")
+    @ColumnInfo(name = "incorrect")
     var incorrect: String,
 
     @ColumnInfo(name = "time")

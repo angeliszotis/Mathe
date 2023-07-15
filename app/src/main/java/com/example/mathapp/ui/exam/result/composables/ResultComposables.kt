@@ -38,40 +38,26 @@ import com.example.mathapp.util.BASE_URL_LOTTIE_RESULTS_lf20_END
 import com.example.mathapp.util.showToast
 
 @Composable
-fun ResultScreen(
-    totalQuestions: Int,
-    numCorrectAnswers: Int,
-    remainingTime: Int,
-    viewModel: ExamViewModel
-) {
+fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int, remainingTime: Int, viewModel: ExamViewModel, unit:Int) {
+
     val context = LocalContext.current
 
     val externalButtonClicked = remember { mutableStateOf(false) }
     val internalButtonClicked = remember { mutableStateOf(false) }
     val externalButtonEnabled = remember { derivedStateOf { !externalButtonClicked.value } }
     val internalButtonEnabled = remember { derivedStateOf { !internalButtonClicked.value } }
-
     val toastMessage : String? = viewModel.toastMessage.value
-
     val numIncorrectAnswers = totalQuestions - numCorrectAnswers
-    val resultText = if (numCorrectAnswers == totalQuestions) {
-        stringResource(id = R.string.perfect_score)
-    } else {
-        stringResource(id = R.string.perfect_score, numCorrectAnswers, totalQuestions)
-    }
+
+    val resultText =
+        if (numCorrectAnswers == totalQuestions) { stringResource(id = R.string.perfect_score) }
+        else { stringResource(id = R.string.perfect_score, numCorrectAnswers, totalQuestions) }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .background(
-                BabyBluePurple2,
-                RoundedCornerShape(
-                    bottomEnd = 64.dp,
-                    topStart = 64.dp,
-                    topEnd = 20.dp,
-                    bottomStart = 20.dp
-                )
-            )
+            .background(BabyBluePurple2, RoundedCornerShape(bottomEnd = 64.dp, topStart = 64.dp, topEnd = 20.dp, bottomStart = 20.dp))
             .clip(RectangleShape)
             .padding(vertical = 25.dp, horizontal = 16.dp), verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -88,60 +74,36 @@ fun ResultScreen(
             Text(text = stringResource(id = R.string.time, remainingTime), fontSize = 18.sp)
         }
     }
-    Row(
-        modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center
-    ) {
-        Text(
-            text = stringResource(id = R.string.save),fontWeight = FontWeight.Bold
-        )
+
+    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+        Text(text = stringResource(id = R.string.save),fontWeight = FontWeight.Bold)
     }
 
     Row(modifier = Modifier.padding(vertical = 16.dp)) {
         Button(
-            modifier = Modifier
-                .weight(0.5f)
-                .padding(SpacingCustom_6dp),
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = if (externalButtonEnabled.value) FbColor else Color.Gray
-            ),
+            modifier = Modifier.weight(0.5f).padding(SpacingCustom_6dp),
+            colors = ButtonDefaults.buttonColors(backgroundColor = if (externalButtonEnabled.value) FbColor else Color.Gray),
             onClick = {
                 if (externalButtonEnabled.value) {
-                    // Perform the button action
                     viewModel.insertExternalResult(
-                        ResultAnswerModel(
-                            corect = numCorrectAnswers,
-                            incorect = numIncorrectAnswers,
-                            time = remainingTime
-                        )
+                        ResultAnswerModel(corect = numCorrectAnswers, incorect = numIncorrectAnswers, time = remainingTime),
+                        unit
                     )
-                    // Update the state to indicate the button has been clicked
                     externalButtonClicked.value = true
                 }
             },
             enabled = externalButtonEnabled.value
         ) {
-            Text(
-                color = Color.White,
-                text = stringResource(id = R.string.score_external)
-            )
+            Text(color = Color.White, text = stringResource(id = R.string.score_external))
         }
-
         Button(
-            modifier = Modifier
-                .weight(0.5f)
-                .padding(SpacingCustom_6dp),
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = if (internalButtonEnabled.value) FbColor else Color.Gray
-            ),
+            modifier = Modifier.weight(0.5f).padding(SpacingCustom_6dp),
+            colors = ButtonDefaults.buttonColors(backgroundColor = if (internalButtonEnabled.value) FbColor else Color.Gray),
             onClick = {
                 if (internalButtonEnabled.value) {
-                    // Perform the button action
                     viewModel.insertInternalResult(
-                        ResultAnswerModel(
-                            corect = numCorrectAnswers,
-                            incorect = numIncorrectAnswers,
-                            time = remainingTime
-                        )
+                        ResultAnswerModel(corect = numCorrectAnswers, incorect = numIncorrectAnswers, time = remainingTime),
+                        unit
                     )
                     internalButtonClicked.value = true
                     toastMessage?.let { showToast(context = context, message = it) }
@@ -150,17 +112,11 @@ fun ResultScreen(
             },
             enabled = internalButtonEnabled.value
         ) {
-            Text(
-                color = Color.White,
-                text = stringResource(id = R.string.score_internal)
-            )
+            Text(color = Color.White, text = stringResource(id = R.string.score_internal))
         }
     }
 
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+    Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         LottieLoaderResult(link = BASE_URL_LOTTIE_RESULTS_lf20_END)
     }
 }
