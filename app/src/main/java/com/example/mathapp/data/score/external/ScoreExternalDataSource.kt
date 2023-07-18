@@ -4,5 +4,4 @@ import com.example.mathapp.framework.result.model.ResultModel
 
 interface ScoreExternalDataSource {
     suspend fun getScore(unit:Int): List<ResultModel>
-
 }

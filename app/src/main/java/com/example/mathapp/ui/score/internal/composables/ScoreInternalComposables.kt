@@ -43,9 +43,8 @@ fun ScoreInternalScreen(viewModel: ScoreViewModel, unit: Int) {
     val expandedItemIndex = remember { mutableStateOf(-1) }
     val scoreList by viewModel.internalScore.observeAsState()
 
-    LaunchedEffect(key1 = unit){
-        viewModel.getScoreInternal(unit)
-    }
+    LaunchedEffect(key1 = unit){ viewModel.getScoreInternal(unit) }
+
     Column(
         modifier = Modifier
             .fillMaxSize()

@@ -17,6 +17,7 @@ import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
@@ -35,10 +36,12 @@ import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.BabyBluePurple3
 
 @Composable
-fun ScoreExternalScreen(viewModel: ScoreViewModel) {
+fun ScoreExternalScreen(viewModel: ScoreViewModel, unit:Int) {
 
-    val scoreList by viewModel.externalScore.observeAsState()
     val expandedItemIndex = remember { mutableStateOf(-1) }
+    val scoreList by viewModel.externalScore.observeAsState()
+
+    LaunchedEffect(key1 = unit){ viewModel.getScoreExternal(unit) }
 
     Column(
         modifier = Modifier

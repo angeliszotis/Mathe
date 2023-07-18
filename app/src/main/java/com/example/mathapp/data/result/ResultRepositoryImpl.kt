@@ -12,30 +12,30 @@ class ResultRepositoryImpl @Inject constructor(
     }
 
     override suspend fun insertResultUnit2(results: ResultModel) {
-        return resultDataSource.insertResultUnit1(results)
+        return resultDataSource.insertResultUnit2(results)
     }
 
     override suspend fun insertResultUnit3(results: ResultModel) {
-        return resultDataSource.insertResultUnit1(results)
+        return resultDataSource.insertResultUnit3(results)
     }
 
     override suspend fun insertResultUnit4(results: ResultModel) {
-        return resultDataSource.insertResultUnit1(results)
+        return resultDataSource.insertResultUnit4(results)
     }
 
     override suspend fun insertResultUnit5(results: ResultModel) {
-        return resultDataSource.insertResultUnit1(results)
+        return resultDataSource.insertResultUnit6(results)
     }
 
     override suspend fun insertResultUnit6(results: ResultModel) {
-        return resultDataSource.insertResultUnit1(results)
+        return resultDataSource.insertResultUnit6(results)
     }
 
     override suspend fun insertResultUnit7(results: ResultModel) {
-        return resultDataSource.insertResultUnit1(results)
+        return resultDataSource.insertResultUnit7(results)
     }
 
     override suspend fun insertResultUnit8(results: ResultModel) {
-        return resultDataSource.insertResultUnit1(results)
+        return resultDataSource.insertResultUnit8(results)
     }
 }

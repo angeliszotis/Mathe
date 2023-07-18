@@ -12,7 +12,6 @@ class ResultDataSourceImpl @Inject constructor(
 ) : ResultDataSource {
 
     override suspend fun insertResultUnit1(result: ResultModel) {
-
         firestore.collection("score1").add(result).addOnSuccessListener { documentReference ->
             Log.d("Yoda", "Document inserted with ID: ${documentReference.id}")
         }.addOnFailureListener { e -> Log.w("Yoda", "Error inserting document", e) }.await()

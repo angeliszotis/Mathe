@@ -45,6 +45,7 @@ import com.example.mathapp.ui.unit.UnitViewModel
 import com.example.mathapp.util.BASE_URL_LOTTIE_THEORY_lf20_START
 import com.example.mathapp.util.units
 import com.example.mathapp.util.unitsExam
+import com.example.mathapp.util.unitsExternalScore
 import com.example.mathapp.util.unitsInternalScore
 
 
@@ -171,37 +172,20 @@ fun ExamUnits(viewModel: UnitViewModel = UnitViewModel(), navController: NavCont
 @Composable
 fun ScoreUnits(viewModel: UnitViewModel = UnitViewModel(), navController: NavController,scoreInternal:Boolean) {
 
-    for (unitRow in unitsInternalScore.chunked(2)) {
+    val units = if (scoreInternal){ unitsInternalScore } else{ unitsExternalScore }
+
+    for (unitRow in units.chunked(2)) {
         Row(modifier = Modifier.fillMaxWidth()) {
             for (item in unitRow) {
                 Button(
-                    onClick = {
-                        if (scoreInternal){
-                            navController.navigate( item.action)
-                        }
-                        else{
-                            navController.navigate(item.action)
-                        }
-
-                    },
-                    modifier = Modifier
-                        .padding(6.dp)
-                        .weight(1f)
-                        .aspectRatio(1f),
+                    onClick = { navController.navigate( item.action) },
+                    modifier = Modifier.padding(6.dp).weight(1f).aspectRatio(1f),
                     contentPadding = ButtonDefaults.TextButtonContentPadding,
                     colors = ButtonDefaults.buttonColors(FbColor)
                 ) {
-                    Icon(
-                        imageVector = Icons.Filled.Star,
-                        contentDescription = "star icon",
-                        modifier = Modifier.size(25.dp)
-                    )
+                    Icon(imageVector = Icons.Filled.Star, contentDescription = "star icon", modifier = Modifier.size(25.dp))
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                    Text(
-                        maxLines = 1,
-                        text = stringResource(id = item.nameResourceId),
-                        fontSize = 4.em
-                    )
+                    Text(maxLines = 1, text = stringResource(id = item.nameResourceId), fontSize = 4.em)
                 }
             }
         }

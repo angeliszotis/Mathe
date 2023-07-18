@@ -30,12 +30,12 @@ val units = listOf(
 val unitsExam = listOf(
     UnitExamModel(action = NavExamItems.UnitOne, nameResourceId = R.string.unit_one),
     UnitExamModel(action = NavExamItems.UnitTwo, nameResourceId = R.string.unit_two),
-    UnitExamModel(action = NavExamItems.UnitOne, nameResourceId = R.string.unit_three),
-    UnitExamModel(action = NavExamItems.UnitOne, nameResourceId = R.string.unit_four),
-    UnitExamModel(action = NavExamItems.UnitOne, nameResourceId = R.string.unit_five),
-    UnitExamModel(action = NavExamItems.UnitOne, nameResourceId = R.string.unit_six),
-    UnitExamModel(action = NavExamItems.UnitOne, nameResourceId = R.string.unit_seven),
-    UnitExamModel(action = NavExamItems.UnitOne, nameResourceId = R.string.unit_eight)
+    UnitExamModel(action = NavExamItems.UnitThree, nameResourceId = R.string.unit_three),
+    UnitExamModel(action = NavExamItems.UnitFour, nameResourceId = R.string.unit_four),
+    UnitExamModel(action = NavExamItems.UnitFive, nameResourceId = R.string.unit_five),
+    UnitExamModel(action = NavExamItems.UnitSix, nameResourceId = R.string.unit_six),
+    UnitExamModel(action = NavExamItems.UnitSeven, nameResourceId = R.string.unit_seven),
+    UnitExamModel(action = NavExamItems.UnitEight, nameResourceId = R.string.unit_eight)
 )
 val unitsInternalScore = listOf(
     UnitScoreInternalModel(action = NavScoreInternal.UnitOne.destination, nameResourceId = R.string.unit_one),
@@ -46,4 +46,14 @@ val unitsInternalScore = listOf(
     UnitScoreInternalModel(action = NavScoreInternal.UnitSix.destination, nameResourceId = R.string.unit_six),
     UnitScoreInternalModel(action = NavScoreInternal.UnitSeven.destination, nameResourceId = R.string.unit_seven),
     UnitScoreInternalModel(action = NavScoreInternal.UnitEight.destination, nameResourceId = R.string.unit_eight)
+)
+val unitsExternalScore = listOf(
+    UnitScoreInternalModel(action = NavScoreExternal.UnitOne.destination, nameResourceId = R.string.unit_one),
+    UnitScoreInternalModel(action = NavScoreExternal.UnitTwo.destination, nameResourceId = R.string.unit_two),
+    UnitScoreInternalModel(action = NavScoreExternal.UnitThree.destination, nameResourceId = R.string.unit_three),
+    UnitScoreInternalModel(action = NavScoreExternal.UnitFour.destination, nameResourceId = R.string.unit_four),
+    UnitScoreInternalModel(action = NavScoreExternal.UnitFive.destination, nameResourceId = R.string.unit_five),
+    UnitScoreInternalModel(action = NavScoreExternal.UnitSix.destination, nameResourceId = R.string.unit_six),
+    UnitScoreInternalModel(action = NavScoreExternal.UnitSeven.destination, nameResourceId = R.string.unit_seven),
+    UnitScoreInternalModel(action = NavScoreExternal.UnitEight.destination, nameResourceId = R.string.unit_eight)
 )

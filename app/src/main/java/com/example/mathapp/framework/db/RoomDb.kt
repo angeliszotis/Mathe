@@ -25,7 +25,7 @@ import com.example.mathapp.framework.users.model.UserEntity
 
 @Database(
     entities = [UserEntity::class, ResultUnit1Entity::class, ResultUnit2Entity::class, ResultUnit3Entity::class, ResultUnit4Entity::class, ResultUnit5Entity::class, ResultUnit6Entity::class, ResultUnit7Entity::class, ResultUnit8Entity::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class RoomDb : RoomDatabase() {
@@ -59,7 +59,7 @@ abstract class RoomDb : RoomDatabase() {
                 RoomDb::class.java,
                 "UserRoomDatabase"
             )
-                .fallbackToDestructiveMigration() // Add this line to allow destructive migration
+                .fallbackToDestructiveMigration() // This line allow destructive migration
                 .build()
         }
     }
