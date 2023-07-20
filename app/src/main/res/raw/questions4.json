@@ -1,0 +1,502 @@
+[
+  {
+    "id": 1,
+    "text": "Πόσο κάνει το άθροισμα 13 + 27;",
+    "answers": [
+      {"text": "37", "is_correct": false},
+      {"text": "40", "is_correct": false},
+      {"text": "41", "is_correct": false},
+      {"text": "39", "is_correct": true}
+    ]
+  },
+  {
+    "id": 2,
+    "text": "Πόσο κάνει το άθροισμα 6 + 45;",
+    "answers": [
+      {"text": "49", "is_correct": false},
+      {"text": "51", "is_correct": true},
+      {"text": "53", "is_correct": false},
+      {"text": "48", "is_correct": false}
+    ]
+  },
+  {
+    "id": 3,
+    "text": "Βρες το αποτέλεσμα της πράξης: 35 - 12;",
+    "answers": [
+      {"text": "22", "is_correct": false},
+      {"text": "23", "is_correct": true},
+      {"text": "24", "is_correct": false},
+      {"text": "21", "is_correct": false}
+    ]
+  },
+  {
+    "id": 4,
+    "text": "Πόσο κάνει το γινόμενο 5 x 8;",
+    "answers": [
+      {"text": "45", "is_correct": false},
+      {"text": "38", "is_correct": false},
+      {"text": "40", "is_correct": true},
+      {"text": "53", "is_correct": false}
+    ]
+  },
+  {
+    "id": 5,
+    "text": "Βρες το αποτέλεσμα της πράξης: 84 / 4;",
+    "answers": [
+      {"text": "19", "is_correct": false},
+      {"text": "24", "is_correct": false},
+      {"text": "21", "is_correct": false},
+      {"text": "28", "is_correct": true}
+    ]
+  },
+  {
+    "id": 6,
+    "text": "Πόσο κάνει το άθροισμα 17 + 32;",
+    "answers": [
+      {"text": "45", "is_correct": true},
+      {"text": "51", "is_correct": false},
+      {"text": "50", "is_correct": false},
+      {"text": "48", "is_correct": false}
+    ]
+  },
+  {
+    "id": 7,
+    "text": "Βρες το αποτέλεσμα της πράξης: 67 - 28;",
+    "answers": [
+      {"text": "39", "is_correct": true},
+      {"text": "35", "is_correct": false},
+      {"text": "45", "is_correct": false},
+      {"text": "27", "is_correct": false}
+    ]
+  },
+  {
+    "id": 8,
+    "text": "Πόσο κάνει το γινόμενο 7 x 6;",
+    "answers": [
+      {"text": "42", "is_correct": true},
+      {"text": "45", "is_correct": false},
+      {"text": "50", "is_correct": false},
+      {"text": "36", "is_correct": false}
+    ]
+  },
+  {
+    "id": 9,
+    "text": "Βρες το αποτέλεσμα της πράξης: 64 / 8;",
+    "answers": [
+      {"text": "6", "is_correct": false},
+      {"text": "8", "is_correct": true},
+      {"text": "7", "is_correct": false},
+      {"text": "5", "is_correct": false}
+    ]
+  },
+  {
+    "id": 10,
+    "text": "Πόσο κάνει το άθροισμα 22 + 18;",
+    "answers": [
+      {"text": "40", "is_correct": false},
+      {"text": "41", "is_correct": false},
+      {"text": "39", "is_correct": true},
+      {"text": "38", "is_correct": false}
+    ]
+  },
+  {
+    "id": 11,
+    "text": "Βρες το αποτέλεσμα της πράξης: 72 / 9;",
+    "answers": [
+      {"text": "9", "is_correct": true},
+      {"text": "8", "is_correct": false},
+      {"text": "6", "is_correct": false},
+      {"text": "7", "is_correct": false}
+    ]
+  },
+  {
+    "id": 12,
+    "text": "Πόσο κάνει το γινόμενο 4 x 11;",
+    "answers": [
+      {"text": "45", "is_correct": false},
+      {"text": "48", "is_correct": false},
+      {"text": "44", "is_correct": false},
+      {"text": "44", "is_correct": true}
+    ]
+  },
+  {
+    "id": 13,
+    "text": "Πόσο κάνει το άθροισμα 25 + 15;",
+    "answers": [
+      {"text": "39", "is_correct": false},
+      {"text": "40", "is_correct": false},
+      {"text": "38", "is_correct": false},
+      {"text": "40", "is_correct": true}
+    ]
+  },
+  {
+    "id": 14,
+    "text": "Βρες το αποτέλεσμα της πράξης: 63 / 7;",
+    "answers": [
+      {"text": "8", "is_correct": true},
+      {"text": "9", "is_correct": false},
+      {"text": "7", "is_correct": false},
+      {"text": "6", "is_correct": false}
+    ]
+  },
+  {
+    "id": 15,
+    "text": "Πόσο κάνει το γινόμενο 6 x 9;",
+    "answers": [
+      {"text": "50", "is_correct": false},
+      {"text": "51", "is_correct": false},
+      {"text": "54", "is_correct": false},
+      {"text": "54", "is_correct": true}
+    ]
+  },
+  {
+    "id": 16,
+    "text": "Πόσο κάνει το άθροισμα 30 + 20;",
+    "answers": [
+      {"text": "50", "is_correct": true},
+      {"text": "52", "is_correct": false},
+      {"text": "48", "is_correct": false},
+      {"text": "49", "is_correct": false}
+    ]
+  },
+  {
+    "id": 17,
+    "text": "Βρες το αποτέλεσμα της πράξης: 88 / 4;",
+    "answers": [
+      {"text": "21", "is_correct": false},
+      {"text": "22", "is_correct": false},
+      {"text": "20", "is_correct": false},
+      {"text": "22", "is_correct": true}
+    ]
+  },
+  {
+    "id": 18,
+    "text": "Πόσο κάνει το γινόμενο 5 x 7;",
+    "answers": [
+      {"text": "30", "is_correct": false},
+      {"text": "34", "is_correct": false},
+      {"text": "36", "is_correct": false},
+      {"text": "35", "is_correct": true}
+    ]
+  },
+  {
+    "id": 19,
+    "text": "Πόσο κάνει το άθροισμα 16 + 24;",
+    "answers": [
+      {"text": "38", "is_correct": false},
+      {"text": "40", "is_correct": true},
+      {"text": "42", "is_correct": false},
+      {"text": "41", "is_correct": false}
+    ]
+  },
+  {
+    "id": 20,
+    "text": "Βρες το αποτέλεσμα της πράξης: 95 / 5;",
+    "answers": [
+      {"text": "18", "is_correct": false},
+      {"text": "19", "is_correct": false},
+      {"text": "20", "is_correct": true},
+      {"text": "21", "is_correct": false}
+    ]
+  },
+  {
+    "id": 21,
+    "text": "Πόσο κάνει το γινόμενο 6 x 8;",
+    "answers": [
+      {"text": "45", "is_correct": false},
+      {"text": "52", "is_correct": false},
+      {"text": "50", "is_correct": true},
+      {"text": "54", "is_correct": false}
+    ]
+  },
+  {
+    "id": 22,
+    "text": "Πόσο κάνει το άθροισμα 19 + 21;",
+    "answers": [
+      {"text": "39", "is_correct": false},
+      {"text": "40", "is_correct": false},
+      {"text": "41", "is_correct": true},
+      {"text": "38", "is_correct": false}
+    ]
+  },
+  {
+    "id": 23,
+    "text": "Βρες το αποτέλεσμα της πράξης: 77 / 11;",
+    "answers": [
+      {"text": "7", "is_correct": false},
+      {"text": "6", "is_correct": false},
+      {"text": "8", "is_correct": true},
+      {"text": "9", "is_correct": false}
+    ]
+  },
+  {
+    "id": 24,
+    "text": "Πόσο κάνει το γινόμενο 9 x 5;",
+    "answers": [
+      {"text": "50", "is_correct": false},
+      {"text": "42", "is_correct": false},
+      {"text": "45", "is_correct": true},
+      {"text": "46", "is_correct": false}
+    ]
+  },
+  {
+    "id": 25,
+    "text": "Πόσο κάνει το άθροισμα 14 + 16;",
+    "answers": [
+      {"text": "30", "is_correct": true},
+      {"text": "32", "is_correct": false},
+      {"text": "29", "is_correct": false},
+      {"text": "34", "is_correct": false}
+    ]
+  },
+  {
+    "id": 26,
+    "text": "Βρες το αποτέλεσμα της πράξης: 81 / 9;",
+    "answers": [
+      {"text": "8", "is_correct": false},
+      {"text": "9", "is_correct": true},
+      {"text": "7", "is_correct": false},
+      {"text": "6", "is_correct": false}
+    ]
+  },
+  {
+    "id": 27,
+    "text": "Πόσο κάνει το γινόμενο 7 x 7;",
+    "answers": [
+      {"text": "49", "is_correct": true},
+      {"text": "50", "is_correct": false},
+      {"text": "48", "is_correct": false},
+      {"text": "51", "is_correct": false}
+    ]
+  },
+  {
+    "id": 28,
+    "text": "Πόσο κάνει το άθροισμα 23 + 17;",
+    "answers": [
+      {"text": "40", "is_correct": false},
+      {"text": "38", "is_correct": false},
+      {"text": "41", "is_correct": true},
+      {"text": "39", "is_correct": false}
+    ]
+  },
+  {
+    "id": 29,
+    "text": "Βρες το αποτέλεσμα της πράξης: 96 / 8;",
+    "answers": [
+      {"text": "10", "is_correct": false},
+      {"text": "12", "is_correct": false},
+      {"text": "11", "is_correct": false},
+      {"text": "12", "is_correct": true}
+    ]
+  },
+  {
+    "id": 30,
+    "text": "Πόσο κάνει το γινόμενο 5 x 6;",
+    "answers": [
+      {"text": "30", "is_correct": true},
+      {"text": "31", "is_correct": false},
+      {"text": "35", "is_correct": false},
+      {"text": "28", "is_correct": false}
+    ]
+  },
+  {
+    "id": 31,
+    "text": "Πόσο κάνει το άθροισμα 20 + 24;",
+    "answers": [
+      {"text": "41", "is_correct": false},
+      {"text": "38", "is_correct": false},
+      {"text": "44", "is_correct": false},
+      {"text": "44", "is_correct": true}
+    ]
+  },
+  {
+    "id": 32,
+    "text": "Βρες το αποτέλεσμα της πράξης: 48 / 6;",
+    "answers": [
+      {"text": "8", "is_correct": true},
+      {"text": "9", "is_correct": false},
+      {"text": "7", "is_correct": false},
+      {"text": "6", "is_correct": false}
+    ]
+  },
+  {
+    "id": 33,
+    "text": "Πόσο κάνει το γινόμενο 7 x 8;",
+    "answers": [
+      {"text": "55", "is_correct": false},
+      {"text": "56", "is_correct": true},
+      {"text": "53", "is_correct": false},
+      {"text": "54", "is_correct": false}
+    ]
+  },
+  {
+    "id": 34,
+    "text": "Πόσο κάνει το άθροισμα 22 + 23;",
+    "answers": [
+      {"text": "44", "is_correct": false},
+      {"text": "45", "is_correct": true},
+      {"text": "42", "is_correct": false},
+      {"text": "41", "is_correct": false}
+    ]
+  },
+  {
+    "id": 35,
+    "text": "Βρες το αποτέλεσμα της πράξης: 54 / 9;",
+    "answers": [
+      {"text": "7", "is_correct": false},
+      {"text": "6", "is_correct": false},
+      {"text": "8", "is_correct": true},
+      {"text": "9", "is_correct": false}
+    ]
+  },
+  {
+    "id": 36,
+    "text": "Πόσο κάνει το γινόμενο 6 x 7;",
+    "answers": [
+      {"text": "48", "is_correct": false},
+      {"text": "42", "is_correct": false},
+      {"text": "45", "is_correct": false},
+      {"text": "42", "is_correct": true}
+    ]
+  },
+  {
+    "id": 37,
+    "text": "Πόσο κάνει το άθροισμα 25 + 21;",
+    "answers": [
+      {"text": "45", "is_correct": false},
+      {"text": "43", "is_correct": false},
+      {"text": "46", "is_correct": false},
+      {"text": "46", "is_correct": true}
+    ]
+  },
+  {
+    "id": 38,
+    "text": "Βρες το αποτέλεσμα της πράξης: 68 / 4;",
+    "answers": [
+      {"text": "15", "is_correct": false},
+      {"text": "16", "is_correct": false},
+      {"text": "17", "is_correct": true},
+      {"text": "18", "is_correct": false}
+    ]
+  },
+  {
+    "id": 39,
+    "text": "Πόσο κάνει το γινόμενο 5 x 5;",
+    "answers": [
+      {"text": "24", "is_correct": false},
+      {"text": "25", "is_correct": true},
+      {"text": "26", "is_correct": false},
+      {"text": "22", "is_correct": false}
+    ]
+  },
+  {
+    "id": 40,
+    "text": "Πόσο κάνει το άθροισμα 16 + 18;",
+    "answers": [
+      {"text": "32", "is_correct": false},
+      {"text": "34", "is_correct": false},
+      {"text": "33", "is_correct": false},
+      {"text": "34", "is_correct": true}
+    ]
+  },
+  {
+    "id": 41,
+    "text": "Βρες το αποτέλεσμα της πράξης: 39 / 3;",
+    "answers": [
+      {"text": "11", "is_correct": false},
+      {"text": "12", "is_correct": true},
+      {"text": "9", "is_correct": false},
+      {"text": "10", "is_correct": false}
+    ]
+  },
+  {
+    "id": 42,
+    "text": "Πόσο κάνει το γινόμενο 7 x 9;",
+    "answers": [
+      {"text": "60", "is_correct": false},
+      {"text": "62", "is_correct": false},
+      {"text": "63", "is_correct": false},
+      {"text": "63", "is_correct": true}
+    ]
+  },
+  {
+    "id": 43,
+    "text": "Πόσο κάνει το άθροισμα 27 + 16;",
+    "answers": [
+      {"text": "44", "is_correct": false},
+      {"text": "43", "is_correct": false},
+      {"text": "41", "is_correct": false},
+      {"text": "43", "is_correct": true}
+    ]
+  },
+  {
+    "id": 44,
+    "text": "Βρες το αποτέλεσμα της πράξης: 72 / 8;",
+    "answers": [
+      {"text": "9", "is_correct": true},
+      {"text": "10", "is_correct": false},
+      {"text": "8", "is_correct": false},
+      {"text": "7", "is_correct": false}
+    ]
+  },
+  {
+    "id": 45,
+    "text": "Πόσο κάνει το γινόμενο 6 x 6;",
+    "answers": [
+      {"text": "32", "is_correct": false},
+      {"text": "36", "is_correct": true},
+      {"text": "35", "is_correct": false},
+      {"text": "33", "is_correct": false}
+    ]
+  },
+  {
+    "id": 46,
+    "text": "Πόσο κάνει το άθροισμα 23 + 19;",
+    "answers": [
+      {"text": "41", "is_correct": false},
+      {"text": "40", "is_correct": true},
+      {"text": "43", "is_correct": false},
+      {"text": "39", "is_correct": false}
+    ]
+  },
+  {
+    "id": 47,
+    "text": "Βρες το αποτέλεσμα της πράξης: 60 / 6;",
+    "answers": [
+      {"text": "11", "is_correct": false},
+      {"text": "10", "is_correct": true},
+      {"text": "12", "is_correct": false},
+      {"text": "9", "is_correct": false}
+    ]
+  },
+  {
+    "id": 48,
+    "text": "Πόσο κάνει το γινόμενο 8 x 8;",
+    "answers": [
+      {"text": "60", "is_correct": false},
+      {"text": "64", "is_correct": true},
+      {"text": "62", "is_correct": false},
+      {"text": "58", "is_correct": false}
+    ]
+  },
+  {
+    "id": 49,
+    "text": "Πόσο κάνει το άθροισμα 21 + 22;",
+    "answers": [
+      {"text": "40", "is_correct": false},
+      {"text": "44", "is_correct": false},
+      {"text": "43", "is_correct": true},
+      {"text": "42", "is_correct": false}
+    ]
+  },
+  {
+    "id": 50,
+    "text": "Βρες το αποτέλεσμα της πράξης: 56 / 8;",
+    "answers": [
+      {"text": "7", "is_correct": false},
+      {"text": "6", "is_correct": false},
+      {"text": "8", "is_correct": true},
+      {"text": "9", "is_correct": false}
+    ]
+  }
+]

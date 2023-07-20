@@ -176,14 +176,8 @@ fun InfoTheoryDialog(onDismiss: () -> Unit) {
             }
         },
         confirmButton = {
-            Box(
-                modifier = Modifier.fillMaxWidth().padding(SpacingHalf_8dp),
-                contentAlignment = Alignment.Center
-            ) {
-                RoundedButton(
-                    onClick = { onDismiss() },
-                    text = stringResource(id = R.string.info_ok_dialog)
-                )
+            Box(modifier = Modifier.fillMaxWidth().padding(SpacingHalf_8dp), contentAlignment = Alignment.Center) {
+                RoundedButton(onClick = { onDismiss() }, text = stringResource(id = R.string.info_ok_dialog))
             }
         }
     )
@@ -228,9 +222,7 @@ fun InfoScoreDialog(onDismiss: () -> Unit) {
         backgroundColor = BabyBluePurple2,
         onDismissRequest = { onDismiss() },
         shape = RoundedCornerShape(SpacingDefault_16dp),
-        title = {
-            Text(text = stringResource(id = R.string.score))
-        },
+        title = { Text(text = stringResource(id = R.string.score)) },
         text = {
             Column(Modifier.fillMaxWidth()) {
                 Text(text = stringResource(id = R.string.info_score_start_dialog))
@@ -241,15 +233,8 @@ fun InfoScoreDialog(onDismiss: () -> Unit) {
             }
         },
         confirmButton = {
-            Box(
-                modifier = Modifier.fillMaxWidth().padding(SpacingHalf_8dp),
-                contentAlignment = Alignment.Center
-            ) {
-                RoundedButton(
-                    onClick = { onDismiss() },
-                    text = stringResource(id = R.string.info_ok_dialog)
-                )
-            }
+            Box(modifier = Modifier.fillMaxWidth().padding(SpacingHalf_8dp), contentAlignment = Alignment.Center) {
+                RoundedButton(onClick = { onDismiss() }, text = stringResource(id = R.string.info_ok_dialog)) }
         }
     )
 }

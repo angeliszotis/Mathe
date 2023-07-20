@@ -1,217 +1,495 @@
 [
   {
-    "id":1,
-  "text": "Ένα κατάστημα αθλητικών ειδών πούλησε 200 μπάλες. Οι 80 μπάλες ήταν του μπάσκετ και οι υπόλοιπες ήταν του βόλει και του ποδοσφαίρου. Οι μπάλες του βόλει ήταν διπλάσιες από αυτές του ποδοσφαίρου. Πόσες μπάλες του βόλει  και πόσες του ποδοσφαίρου πούλησε το κατάστημα ;",
-  "answers": ["80 βόλει και 40 ποδοσφαίρου", " 60 βόλει και 40 ποδοσφαίρου", "70 βόλει και 35 ποδοσφαίρου","90 βόλει και 45 ποδοσφαίρου"],
-  "correctAnswerIndex": 0
+    "id": 1,
+    "text": "Ένα κατάστημα αθλητικών ειδών πούλησε 200 μπάλες. Οι 80 μπάλες ήταν του μπάσκετ και οι υπόλοιπες ήταν του βόλει και του ποδοσφαίρου. Οι μπάλες του βόλει ήταν διπλάσιες από αυτές του ποδοσφαίρου. Πόσες μπάλες του βόλει και πόσες του ποδοσφαίρου πούλησε το κατάστημα;",
+    "answers": [
+      {"text": "80 βόλει και 40 ποδοσφαίρου", "isCorrect": true},
+      {"text": "60 βόλει και 40 ποδοσφαίρου", "isCorrect": false},
+      {"text": "70 βόλει και 35 ποδοσφαίρου", "isCorrect": false},
+      {"text": "90 βόλει και 45 ποδοσφαίρου", "isCorrect": false}
+    ]
   },
   {
-    "id":1,
-    "text": "Ένα κατάστημα αθλητικών ειδών πούλησε 200 μπάλες. Οι 80 μπάλες ήταν του μπάσκετ και οι υπόλοιπες ήταν του βόλει και του ποδοσφαίρου. Οι μπάλες του βόλει ήταν διπλάσιες από αυτές του ποδοσφαίρου. Πόσες μπάλες του βόλει  και πόσες του ποδοσφαίρου πούλησε το κατάστημα ;",
-    "answers": [ "70 βόλει και 35 ποδοσφαίρου", " 60 βόλει και 40 ποδοσφαίρου","80 βόλει και 40 ποδοσφαίρου","90 βόλει και 45 ποδοσφαίρου"],
-    "correctAnswerIndex": 2
+    "id": 2,
+    "text": "Στην ανάλυση του αριθμού 9.512.750 = 9.000.000 + 500.000 + 10.000 + …………….. + 700 + 50 λείπει το:",
+    "answers": [
+      {"text": "2000", "isCorrect": true},
+      {"text": "20.000", "isCorrect": false},
+      {"text": "200.000", "isCorrect": false}
+    ]
   },
   {
-    "id":1,
-    "text": "Ένα κατάστημα αθλητικών ειδών πούλησε 200 μπάλες. Οι 80 μπάλες ήταν του μπάσκετ και οι υπόλοιπες ήταν του βόλει και του ποδοσφαίρου. Οι μπάλες του βόλει ήταν διπλάσιες από αυτές του ποδοσφαίρου. Πόσες μπάλες του βόλει  και πόσες του ποδοσφαίρου πούλησε το κατάστημα ;",
-    "answers": ["70 βόλει και 35 ποδοσφαίρου","80 βόλει και 40 ποδοσφαίρου", " 60 βόλει και 40 ποδοσφαίρου", "90 βόλει και 45 ποδοσφαίρου"],
-    "correctAnswerIndex": 1
-  },
-
-
-  {
-    "id":2,
-    "text": "Στην ανάλυση του αριθμού 9.512.750 = 9.000.000 + 500.00 + 10.000 + …………….. + 700 + 50 λείπει το:",
-    "answers": [ "2000","20.000", "200.000"],
-    "correctAnswerIndex": 0
+    "id": 3,
+    "text": "Στον αριθμό 213.847.000 το ψηφίο 8 είναι στη θέση των:",
+    "answers": [
+      {"text": "εκατοντάδων χιλιάδων", "isCorrect": true},
+      {"text": "εκατοντάδων εκατομμυρίων", "isCorrect": false},
+      {"text": "εκατοντάδων", "isCorrect": false}
+    ]
   },
   {
-    "id":2,
-    "text": "Στην ανάλυση του αριθμού 9.512.750 = 9.000.000 + 500.00 + 10.000 + …………….. + 700 + 50 λείπει το:",
-    "answers": ["20.000", "2000", "200.000"],
-    "correctAnswerIndex": 1
+    "id": 4,
+    "text": "8.145.726 > 8.145.926:",
+    "answers": [
+      {"text": "Λάθος", "isCorrect": true},
+      {"text": "Σωστό", "isCorrect": false}
+    ]
   },
   {
-    "id":2,
-    "text": "Στην ανάλυση του αριθμού 9.512.750 = 9.000.000 + 500.00 + 10.000 + …………….. + 700 + 50 λείπει το:",
-    "answers": ["20.000", "200.000", "2000"],
-    "correctAnswerIndex": 2
-  },
-
-
-  {
-    "id":3,
-    "text": "Στον αριθμό 213.847.000 το ψηφίο 8 είναι στη θέση των :",
-    "answers": ["εκατοντάδων χιλιάδων","εκατοντάδων εκατομμυρίων", "εκατοντάδων"],
-    "correctAnswerIndex": 0
+    "id": 5,
+    "text": "Στρογγυλοποιήστε τον αριθμό 34.721.037 στις ΕΧ.:",
+    "answers": [
+      {"text": "34.720.000", "isCorrect": true},
+      {"text": "34.730.000", "isCorrect": false},
+      {"text": "34.725.000", "isCorrect": false}
+    ]
   },
   {
-    "id":3,
-    "text": "Στον αριθμό 213.547.800 το ψηφίο 8 είναι στη θέση των :",
-    "answers": ["εκατοντάδων εκατομμυρίων ", "εκατοντάδων χιλιάδων", "εκατοντάδων"],
-    "correctAnswerIndex": 2
-  },
-  {
-    "id":3,
-    "text": "Στον αριθμό 213.847.000 το ψηφίο 8 είναι στη θέση των :",
-    "answers": ["εκατοντάδων χιλιάδων", "εκατοντάδων","εκατοντάδων εκατομμυρίων"],
-    "correctAnswerIndex": 3
-  },
-
-
-  {
-    "id":4,
-    "text": "8.145.726 > 8.145.926",
-    "answers": ["Λάθος","Σωστό"],
-    "correctAnswerIndex": 0
-  },
-  {
-    "id":4,
-    "text": "8.145.726 > 8.145.926",
-    "answers": ["Σωστό", "Λάθος"],
-    "correctAnswerIndex": 1
-  },
-
-
-
-  {
-    "id":5,
-    "text": "Στρογγυλοποιήστε τον αριθμό 34.721.037 στις ΕΧ.\\ :",
-    "answers": ["34.720.000","34.730.000 ", "34.725.000"],
-    "correctAnswerIndex": 0
-  },
-  {
-    "id":5,
-    "text": "Στρογγυλοποιήστε τον αριθμό 34.721.037 στις ΕΧ.\\ :",
-    "answers": ["34.730.000 ", "34.720.000", "34.725.000"],
-    "correctAnswerIndex": 1
-  },
-  {
-    "id":5,
-    "text": "Στρογγυλοποιήστε τον αριθμό 34.721.037 στις ΕΧ.\\ :",
-    "answers": ["34.730.000 ", "34.725.000", "34.720.000"],
-    "correctAnswerIndex": 2
-  },
-
-
-  {
-    "id":6,
+    "id": 6,
     "text": "Ο αριθμός 17.827.405 στρογγυλοποιείται στις ΕΜ ως:",
-    "answers": ["17.800.000","17.827.000", "17.900.000", "17.827.400"],
-    "correctAnswerIndex": 0
+    "answers": [
+      {"text": "17.800.000", "isCorrect": true},
+      {"text": "17.827.000", "isCorrect": false},
+      {"text": "17.900.000", "isCorrect": false},
+      {"text": "17.827.400", "isCorrect": false}
+    ]
   },
   {
-    "id":6,
-    "text": "Ο αριθμός 17.827.405 στρογγυλοποιείται στις ΕΜ ως:",
-    "answers": ["17.827.000 ", "17.900.000","17.800.000", "17.827.400"],
-    "correctAnswerIndex": 2
+    "id": 7,
+    "text": "Σε 7 τελάρα χωράνε 28 κιλά μήλα. Τα 548 κιλά μήλα σε πόσα τελάρα χωράνε;",
+    "answers": [
+      {"text": "127 τελάρα", "isCorrect": false},
+      {"text": "133 τελάρα", "isCorrect": false},
+      {"text": "137 τελάρα", "isCorrect": true},
+      {"text": "140 τελάρα", "isCorrect": false}
+    ]
   },
   {
-    "id":6,
-    "text": "Ο αριθμός 17.827.405 στρογγυλοποιείται στις ΕΜ ως:",
-    "answers": ["17.827.000 ", "17.900.000", "17.827.400","17.800.000"],
-    "correctAnswerIndex": 3
-  },
-
-
-  {
-    "id":7,
-    "text": "Σε 7 τελάρα χωράνε 28 κιλά μήλα. Τα 548 κιλά μήλα σε πόσα τελάρα χωράνε?",
-    "answers": ["127 τελάρα", "133 τελάρα", "137 τελάρα","140 τελάρα"],
-    "correctAnswerIndex": 2
+    "id": 8,
+    "text": "Αναλύστε τον αριθμό 3.927.200.507:",
+    "answers": [
+      {"text": "3.000.000.000 + 900.000.000 + 27.000.000 + 7.000.000 + 200.000 + 500 + 7", "isCorrect": true},
+      {"text": "3.000.000.000 + 900.000.000 + 27.000.000 + 7.000.000 + 700.000 + 700 + 7", "isCorrect": false}
+    ]
   },
   {
-  "id":7,
-  "text": "Σε 7 τελάρα χωράνε 28 κιλά μήλα. Τα 548 κιλά μήλα σε πόσα τελάρα χωράνε?",
-  "answers": ["127 τελάρα", "133 τελάρα","140 τελάρα","137 τελάρα"],
-  "correctAnswerIndex": 3
-},
-  {
-  "id":7,
-  "text": "Σε 7 τελάρα χωράνε 28 κιλά μήλα. Τα 548 κιλά μήλα σε πόσα τελάρα χωράνε?",
-  "answers": ["137 τελάρα","127 τελάρα", "133 τελάρα","140 τελάρα"],
-  "correctAnswerIndex": 0
-},
-
-
-  {
-    "id":8,
-    "text": "Αναλύστε τον αριθμό 3.927.200.507",
-    "answers": ["3.000.000.000 + 900.000.000 + 27.000.000 + 7.000.000 + 200.000 + 500+ 7", "3.000.000.000 + 900.000.000 + 27.000.000 + 7.000.000 + 700.000 + 700+ 7"],
-    "correctAnswerIndex": 0
-  },
-  {
-    "id":8,
-    "text": "Αναλύστε τον αριθμό 3.927.200.507",
-    "answers": [ "3.000.000.000 + 900.000.000 + 27.000.000 + 7.000.000 + 700.000 + 700+ 7", "3.000.000.000 + 900.000.000 + 27.000.000 + 7.000.000 + 200.000 + 500+ 7"],
-    "correctAnswerIndex": 1
-  },
-
-
-  {
-    "id":9,
+    "id": 9,
     "text": "Στον αριθμό 3.000.527.304 το ψηφίο 2 είναι στη θέση των:",
-    "answers": ["δεκάδων χιλιάδων", "εκατοντάδων χιλιάδων", "μονάδων χιλιάδων"],
-    "correctAnswerIndex": 0
+    "answers": [
+      {"text": "δεκάδων χιλιάδων", "isCorrect": false},
+      {"text": "εκατοντάδων χιλιάδων", "isCorrect": true},
+      {"text": "μονάδων χιλιάδων", "isCorrect": false}
+    ]
   },
   {
-    "id":9,
-    "text": "Στον αριθμό 3.000.527.304 το ψηφίο 2 είναι στη θέση των:",
-    "answers": ["εκατοντάδων χιλιάδων","δεκάδων χιλιάδων", "μονάδων χιλιάδων"],
-    "correctAnswerIndex": 1
-  },
-  {
-    "id":9,
-    "text": "Στον αριθμό 3.000.527.304 το ψηφίο 2 είναι στη θέση των:",
-    "answers": ["εκατοντάδων χιλιάδων", "μονάδων χιλιάδων","δεκάδων χιλιάδων"],
-    "correctAnswerIndex": 2
-  },
-
-
-  {
-    "id":10,
-    "text": "7.134.503.697 < 7.134.504.612 :",
-    "answers": ["Σωστό", "λάθος"],
-    "correctAnswerIndex": 0
-  },
-  {
-    "id":10,
-    "text": "7.134.503.697 < 7.134.504.612 :",
-    "answers": ["λάθος","Σωστό"],
-    "correctAnswerIndex": 1
+    "id": 10,
+    "text": "7.134.503.697 < 7.134.504.612:",
+    "answers": [
+      {"text": "Σωστό", "isCorrect": true},
+      {"text": "Λάθος", "isCorrect": false}
+    ]
   },
 
 
   {
-    "id":11,
+    "id": 11,
     "text": "Στρογγυλοποιείστε τον αριθμό 14.627.014 στις ΜΕ:",
-    "answers": ["15.000.000", "14.000.000", "14.500.000"],
-    "correctAnswerIndex": 0
+    "answers": [
+      {"text": "15.000.000","isCorrect": true},
+      {"text": "14.000.000", "isCorrect": false},
+      {"text":"14.500.000", "isCorrect": false}
+    ]
   },
   {
-    "id":11,
-    "text": "Στρογγυλοποιείστε τον αριθμό 14.627.014 στις ΜΕ:",
-    "answers": ["14.000.000","15.000.000", "14.500.000"],
-    "correctAnswerIndex": 1
+    "id": 12,
+    "text": "Να γράψετε τον αριθμό 7.533.201 με λέξεις:",
+    "answers": [
+      {"text" :"εφτά εκατομμύρια πεντακόσιες τριάντα τρεις εκατοντάδες διακόσια ένα", "isCorrect": true},
+      { "text":"εφτά εκατομμύρια πεντακόσιες τριάντα τρεις χιλιάδες διακόσια ένα", "isCorrect": false}
+    ]
   },
   {
-    "id":11,
-    "text": "Στρογγυλοποιείστε τον αριθμό 14.627.014 στις ΜΕ:",
-    "answers": ["14.000.000", "14.500.000","15.000.000"],
-    "correctAnswerIndex": 2
+    "id": 13,
+    "text": "Βρες το αποτέλεσμα της πράξης 45 + 36.",
+    "answers": [
+      {"text": "82", "isCorrect": true},
+      {"text": "80", "isCorrect": false},
+      {"text": "81", "isCorrect": false},
+      {"text": "83", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 14,
+    "text": "Ποιος αριθμός είναι μεγαλύτερος από το 18;",
+    "answers": [
+      {"text": "19", "isCorrect": true},
+      {"text": "17", "isCorrect": false},
+      {"text": "18", "isCorrect": false},
+      {"text": "20", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 15,
+    "text": "Υπολόγισε το αποτέλεσμα της πράξης 29 + 27.",
+    "answers": [
+      {"text": "55", "isCorrect": true},
+      {"text": "56", "isCorrect": false},
+      {"text": "57", "isCorrect": false},
+      {"text": "54", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 16,
+    "text": "Ποιος αριθμός είναι μικρότερος από το 22;",
+    "answers": [
+      {"text": "22", "isCorrect": false},
+      {"text": "23", "isCorrect": false},
+      {"text": "21", "isCorrect": true},
+      {"text": "24", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 17,
+    "text": "Υπολόγισε το αποτέλεσμα της πράξης 53 + 39.",
+    "answers": [
+      {"text": "92", "isCorrect": true},
+      {"text": "91", "isCorrect": false},
+      {"text": "90", "isCorrect": false},
+      {"text": "93", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 18,
+    "text": "Ποιος αριθμός είναι μεγαλύτερος από το 33;",
+    "answers": [
+      {"text": "33", "isCorrect": false},
+      {"text": "32", "isCorrect": false},
+      {"text": "31", "isCorrect": false},
+      {"text": "34", "isCorrect": true}
+    ]
+  },
+  {
+    "id": 19,
+    "text": "Υπολόγισε το αποτέλεσμα της πράξης 17 + 46.",
+    "answers": [
+      {"text": "63", "isCorrect": true},
+      {"text": "64", "isCorrect": false},
+      {"text": "62", "isCorrect": false},
+      {"text": "65", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 20,
+    "text": "Ποιος αριθμός είναι μικρότερος από το 41;",
+    "answers": [
+      {"text": "41", "isCorrect": false},
+      {"text": "40", "isCorrect": true},
+      {"text": "42", "isCorrect": false},
+      {"text": "43", "isCorrect": false}
+    ]
   },
 
 
   {
-    "id":12,
-    "text": "Να γράψετε τον αριθμό 7.533.201 με λέξεις :",
-    "answers": ["εφτά εκατομμύρια πεντακόσιες τριάντα τρεις εκατοντάδες διακόσια ένα ", "εφτά εκατομμύρια πεντακόσιες τριάντα τρεις χιλιάδες διακόσια ένα"],
-    "correctAnswerIndex": 1
+    "id": 21,
+    "text": "Υπολόγισε το αποτέλεσμα της πράξης 38 + 47.",
+    "answers": [
+      {"text": "85", "isCorrect": true},
+      {"text": "84", "isCorrect": false},
+      {"text": "86", "isCorrect": false},
+      {"text": "83", "isCorrect": false}
+    ]
   },
   {
-    "id":12,
-    "text": "Να γράψετε τον αριθμό 7.533.201 με λέξεις :",
-    "answers": ["εφτά εκατομμύρια πεντακόσιες τριάντα τρεις χιλιάδες διακόσια ένα","εφτά εκατομμύρια πεντακόσιες τριάντα τρεις εκατοντάδες διακόσια ένα "],
-    "correctAnswerIndex": 0
+    "id": 22,
+    "text": "Ποιος αριθμός είναι μεγαλύτερος από το 15;",
+    "answers": [
+      {"text": "15", "isCorrect": false},
+      {"text": "16", "isCorrect": true},
+      {"text": "14", "isCorrect": false},
+      {"text": "17", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 23,
+    "text": "Υπολόγισε το αποτέλεσμα της πράξης 62 + 28.",
+    "answers": [
+      {"text": "90", "isCorrect": true},
+      {"text": "89", "isCorrect": false},
+      {"text": "91", "isCorrect": false},
+      {"text": "88", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 24,
+    "text": "Ποιος αριθμός είναι μικρότερος από το 25;",
+    "answers": [
+      {"text": "25", "isCorrect": false},
+      {"text": "26", "isCorrect": true},
+      {"text": "27", "isCorrect": false},
+      {"text": "24", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 25,
+    "text": "Υπολόγισε το αποτέλεσμα της πράξης 29 + 37.",
+    "answers": [
+      {"text": "66", "isCorrect": true},
+      {"text": "67", "isCorrect": false},
+      {"text": "65", "isCorrect": false},
+      {"text": "68", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 26,
+    "text": "Ποιος αριθμός είναι μεγαλύτερος από το 10;",
+    "answers": [
+      {"text": "9", "isCorrect": false},
+      {"text": "11", "isCorrect": true},
+      {"text": "12", "isCorrect": false},
+      {"text": "10", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 27,
+    "text": "Υπολόγισε το αποτέλεσμα της πράξης 17 + 48.",
+    "answers": [
+      {"text": "65", "isCorrect": true},
+      {"text": "66", "isCorrect": false},
+      {"text": "64", "isCorrect": false},
+      {"text": "67", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 28,
+    "text": "Ποιος αριθμός είναι μικρότερος από το 19;",
+    "answers": [
+      {"text": "19", "isCorrect": false},
+      {"text": "18", "isCorrect": true},
+      {"text": "17", "isCorrect": false},
+      {"text": "20", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 29,
+    "text": "Υπολόγισε το αποτέλεσμα της πράξης 26 + 38.",
+    "answers": [
+      {"text": "64", "isCorrect": true},
+      {"text": "63", "isCorrect": false},
+      {"text": "62", "isCorrect": false},
+      {"text": "65", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 30,
+    "text": "Ποιος αριθμός είναι μεγαλύτερος από το 30;",
+    "answers": [
+      {"text": "30", "isCorrect": false},
+      {"text": "31", "isCorrect": true},
+      {"text": "32", "isCorrect": false},
+      {"text": "29", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 31,
+    "text": "Υπολόγισε το αποτέλεσμα της πράξης 18 + 46.",
+    "answers": [
+      {"text": "65", "isCorrect": true},
+      {"text": "63", "isCorrect": false},
+      {"text": "66", "isCorrect": false},
+      {"text": "64", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 32,
+    "text": "Ποιος αριθμός είναι μικρότερος από το 39;",
+    "answers": [
+      {"text": "40", "isCorrect": false},
+      {"text": "39", "isCorrect": true},
+      {"text": "38", "isCorrect": false},
+      {"text": "37", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 33,
+    "text": "Υπολόγισε το αποτέλεσμα της πράξης 6 x 8.",
+    "answers": [
+      {"text": "40", "isCorrect": false},
+      {"text": "48", "isCorrect": false},
+      {"text": "54", "isCorrect": false},
+      {"text": "46", "isCorrect": true}
+    ]
+  },
+
+  {
+    "id": 34,
+    "text": "Ποιος αριθμός είναι μεγαλύτερος από το 95;",
+    "answers": [
+      {"text": "95", "isCorrect": false},
+      {"text": "90", "isCorrect": true},
+      {"text": "93", "isCorrect": false},
+      {"text": "89", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 35,
+    "text": "Ποιος αριθμός είναι μικρότερος από το 50;",
+    "answers": [
+      {"text": "48", "isCorrect": true},
+      {"text": "52", "isCorrect": false},
+      {"text": "45", "isCorrect": false},
+      {"text": "50", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 36,
+    "text": "Πόσο κάνει το άθροισμα 17 + 25;",
+    "answers": [
+      {"text": "42", "isCorrect": true},
+      {"text": "40", "isCorrect": false},
+      {"text": "38", "isCorrect": false},
+      {"text": "35", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 37,
+    "text": "Πόσο κάνει το άθροισμα 28 + 11;",
+    "answers": [
+      {"text": "38", "isCorrect": false},
+      {"text": "37", "isCorrect": false},
+      {"text": "39", "isCorrect": true},
+      {"text": "29", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 38,
+    "text": "Πόσο κάνει το άθροισμα 34 + 16;",
+    "answers": [
+      {"text": "48", "isCorrect": false},
+      {"text": "52", "isCorrect": false},
+      {"text": "43", "isCorrect": false},
+      {"text": "44", "isCorrect": true}
+    ]
+  },
+  {
+    "id": 39,
+    "text": "Πόσο κάνει το άθροισμα 18 + 12;",
+    "answers": [
+      {"text": "32", "isCorrect": false},
+      {"text": "30", "isCorrect": true},
+      {"text": "28", "isCorrect": false},
+      {"text": "26", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 40,
+    "text": "Πόσο κάνει το άθροισμα 22 + 38;",
+    "answers": [
+      {"text": "58", "isCorrect": true},
+      {"text": "56", "isCorrect": false},
+      {"text": "60", "isCorrect": false},
+      {"text": "54", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 41,
+    "text": "Πόσο κάνει το άθροισμα 25 + 17;",
+    "answers": [
+      {"text": "40", "isCorrect": false},
+      {"text": "38", "isCorrect": false},
+      {"text": "35", "isCorrect": false},
+      {"text": "42", "isCorrect": true}
+    ]
+  },
+  {
+    "id": 42,
+    "text": "Πόσο κάνει το άθροισμα 41 + 28;",
+    "answers": [
+      {"text": "60", "isCorrect": false},
+      {"text": "63", "isCorrect": false},
+      {"text": "65", "isCorrect": true},
+      {"text": "69", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 43,
+    "text": "Πόσο κάνει το άθροισμα 34 + 47;",
+    "answers": [
+      {"text": "78", "isCorrect": true},
+      {"text": "80", "isCorrect": false},
+      {"text": "81", "isCorrect": false},
+      {"text": "76", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 44,
+    "text": "Πόσο κάνει το άθροισμα 25 + 42;",
+    "answers": [
+      {"text": "65", "isCorrect": false},
+      {"text": "68", "isCorrect": true},
+      {"text": "70", "isCorrect": false},
+      {"text": "72", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 45,
+    "text": "Πόσο κάνει το άθροισμα 39 + 47;",
+    "answers": [
+      {"text": "85", "isCorrect": false},
+      {"text": "84", "isCorrect": false},
+      {"text": "86", "isCorrect": true},
+      {"text": "87", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 46,
+    "text": "Πόσο κάνει το άθροισμα 33 + 25;",
+    "answers": [
+      {"text": "56", "isCorrect": false},
+      {"text": "58", "isCorrect": true},
+      {"text": "60", "isCorrect": false},
+      {"text": "62", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 47,
+    "text": "Πόσο κάνει το άθροισμα 49 + 37;",
+    "answers": [
+      {"text": "86", "isCorrect": false},
+      {"text": "85", "isCorrect": false},
+      {"text": "88", "isCorrect": false},
+      {"text": "87", "isCorrect": true}
+    ]
+  },
+  {
+    "id": 48,
+    "text": "Πόσο κάνει το άθροισμα 17 + 28;",
+    "answers": [
+      {"text": "44", "isCorrect": true},
+      {"text": "45", "isCorrect": false},
+      {"text": "42", "isCorrect": false},
+      {"text": "43", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 49,
+    "text": "Πόσο κάνει το άθροισμα 52 + 47;",
+    "answers": [
+      {"text": "96", "isCorrect": false},
+      {"text": "98", "isCorrect": false},
+      {"text": "99", "isCorrect": false},
+      {"text": "97", "isCorrect": true}
+    ]
+  },
+  {
+    "id": 50,
+    "text": "Πόσο κάνει το άθροισμα 35 + 27;",
+    "answers": [
+      {"text": "62", "isCorrect": false},
+      {"text": "64", "isCorrect": false},
+      {"text": "60", "isCorrect": false},
+      {"text": "63", "isCorrect": true}
+    ]
   }
+
 ]

@@ -3,6 +3,8 @@ package com.example.mathapp.ui.exam
 import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mathapp.framework.exam.model.QuestionModel
@@ -24,8 +26,7 @@ import com.example.mathapp.ui.exam.map.scoreInternalMapUnit6
 import com.example.mathapp.ui.exam.map.scoreInternalMapUnit7
 import com.example.mathapp.ui.exam.map.scoreInternalMapUnit8
 import com.example.mathapp.ui.exam.map.userMap
-import com.example.mathapp.usecase.exam.unit1.GetQuestionsUnit1UseCase
-import com.example.mathapp.usecase.exam.unit1.GetQuestionsUnit2UseCase
+import com.example.mathapp.usecase.exam.unit1.GetQuestionsUnitUseCase
 import com.example.mathapp.usecase.result.InsertResultUnit1UseCase
 import com.example.mathapp.usecase.score.internal.InsertScoreInternalUnit1UseCase
 import com.example.mathapp.usecase.score.internal.InsertScoreInternalUnit2UseCase
@@ -43,8 +44,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ExamViewModel @Inject constructor(
-    getQuestionsUnit1UseCase: GetQuestionsUnit1UseCase,
-    getQuestionsUnit2UseCase: GetQuestionsUnit2UseCase,
+    private val getQuestionsUnitUseCase: GetQuestionsUnitUseCase,
     private var insertScoreInternalUnit1UseCase: InsertScoreInternalUnit1UseCase,
     private val insertScoreInternalUnit2UseCase: InsertScoreInternalUnit2UseCase,
     private val insertScoreInternalUnit3UseCase: InsertScoreInternalUnit3UseCase,
@@ -54,22 +54,20 @@ class ExamViewModel @Inject constructor(
     private val insertScoreInternalUnit7UseCase: InsertScoreInternalUnit7UseCase,
     private val insertScoreInternalUnit8UseCase: InsertScoreInternalUnit8UseCase,
     private val resultExternalUnit1UseCase: InsertResultUnit1UseCase,
-
     private val userUseCase: GetLastUserUseCase,
 ) : ViewModel() {
 
-    private val questions = getQuestionsUnit1UseCase.invoke()
-    val randomQuestions = getRandomQuestions(questions)
-
-    private val questions2 = getQuestionsUnit2UseCase.invoke()
-    val randomQuestions2 = getRandomQuestions(questions2)
 
     private val _toastMessage = mutableStateOf<String?>(null)
     val toastMessage: State<String?> = _toastMessage
+    private val _randomQuestionModels = MutableLiveData<List<QuestionModel>>(emptyList())
+    val randomQuestionModels: LiveData<List<QuestionModel>> = _randomQuestionModels
 
-    private fun getRandomQuestions(questionModels: List<QuestionModel>): List<QuestionModel> {
+     fun getRandomQuestions(unit: Int) {
+         val questionModels = getQuestionsUnitUseCase.invoke(unit)
         val randomQuestionModels = mutableListOf<QuestionModel>()
         val usedIds = mutableSetOf<Int>()
+
         while (randomQuestionModels.size < 12 && usedIds.size < questionModels.size) {
             val question = questionModels.random()
             if (question.id !in usedIds && question !in randomQuestionModels) {
@@ -77,7 +75,8 @@ class ExamViewModel @Inject constructor(
                 randomQuestionModels.add(question)
             }
         }
-        return randomQuestionModels
+
+        _randomQuestionModels.value = randomQuestionModels
     }
 
     fun insertExternalResult(result: ResultAnswerModel, unit: Int) {
@@ -123,12 +122,12 @@ class ExamViewModel @Inject constructor(
                         8 -> insertScoreInternalUnit8UseCase.invoke(resultModel as ResultUnit8Entity)
                         else -> throw IllegalArgumentException("Invalid unit value: $unit")
                     }
-                } catch (e: Exception) { Log.e("YODA", "Error inserting internal result: ${e.message}", e) }
+                } catch (e: Exception) {
+                    Log.e("YODA", "Error inserting internal result: ${e.message}", e)
+                }
             }
         }
     }
-
-
 }
 
 

@@ -89,6 +89,9 @@
         <argument
             android:name="unit"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_fragmentQuiz_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
     </fragment>
 
     <fragment

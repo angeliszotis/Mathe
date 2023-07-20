@@ -11,8 +11,7 @@ import javax.inject.Inject
 class QuestionRepositoryImpl @Inject constructor() : QuestionRepository {
     override fun getQuestionUnit1(): List<QuestionModel> {
         val context = MathAppApplication.instance.applicationContext
-        val jsonString = context.resources.openRawResource(R.raw.questions1).bufferedReader()
-            .use { it.readText() }
+        val jsonString = context.resources.openRawResource(R.raw.questions1).bufferedReader().use { it.readText() }
         return Gson().fromJson(jsonString, Array<QuestionModel>::class.java).toList()
     }
 
@@ -25,42 +24,40 @@ class QuestionRepositoryImpl @Inject constructor() : QuestionRepository {
 
     override fun getQuestionUnit3(): List<QuestionModel> {
         val context = MathAppApplication.instance.applicationContext
-        val jsonString = context.resources.openRawResource(R.raw.questions2).bufferedReader()
+        val jsonString = context.resources.openRawResource(R.raw.questions3).bufferedReader()
             .use { it.readText() }
         return Gson().fromJson(jsonString, Array<QuestionModel>::class.java).toList()
     }
 
     override fun getQuestionUnit4(): List<QuestionModel> {
         val context = MathAppApplication.instance.applicationContext
-        val jsonString = context.resources.openRawResource(R.raw.questions2).bufferedReader()
-            .use { it.readText() }
+        val jsonString = context.resources.openRawResource(R.raw.questions4).bufferedReader().use { it.readText() }
         return Gson().fromJson(jsonString, Array<QuestionModel>::class.java).toList()
     }
 
     override fun getQuestionUnit5(): List<QuestionModel> {
         val context = MathAppApplication.instance.applicationContext
-        val jsonString = context.resources.openRawResource(R.raw.questions2).bufferedReader()
-            .use { it.readText() }
+        val jsonString = context.resources.openRawResource(R.raw.questions5).bufferedReader().use { it.readText() }
         return Gson().fromJson(jsonString, Array<QuestionModel>::class.java).toList()
     }
 
     override fun getQuestionUnit6(): List<QuestionModel> {
         val context = MathAppApplication.instance.applicationContext
-        val jsonString = context.resources.openRawResource(R.raw.questions2).bufferedReader()
+        val jsonString = context.resources.openRawResource(R.raw.questions6).bufferedReader()
             .use { it.readText() }
         return Gson().fromJson(jsonString, Array<QuestionModel>::class.java).toList()
     }
 
     override fun getQuestionUnit7(): List<QuestionModel> {
         val context = MathAppApplication.instance.applicationContext
-        val jsonString = context.resources.openRawResource(R.raw.questions2).bufferedReader()
+        val jsonString = context.resources.openRawResource(R.raw.questions7).bufferedReader()
             .use { it.readText() }
         return Gson().fromJson(jsonString, Array<QuestionModel>::class.java).toList()
     }
 
     override fun getQuestionUnit8(): List<QuestionModel> {
         val context = MathAppApplication.instance.applicationContext
-        val jsonString = context.resources.openRawResource(R.raw.questions2).bufferedReader()
+        val jsonString = context.resources.openRawResource(R.raw.questions8).bufferedReader()
             .use { it.readText() }
         return Gson().fromJson(jsonString, Array<QuestionModel>::class.java).toList()
     }

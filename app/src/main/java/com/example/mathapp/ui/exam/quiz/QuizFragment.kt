@@ -4,8 +4,6 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mathapp.R
 import com.example.mathapp.databinding.FragmentNavBinding
@@ -18,7 +16,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class QuizFragment : BaseFragment<FragmentNavBinding>() {
 
     private val viewModel: ExamViewModel by viewModels()
-    private val navController: NavController by lazy { findNavController() }
     private lateinit var mediaPlayer: MediaPlayer
     private var currentMusicResourceId: Int = R.raw.quizaudio
     private var shouldReplayAudio: Boolean = true
@@ -38,9 +35,7 @@ class QuizFragment : BaseFragment<FragmentNavBinding>() {
 
     override fun onPause() {
         super.onPause()
-        if (SettingsManager.isMusicEnabled() && !mediaPlayer.isPlaying) {
-            mediaPlayer.pause()
-        }
+        if (SettingsManager.isMusicEnabled() && !mediaPlayer.isPlaying) { mediaPlayer.pause() }
     }
 
     override fun onResume() {
@@ -58,6 +53,7 @@ class QuizFragment : BaseFragment<FragmentNavBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
+            viewModel.getRandomQuestions(args.unit)
             QuizScreen(viewModel, args.unit) { newMusicResId ->
                 shouldReplayAudio = false
                 mediaPlayer.stop()

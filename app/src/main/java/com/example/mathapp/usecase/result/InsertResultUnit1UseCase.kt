@@ -20,5 +20,4 @@ class InsertResultUnit1UseCase @Inject constructor(
             else -> {}
         }
     }
-
 }

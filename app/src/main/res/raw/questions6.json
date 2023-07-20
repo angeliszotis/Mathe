@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "text": "Πόσο κάνει το άθροισμα 13 + 27;",
+    "answers": [
+      {"text": "37", "isCorrect": false},
+      {"text": "40", "isCorrect": false},
+      {"text": "41", "isCorrect": false},
+      {"text": "39", "isCorrect": true}
+    ]
+  },
+  {
+    "id": 2,
+    "text": "Πόσο κάνει το άθροισμα 6 + 45;",
+    "answers": [
+      {"text": "49", "isCorrect": false},
+      {"text": "51", "isCorrect": true},
+      {"text": "53", "isCorrect": false},
+      {"text": "48", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 3,
+    "text": "Πόσο κάνει το άθροισμα 10 + 17;",
+    "answers": [
+      {"text": "25", "isCorrect": true},
+      {"text": "22", "isCorrect": false},
+      {"text": "20", "isCorrect": false},
+      {"text": "30", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 4,
+    "text": "xexe",
+    "answers": [
+      {"text": "25", "isCorrect": true},
+      {"text": "22", "isCorrect": false},
+      {"text": "20", "isCorrect": false},
+      {"text": "30", "isCorrect": false}
+    ]
+  }
+]

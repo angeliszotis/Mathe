@@ -13,16 +13,17 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.LinearProgressIndicator
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -38,21 +39,25 @@ import com.example.mathapp.ui.theme.BabyBluePurple4
 import com.example.mathapp.ui.theme.FbColor
 import kotlinx.coroutines.delay
 
-private var _globalReturntime = 0
+private var privateReturntime = 0
+private var privateCorrect : Boolean =false
 
 @Composable
 fun QuizScreen(viewModel: ExamViewModel,  unit: Int, changeMusic: (Int) -> Unit) {
 
-    val randomQuestions = if (unit == 1){viewModel.randomQuestions} else { viewModel.randomQuestions2}
+    val randomQuestions = viewModel.randomQuestionModels.observeAsState(listOf()).value
     var currentQuestionIndex by remember { mutableStateOf(0) }
     var showResult by remember { mutableStateOf(false) }
     var score by remember { mutableStateOf(0) }
 
-    Column(modifier = Modifier.background(color = BabyBluePurple3,).fillMaxWidth().padding(5.dp)) {
+    Column(modifier = Modifier
+        .background(color = BabyBluePurple3)
+        .fillMaxWidth()
+        .padding(5.dp)) {
 
         ProgressBar(currentQuestionIndex, randomQuestions.size)
         if (showResult) {
-            ResultScreen(randomQuestions.size, score, _globalReturntime, viewModel = viewModel, unit = unit)
+            ResultScreen(randomQuestions.size, score, privateReturntime, viewModel = viewModel, unit = unit)
             changeMusic(R.raw.complete)
         }
         else if (currentQuestionIndex < randomQuestions.size) {
@@ -84,20 +89,30 @@ fun QuizContent(
     var showAnswer by remember { mutableStateOf(false) }
     var showButton by remember { mutableStateOf(true) }
 
+    val shuffledAnswers = remember(questionModel.answers) {
+        questionModel.answers.shuffled()
+    }
+
     Column(modifier = Modifier.padding(16.dp)) {
-        Column(modifier = Modifier.background(color = BabyBluePurple2, RoundedCornerShape(12.dp)).fillMaxWidth().padding(5.dp)
-        ) {
+        Column(modifier = Modifier
+            .background(color = BabyBluePurple2, RoundedCornerShape(12.dp))
+            .fillMaxWidth()
+            .padding(5.dp)) {
             Text(text = questionModel.text, fontSize = 12.sp, fontWeight = FontWeight.Bold)
         }
         Spacer(modifier = Modifier.height(16.dp))
         Column {
-            questionModel.answers.forEachIndexed { index, answer ->
+            shuffledAnswers.forEachIndexed { index, answer ->
                 AnswerButton(
-                    text = answer,
+                    text = answer.text,
                     isSelected = index == selectedAnswerIndex,
                     onClick = {
+                        privateCorrect= answer.isCorrect
                         selectedAnswerIndex = index
-                        if (index == questionModel.correctAnswerIndex) { showAnswer = false } }
+                        if (answer.isCorrect) {
+                            showAnswer = false
+                        }
+                    }
                 )
                 Spacer(modifier = Modifier.height(8.dp))
             }
@@ -108,18 +123,15 @@ fun QuizContent(
                 Button(
                     colors = ButtonDefaults.buttonColors(backgroundColor = FbColor),
                     onClick = {
-                        if (selectedAnswerIndex == questionModel.correctAnswerIndex) {
-                            onAnswer(true)
+                        //selectedAnswerIndex
+                        onAnswer(privateCorrect)
 
-                        } else {
-                            onAnswer(false)
-                        }
                         onNext()
-                        selectedAnswerIndex = -1 // reset the selected option
-                        showButton = false // hide the help button after answering
+                        selectedAnswerIndex = -1
+                        showButton = false
                     }
                 ) {
-                    Text(color = Color.White, text = "Επόμενη")
+                    Text(color = Color.White, text = stringResource(id = R.string.next))
                 }
             } else {
                 Spacer(modifier = Modifier.width(100.dp))
@@ -128,12 +140,9 @@ fun QuizContent(
                 durationSeconds = 0,
                 onTimeUp = {
                     onAnswer(false)
-                    onShowResult() }
+                    onShowResult()
+                }
             )
-            if (showButton) { Button(onClick = { showAnswer = true }) { Text(text = "Help") } }
-        }
-        if (showAnswer) {
-            Text(text = "The correct answer is: ${questionModel.answers[questionModel.correctAnswerIndex]}", color = MaterialTheme.colors.secondary, fontSize = 16.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(top = 8.dp))
         }
     }
 }
@@ -146,12 +155,12 @@ fun Timer(durationSeconds: Int, onTimeUp: () -> Unit) {
         while (remainingTime < 1000) {
             delay(1000L)
             remainingTime++
-            _globalReturntime = remainingTime
+            privateReturntime = remainingTime
         }
         onTimeUp()
     }
 
-    Text(text = "Χρόνος : ${remainingTime} ″ ", fontWeight = FontWeight.Bold, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+    Text(text = stringResource(id = R.string.time)+" : $remainingTime ″ ", fontWeight = FontWeight.Bold, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
 
 }
 
@@ -161,9 +170,7 @@ fun AnswerButton(text: String, isSelected: Boolean, onClick: () -> Unit) {
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(backgroundColor = if (isSelected) BabyBluePurple4 else BabyBluePurple1),
         modifier = Modifier.fillMaxWidth()
-    ) {
-        Text(text = text, fontSize = 10.sp)
-    }
+    ) { Text(text = text, fontSize = 10.sp) }
 }
 
 @Composable
@@ -175,13 +182,13 @@ fun ProgressBar(currentIndex: Int, totalQuestions: Int) {
     Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
     ) {
         if (currentIndex == totalQuestions) {
-            Text(text = "Ερώτηση $currentIndex απο $totalQuestions", fontSize = 18.sp)
+            Text( text = stringResource(R.string.question_number, currentIndex, totalQuestions), fontSize = 18.sp)
         } else {
-            Text(text = "Ερώτηση ${currentIndex + 1} απο $totalQuestions", fontSize = 18.sp)
+            Text(text = stringResource(R.string.question_number, currentIndex + 1,totalQuestions), fontSize = 18.sp)
         }
         Spacer(modifier = Modifier.height(8.dp))
         LinearProgressIndicator(progress = progress, modifier = Modifier.fillMaxWidth(), color = FbColor)
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = "$percent% Ολοκληρωμένο", fontSize = 14.sp, textAlign = TextAlign.End)
+        Text(text = stringResource(R.string.completed_percent, percent), fontSize = 14.sp, textAlign = TextAlign.End)
     }
 }
