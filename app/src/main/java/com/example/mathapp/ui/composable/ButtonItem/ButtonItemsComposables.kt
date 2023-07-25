@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import com.example.mathapp.ui.dashboard.LobbyViewModel
@@ -35,7 +36,7 @@ fun ButtonItem(modifier: Modifier, item: HomeButtonsDC, viewModel: LobbyViewMode
     ) {
         Icon(painter = painterResource(id = item.icon), contentDescription = "Localized description", modifier = Modifier.size(item.iconSize.dp))
         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-        Text(item.text, fontSize = item.textSize.em)
+        item.text?.let { Text(it, fontSize = item.textSize.em) }
     }
     Spacer(modifier = Modifier.height(16.dp))
 
@@ -52,7 +53,7 @@ fun ButtonItem(modifier: Modifier, item: HomeButtonsDCVector, viewModel: LobbyVi
     ) {
         Icon(item.icon, contentDescription = "Localized description", modifier = Modifier.size(item.iconSize.dp),)
         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-        Text(item.text, fontSize = item.textSize.em)
+        item.text?.let { Text(it, fontSize = item.textSize.em , maxLines = 1, overflow = TextOverflow.Ellipsis) }
     }
     Spacer(modifier = Modifier.height(16.dp))
 

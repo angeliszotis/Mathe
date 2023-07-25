@@ -14,6 +14,7 @@ sealed class NavButtonItems(val destination: NavDirections) {
     object Exam : NavButtonItems(LobbyFragmentDirections.actionFragmentHomeToFragmentExam())
     object Info : NavButtonItems(LobbyFragmentDirections.actionHomeToInfo())
     object Score : NavButtonItems(LobbyFragmentDirections.actionHomeToScore())
+    object Chat : NavButtonItems(LobbyFragmentDirections.actionFragmentHomeToFragmentChat())
 }
 
 sealed class NavExamItems(val destination: NavDirections){
@@ -51,8 +52,9 @@ sealed class NavScoreExternal(val destination: NavDirections){
 sealed class NavScoreItems(val destination: NavDirections){
     object ScoreInternalUnit : NavScoreItems(ScoreFragmentDirections.actionFragmentScoreToFragmentUnit(true,true))
     object ScoreExternalUnit : NavScoreItems(ScoreFragmentDirections.actionFragmentScoreToFragmentUnit(true,false))
+    object ScoreAchievement: NavScoreItems(ScoreFragmentDirections.actionFragmentScoreToFragmentAchievement())
 }
 
-data class HomeButtonsDC(val text: String, val textSize: Int, val icon: Int, val iconSize: Int, val action: NavButtonItems)
+data class HomeButtonsDC(val text: String?, val textSize: Int, val icon: Int, val iconSize: Int, val action: NavButtonItems)
 
-data class HomeButtonsDCVector(val text: String, val textSize: Int, val icon: ImageVector, val iconSize: Int, val action: NavButtonItems)
+data class HomeButtonsDCVector(val text: String?, val textSize: Int, val icon: ImageVector, val iconSize: Int, val action: NavButtonItems)

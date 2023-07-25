@@ -52,12 +52,7 @@ fun ProfileScreen(viewModel: ProfileViewModel, onGoBack: () -> Unit) {
 
     val userItem = viewModel.getUserData.observeAsState(listOf()).value
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(BabyBluePurple3)
-            .verticalScroll(rememberScrollState())
-            .padding(horizontal = 16.dp, vertical = 10.dp),
+    Column(modifier = Modifier.fillMaxSize().background(BabyBluePurple3).verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 10.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -162,6 +157,7 @@ fun TextFieldsForProfile(viewModel: ProfileViewModel, textName: String, textSurn
             .fillMaxWidth()
             .padding(horizontal = 16.dp)) {
             Button(
+                shape = RoundedCornerShape(16.dp),
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(SpacingCustom_6dp),
@@ -178,6 +174,7 @@ fun TextFieldsForProfile(viewModel: ProfileViewModel, textName: String, textSurn
             }
 
             Button(
+                shape = RoundedCornerShape(16.dp),
                 modifier = Modifier.weight(0.5f).padding(SpacingCustom_6dp),
                 colors = ButtonDefaults.buttonColors(backgroundColor = FbColor),
                 onClick = {

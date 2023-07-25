@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Switch
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Star
@@ -139,13 +140,20 @@ fun HomeScreen(viewModel: LobbyViewModel) {
                     NavButtonItems.Info
                 ), viewModel
             )
+            ButtonItem(
+                Modifier.weight(0.5f).padding(SpacingCustom_6dp),
+                HomeButtonsDCVector(
+                    text = null,
+                    textSize = 3,
+                    icon = Icons.Filled.Email,
+                    iconSize = 20,
+                    action= NavButtonItems.Chat
+                ), viewModel
+            )
         }
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-        ) {
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)) {
             Text(
                 text = stringResource(id = switchText),
                 color = BabyBluePurple5,

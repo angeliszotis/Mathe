@@ -3,12 +3,8 @@ package com.example.mathapp.util
 import android.content.Context
 import android.widget.Toast
 
-fun showToast(context: Context, message: Int) {
-    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-}
-fun showToast(context: Context, message: String) {
-    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-}
+fun showToast(context: Context, message: Int) { Toast.makeText(context, message, Toast.LENGTH_SHORT).show() }
+fun showToast(context: Context, message: String) { Toast.makeText(context, message, Toast.LENGTH_SHORT).show() }
 
 fun isValidInput(text: String): Boolean {
     // Remove leading and trailing whitespaces

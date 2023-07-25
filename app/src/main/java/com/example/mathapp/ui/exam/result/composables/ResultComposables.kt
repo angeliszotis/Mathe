@@ -35,6 +35,8 @@ import com.example.mathapp.ui.theme.BabyBluePurple2
 import com.example.mathapp.ui.theme.FbColor
 import com.example.mathapp.ui.theme.SpacingCustom_6dp
 import com.example.mathapp.util.BASE_URL_LOTTIE_RESULTS_lf20_END
+import com.example.mathapp.util.BASE_URL_LOTTIE_RESULTS_lf20_END2
+import com.example.mathapp.util.BASE_URL_LOTTIE_RESULTS_lf20_END3
 import com.example.mathapp.util.showToast
 
 @Composable
@@ -76,12 +78,12 @@ fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int, remainingTime: Int
     }
 
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-        Text(text = stringResource(id = R.string.save),fontWeight = FontWeight.Bold)
-    }
+        Text(text = stringResource(id = R.string.save),fontWeight = FontWeight.Bold) }
 
     Row(modifier = Modifier.padding(vertical = 16.dp)) {
         Button(
             modifier = Modifier.weight(0.5f).padding(SpacingCustom_6dp),
+            shape = RoundedCornerShape(16.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = if (externalButtonEnabled.value) FbColor else Color.Gray),
             onClick = {
                 if (externalButtonEnabled.value) {
@@ -97,6 +99,7 @@ fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int, remainingTime: Int
             Text(color = Color.White, text = stringResource(id = R.string.score_external))
         }
         Button(
+            shape = RoundedCornerShape(16.dp),
             modifier = Modifier.weight(0.5f).padding(SpacingCustom_6dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = if (internalButtonEnabled.value) FbColor else Color.Gray),
             onClick = {
@@ -117,6 +120,8 @@ fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int, remainingTime: Int
     }
 
     Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-        LottieLoaderResult(link = BASE_URL_LOTTIE_RESULTS_lf20_END)
+        if(numCorrectAnswers <6){ LottieLoaderResult(link = BASE_URL_LOTTIE_RESULTS_lf20_END3) }
+        else if (numCorrectAnswers <10){LottieLoaderResult(link = BASE_URL_LOTTIE_RESULTS_lf20_END2)}
+        else{ LottieLoaderResult(link = BASE_URL_LOTTIE_RESULTS_lf20_END) }
     }
 }

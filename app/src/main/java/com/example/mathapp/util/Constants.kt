@@ -13,9 +13,19 @@ const val BASE_URL_LOTTIE_THEORY_lf20_START = "https://assets6.lottiefiles.com/p
 const val BASE_URL_LOTTIE_DASHBOARD_lf20_END = "https://assets5.lottiefiles.com/packages/lf20_YrdJ2K8cQY.json"
 
 const val BASE_URL_LOTTIE_SCORE_lf20_START = "https://assets4.lottiefiles.com/packages/lf20_bq0iyadj.json"
-const val BASE_URL_LOTTIE_SCORE_lf20_END = "https://assets3.lottiefiles.com/packages/lf20_si7bhkv8.json"
+const val BASE_URL_LOTTIE_SCORE_lf20_MIDDLE = "https://assets3.lottiefiles.com/packages/lf20_si7bhkv8.json"
+const val BASE_URL_LOTTIE_SCORE_lf20_END = "https://lottie.host/639f30b8-9c55-4d62-a58b-4d8ff04a3f67/68mQzVlupR.json"
 
 const val BASE_URL_LOTTIE_RESULTS_lf20_END = "https://assets4.lottiefiles.com/packages/lf20_kfl4ksd9.json"
+const val BASE_URL_LOTTIE_RESULTS_lf20_END2 = "https://lottie.host/b31d7aec-4ced-427e-a0fb-7fb0fc7ee261/VVn1fQDkx2.json"
+const val BASE_URL_LOTTIE_RESULTS_lf20_END3 = "https://lottie.host/ddcd01b8-2e74-4c62-a7d9-b034b47f2541/BxyvMXAU54.json"
+
+const val BASE_URL_LOTTIE_QUIZ_lf20_END1 = "https://lottie.host/805cd4ea-b2af-4013-91e2-1cc3e47aed91/CUYAoIHUQp.json"
+const val BASE_URL_LOTTIE_QUIZ_lf20_END2 = "https://lottie.host/d4cf573f-51e3-484d-a472-1441d603613d/93xZQAegAM.json"
+const val BASE_URL_LOTTIE_QUIZ_lf20_END3 = "https://lottie.host/8888e0b7-46be-4b4d-9a0b-6f4553519aff/RenM8s0p22.json"
+
+const val BASE_URL_LOTTIE_CHAT_lf20_END = "https://lottie.host/1fe5dc82-59cb-4444-a2a1-952c46ab20d1/UWz6m6EQfm.json"
+
 
 val units = listOf(
     UnitTheoryModel(url="http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-1_1.html", nameResourceId=R.string.unit_one),

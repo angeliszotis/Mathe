@@ -29,4 +29,5 @@ open class ResultUnit1Entity(
 
     @ColumnInfo(name = "time")
     var time: String? = null
+
 )

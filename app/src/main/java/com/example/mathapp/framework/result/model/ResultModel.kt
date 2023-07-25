@@ -7,6 +7,7 @@ data class ResultModel(
     var correct: String,
     var incorrect: String,
     var time: String
+
 )
 
 data class ResultAnswerModel(

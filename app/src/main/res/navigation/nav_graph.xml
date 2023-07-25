@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragmentTheory"
             app:destination="@id/fragmentTheory" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentChat"
+            app:destination="@+id/fragmentChat"/>
     </fragment>
 
 
@@ -58,6 +61,9 @@
         <action
             android:id="@+id/action_fragmentScore_to_fragmentUnit"
             app:destination="@id/fragmentUnit" />
+        <action
+            android:id="@+id/action_fragmentScore_to_fragmentAchievement"
+            app:destination="@+id/fragmentAchievement"/>
     </fragment>
 
     <fragment
@@ -110,5 +116,12 @@
             android:id="@+id/action_fragmentUnit_to_fragmentScoreExternal2"
             app:destination="@id/fragmentScoreExternal" />
     </fragment>
+
+    <fragment
+        android:id="@+id/fragmentChat"
+        android:name="com.example.mathapp.ui.chat.ChatFragment" />
+    <fragment
+        android:id="@+id/fragmentAchievement"
+        android:name="com.example.mathapp.ui.score.achievement.AchievementFragment" />
 
 </navigation>
