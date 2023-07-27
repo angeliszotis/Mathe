@@ -28,6 +28,8 @@ open class ResultUnit1Entity(
     var incorrect: String? = null,
 
     @ColumnInfo(name = "time")
-    var time: String? = null
+    var time: String? = null,
 
+    @ColumnInfo(name = "point")
+    var point: String? = "0"
 )

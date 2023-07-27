@@ -28,5 +28,8 @@ data class ResultUnit5Entity(
     var incorrect: String,
 
     @ColumnInfo(name = "time")
-    var time: String
+    var time: String,
+
+    @ColumnInfo(name = "point")
+    var point: String? = ""
 )

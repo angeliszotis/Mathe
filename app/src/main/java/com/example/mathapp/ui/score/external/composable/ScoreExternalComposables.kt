@@ -98,5 +98,6 @@ fun ScoreListItemExpanded(item: ResultModel) {
         Text(text = stringResource(id = R.string.score_correct, item.correct), style = MaterialTheme.typography.body1)
         Text(text = stringResource(id = R.string.score_incorrect, item.incorrect), style = MaterialTheme.typography.body1)
         Text(text = stringResource(id = R.string.score_time, item.time), style = MaterialTheme.typography.body1)
+        Text(text = stringResource(id = R.string.score_point, item.point), style = MaterialTheme.typography.body1)
     }
 }

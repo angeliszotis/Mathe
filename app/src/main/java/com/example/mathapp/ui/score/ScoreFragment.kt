@@ -23,9 +23,7 @@ class ScoreFragment : BaseFragment<FragmentNavBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
-            //ScoreExternalScreen(viewModel)
-            //viewModel.setUnit()
-            ScoreScreen(viewModel = viewModel, navController = navController)
+            ScoreScreen( navController = navController)
         }
     }
 }

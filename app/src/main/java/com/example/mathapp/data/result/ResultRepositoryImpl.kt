@@ -24,7 +24,7 @@ class ResultRepositoryImpl @Inject constructor(
     }
 
     override suspend fun insertResultUnit5(results: ResultModel) {
-        return resultDataSource.insertResultUnit6(results)
+        return resultDataSource.insertResultUnit5(results)
     }
 
     override suspend fun insertResultUnit6(results: ResultModel) {

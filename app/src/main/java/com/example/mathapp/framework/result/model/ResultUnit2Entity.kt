@@ -28,5 +28,8 @@ var correct: String,
 var incorrect: String,
 
 @ColumnInfo(name = "time")
-var time: String
+var time: String,
+
+@ColumnInfo(name = "point")
+var point: String? = "0"
 )

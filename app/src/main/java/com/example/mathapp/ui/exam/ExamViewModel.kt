@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mathapp.framework.exam.model.QuestionModel
 import com.example.mathapp.framework.result.model.ResultAnswerModel
+import com.example.mathapp.framework.result.model.ResultModel
 import com.example.mathapp.framework.result.model.ResultUnit1Entity
 import com.example.mathapp.framework.result.model.ResultUnit2Entity
 import com.example.mathapp.framework.result.model.ResultUnit3Entity
@@ -17,6 +18,7 @@ import com.example.mathapp.framework.result.model.ResultUnit5Entity
 import com.example.mathapp.framework.result.model.ResultUnit6Entity
 import com.example.mathapp.framework.result.model.ResultUnit7Entity
 import com.example.mathapp.framework.result.model.ResultUnit8Entity
+import com.example.mathapp.ui.exam.map.mapToResultModelUnit
 import com.example.mathapp.ui.exam.map.scoreInternalMapUnit
 import com.example.mathapp.ui.exam.map.scoreInternalMapUnit2
 import com.example.mathapp.ui.exam.map.scoreInternalMapUnit3
@@ -28,6 +30,14 @@ import com.example.mathapp.ui.exam.map.scoreInternalMapUnit8
 import com.example.mathapp.ui.exam.map.userMap
 import com.example.mathapp.usecase.exam.unit1.GetQuestionsUnitUseCase
 import com.example.mathapp.usecase.result.InsertResultUnit1UseCase
+import com.example.mathapp.usecase.score.internal.GetScoreInternalUnit1UseCase
+import com.example.mathapp.usecase.score.internal.GetScoreInternalUnit2UseCase
+import com.example.mathapp.usecase.score.internal.GetScoreInternalUnit3UseCase
+import com.example.mathapp.usecase.score.internal.GetScoreInternalUnit4UseCase
+import com.example.mathapp.usecase.score.internal.GetScoreInternalUnit5UseCase
+import com.example.mathapp.usecase.score.internal.GetScoreInternalUnit6UseCase
+import com.example.mathapp.usecase.score.internal.GetScoreInternalUnit7UseCase
+import com.example.mathapp.usecase.score.internal.GetScoreInternalUnit8UseCase
 import com.example.mathapp.usecase.score.internal.InsertScoreInternalUnit1UseCase
 import com.example.mathapp.usecase.score.internal.InsertScoreInternalUnit2UseCase
 import com.example.mathapp.usecase.score.internal.InsertScoreInternalUnit3UseCase
@@ -55,13 +65,25 @@ class ExamViewModel @Inject constructor(
     private val insertScoreInternalUnit8UseCase: InsertScoreInternalUnit8UseCase,
     private val resultExternalUnit1UseCase: InsertResultUnit1UseCase,
     private val userUseCase: GetLastUserUseCase,
+    private val getScoreInternalUnit1UseCase: GetScoreInternalUnit1UseCase,
+    private val getScoreInternalUnit2UseCase: GetScoreInternalUnit2UseCase,
+    private val getScoreInternalUnit3UseCase: GetScoreInternalUnit3UseCase,
+    private val getScoreInternalUnit4UseCase: GetScoreInternalUnit4UseCase,
+    private val getScoreInternalUnit5UseCase: GetScoreInternalUnit5UseCase,
+    private val getScoreInternalUnit6UseCase: GetScoreInternalUnit6UseCase,
+    private val getScoreInternalUnit7UseCase: GetScoreInternalUnit7UseCase,
+    private val getScoreInternalUnit8UseCase: GetScoreInternalUnit8UseCase
 ) : ViewModel() {
 
 
     private val _toastMessage = mutableStateOf<String?>(null)
     val toastMessage: State<String?> = _toastMessage
+
     private val _randomQuestionModels = MutableLiveData<List<QuestionModel>>(emptyList())
     val randomQuestionModels: LiveData<List<QuestionModel>> = _randomQuestionModels
+
+    private val _internalScore = MutableLiveData<List<ResultModel>>()
+    val internalScore : LiveData<List<ResultModel>> = _internalScore
 
      fun getRandomQuestions(unit: Int) {
          val questionModels = getQuestionsUnitUseCase.invoke(unit)
@@ -75,7 +97,6 @@ class ExamViewModel @Inject constructor(
                 randomQuestionModels.add(question)
             }
         }
-
         _randomQuestionModels.value = randomQuestionModels
     }
 
@@ -86,14 +107,43 @@ class ExamViewModel @Inject constructor(
                 try {
                     val resultModel = userMap(user, result)
                     resultExternalUnit1UseCase.invoke(resultModel, unit)
-                } catch (e: Exception) {
-                    Log.e("YODA", "Error inserting external result: ${e.message}")
-                }
+                } catch (e: Exception) { Log.e("YODA", "Error inserting external result: ${e.message}") }
             }
         }
     }
 
+    fun getScoreInternal(unit: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val internalScoreFlow = when (unit) {
+                1 -> getScoreInternalUnit1UseCase.invoke()
+                2 -> getScoreInternalUnit2UseCase.invoke()
+                3 -> getScoreInternalUnit3UseCase.invoke()
+                4 -> getScoreInternalUnit4UseCase.invoke()
+                5 -> getScoreInternalUnit5UseCase.invoke()
+                6 -> getScoreInternalUnit6UseCase.invoke()
+                7 -> getScoreInternalUnit7UseCase.invoke()
+                8 -> getScoreInternalUnit8UseCase.invoke()
+                else -> throw IllegalArgumentException("Invalid unit value: $unit")
+            }
 
+            internalScoreFlow.collect { item ->
+                val resultModelList = item.map { resultEntity ->
+                    when (unit) {
+                        1 -> mapToResultModelUnit(resultEntity as ResultUnit1Entity)
+                        2 -> mapToResultModelUnit(resultEntity as ResultUnit2Entity)
+                        3 -> mapToResultModelUnit(resultEntity as ResultUnit3Entity)
+                        4 -> mapToResultModelUnit(resultEntity as ResultUnit4Entity)
+                        5 -> mapToResultModelUnit(resultEntity as ResultUnit5Entity)
+                        6 -> mapToResultModelUnit(resultEntity as ResultUnit6Entity)
+                        7 -> mapToResultModelUnit(resultEntity as ResultUnit7Entity)
+                        8 -> mapToResultModelUnit(resultEntity as ResultUnit8Entity)
+                        else -> throw IllegalArgumentException("Invalid unit value: $unit")
+                    }
+                }
+                _internalScore.postValue(resultModelList)
+            }
+        }
+    }
     fun insertInternalResult(result: ResultAnswerModel, unit: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             val user = userUseCase.invoke()

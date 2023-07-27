@@ -19,7 +19,8 @@ import com.example.mathapp.framework.users.model.UserEntity
         school = userEntity.school,
         correct = result.corect.toString(),
         incorrect = result.incorect.toString(),
-        time = result.time.toString()
+        time = result.time.toString(),
+        point = result.point.toString()
     )
 }
 fun mapToResultModelUnit(resultEntity: ResultUnit1Entity): ResultModel {
@@ -29,7 +30,8 @@ fun mapToResultModelUnit(resultEntity: ResultUnit1Entity): ResultModel {
         school = resultEntity.school ?: "",
         correct = resultEntity.correct ?: "",
         incorrect = resultEntity.incorrect ?: "",
-        time = resultEntity.time ?: ""
+        time = resultEntity.time ?: "",
+        point = resultEntity.point ?:""
     )
 }
 fun mapToResultModelUnit(resultEntity: ResultUnit2Entity): ResultModel {
@@ -39,8 +41,10 @@ fun mapToResultModelUnit(resultEntity: ResultUnit2Entity): ResultModel {
         school = resultEntity.school ,
         correct = resultEntity.correct ,
         incorrect = resultEntity.incorrect ,
-        time = resultEntity.time
+        time = resultEntity.time,
+        point = resultEntity.point ?: ""
     )
+
 }
 fun mapToResultModelUnit(resultEntity: ResultUnit3Entity): ResultModel {
     return ResultModel(
@@ -49,7 +53,8 @@ fun mapToResultModelUnit(resultEntity: ResultUnit3Entity): ResultModel {
         school = resultEntity.school ,
         correct = resultEntity.correct ,
         incorrect = resultEntity.incorrect ,
-        time = resultEntity.time
+        time = resultEntity.time,
+        point = resultEntity.point ?: ""
     )
 }
 
@@ -60,7 +65,8 @@ fun mapToResultModelUnit(resultEntity: ResultUnit4Entity): ResultModel {
         school = resultEntity.school ,
         correct = resultEntity.correct ,
         incorrect = resultEntity.incorrect ,
-        time = resultEntity.time
+        time = resultEntity.time,
+        point = resultEntity.point ?: ""
     )
 }
 
@@ -71,7 +77,8 @@ fun mapToResultModelUnit(resultEntity: ResultUnit5Entity): ResultModel {
         school = resultEntity.school ,
         correct = resultEntity.correct ,
         incorrect = resultEntity.incorrect ,
-        time = resultEntity.time
+        time = resultEntity.time,
+        point = resultEntity.point ?: ""
     )
 }
 
@@ -82,7 +89,8 @@ fun mapToResultModelUnit(resultEntity: ResultUnit6Entity): ResultModel {
         school = resultEntity.school ,
         correct = resultEntity.correct ,
         incorrect = resultEntity.incorrect ,
-        time = resultEntity.time
+        time = resultEntity.time,
+        point = resultEntity.point ?: ""
     )
 }
 
@@ -93,7 +101,8 @@ fun mapToResultModelUnit(resultEntity: ResultUnit7Entity): ResultModel {
         school = resultEntity.school ,
         correct = resultEntity.correct ,
         incorrect = resultEntity.incorrect ,
-        time = resultEntity.time
+        time = resultEntity.time,
+        point = resultEntity.point ?: ""
     )
 }
 
@@ -104,7 +113,8 @@ fun mapToResultModelUnit(resultEntity: ResultUnit8Entity): ResultModel {
         school = resultEntity.school ,
         correct = resultEntity.correct ,
         incorrect = resultEntity.incorrect ,
-        time = resultEntity.time
+        time = resultEntity.time,
+        point = resultEntity.point ?: ""
     )
 }
 
@@ -115,7 +125,8 @@ fun scoreInternalMapUnit(userEntity: UserEntity, result: ResultAnswerModel): Res
         school = userEntity.school,
         correct = result.corect.toString(),
         incorrect = result.incorect.toString(),
-        time = result.time.toString()
+        time = result.time.toString(),
+        point = result.point
     )
 }
 
@@ -126,7 +137,8 @@ fun scoreInternalMapUnit2(userEntity: UserEntity, result: ResultAnswerModel): Re
         school = userEntity.school,
         correct = result.corect.toString(),
         incorrect = result.incorect.toString(),
-        time = result.time.toString()
+        time = result.time.toString(),
+        point = result.point
     )
 }
 
@@ -137,7 +149,8 @@ fun scoreInternalMapUnit3(userEntity: UserEntity, result: ResultAnswerModel): Re
         school = userEntity.school,
         correct = result.corect.toString(),
         incorrect = result.incorect.toString(),
-        time = result.time.toString()
+        time = result.time.toString(),
+        point = result.point
     )
 }
 
@@ -159,7 +172,8 @@ fun scoreInternalMapUnit5(userEntity: UserEntity, result: ResultAnswerModel): Re
         school = userEntity.school,
         correct = result.corect.toString(),
         incorrect = result.incorect.toString(),
-        time = result.time.toString()
+        time = result.time.toString(),
+        point = result.point
     )
 }
 
@@ -170,7 +184,8 @@ fun scoreInternalMapUnit6(userEntity: UserEntity, result: ResultAnswerModel): Re
         school = userEntity.school,
         correct = result.corect.toString(),
         incorrect = result.incorect.toString(),
-        time = result.time.toString()
+        time = result.time.toString(),
+        point = result.point
     )
 }
 
@@ -181,7 +196,8 @@ fun scoreInternalMapUnit7(userEntity: UserEntity, result: ResultAnswerModel): Re
         school = userEntity.school,
         correct = result.corect.toString(),
         incorrect = result.incorect.toString(),
-        time = result.time.toString()
+        time = result.time.toString(),
+        point = result.point
     )
 }
 
@@ -192,6 +208,7 @@ fun scoreInternalMapUnit8(userEntity: UserEntity, result: ResultAnswerModel): Re
         school = userEntity.school,
         correct = result.corect.toString(),
         incorrect = result.incorect.toString(),
-        time = result.time.toString()
+        time = result.time.toString(),
+        point = result.point
     )
 }

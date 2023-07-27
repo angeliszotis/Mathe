@@ -81,7 +81,6 @@ fun ScoreScreen( navController: NavController) {
             )
         }
 
-        //Spacer(modifier = Modifier.height(16.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth().padding(SpacingDefault_16dp),
@@ -115,7 +114,7 @@ fun ScoreScreen( navController: NavController) {
                 colors = ButtonDefaults.buttonColors(backgroundColor = FbColor),
                 contentPadding = PaddingValues(8.dp)
             ) {
-                Text(color = Color.White, text = stringResource(id = R.string.score_internal))
+                Text(color = Color.White, text = stringResource(id = R.string.score_achievement))
             }
             LottieAnimation(
                 composition = lottieEnd,

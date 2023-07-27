@@ -53,6 +53,7 @@ class QuizFragment : BaseFragment<FragmentNavBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
+            viewModel.getScoreInternal(args.unit)
             viewModel.getRandomQuestions(args.unit)
             QuizScreen(viewModel, args.unit) { newMusicResId ->
                 shouldReplayAudio = false

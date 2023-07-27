@@ -1,6 +1,5 @@
-package com.example.mathapp.ui.score
+package com.example.mathapp.ui.score.achievement
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,7 +14,6 @@ import com.example.mathapp.framework.result.model.ResultUnit6Entity
 import com.example.mathapp.framework.result.model.ResultUnit7Entity
 import com.example.mathapp.framework.result.model.ResultUnit8Entity
 import com.example.mathapp.ui.exam.map.mapToResultModelUnit
-import com.example.mathapp.usecase.score.external.GetScoreExternalUseCase
 import com.example.mathapp.usecase.score.internal.GetScoreInternalUnit1UseCase
 import com.example.mathapp.usecase.score.internal.GetScoreInternalUnit2UseCase
 import com.example.mathapp.usecase.score.internal.GetScoreInternalUnit3UseCase
@@ -30,8 +28,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ScoreViewModel @Inject constructor(
-    private val getScoreExternalUseCase: GetScoreExternalUseCase?,
+class AchievementViewModel @Inject constructor(
     private val getScoreInternalUnit1UseCase: GetScoreInternalUnit1UseCase,
     private val getScoreInternalUnit2UseCase: GetScoreInternalUnit2UseCase,
     private val getScoreInternalUnit3UseCase: GetScoreInternalUnit3UseCase,
@@ -42,25 +39,24 @@ class ScoreViewModel @Inject constructor(
     private val getScoreInternalUnit8UseCase: GetScoreInternalUnit8UseCase
 ) : ViewModel() {
 
-    private val _externalScore = MutableLiveData<List<ResultModel>>()
-    val externalScore : LiveData<List<ResultModel>> get() = _externalScore
-
     private val _internalScore = MutableLiveData<List<ResultModel>>()
-    val internalScore : LiveData<List<ResultModel>> = _internalScore
+    val internalScore: LiveData<List<ResultModel>> = _internalScore
+    private val _internalScore2 = MutableLiveData<List<ResultModel>>()
+    val internalScore2: LiveData<List<ResultModel>> = _internalScore2
+    private val _internalScore3 = MutableLiveData<List<ResultModel>>()
+    val internalScore3: LiveData<List<ResultModel>> = _internalScore3
+    private val _internalScore4 = MutableLiveData<List<ResultModel>>()
+    val internalScore4: LiveData<List<ResultModel>> = _internalScore4
+    private val _internalScore5 = MutableLiveData<List<ResultModel>>()
+    val internalScore5: LiveData<List<ResultModel>> = _internalScore5
+    private val _internalScore6 = MutableLiveData<List<ResultModel>>()
+    val internalScore6: LiveData<List<ResultModel>> = _internalScore6
+    private val _internalScore7 = MutableLiveData<List<ResultModel>>()
+    val internalScore7: LiveData<List<ResultModel>> = _internalScore7
+    private val _internalScore8 = MutableLiveData<List<ResultModel>>()
+    val internalScore8: LiveData<List<ResultModel>> = _internalScore8
 
-
-     fun getScoreExternal(unit: Int) {
-        viewModelScope.launch {
-            try {
-                val result = getScoreExternalUseCase?.invoke(unit = unit)
-                if (result != null) {
-                    _externalScore.value = result.sortedWith(compareByDescending<ResultModel> { it.correct.toInt() }.thenBy { it.time.toInt() })
-                }
-            } catch (e: Exception) { Log.e("Fire_External_Score", "Error fetching score: ${e.message}", e) }
-        }
-    }
-
-     fun getScoreInternal(unit: Int) {
+    fun getScoreInternal(unit: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             val internalScoreFlow = when (unit) {
                 1 -> getScoreInternalUnit1UseCase.invoke()
@@ -76,7 +72,7 @@ class ScoreViewModel @Inject constructor(
 
             internalScoreFlow.collect { item ->
                 val resultModelList = item.map { resultEntity ->
-                     when (unit) {
+                    when (unit) {
                         1 -> mapToResultModelUnit(resultEntity as ResultUnit1Entity)
                         2 -> mapToResultModelUnit(resultEntity as ResultUnit2Entity)
                         3 -> mapToResultModelUnit(resultEntity as ResultUnit3Entity)
@@ -88,7 +84,18 @@ class ScoreViewModel @Inject constructor(
                         else -> throw IllegalArgumentException("Invalid unit value: $unit")
                     }
                 }
-                _internalScore.postValue(resultModelList)
+                when(unit){
+                    1 -> _internalScore.postValue(resultModelList)
+                    2 -> _internalScore2.postValue(resultModelList)
+                    3 -> _internalScore3.postValue(resultModelList)
+                    4 -> _internalScore4.postValue(resultModelList)
+                    5 -> _internalScore5.postValue(resultModelList)
+                    6 -> _internalScore6.postValue(resultModelList)
+                    7 -> _internalScore7.postValue(resultModelList)
+                    8 -> _internalScore8.postValue(resultModelList)
+                    else -> throw IllegalArgumentException("Invalid unit value: $unit")
+                }
+
             }
         }
     }

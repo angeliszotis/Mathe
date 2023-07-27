@@ -22,7 +22,8 @@ class ScoreExternalDataSourceImpl @Inject constructor(
             val correct = document.getString("correct") ?: ""
             val incorrect = document.getString("incorrect") ?: ""
             val time = document.getString("time") ?: ""
-            val userModel = ResultModel(name = name,surname = surname,school = school,correct = correct,incorrect = incorrect,time = time)
+            val point = document.getString("point") ?: ""
+            val userModel = ResultModel(name = name,surname = surname,school = school,correct = correct,incorrect = incorrect,time = time, point = point)
             userModels.add(userModel)
         }
         return userModels

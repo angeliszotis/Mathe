@@ -1,6 +1,7 @@
 package com.example.mathapp.util
 
 import com.example.mathapp.R
+import com.example.mathapp.framework.achievment.model.AchievementModel
 import com.example.mathapp.framework.theory.model.UnitExamModel
 import com.example.mathapp.framework.theory.model.UnitScoreInternalModel
 import com.example.mathapp.framework.theory.model.UnitTheoryModel
@@ -27,7 +28,7 @@ const val BASE_URL_LOTTIE_QUIZ_lf20_END3 = "https://lottie.host/8888e0b7-46be-4b
 const val BASE_URL_LOTTIE_CHAT_lf20_END = "https://lottie.host/1fe5dc82-59cb-4444-a2a1-952c46ab20d1/UWz6m6EQfm.json"
 
 
-val units = listOf(
+ val units = listOf(
     UnitTheoryModel(url="http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-1_1.html", nameResourceId=R.string.unit_one),
     UnitTheoryModel(url="http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-2_8.html", nameResourceId=R.string.unit_two),
     UnitTheoryModel(url="http://ebooks.edu.gr/ebooks/v/html/8547/2282/Mathimatika_E-Dimotikou_html-empl/index-3_13.html", nameResourceId=R.string.unit_three),
@@ -66,4 +67,53 @@ val unitsExternalScore = listOf(
     UnitScoreInternalModel(action = NavScoreExternal.UnitSix.destination, nameResourceId = R.string.unit_six),
     UnitScoreInternalModel(action = NavScoreExternal.UnitSeven.destination, nameResourceId = R.string.unit_seven),
     UnitScoreInternalModel(action = NavScoreExternal.UnitEight.destination, nameResourceId = R.string.unit_eight)
+)
+
+val achievementItems = listOf(
+    AchievementModel(
+        img = R.drawable.pythagoras,
+        title = R.string.pythagoras_title,
+        info = R.string.pythagoras_info,
+        date = R.string.pythagoras_dates,
+        unit = 1
+    ),
+    AchievementModel(
+        img = R.drawable.euklidis,
+        title = R.string.euclid_title,
+        info = R.string.euclid_info,
+        date = R.string.euclid_dates,
+        unit = 2
+    ),
+    AchievementModel(
+        img = R.drawable.archimedis,
+        title = R.string.archimedes_title,
+        info = R.string.archimedes_info,
+        date = R.string.archimedes_dates,
+        unit = 3
+    ),
+    AchievementModel(
+        img = R.drawable.turing1,
+        title = R.string.alan_turing_title,
+        info = R.string.alan_turing_info,
+        date = R.string.alan_turing_dates,
+        unit = 4
+    ),
+    AchievementModel(
+        img = R.drawable.newton,
+        title = R.string.isaac_newton_title,
+        info = R.string.isaac_newton_info,
+        date = R.string.isaac_newton_dates,
+        unit = 5
+    ),
+    AchievementModel(
+        img = R.drawable.sophie_germain,
+        title = R.string.mary_sophie_germain_title,
+        info = R.string.mary_sophie_germain_info,
+        date = R.string.mary_sophie_germain_dates,
+        unit = 6
+    ),
+    AchievementModel(
+        img = R.drawable.ada,
+        title = R.string.ada_lovelace_title, info = R.string.ada_lovelace_info, date = R.string.ada_lovelace_dates, unit = 7),
+    AchievementModel(img = R.drawable.ypatia, title = R.string.hypatia_title, info = R.string.hypatia_info, date = R.string.hypatia_dates, unit = 8)
 )
