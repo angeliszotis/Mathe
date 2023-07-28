@@ -24,6 +24,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -54,7 +55,7 @@ import com.example.mathapp.util.achievementItems
 import com.example.mathapp.util.showToast
 
 @Composable
-fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int, remainingTime: Int, viewModel: ExamViewModel, unit:Int) {
+fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int, remainingTime: Int, viewModel: ExamViewModel, unit: Int) {
 
     val context = LocalContext.current
 
@@ -65,28 +66,34 @@ fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int, remainingTime: Int
     val internalButtonEnabled = remember { derivedStateOf { !internalButtonClicked.value } }
 
     val scoreList by viewModel.internalScore.observeAsState()
-
-    val point: Int by remember(numCorrectAnswers, viewModel.internalScore) {
-        val pointString: String? = scoreList?.lastOrNull()?.point
+    val totalConsPoints = 10
+    var point by remember(numCorrectAnswers, viewModel.internalScore) {
+        val pointString: String? = viewModel.internalScore.value?.lastOrNull()?.point
         if (numCorrectAnswers >= 10) {
             if (pointString.isNullOrEmpty()) {
                 mutableStateOf(1)
             } else {
-                mutableStateOf(pointString.toInt().plus(1))
+                mutableStateOf(pointString.toInt() + 1)
             }
         } else {
-            if(!pointString.isNullOrEmpty()){
-                mutableStateOf(pointString.toInt())}
-            else{ mutableStateOf(0) }
+            if (!pointString.isNullOrEmpty()) {
+                mutableStateOf(pointString.toInt())
+            } else {
+                mutableStateOf(0)
+            }
         }
     }
+    val achievementShown = rememberUpdatedState(scoreList?.lastOrNull()?.point?.toInt() == totalConsPoints && alertBool.value)
 
-    val toastMessage : String? = viewModel.toastMessage.value
+    val toastMessage: String? = viewModel.toastMessage.value
     val numIncorrectAnswers = totalQuestions - numCorrectAnswers
 
     val resultText =
-        if (numCorrectAnswers == totalQuestions) {stringResource(id = R.string.perfect_score, numCorrectAnswers, totalQuestions) }
-        else { stringResource(id = R.string.perfect_score,numCorrectAnswers,totalQuestions) }
+        if (numCorrectAnswers == totalQuestions) {
+            stringResource(id = R.string.perfect_score, numCorrectAnswers, totalQuestions)
+        } else {
+            stringResource(id = R.string.perfect_score, numCorrectAnswers, totalQuestions)
+        }
 
     Column(
         modifier = Modifier
@@ -102,7 +109,7 @@ fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int, remainingTime: Int
         Text(text = resultText, fontSize = 18.sp)
         Spacer(modifier = Modifier.height(16.dp))
         Column {
-            Text(text = stringResource(id = R.string.correct, numCorrectAnswers) , fontSize = 18.sp)
+            Text(text = stringResource(id = R.string.correct, numCorrectAnswers), fontSize = 18.sp)
             Spacer(modifier = Modifier.width(16.dp))
             Text(text = stringResource(id = R.string.incorrect, numIncorrectAnswers), fontSize = 18.sp)
             Spacer(modifier = Modifier.width(16.dp))
@@ -113,7 +120,8 @@ fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int, remainingTime: Int
     }
 
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-        Text(text = stringResource(id = R.string.save),fontWeight = FontWeight.Bold) }
+        Text(text = stringResource(id = R.string.save), fontWeight = FontWeight.Bold)
+    }
 
     Row(modifier = Modifier.padding(vertical = 16.dp)) {
         Button(
@@ -125,7 +133,7 @@ fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int, remainingTime: Int
             onClick = {
                 if (externalButtonEnabled.value) {
                     viewModel.insertExternalResult(
-                        ResultAnswerModel(corect = numCorrectAnswers, incorect = numIncorrectAnswers, time = remainingTime ,point = point.toString()),
+                        ResultAnswerModel(corect = numCorrectAnswers, incorect = numIncorrectAnswers, time = remainingTime, point = point.toString()),
                         unit
                     )
                     externalButtonClicked.value = true
@@ -149,9 +157,12 @@ fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int, remainingTime: Int
                     )
                     internalButtonClicked.value = true
                     toastMessage?.let { showToast(context = context, message = it) }
-                    if(scoreList?.lastOrNull()?.point?.toInt() == 2) {
-                        alertBool.value=true
+                    if (!scoreList.isNullOrEmpty() &&
+                        point == totalConsPoints &&
+                        scoreList?.get(scoreList!!.size -1)?.point?.toInt() != totalConsPoints) {
+                        alertBool.value = true
                     }
+
                 }
             },
             enabled = internalButtonEnabled.value
@@ -161,35 +172,40 @@ fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int, remainingTime: Int
     }
 
     Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-        if(numCorrectAnswers <6){ LottieLoaderResult(link = BASE_URL_LOTTIE_RESULTS_lf20_END3) }
-        else if (numCorrectAnswers <10){ LottieLoaderResult(link = BASE_URL_LOTTIE_RESULTS_lf20_END2) }
-        else{ LottieLoaderResult(link = BASE_URL_LOTTIE_RESULTS_lf20_END) }
+        if (numCorrectAnswers < 6) {
+            LottieLoaderResult(link = BASE_URL_LOTTIE_RESULTS_lf20_END3)
+        } else if (numCorrectAnswers < 10) {
+            LottieLoaderResult(link = BASE_URL_LOTTIE_RESULTS_lf20_END2)
+        } else {
+            LottieLoaderResult(link = BASE_URL_LOTTIE_RESULTS_lf20_END)
+        }
     }
 
-    if(!scoreList.isNullOrEmpty() && alertBool.value){
-        if(scoreList?.lastOrNull()?.point?.toInt() == 2) {
-            achievementItems.forEach{ item ->
-                if(item.unit == unit){
-                        AchievementAlertDialog(item)
-                }
+    if (!scoreList.isNullOrEmpty()  && achievementShown.value) {
+        achievementItems.forEach { item ->
+            if (item.unit == unit) {
+                AchievementAlertDialog(item)
             }
         }
     }
 }
 
+
 @Composable
 fun AchievementAlertDialog(achievement: AchievementModel) {
     var showDialog by remember { mutableStateOf(true) }
-    if(showDialog) {
+    if (showDialog) {
         AlertDialog(
-            shape= RoundedCornerShape(16.dp),
+            shape = RoundedCornerShape(16.dp),
             modifier = Modifier
                 .fillMaxSize(0.9f)
                 .background(BabyBluePurple2, RoundedCornerShape(SpacingDefault_16dp)),
             onDismissRequest = { showDialog = false },
-            title = { Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                Text(text = "Συχαριτηρια Ξεκληδωσες")
-            }},
+            title = {
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+                    Text(text = "Συχαριτηρια Ξεκληδωσες")
+                }
+            },
             text = {
                 Column(
                     modifier = Modifier.fillMaxWidth(),
@@ -197,9 +213,9 @@ fun AchievementAlertDialog(achievement: AchievementModel) {
                 ) {
 
                     Text(
-                    text = stringResource(id = achievement.title),
-                    style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 24.sp)
-                )
+                        text = stringResource(id = achievement.title),
+                        style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 24.sp)
+                    )
                     Image(
                         painter = painterResource(achievement.img),
                         contentDescription = null,
@@ -225,7 +241,7 @@ fun AchievementAlertDialog(achievement: AchievementModel) {
                         onClick = { showDialog = false },
                         colors = ButtonDefaults.buttonColors(backgroundColor = FbColor)
                     ) {
-                        Text(text = "Τέλεια" , color = Color.White)
+                        Text(text = "Τέλεια", color = Color.White)
                     }
                 }
             },
