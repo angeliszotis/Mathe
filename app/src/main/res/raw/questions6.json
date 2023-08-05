@@ -1,42 +1,227 @@
 [
   {
     "id": 1,
-    "text": "Πόσο κάνει το άθροισμα 13 + 27;",
+    "text": "Οι αρνητικοί αριθμοί ανήκουν στους φυσικούς αριθμούς.",
     "answers": [
-      {"text": "37", "isCorrect": false},
-      {"text": "40", "isCorrect": false},
-      {"text": "41", "isCorrect": false},
-      {"text": "39", "isCorrect": true}
+      {"text": "Σωστό", "isCorrect": false},
+      {"text": "Λάθος", "isCorrect": true}
     ]
   },
   {
     "id": 2,
-    "text": "Πόσο κάνει το άθροισμα 6 + 45;",
+    "text": "Οι αρνητικοί αριθμοί ανήκουν στους ακέραιους αριθμούς;",
     "answers": [
-      {"text": "49", "isCorrect": false},
-      {"text": "51", "isCorrect": true},
-      {"text": "53", "isCorrect": false},
-      {"text": "48", "isCorrect": false}
+      {"text": "Λάθος", "isCorrect": false},
+      {"text": "Σωστό", "isCorrect": true}
     ]
   },
   {
     "id": 3,
-    "text": "Πόσο κάνει το άθροισμα 10 + 17;",
+    "text": "Όλοι οι αρνητικοί αριθμοί είναι μικρότεροι από το 0;",
     "answers": [
-      {"text": "25", "isCorrect": true},
-      {"text": "22", "isCorrect": false},
-      {"text": "20", "isCorrect": false},
-      {"text": "30", "isCorrect": false}
+      {"text": "Σωστό", "isCorrect": true},
+      {"text": "Λάθος", "isCorrect": false}
     ]
   },
   {
     "id": 4,
-    "text": "xexe",
+    "text": "Όσο πιο αριστερά βρίσκεται ένας αριθμός πάνω στην αριθμογραμμή, τόσο πιο μεγάλος είναι.",
     "answers": [
-      {"text": "25", "isCorrect": true},
-      {"text": "22", "isCorrect": false},
-      {"text": "20", "isCorrect": false},
-      {"text": "30", "isCorrect": false}
+      {"text": "Λάθος", "isCorrect": true},
+      {"text": "Σωστό", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 5,
+    "text": "Να συγκρίνετε τους αριθμούς: -1 .. -3",
+    "answers": [
+      {"text": ">", "isCorrect": true},
+      {"text": "<", "isCorrect": false},
+      {"text": "=", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 6,
+    "text": "Να συγκρίνετε τους αριθμούς: 2 .. -5",
+    "answers": [
+      {"text": ">", "isCorrect": true},
+      {"text": "<", "isCorrect": false},
+      {"text": "=", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 7,
+    "text": "Να συγκρίνετε τους αριθμούς: -19 .. 1",
+    "answers": [
+      {"text": ">", "isCorrect": false},
+      {"text": "<", "isCorrect": true},
+      {"text": "=", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 8,
+    "text": "Να συγκρίνετε τους αριθμούς: -65 .. -32",
+    "answers": [
+      {"text": ">", "isCorrect": false},
+      {"text": "<", "isCorrect": true},
+      {"text": "=", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 9,
+    "text": "Να συγκρίνετε τους αριθμούς: 7 .. -7",
+    "answers": [
+      {"text": ">", "isCorrect": true},
+      {"text": "<", "isCorrect": false},
+      {"text": "=", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 10,
+    "text": "Να συγκρίνετε τους αριθμούς: 0 .. 6",
+    "answers": [
+      {"text": ">", "isCorrect": false},
+      {"text": "<", "isCorrect": true},
+      {"text": "=", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 11,
+    "text": "Να συγκρίνετε τους αριθμούς: 0 .. -3",
+    "answers": [
+      {"text": ">", "isCorrect": true},
+      {"text": "<", "isCorrect": false},
+      {"text": "=", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 12,
+    "text": "Ποιος αριθμός απέχει περισσότερο από το 0; 1 η 3",
+    "answers": [
+      {"text": "απέχει περισσότερο ο αριθμός 3", "isCorrect": true},
+      {"text": "απέχει περισσότερο ο αριθμός 1", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 13,
+    "text": "Ποιος αριθμός απέχει περισσότερο από το 0; -2 η -9",
+    "answers": [
+      {"text": "απέχει περισσότερο ο αριθμός -9", "isCorrect": true},
+      {"text": "απέχει περισσότερο ο αριθμός -2", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 14,
+    "text": "Ποιος αριθμός απέχει περισσότερο από το 0; -2 η 9",
+    "answers": [
+      {"text": "απέχει περισσότερο ο αριθμός 9.", "isCorrect": true},
+      {"text": "απέχει περισσότερο ο αριθμός -2.", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 15,
+    "text": "Ποιος αριθμός απέχει περισσότερο από το 0; 3 η -7",
+    "answers": [
+      {"text": "απέχει περισσότερο ο αριθμός -7.", "isCorrect": true},
+      {"text": "απέχει περισσότερο ο αριθμός 3.", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 16,
+    "text": "Ποιος αριθμός απέχει περισσότερο από το 0; 4 η -4",
+    "answers": [
+      {"text": "απέχουν ίση απόσταση από το 0.", "isCorrect": true},
+      {"text": "απέχει περισσότερο ο αριθμός -4.", "isCorrect": false},
+      {"text": "απέχει περισσότερο ο αριθμός 4.", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 17,
+    "text": "Τι είναι το γεωμετρικό μοτίβο;",
+    "answers": [
+      {"text": "ένα σχέδιο που δημιουργείται με την επανάληψη ενός στοιχείου του.", "isCorrect": true},
+      {"text": "σειρά αριθμών που ανάμεσά υπάρχει μια σχέση σταθερή και επαναλαμβανόμενη.", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 18,
+    "text": "Τι είναι το αριθμητικό μοτίβο;",
+    "answers": [
+      {"text": "ένα σχέδιο που δημιουργείται με την επανάληψη ενός στοιχείου του.", "isCorrect": false},
+      {"text": "σειρά αριθμών που ανάμεσά υπάρχει μια σχέση σταθερή και επαναλαμβανόμενη.", "isCorrect": true}
+    ]
+  },
+  {
+    "id": 19,
+    "text": "Ποιος είναι ο κανόνας από το παρακάτω μοτίβο; 5, 10, 15, 20, 25, 30, 35 ",
+    "answers": [
+      {"text": " +5", "isCorrect": true},
+      {"text": "-1", "isCorrect": false},
+      {"text": "4", "isCorrect": false},
+      {"text": "+11", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 20,
+    "text": "Ποιος είναι ο κανόνας από το παρακάτω μοτίβο; 10, 9, 8, 7, 6, 5, 4, 3",
+    "answers": [
+      {"text": " +5", "isCorrect": false},
+      {"text": "-1", "isCorrect": true},
+      {"text": "4", "isCorrect": false},
+      {"text": "+11", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 21,
+    "text": "Ποιος είναι ο κανόνας από το παρακάτω μοτίβο; 0, 11, 22, 33, 44, 55, 66 ",
+    "answers": [
+      {"text": " +5", "isCorrect": false},
+      {"text": "-1", "isCorrect": false},
+      {"text": "4", "isCorrect": false},
+      {"text": "+11", "isCorrect": true}
+    ]
+  },
+  {
+    "id": 22,
+    "text": "Το μεγαλύτερο (>) και το μικρότερο (<) είναι τα σύμβολα της .......",
+    "answers": [
+      {"text": "ανισότητας", "isCorrect": true},
+      {"text": "ισότητας", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 23,
+    "text": "Το ίσον (=) είναι το σύμβολο της .......",
+    "answers": [
+      {"text": "ανισότητας", "isCorrect": false},
+      {"text": "ισότητας", "isCorrect": true}
+    ]
+  },
+  {
+    "id": 24,
+    "text": "Να συμπληρώσετε τα σύμβολα: 19 + 2 .. 22 ",
+    "answers": [
+      {"text": ">", "isCorrect": false},
+      {"text": "=", "isCorrect": false},
+      {"text": "<", "isCorrect": true}
+    ]
+  },
+  {
+    "id": 25,
+    "text": "Να συμπληρώσετε τα σύμβολα: 120 : 2 .. 50 + 10 ",
+    "answers": [
+      {"text": ">", "isCorrect": false},
+      {"text": "=", "isCorrect": true},
+      {"text": "<", "isCorrect": false}
+    ]
+  },
+  {
+    "id": 26,
+    "text": "Να συμπληρώσετε τα σύμβολα: 300 - 73 .. 7 x 8 ",
+    "answers": [
+      {"text": ">", "isCorrect": true},
+      {"text": "=", "isCorrect": false},
+      {"text": "<", "isCorrect": false}
     ]
   }
 ]
