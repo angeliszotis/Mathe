@@ -54,6 +54,7 @@ import com.example.mathapp.util.BASE_URL_LOTTIE_RESULTS_lf20_END3
 import com.example.mathapp.util.achievementItems
 import com.example.mathapp.util.showToast
 
+
 @Composable
 fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int, remainingTime: Int, viewModel: ExamViewModel, unit: Int) {
 
@@ -203,7 +204,7 @@ fun AchievementAlertDialog(achievement: AchievementModel) {
             onDismissRequest = { showDialog = false },
             title = {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                    Text(text = "Συχαριτηρια Ξεκληδωσες")
+                    Text(text = stringResource(id = R.string.congrats))
                 }
             },
             text = {

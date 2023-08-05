@@ -199,7 +199,7 @@ fun InfoExamDialog(onDismiss: () -> Unit) {
                 Spacer(modifier = Modifier.height(SpacingHalf_8dp))
                 Text(text = stringResource(id = R.string.info_exam_mid_dialog))
                 Spacer(modifier = Modifier.height(SpacingHalf_8dp))
-                Text(text = stringResource(id = R.string.info_theory_end_dialog))
+                Text(text = stringResource(id = R.string.info_exam_end_dialog))
             }
         },
         confirmButton = {

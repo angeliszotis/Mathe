@@ -49,6 +49,7 @@ import com.example.mathapp.util.BASE_URL_LOTTIE_QUIZ_lf20_END3
 import kotlinx.coroutines.delay
 import kotlin.random.Random
 
+
 private var privateReturntime = 0
 private var privateCorrect : Boolean =false
 private var privateTextCorrect : String = ""
@@ -188,11 +189,11 @@ fun QuizContent(questionModel: QuestionModel, onNext: () -> Unit, onShowResult: 
                 onClick = {
                     showAnswerCall = true
                     showButtonCallClicked.value = true
-            },
+                },
                 colors = ButtonDefaults.buttonColors(backgroundColor = if (showButtonCallEnabled.value) FbColor else Color.Gray),
                 enabled = showButtonCallEnabled.value
             ) {
-            Icon( modifier = Modifier.size(25.dp),painter = painterResource(id = R.drawable.baseline_call_24), contentDescription = "Help", tint = Color.White)
+                Icon( modifier = Modifier.size(25.dp),painter = painterResource(id = R.drawable.baseline_call_24), contentDescription = "Help", tint = Color.White)
             }
         }
 
@@ -225,7 +226,7 @@ fun QuizContent(questionModel: QuestionModel, onNext: () -> Unit, onShowResult: 
                         Text(modifier = Modifier
                             .weight(0.7f)
                             .fillMaxWidth()
-                            .padding(SpacingDefault_16dp), textAlign = TextAlign.Center, text = "Μου φενετε πως ειναι το :\n"+privateTextCorrect+ "\n η το\n" + privateText50_50)
+                            .padding(SpacingDefault_16dp), textAlign = TextAlign.Center, text = "Σίγουρα είναι το :\n"+privateTextCorrect+ "\n η το\n" + privateText50_50)
                     }
                 }else{
                     Row(modifier = Modifier.fillMaxWidth()) {
@@ -233,27 +234,27 @@ fun QuizContent(questionModel: QuestionModel, onNext: () -> Unit, onShowResult: 
                         Text(modifier = Modifier
                             .weight(0.7f)
                             .fillMaxWidth()
-                            .padding(SpacingDefault_16dp), textAlign = TextAlign.Center, text = "Μου φενετε πως ειναι το :\n" +privateText50_50+" η το " + privateTextCorrect)
+                            .padding(SpacingDefault_16dp), textAlign = TextAlign.Center, text = "Είμαστε ανάμεσα στο :\n" +privateText50_50+" ή στο " + privateTextCorrect)
                     }
                 }
             }
             if(showMinus){
-                    Row(modifier = Modifier.fillMaxWidth()) {
-                        LottieLoader(modifier = Modifier.weight(0.3f), link = BASE_URL_LOTTIE_QUIZ_lf20_END3)
-                        Text(
-                            modifier = Modifier
-                                .weight(0.7f)
-                                .fillMaxWidth()
-                                .padding(SpacingDefault_16dp),
-                            textAlign = TextAlign.Center,
-                            color = Color.Red,
-                            text = "Σιγουρα δεν ειναι το :\n" + privateText50_50
-                        )
-                    }
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    LottieLoader(modifier = Modifier.weight(0.3f), link = BASE_URL_LOTTIE_QUIZ_lf20_END3)
+                    Text(
+                        modifier = Modifier
+                            .weight(0.7f)
+                            .fillMaxWidth()
+                            .padding(SpacingDefault_16dp),
+                        textAlign = TextAlign.Center,
+                        color = Color.Red,
+                        text = "Σίγουρα δεν είναι το :\n" + privateText50_50
+                    )
                 }
             }
         }
     }
+}
 
 
 
@@ -281,7 +282,7 @@ fun AnswerButton(text: String, isSelected: Boolean, onClick: () -> Unit) {
         colors = ButtonDefaults.buttonColors(backgroundColor = if (isSelected) BabyBluePurple4 else BabyBluePurple1),
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
-        ) { Text(text = text, fontSize = 10.sp) }
+    ) { Text(text = text, fontSize = 10.sp) }
 }
 
 @Composable

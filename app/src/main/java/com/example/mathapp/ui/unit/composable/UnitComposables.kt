@@ -3,6 +3,7 @@ package com.example.mathapp.ui.unit.composable
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -62,10 +63,17 @@ import com.example.mathapp.util.unitsInternalScore
 @Composable
 fun UnitScreen(navController: NavController, exam : Boolean, score:Boolean, scoreInternal:Boolean) {
 
-    Column(modifier = Modifier.fillMaxSize().background(BabyBluePurple3).padding(horizontal = 16.dp).verticalScroll(rememberScrollState())) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .background(BabyBluePurple3)
+        .padding(horizontal = 16.dp)
+        .verticalScroll(rememberScrollState())) {
 
             Row(
-                modifier = Modifier.fillMaxWidth(1f).fillMaxHeight(0.7f).padding(16.dp),
+                modifier = Modifier
+                    .fillMaxWidth(1f)
+                    .fillMaxHeight(0.7f)
+                    .padding(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
@@ -80,7 +88,9 @@ fun UnitScreen(navController: NavController, exam : Boolean, score:Boolean, scor
                     )
                 LottieLoader(modifier = Modifier.weight(0.5f), link = BASE_URL_LOTTIE_THEORY_lf20_START)
             }
-        Column( modifier = Modifier.fillMaxWidth().fillMaxHeight(0.6f), horizontalAlignment = Alignment.CenterHorizontally) {
+        Column( modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(0.6f), horizontalAlignment = Alignment.CenterHorizontally) {
             if (exam) { ExamUnits(navController = navController) }
             else if(score) { ScoreUnits(navController = navController, scoreInternal = scoreInternal) }
             else{ UnitContent(units = units, buttonColor = FbColor) }
@@ -162,7 +172,10 @@ fun ConfirmationButton(onConfirm: () -> Unit?, modifier: Modifier = Modifier, ti
             containerColor = BabyBluePurple2,
             shape = RoundedCornerShape(SpacingDefault_16dp),
             onDismissRequest = { showDialog = false },
-            title = { Text(text = stringResource(id = R.string.welcome_message)+" "+title )  },
+            title = { Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+                Text(textAlign = TextAlign.Center,text = stringResource(id = R.string.welcome_message)+"\n"+title )
+            }
+                    },
             text = {
                 Column(modifier = Modifier
                     .padding(SpacingCustom_10dp)) {
@@ -201,7 +214,10 @@ fun ScoreUnits( navController: NavController,scoreInternal:Boolean) {
             for (item in unitRow) {
                 Button(
                     onClick = { navController.navigate( item.action) },
-                    modifier = Modifier.padding(6.dp).weight(1f).aspectRatio(1f),
+                    modifier = Modifier
+                        .padding(6.dp)
+                        .weight(1f)
+                        .aspectRatio(1f),
                     contentPadding = ButtonDefaults.TextButtonContentPadding,
                     colors = ButtonDefaults.buttonColors(FbColor)
                 ) {

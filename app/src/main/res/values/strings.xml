@@ -36,10 +36,15 @@
     <string name="unit_seven">Ενότητα 7</string>
     <string name="unit_eight">Ενότητα 8</string>
 
-    <string name="welcome_message">Καλωσορίστε</string>
-    <string name="quiz_description">Το κουίζ αποτελείται από 12 ερωτήσεις. Για κάθε ερώτηση, επιλέγετε την απάντηση που θεωρείτε σωστή και πατάτε το κουμπί "Επόμενο" για να προχωρήσετε στην επόμενη ερώτηση.</string>
+    <!--Exam-->
+
+    <string name="welcome_message">Καλωσορίσατε</string>
+    <string name="quiz_description">Σου εμφανίζονται 12 ερωτήσεις σε κάθε ενότητα όπου επιλέγεις και πατάς επόμενο.\n
+    Συνολικά έχεις 3 βοήθειες.Πρώτη βοήθεια,το -1, με την οποία αφαιρείται μία λάθος απάντηση.\nΔεύτερη βοήθεια,αυτή του κοινού, με την οποία αφαιρούνται 2 λάθος απαντήσεις και έχεις 50% πιθανότητα να βρεις την σωστή απάντηση.\nΤρίτη και τελευταία βοήθεια, το τηλέφωνο, το οποίο σου δίνει την σωστή απάντηση.Στο τέλος εμφανίζετε το αποτέλεσμα.</string>
     <string name="quiz_results">Όταν φτάσετε στην τελευταία ερώτηση και πατήσετε το κουμπί "Επόμενο", θα εμφανιστούν τα αποτελέσματα. Εκεί θα έχετε τη δυνατότητα να επιλέξετε αν θέλετε να αποθηκεύσετε τα αποτελέσματα ή όχι.</string>
     <string name="good_luck">Καλή επιτυχία και καλή διασκέδαση στο κουίζ!</string>
+
+
 
 
     <!--Profile-->
@@ -61,13 +66,14 @@
     <string name="score_achievement">Τρόπαια</string>
 
 
-    <!--Score-->
+    <!--Results-->
 
     <string name="perfect_score">%1\$d απο %2\$d σωστές απαντήσεις</string>
     <string name="correct">Σωστές: %1\$d</string>
     <string name="incorrect">Λάθος: %1\$d</string>
     <string name="time">Χρόνος: %1\$d ″</string>
     <string name="complete">Ολοκληρώθηκε!</string>
+    <string name="congrats">Συγχαρητήρια!!!\nΞεκλείδωσες έναν επιστήμονα</string>
 
 
     <!--Score_External--><!--Score_Internal-->
@@ -83,23 +89,23 @@
     <string name="info_welcome">Καλωσορίσατε στην Οθόνη Πληροφοριών!</string>
     <string name="info_welcome_start">Εδώ μπορείτε να βρείτε σημαντικές πληροφορίες σχετικά με την εφαρμογή.</string>
     <string name="info_version">Έκδοση εφαρμογής: 1.0.0</string>
-    <string name="info_developer">Προγραμματιστής: Ζώτης Άγγελης</string>
+    <string name="info_developer">Προγραμματιστής: Ζώτης Αγγελής</string>
     <string name="info_contact">Επικοινωνία: aggeliszotis@protonmail.com</string>
 
     <string name="info_theory_start_dialog">Είναι η θεωρία του βιβλίου.</string>
     <string name="info_theory_end_dialog">Με την επιλογή της ενότητας που θα κάνεις σε μεταφέρει στο βιβλίο.</string>
 
     <string name="info_exam_start_dialog">Επιλέγεις την ενότητα που θέλεις να εξεταστείς και ξεκινάει το κουίζ.</string>
-    <string name="info_exam_mid_dialog">Σου εμφανίζονται 12 ερώτησης σε κάθε ενότητα οπού επιλέγεις και πατάς επόμενο.</string>
-    <string name="info_exam_end_dialog">Στο τέλος εμφανίζετε το αποτέλεσμα.</string>
+    <string name="info_exam_mid_dialog">Σου εμφανίζονται 12 ερωτήσεις σε κάθε ενότητα όπου επιλέγεις και πατάς επόμενο.</string>
+    <string name="info_exam_end_dialog">Συνολικά έχεις 3 βοήθειες.Πρώτη βοήθεια,το -1, με την οποία αφαιρείται μία λάθος απάντηση.\nΔεύτερη βοήθεια,αυτή του κοινού, με την οποία αφαιρούνται 2 λάθος απαντήσεις και έχεις 50% πιθανότητα να βρεις την σωστή απάντηση.\nΤρίτη και τελευταία βοήθεια, το τηλέφωνο, το οποίο σου δίνει την σωστή απάντηση.Στο τέλος εμφανίζετε το αποτέλεσμα.</string>
 
-    <string name="info_score_start_dialog">Υπάρχουν δυο σκορ Προσωπικά, Δημοσιά.</string>
-    <string name="info_score_mid_dialog">Τα Προσωπικά τα βλέπεις μονό εσύ ενώ τα Δημοσιά μπορούν να τα δούνε όλοι. </string>
-    <string name="info_score_end_dialog">Η κατάταξη γίνετε βάση τις σωστές ερωτήσεις και τον χρόνο.</string>
+    <string name="info_score_start_dialog">Υπάρχουν δύο σκορ Προσωπικά, Δημόσια.</string>
+    <string name="info_score_mid_dialog">Τα Προσωπικά τα βλέπεις μόνο εσύ ενώ τα Δημόσια μπορούν να τα δούνε όλοι. </string>
+    <string name="info_score_end_dialog">Η κατάταξη γίνετε με βάση τις σωστές ερωτήσεις και τον χρόνο.</string>
 
     <string name="info_profile_start_dialog">Πρέπει να συμπληρώσεις όλα τα πεδία και να πατήσεις το κουμπί αποθήκευση τότε δημιουργείς ένα προφίλ.</string>
-    <string name="info_profile_mid_dialog">Το κουμπί καθαρισμός πεδίων διαγραφεί ότι υπάρχει στα πεδία.</string>
-    <string name="info_profile_end_dialog">Σημαντικό δεν αποθηκεύει κενά πεδία οπότε αν υπάρχει προφίλ καθαρίσεις τα πεδία πρέπει να γράψεις νέα στοιχειά αλλιώς κρατάει τα παλιά.</string>
+    <string name="info_profile_mid_dialog">Το κουμπί καθαρισμός πεδίων διαγράφει ότι υπάρχει στα πεδία.</string>
+    <string name="info_profile_end_dialog">Σημαντικό! Για να αποθηκευτεί το προφίλ σου θα πρέπει να συμπληρωθούν σωστά όλα τα πεδία.</string>
 
     <string name="info_ok_dialog">Εντάξει</string>
 
@@ -107,7 +113,6 @@
     <string name="internet_ok">Συνδεμένο στο διαδίκτυο.</string>
     <string name="internet_not_ok">Δεν υπάρχει σύνδεση στο διαδίκτυο.</string>
 
-    <!--Receiver-->
     <string name="question_number">Ερώτηση %1$d από %2$d</string>
     <string name="completed_percent">Ολοκληρωμένο %1$d%%</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
