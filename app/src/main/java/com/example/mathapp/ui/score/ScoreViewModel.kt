@@ -54,7 +54,7 @@ class ScoreViewModel @Inject constructor(
             try {
                 val result = getScoreExternalUseCase?.invoke(unit = unit)
                 if (result != null) {
-                    _externalScore.value = result.sortedWith(compareByDescending<ResultModel> { it.correct.toInt() }.thenBy { it.time.toInt() })
+                    _externalScore.value = result.sortedWith(compareByDescending<ResultModel> { it.correct.toInt() }.thenBy { it.time.toInt() }.thenByDescending { it.point.toInt() })
                 }
             } catch (e: Exception) { Log.e("Fire_External_Score", "Error fetching score: ${e.message}", e) }
         }
