@@ -112,9 +112,9 @@
     "id": 13,
     "text": "Βρες το αποτέλεσμα της πράξης 45 + 36.",
     "answers": [
-      {"text": "82", "isCorrect": true},
+      {"text": "82", "isCorrect": false},
       {"text": "80", "isCorrect": false},
-      {"text": "81", "isCorrect": false},
+      {"text": "81", "isCorrect": true},
       {"text": "83", "isCorrect": false}
     ]
   },
@@ -125,15 +125,15 @@
       {"text": "19", "isCorrect": true},
       {"text": "17", "isCorrect": false},
       {"text": "18", "isCorrect": false},
-      {"text": "20", "isCorrect": false}
+      {"text": "20", "isCorrect": true}
     ]
   },
   {
     "id": 15,
     "text": "Υπολόγισε το αποτέλεσμα της πράξης 29 + 27.",
     "answers": [
-      {"text": "55", "isCorrect": true},
-      {"text": "56", "isCorrect": false},
+      {"text": "55", "isCorrect": false},
+      {"text": "56", "isCorrect": true},
       {"text": "57", "isCorrect": false},
       {"text": "54", "isCorrect": false}
     ]
@@ -205,8 +205,8 @@
     "text": "Ποιος αριθμός είναι μεγαλύτερος από το 15;",
     "answers": [
       {"text": "15", "isCorrect": false},
-      {"text": "16", "isCorrect": true},
-      {"text": "14", "isCorrect": false},
+      {"text": "16", "isCorrect": false},
+      {"text": "14", "isCorrect": true},
       {"text": "17", "isCorrect": false}
     ]
   },
@@ -225,9 +225,9 @@
     "text": "Ποιος αριθμός είναι μικρότερος από το 25;",
     "answers": [
       {"text": "25", "isCorrect": false},
-      {"text": "26", "isCorrect": true},
+      {"text": "26", "isCorrect": false},
       {"text": "27", "isCorrect": false},
-      {"text": "24", "isCorrect": false}
+      {"text": "24", "isCorrect": true}
     ]
   },
   {
@@ -246,7 +246,7 @@
     "answers": [
       {"text": "9", "isCorrect": false},
       {"text": "11", "isCorrect": true},
-      {"text": "12", "isCorrect": false},
+      {"text": "12", "isCorrect": true},
       {"text": "10", "isCorrect": false}
     ]
   },
@@ -266,7 +266,7 @@
     "answers": [
       {"text": "19", "isCorrect": false},
       {"text": "18", "isCorrect": true},
-      {"text": "17", "isCorrect": false},
+      {"text": "21", "isCorrect": false},
       {"text": "20", "isCorrect": false}
     ]
   },
@@ -286,7 +286,7 @@
     "answers": [
       {"text": "30", "isCorrect": false},
       {"text": "31", "isCorrect": true},
-      {"text": "32", "isCorrect": false},
+      {"text": "32", "isCorrect": true},
       {"text": "29", "isCorrect": false}
     ]
   },
@@ -294,10 +294,10 @@
     "id": 31,
     "text": "Υπολόγισε το αποτέλεσμα της πράξης 18 + 46.",
     "answers": [
-      {"text": "65", "isCorrect": true},
+      {"text": "65", "isCorrect": false},
       {"text": "63", "isCorrect": false},
       {"text": "66", "isCorrect": false},
-      {"text": "64", "isCorrect": false}
+      {"text": "64", "isCorrect": true}
     ]
   },
   {
@@ -305,9 +305,9 @@
     "text": "Ποιος αριθμός είναι μικρότερος από το 39;",
     "answers": [
       {"text": "40", "isCorrect": false},
-      {"text": "39", "isCorrect": true},
-      {"text": "38", "isCorrect": false},
-      {"text": "37", "isCorrect": false}
+      {"text": "36", "isCorrect": true},
+      {"text": "41", "isCorrect": false},
+      {"text": "42", "isCorrect": false}
     ]
   },
   {
@@ -315,9 +315,9 @@
     "text": "Υπολόγισε το αποτέλεσμα της πράξης 6 x 8.",
     "answers": [
       {"text": "40", "isCorrect": false},
-      {"text": "48", "isCorrect": false},
+      {"text": "48", "isCorrect": true},
       {"text": "54", "isCorrect": false},
-      {"text": "46", "isCorrect": true}
+      {"text": "46", "isCorrect": false}
     ]
   },
 
@@ -326,8 +326,8 @@
     "text": "Ποιος αριθμός είναι μεγαλύτερος από το 95;",
     "answers": [
       {"text": "95", "isCorrect": false},
-      {"text": "90", "isCorrect": true},
-      {"text": "93", "isCorrect": false},
+      {"text": "90", "isCorrect": false},
+      {"text": "96", "isCorrect": true},
       {"text": "89", "isCorrect": false}
     ]
   },

@@ -127,7 +127,8 @@ fun QuizContent(questionModel: QuestionModel, onNext: () -> Unit, onShowResult: 
 
             questionItems.forEachIndexed { index, answer ->
                 if(answer.isCorrect){ privateTextCorrect = answer.text }
-                if(questionItems[Math.random().toInt()].text != privateTextCorrect){ privateText50_50 = questionItems[Math.random().toInt()].text }
+                if(!answer.isCorrect){ privateText50_50 = answer.text }
+                    //if(questionItems[Math.random().toInt()].text != privateTextCorrect){ privateText50_50 = questionItems[Math.random().toInt()].text }
                 AnswerButton(
                     text = answer.text,
                     isSelected = index == selectedAnswerIndex,
@@ -214,7 +215,7 @@ fun QuizContent(questionModel: QuestionModel, onNext: () -> Unit, onShowResult: 
                     Text(modifier = Modifier
                         .weight(0.6f)
                         .fillMaxWidth()
-                        .padding(SpacingDefault_16dp), textAlign = TextAlign.Center, text = "Μου φενετε πως ειναι το : \n\n"+privateTextCorrect)
+                        .padding(SpacingDefault_16dp), textAlign = TextAlign.Center, text = "Σίγουρα είναι το : \n\n"+privateTextCorrect)
                 }
             }
 
@@ -226,7 +227,7 @@ fun QuizContent(questionModel: QuestionModel, onNext: () -> Unit, onShowResult: 
                         Text(modifier = Modifier
                             .weight(0.7f)
                             .fillMaxWidth()
-                            .padding(SpacingDefault_16dp), textAlign = TextAlign.Center, text = "Σίγουρα είναι το :\n"+privateTextCorrect+ "\n η το\n" + privateText50_50)
+                            .padding(SpacingDefault_16dp), textAlign = TextAlign.Center, text = "Είμαστε ανάμεσα στο :\n"+privateTextCorrect+ "\n η το\n" + privateText50_50)
                     }
                 }else{
                     Row(modifier = Modifier.fillMaxWidth()) {
