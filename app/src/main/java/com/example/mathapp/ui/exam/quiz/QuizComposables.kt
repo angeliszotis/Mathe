@@ -65,6 +65,7 @@ fun QuizScreen(viewModel: ExamViewModel,  unit: Int, changeMusic: (Int) -> Unit)
     var showResult by remember { mutableStateOf(false) }
 
     var score by remember { mutableStateOf(0) }
+    timer = true
 
     Column(modifier = Modifier
         .background(color = BabyBluePurple3)
@@ -275,20 +276,23 @@ fun Timer(durationSeconds: Int, onTimeUp: () -> Unit) {
         horizontalArrangement = Arrangement.End,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(
-            modifier = Modifier.size(18.dp),
-            painter = painterResource(id = R.drawable.baseline_timer_24),
-            contentDescription = "timer",
-            tint = BabyBluePurple4
-        )
+
         var rt = remainingTime
         if(remainingTime % 10 == 0 && timer) {
             Text(
                 text = stringResource(id = R.string.time, rt),
-                fontSize = 12.sp,
+                fontSize = 15.sp,
                 color = BabyBluePurple4,
 
                 )
+        }
+        else {
+            Icon(
+                modifier = Modifier.size(20.dp),
+                painter = painterResource(id = R.drawable.baseline_timer_24),
+                contentDescription = "timer",
+                tint = BabyBluePurple4
+            )
         }
     }
 
