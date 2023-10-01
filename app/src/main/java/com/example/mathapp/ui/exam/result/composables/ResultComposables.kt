@@ -114,7 +114,7 @@ fun ResultScreen(totalQuestions: Int, numCorrectAnswers: Int, remainingTime: Int
             Spacer(modifier = Modifier.width(16.dp))
             Text(text = stringResource(id = R.string.incorrect, numIncorrectAnswers), fontSize = 18.sp)
             Spacer(modifier = Modifier.width(16.dp))
-            Text(text = stringResource(id = R.string.time, remainingTime), fontSize = 18.sp)
+            Text(text = stringResource(id = R.string.result_time, remainingTime), fontSize = 18.sp)
             Spacer(modifier = Modifier.width(16.dp))
             Text(text = stringResource(id = R.string.score_point, point.toString()), fontSize = 18.sp)
         }

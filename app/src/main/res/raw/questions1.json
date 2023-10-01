@@ -104,8 +104,8 @@
     "id": 12,
     "text": "Να γράψετε τον αριθμό 7.533.201 με λέξεις:",
     "answers": [
-      {"text" :"εφτά εκατομμύρια πεντακόσιες τριάντα τρεις εκατοντάδες διακόσια ένα", "isCorrect": true},
-      {"text":"εφτά εκατομμύρια πεντακόσιες τριάντα τρεις χιλιάδες διακόσια ένα", "isCorrect": false}
+      {"text" :"εφτά εκατομμύρια πεντακόσιες τριάντα τρεις εκατοντάδες διακόσια ένα", "isCorrect": false},
+      {"text":"εφτά εκατομμύρια πεντακόσιες τριάντα τρεις χιλιάδες διακόσια ένα", "isCorrect": true}
     ]
   },
   {
@@ -122,7 +122,7 @@
     "id": 14,
     "text": "Ποιος αριθμός είναι μεγαλύτερος από το 18;",
     "answers": [
-      {"text": "19", "isCorrect": true},
+      {"text": "16", "isCorrect": false},
       {"text": "17", "isCorrect": false},
       {"text": "18", "isCorrect": false},
       {"text": "20", "isCorrect": true}
@@ -205,9 +205,9 @@
     "text": "Ποιος αριθμός είναι μεγαλύτερος από το 15;",
     "answers": [
       {"text": "15", "isCorrect": false},
-      {"text": "16", "isCorrect": false},
-      {"text": "14", "isCorrect": true},
-      {"text": "17", "isCorrect": false}
+      {"text": "13", "isCorrect": false},
+      {"text": "14", "isCorrect": false},
+      {"text": "17", "isCorrect": true}
     ]
   },
   {
@@ -245,7 +245,7 @@
     "text": "Ποιος αριθμός είναι μεγαλύτερος από το 10;",
     "answers": [
       {"text": "9", "isCorrect": false},
-      {"text": "11", "isCorrect": true},
+      {"text": "7", "isCorrect": false},
       {"text": "12", "isCorrect": true},
       {"text": "10", "isCorrect": false}
     ]
@@ -285,7 +285,7 @@
     "text": "Ποιος αριθμός είναι μεγαλύτερος από το 30;",
     "answers": [
       {"text": "30", "isCorrect": false},
-      {"text": "31", "isCorrect": true},
+      {"text": "27", "isCorrect": false},
       {"text": "32", "isCorrect": true},
       {"text": "29", "isCorrect": false}
     ]
@@ -337,7 +337,7 @@
     "answers": [
       {"text": "48", "isCorrect": true},
       {"text": "52", "isCorrect": false},
-      {"text": "45", "isCorrect": false},
+      {"text": "55", "isCorrect": false},
       {"text": "50", "isCorrect": false}
     ]
   },
@@ -368,7 +368,7 @@
       {"text": "48", "isCorrect": false},
       {"text": "52", "isCorrect": false},
       {"text": "43", "isCorrect": false},
-      {"text": "44", "isCorrect": true}
+      {"text": "50", "isCorrect": true}
     ]
   },
   {
@@ -385,9 +385,9 @@
     "id": 40,
     "text": "Πόσο κάνει το άθροισμα 22 + 38;",
     "answers": [
-      {"text": "58", "isCorrect": true},
+      {"text": "58", "isCorrect": false},
       {"text": "56", "isCorrect": false},
-      {"text": "60", "isCorrect": false},
+      {"text": "60", "isCorrect": true},
       {"text": "54", "isCorrect": false}
     ]
   },
@@ -407,17 +407,17 @@
     "answers": [
       {"text": "60", "isCorrect": false},
       {"text": "63", "isCorrect": false},
-      {"text": "65", "isCorrect": true},
-      {"text": "69", "isCorrect": false}
+      {"text": "65", "isCorrect": false},
+      {"text": "69", "isCorrect": true}
     ]
   },
   {
     "id": 43,
     "text": "Πόσο κάνει το άθροισμα 34 + 47;",
     "answers": [
-      {"text": "78", "isCorrect": true},
+      {"text": "78", "isCorrect": false},
       {"text": "80", "isCorrect": false},
-      {"text": "81", "isCorrect": false},
+      {"text": "81", "isCorrect": true},
       {"text": "76", "isCorrect": false}
     ]
   },
@@ -426,7 +426,7 @@
     "text": "Πόσο κάνει το άθροισμα 25 + 42;",
     "answers": [
       {"text": "65", "isCorrect": false},
-      {"text": "68", "isCorrect": true},
+      {"text": "67", "isCorrect": true},
       {"text": "70", "isCorrect": false},
       {"text": "72", "isCorrect": false}
     ]
@@ -458,15 +458,15 @@
       {"text": "86", "isCorrect": false},
       {"text": "85", "isCorrect": false},
       {"text": "88", "isCorrect": false},
-      {"text": "87", "isCorrect": true}
+      {"text": "86", "isCorrect": true}
     ]
   },
   {
     "id": 48,
     "text": "Πόσο κάνει το άθροισμα 17 + 28;",
     "answers": [
-      {"text": "44", "isCorrect": true},
-      {"text": "45", "isCorrect": false},
+      {"text": "44", "isCorrect": false},
+      {"text": "45", "isCorrect": true},
       {"text": "42", "isCorrect": false},
       {"text": "43", "isCorrect": false}
     ]
@@ -477,18 +477,18 @@
     "answers": [
       {"text": "96", "isCorrect": false},
       {"text": "98", "isCorrect": false},
-      {"text": "99", "isCorrect": false},
-      {"text": "97", "isCorrect": true}
+      {"text": "99", "isCorrect": true},
+      {"text": "97", "isCorrect": false}
     ]
   },
   {
     "id": 50,
     "text": "Πόσο κάνει το άθροισμα 35 + 27;",
     "answers": [
-      {"text": "62", "isCorrect": false},
+      {"text": "62", "isCorrect": true},
       {"text": "64", "isCorrect": false},
       {"text": "60", "isCorrect": false},
-      {"text": "63", "isCorrect": true}
+      {"text": "63", "isCorrect": false}
     ]
   }
 

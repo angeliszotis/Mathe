@@ -71,7 +71,8 @@
     <string name="perfect_score">%1\$d απο %2\$d σωστές απαντήσεις</string>
     <string name="correct">Σωστές: %1\$d</string>
     <string name="incorrect">Λάθος: %1\$d</string>
-    <string name="time">Χρόνος: %1\$d ″</string>
+    <string name="time"> %1\$d ″</string>
+    <string name="result_time">Χρόνος: %1\$d ″</string>
     <string name="complete">Ολοκληρώθηκε!</string>
     <string name="congrats">Συγχαρητήρια!!!\nΞεκλείδωσες έναν επιστήμονα</string>
 

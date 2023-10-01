@@ -24,6 +24,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -54,6 +55,7 @@ private var privateReturntime = 0
 private var privateCorrect : Boolean =false
 private var privateTextCorrect : String = ""
 private  var privateText50_50 : String = ""
+private var timer : Boolean = true
 
 @Composable
 fun QuizScreen(viewModel: ExamViewModel,  unit: Int, changeMusic: (Int) -> Unit) {
@@ -73,6 +75,7 @@ fun QuizScreen(viewModel: ExamViewModel,  unit: Int, changeMusic: (Int) -> Unit)
         if (showResult) {
             ResultScreen(randomQuestions.size, score, privateReturntime, viewModel = viewModel, unit = unit)
             changeMusic(R.raw.complete)
+            timer = false
         }
         else if (currentQuestionIndex < randomQuestions.size) {
             val currentQuestion = randomQuestions[currentQuestionIndex]
@@ -202,13 +205,8 @@ fun QuizContent(questionModel: QuestionModel, onNext: () -> Unit, onShowResult: 
             .fillMaxWidth()
             .background(color = BabyBluePurple2, RoundedCornerShape(12.dp))
             .padding(SpacingDefault_16dp), verticalArrangement = Arrangement.Center) {
-            Timer(
-                durationSeconds = 0,
-                onTimeUp = {
-                    onAnswer(false)
-                    onShowResult()
-                }
-            )
+
+
             if(showAnswerCall){
                 Row(modifier = Modifier.fillMaxWidth()) {
                     LottieLoader(modifier =Modifier.weight(0.3f) ,link = BASE_URL_LOTTIE_QUIZ_lf20_END1)
@@ -271,8 +269,28 @@ fun Timer(durationSeconds: Int, onTimeUp: () -> Unit) {
         }
         onTimeUp()
     }
+    Row(
+        modifier = Modifier
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.End,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            modifier = Modifier.size(18.dp),
+            painter = painterResource(id = R.drawable.baseline_timer_24),
+            contentDescription = "timer",
+            tint = BabyBluePurple4
+        )
+        var rt = remainingTime
+        if(remainingTime % 10 == 0 && timer) {
+            Text(
+                text = stringResource(id = R.string.time, rt),
+                fontSize = 12.sp,
+                color = BabyBluePurple4,
 
-    Text(text = stringResource(id = R.string.time, remainingTime), fontWeight = FontWeight.Bold, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+                )
+        }
+    }
 
 }
 
@@ -300,6 +318,12 @@ fun ProgressBar(currentIndex: Int, totalQuestions: Int) {
         Spacer(modifier = Modifier.height(8.dp))
         LinearProgressIndicator(progress = progress, modifier = Modifier.fillMaxWidth(), color = FbColor)
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = stringResource(R.string.completed_percent, percent), fontSize = 14.sp, textAlign = TextAlign.End)
+        Row() {
+            Text(text = stringResource(R.string.completed_percent, percent), fontSize = 14.sp, textAlign = TextAlign.End)
+
+                Timer(durationSeconds = 0, onTimeUp = {})
+
+        }
     }
+
 }
